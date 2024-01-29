@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 1</title>
+    <style>
+        @font-face {
+            font-family: "SOYOMapleBoldTTF";
+            src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/SOYOMapleBoldTTF.woff2") format("woff2");
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: "SOYOMapleBoldTTF";
+            margin: 0 auto;
+            /* font-family: Arial, sans-serif; */
+            background: #fff;
+            color: #333;
+            background-color: #ccc;
+        }
+/* title */
+        #workerTitle {
+            display: flex;
+            width: 1000px;
+            justify-content: space-between;
+            padding: 5px;
+
+        }
+        
+        #workerLogo {
+            width: 200px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        #workerTitle h1 {
+            width: 200px;
+            color: #000;
+        }
+
+        #mainTitle1 {
+            display: none;
+        }
+
+        #mainTitle2 {
+            display: none;
+        }
+
+        #myPage {
+            width: 200px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        #myPageLogo {
+            width: 80px;
+            height: 80px;
+            margin-right: 3%;
+        }
+
+        #workerName a {
+            text-decoration: none;
+            color: #333;
+
+        }
+
+        #workerName a:hover {
+            text-decoration: none;
+            color: #888;
+            transition: color 0.2s ease;
+        }
+
+        #workerTitle .workerPic {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+        }
+
+        #workerTitle .logo {
+            width: 200px;
+            height: 70px;
+        }
+/* title end */
+
+        .wrap {
+            width: 1000px;
+            /* height: 100vh; */
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+        }
+/* header와 nav의 집합 */
+        .header-nav-container {
+            position: relative;
+            width: 100%;
+            /* wrap과 동일한 너비 */
+        }
+/* header 코드 */
+        header {
+            width: 100%;
+            background: #000;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        header h1 {
+            font-size: 30px;
+            margin: 0;
+        }
+
+        header ul {
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+            list-style: none;
+            align-items: center;
+        }
+
+        header ul li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+
+        header ul li a {
+            font-size: 18px;
+            text-decoration: none;
+            color: #fff;
+            transition: color 0.3s ease;
+        }
+
+        header ul li a:hover {
+            color: #aaa;
+        }
+/* header 코드 끝 */
+
+        nav {
+            width: 100%;
+            position: absolute;
+            top: 100%;
+            /* header 높이에 맞게 조정 */
+            left: 0;
+            right: 0;
+            background: #eee;
+            max-height: 0;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear;
+            visibility: hidden;
+            z-index: 100;
+            /* opacity: 0; */
+        }
+        
+        /* nav 숨김요소 */
+        nav.active {
+            max-height: 500px;
+            /* 활성화될 때 최대 높이 설정 */
+            visibility: visible;
+            opacity: 1;
+            transition: max-height 0.5s ease, visibility 0s, opacity 0.5s linear;
+        }
+/* nav 안의 menu-bar요소 */
+        .menu-bar {
+            width: 100%;
+            height: 220px;
+            border-top: 0px;
+            border-right: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            display: flex;
+        }
+
+        .menu-bar-content {
+            margin-left: 40px;
+            width: 20%;
+            display: inline-block;
+            box-sizing: border-box;
+        }
+
+        .menu-bar-content ul li {
+            padding: 10px;
+        }
+
+        .menu-bar-content ul li a {
+            text-decoration: none;
+            color: #444;
+        }
+
+        .menu-bar-content ul li a:hover {
+            color: #aaa;
+            transition: color 0.2s ease;
+        }
+
+        #menu-bar-content-sub {
+            list-style: circle;
+            font-size: 14px;
+            padding-left: 20px;
+        }
+
+        #menu-bar-content-sub li {
+            padding: 5px;
+        }
+/* menu-bar요소 끝 */
+
+/* aside, section */
+        .aside-section-container {
+            width: 100%;
+            display: flex;
+            /* height: 100%; */
+        }
+
+        /* 좌측 메뉴바 */
+        aside {
+            width: 20%;
+            background: #5f5f5f;
+        }
+
+        /* 섹션 창을 조작하기바람 */
+        section {
+            display: flex;
+            justify-content: center;
+            width: 80%;
+            overflow: auto;
+            background: #eee;
+            z-index: 50;
+            align-items: center;
+        }
+        article {
+
+        }
+
+        article .workList {
+            width: 100%;
+            height: 200px;
+            display: flex;
+            /* border: 1px solid green; */
+            justify-content: space-around;
+        }
+
+        .workList p{
+            width: 100%;
+        }
+
+        .workOrder {
+            border: 1px solid orangered;
+            width: 450px;
+        }
+
+        .workImg {
+            border: 1px solid orangered;
+            width: 100px;
+            display: inline-block;
+        }
+/* aside, section 끝*/
+
+        footer {
+            width: 100%;
+            background: #000;
+            color: #fff;
+            text-align: center;
+            height: 7%;
+            line-height: 70px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <div id="workerTitle">
+        <div id="workerLogo">
+            <a href="#">
+                <image
+                    src="https://cdn.discordapp.com/attachments/1185161279804026893/1200675420325036082/Jlogo.png?ex=65c70b1f&is=65b4961f&hm=ae28f53e9280fe71cffc1fc2ca74aec892875f13143ef4e109da28023c5b414b&"
+                    class="logo"></image>
+            </a>
+        </div>
+        <h1 id="mainTitle1">작업자 페이지</h1>
+        <h1 id="mainTitle2">관리자 페이지</h1>
+        <div id="myPage">
+            <div id="myPageLogo">
+                <image
+                    src="https://cdn.discordapp.com/attachments/1185161279804026893/1200675420551520370/workerP.jpg?ex=65c70b1f&is=65b4961f&hm=c49f91b245305c4bb33c58e626bc4960b4f601257e433425a8d7cc0da454126e&"
+                    class="workerPic">
+            </div>
+            <span id="workerName"><a href="#">이도연 대리님</a></span>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <div class="header-nav-container">
+            <header>
+                <ul>
+                    <li><a href="#" class="hover" title="작업지시서">작업</a></li>
+                    <li><a href="#" class="hover" title="품질검사">설비</a></li>
+                    <li><a href="#" class="hover" title="건의사항">재고관리</a></li>
+                    <li><a href="#" class="hover" title="직원 게시판">게시판</a></li>
+                </ul>
+            </header>
+            <nav>
+                <div class="menu-bar">
+                    <div class="menu-bar-content">
+                        <ul>
+                            <li><a href="#">작업 지침서</a></li>
+                            <li><a href="#">안전 지침서</a></li>
+                            <li><a href="#">품질검사</a></li>
+                            <li><a href="#">일일 현황</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-bar-content">
+                        <ul>
+                            <li><a href="#">설비 모니터링</a></li>
+                            <ul id="menu-bar-content-sub">
+                                <li><a href="#">레이아웃</a></li>
+                                <li><a href="#">공정</a></li>
+                            </ul>
+                            <li><a href="#">설비 설정</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-bar-content">
+                        <ul>
+                            <li><a href="#">재고 현황</a></li>
+                            <li><a href="#">재고 신청</a></li>
+                            <li><a href="#">완제품 관리</a></li>
+                            <li><a href="#">재고 불량 신고</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-bar-content">
+                        <ul>
+                            <li><a href="#">자유게시판</a></li>
+                            <li><a href="#">건의사항</a></li>
+                            <li><a href="#">Q&A</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="aside-section-container">
+            <aside>
+                <!-- aside 영역내에 메뉴 추가 가능함 -->
+            </aside>
+            <section>
+                <article>
+                        <div class="workList">
+                            <div class="workOrder">
+                                <p>
+                                    1. 메인보드 이동 및 CPU 및 GPU 결착<br>
+                                    설비가 레일을 따라 이동하여 메인보드에 CPU와 GPU를 결착합니다.<br>
+                                    작업자는 CPU 결착 상태와 그래픽 카드 결착 상태를 확인한 후 쿨러와 메모리를 결착합니다.
+                                </p>
+                            </div>
+                            <div class="workImg">
+                                <img src="https://image.spreadshirtmedia.net/image-server/v1/compositions/T996A1PA2179PT10X17Y18D172654919W7098H6789/views/1,width=550,height=550,appearanceId=1,backgroundColor=FFFFFF,noPt=true/pixel-art-fox-fox-podstawki.jpg"
+                                    width="100px">
+                            </div>
+                        </div>
+                        <div class="workList">
+                            <div class="workOrder">
+                                <p>
+                                    2.메인보드 케이스 장착 및 파워 체결<br>
+                                    설비에서 결착된 메인보드는 케이스에 장착되고 파워가 체결됩니다.
+                                </p>
+                            </div>
+                            <div class="workImg">
+                                <img src="https://image.spreadshirtmedia.net/image-server/v1/compositions/T996A1PA2179PT10X17Y18D172654919W7098H6789/views/1,width=550,height=550,appearanceId=1,backgroundColor=FFFFFF,noPt=true/pixel-art-fox-fox-podstawki.jpg"
+                                    width="100px">
+                            </div>
+                        </div>
+                        <div class="workList">
+                            <div class="workOrder">
+                                <p>
+                                    3.작업자의 케이블 연결 및 설비 재고<br>
+                                    작업자는 모든 케이블을 연결한 후 설비로 다시 올립니다.
+                                </p>
+                            </div>
+                            <div class="workImg">
+                                <img src="https://image.spreadshirtmedia.net/image-server/v1/compositions/T996A1PA2179PT10X17Y18D172654919W7098H6789/views/1,width=550,height=550,appearanceId=1,backgroundColor=FFFFFF,noPt=true/pixel-art-fox-fox-podstawki.jpg"
+                                    width="100px">
+                            </div>
+                        </div>
+                        <div class="workList">
+                            <div class="workOrder">
+                                <p>
+                                    4.설비에서 케이스 실링<br>
+                                    설비는 결착된 메인보드와 함께 케이스를 실링합니다.
+                                </p>
+                            </div>
+                            <div class="workImg">
+                                <img src="https://image.spreadshirtmedia.net/image-server/v1/compositions/T996A1PA2179PT10X17Y18D172654919W7098H6789/views/1,width=550,height=550,appearanceId=1,backgroundColor=FFFFFF,noPt=true/pixel-art-fox-fox-podstawki.jpg"
+                                    width="100px">
+                            </div>
+                        </div>
+                        <div class="workList">
+                            <div class="workOrder">
+                                <p>
+                                    4.설비에서 케이스 실링<br>
+                                    설비는 결착된 메인보드와 함께 케이스를 실링합니다.
+                                </p>
+                            </div>
+                            <div class="workImg">
+                                <img src="https://image.spreadshirtmedia.net/image-server/v1/compositions/T996A1PA2179PT10X17Y18D172654919W7098H6789/views/1,width=550,height=550,appearanceId=1,backgroundColor=FFFFFF,noPt=true/pixel-art-fox-fox-podstawki.jpg"
+                                    width="100px">
+                            </div>
+                        </div>
+                        <div class="workList">
+                            <div class="workOrder">
+                                <p>
+                                    5.구동 확인 및 케이스 볼트 체결<br>
+                                    마지막 작업자는 구동을 확인하고 케이스의 볼트를 체결합니다.
+                                </p>
+                            </div>
+                            <div class="workImg">
+                                <img src="https://image.spreadshirtmedia.net/image-server/v1/compositions/T996A1PA2179PT10X17Y18D172654919W7098H6789/views/1,width=550,height=550,appearanceId=1,backgroundColor=FFFFFF,noPt=true/pixel-art-fox-fox-podstawki.jpg"
+                                    width="100px">
+                            </div>
+                        </div>
+                        <div class="workList">
+                            <div class="workOrder">
+                                <p>
+                                    6.포장<br>
+                                    마지막으로, 모든 작업이 완료된 제품은 포장됩니다.
+                                    이러한 단계를 통해 제품은 생산 공정을 거쳐 완성되어 출하됩니다.
+                                </p>
+                            </div>
+                            <div class="workImg">
+                                <img src="https://image.spreadshirtmedia.net/image-server/v1/compositions/T996A1PA2179PT10X17Y18D172654919W7098H6789/views/1,width=550,height=550,appearanceId=1,backgroundColor=FFFFFF,noPt=true/pixel-art-fox-fox-podstawki.jpg"
+                                    width="100px">
+                            </div>
+                        </div>
+                </article>
+            </section>
+        </div>
+        <footer>ⓒ2024 J.company System</footer>
+    </div>
+
+    <script>
+        const hover = document.querySelectorAll('a.hover');
+        const menuBar = document.querySelector('.menu-bar');
+        const nav = document.querySelector('nav');
+        const wrap = document.querySelector('.wrap');
+
+        // if() {
+        // document.querySelector("#mainTitle1").style.display = "block";
+        // } else {
+        document.querySelector("#mainTitle2").style.display = "block";
+        // }
+
+        let isHovered = false;
+
+        hover.forEach(button => {
+            button.addEventListener('mouseover', () => {
+                showMenuBar();
+                isHovered = true;
+            });
+        });
+
+        wrap.addEventListener("mouseleave", function () {
+            if (!isHovered) {
+                hideMenuBar();
+            }
+        });
+
+        menuBar.addEventListener("mouseenter", function () {
+            isHovered = true;
+        });
+
+        menuBar.addEventListener("mouseleave", function () {
+            hideMenuBar();
+        });
+
+        function showMenuBar() {
+            nav.classList.add('active');
+        }
+
+        function hideMenuBar() {
+            nav.classList.remove('active');
+        }
+
+    </script>
+</body>
+
+</html>
