@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Management System</title>
+    <style>
+        @font-face {
+            font-family: "SOYOMapleBoldTTF";
+            src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/SOYOMapleBoldTTF.woff2") format("woff2");
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: "SOYOMapleBoldTTF";
+            margin: 0 auto;
+            /* font-family: Arial, sans-serif; */
+            background: #fff;
+            color: #333;
+            background-color: #ccc;
+        }
+
+        /* title */
+        #workerTitle {
+            display: flex;
+            width: 1000px;
+            justify-content: space-between;
+            padding: 5px;
+
+        }
+
+        #workerLogo {
+            width: 200px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        #workerTitle h1 {
+            width: 200px;
+            color: #000;
+        }
+
+        #mainTitle1 {
+            display: none;
+        }
+
+        #mainTitle2 {
+            display: none;
+        }
+
+        #myPage {
+            width: 200px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        #myPageLogo {
+            width: 80px;
+            height: 80px;
+            margin-right: 3%;
+        }
+
+        #workerName a {
+            text-decoration: none;
+            color: #333;
+
+        }
+
+        #workerName a:hover {
+            text-decoration: none;
+            color: #888;
+            transition: color 0.2s ease;
+        }
+
+        #workerTitle .workerPic {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+        }
+
+        #workerTitle .logo {
+            width: 200px;
+            height: 70px;
+        }
+
+        /* title end */
+
+        .wrap {
+            width: 1000px;
+            /* height: 100vh; */
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+        }
+
+        /* header와 nav의 집합 */
+        .header-nav-container {
+            position: relative;
+            width: 100%;
+            /* wrap과 동일한 너비 */
+        }
+
+        /* header 코드 */
+        header {
+            width: 100%;
+            background: #000;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        header h1 {
+            font-size: 30px;
+            margin: 0;
+        }
+
+        header ul {
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+            list-style: none;
+            align-items: center;
+        }
+
+        header ul li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+
+        header ul li a {
+            font-size: 18px;
+            text-decoration: none;
+            color: #fff;
+            transition: color 0.3s ease;
+        }
+
+        header ul li a:hover {
+            color: #aaa;
+        }
+
+        /* header 코드 끝 */
+
+        nav {
+            width: 100%;
+            position: absolute;
+            top: 100%;
+            /* header 높이에 맞게 조정 */
+            left: 0;
+            right: 0;
+            background: #eee;
+            max-height: 0;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear;
+            visibility: hidden;
+            z-index: 100;
+            /* opacity: 0; */
+        }
+
+        /* nav 숨김요소 */
+        nav.active {
+            max-height: 500px;
+            /* 활성화될 때 최대 높이 설정 */
+            visibility: visible;
+            opacity: 1;
+            transition: max-height 0.5s ease, visibility 0s, opacity 0.5s linear;
+        }
+
+        /* nav 안의 menu-bar요소 */
+        .menu-bar {
+            width: 100%;
+            height: 220px;
+            border-top: 0px;
+            border-right: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            display: flex;
+        }
+
+        .menu-bar-content {
+            margin-left: 40px;
+            width: 20%;
+            display: inline-block;
+            box-sizing: border-box;
+        }
+
+        .menu-bar-content ul li {
+            padding: 10px;
+        }
+
+        .menu-bar-content ul li a {
+            text-decoration: none;
+            color: #444;
+        }
+
+        .menu-bar-content ul li a:hover {
+            color: #aaa;
+            transition: color 0.2s ease;
+        }
+
+        #menu-bar-content-sub {
+            list-style: circle;
+            font-size: 14px;
+            padding-left: 20px;
+        }
+
+        #menu-bar-content-sub li {
+            padding: 5px;
+        }
+
+        /* menu-bar요소 끝 */
+
+        /* aside, section */
+        .aside-section-container {
+            width: 100%;
+            display: flex;
+            /* height: 100%; */
+        }
+
+        /* 좌측 메뉴바 */
+        aside {
+            width: 20%;
+            background: #5f5f5f;
+            min-height: 800px;
+        }
+
+        #left-nav {
+            /* width: 25%; */
+            height: 100%;
+            /* position: absolute; */
+            /* border: 1px solid red; */
+            background: #666;
+            color: #fff;
+            box-sizing: border-box;
+            padding-top: 20px;
+
+        }
+
+        #left-nav ul li {
+            padding-bottom: 60px;
+            cursor: pointer;
+            list-style: none;
+
+        }
+
+        #left-nav ul li:hover {
+            color: #888;
+            transition: color 0.2s ease;
+        }
+
+
+
+        /* 섹션 창을 조작하기바람 */
+        section {
+            /* border: 1px solid red; */
+            /* display: flex; */
+            justify-content: center;
+            width: 80%;
+            /* overflow: auto; */
+            background: #eee;
+            z-index: 50;
+            align-items: center;
+            min-height: 800px;
+            position: relative;
+        }
+
+        article {}
+
+        article .workList {
+            width: 100%;
+            display: flex;
+            /* border: 1px solid green; */
+            justify-content: space-around;
+        }
+
+        .workList p {
+            width: 100%;
+        }
+
+        .workOrder {
+            border: 1px solid orangered;
+            width: 450px;
+        }
+
+        .workImg {
+            border: 1px solid orangered;
+            width: 100px;
+            display: inline-block;
+        }
+
+        /* aside, section 끝*/
+
+        footer {
+            width: 100%;
+            background: #000;
+            color: #fff;
+            text-align: center;
+            height: 7%;
+            line-height: 70px;
+        }
+
+
+        /* 전체 div */
+        .stock_request_page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* border: 1px solid blue; */
+            /* height: 800px; */
+            /* margin-top: 20px; */
+
+
+        }
+
+
+        /* Stock_Request_box */
+
+        .Stock_Request_box {
+            /* border: 1px solid red; */
+            width: 500px;
+            height: 500px;
+        }
+
+        /*  재고신청 확인 */
+
+        .Stock_Request_confirm1 {
+            /* position: relative;
+            top: 120px;
+            left: 730px; */
+            font-size: 30px;
+            line-height: 100px;
+            /* border : 1px solid blue; */
+        }
+
+        .Stock_Request_confirm2 {
+            /* position: relative;
+            top: 120px;
+            left: 730px; */
+            font-size: 30px;
+
+        }
+
+        /*  */
+
+        /* 재고신청 내역*/
+
+        .Stock_Request_History {
+            /* position: relative;
+            top: 190px;
+            left: 500px; */
+            width: 600px;
+            /* height: 498px; */
+            /* border: 1px solid red; */
+            /* border : 1px solid black; */
+            display: flex;
+            justify-content: center;
+            /* border: 1px solid yellow; */
+            /* align-items: center; */
+            /* height: 100vh; */
+            /* margin: 0; */
+
+        }
+
+        .table_SPH {
+            /* border : 1px solid red; */
+            display: flex;
+            /* flex 포지션이  column으로 잡혀있으니 꼭 확인하도록 */
+            flex-direction: column;
+            border-collapse: collapse;
+            width: 700px;
+            /* 표의 너비 조절 */
+        }
+
+        .row_SPH {
+            display: flex;
+            border-bottom: 2px solid #ddd;
+            /* 아래 테두리 스타일 지정 */
+        }
+
+        .row_SPH:first-child {
+            border-top: 2px solid #ddd;
+            background-color: #888888;
+            /* 첫 번째 행의 위 테두리 스타일 지정 */
+        }
+
+        .cell_SPH {
+            flex: 1;
+            padding: 8px;
+            text-align: center;
+            border-right: 1px solid #ddd;
+            /* 오른쪽 테두리 스타일 지정 */
+        }
+
+        .cell_SPH:last-child {
+            border-right: none;
+            /* 마지막 셀에서 오른쪽 테두리 제거 */
+        }
+
+
+        .cell_SPH input {
+            border: none;
+            text-align: center;
+            background-color: #eee;
+            width: 100px;
+        }
+
+        /*  */
+        /* 재고신청 내역*/
+
+        .Stock_Request {
+            /* position: relative;
+            top: 10px;
+            left: 500px; */
+            /* border: 1px solid blue; */
+            width: 700px;
+            /* height: 498px; */
+            /* border : 1px solid black; */
+            display: flex;
+            justify-content: center;
+            /* align-items: center; */
+            /* height: 100vh; */
+            /* margin: 0; */
+        }
+
+        /* .Stock_Request1{
+            position: relative;
+            left : -5px;;
+            width: 700px;
+            display: flex;
+            justify-content: center;
+        } */
+
+        .table_SR {
+            /* border : 1px solid red; */
+            display: flex;
+            /* flex 포지션이  column으로 잡혀있으니 꼭 확인하도록 */
+            flex-direction: column;
+            border-collapse: collapse;
+            width: 1000px;
+            /* border: 1px solid red; */
+            /* 표의 너비 조절 */
+        }
+
+        .row_SR,
+        .row_SR1 {
+            display: flex;
+            border-bottom: 2px solid #ddd;
+            /* 아래 테두리 스타일 지정 */
+        }
+
+        .row_SR:first-child,
+        .row_sr1:first-child {
+            border-top: 2px solid #ddd;
+            /* background-color: #888888; */
+            /* 첫 번째 행의 위 테두리 스타일 지정 */
+        }
+
+        /* 표시 */
+        /* .cell_SR{
+            width : 10px !important; 
+            border : 1px solid red;
+        } */
+
+        .cell_SR {
+            /* width: 300px; */
+        }
+
+        .cell_SR {
+            /* flex: 1; */
+            padding: 8px;
+            text-align: center;
+            border-right: 1px solid #ddd;
+            /* 오른쪽 테두리 스타일 지정 */
+        }
+
+        .cell_SR:last-child {
+            border-right: none;
+            /* 마지막 셀에서 오른쪽 테두리 제거 */
+        }
+
+
+        .cell_SR input {
+            border: none;
+            text-align: center;
+            background-color: #eee;
+
+            font-family: "SOYOMapleBoldTTF";
+            /* width: 0px; */
+        }
+
+        .add {
+            margin-left: auto;
+            /* add를 오른쪽에 위치시킵니다. */
+        }
+
+        .submit,
+        .cancel {
+            display: inline-flex;
+            /* 같은 행에 가로로 정렬하기 위해 */
+            margin: 25px;
+            /* submit과 cancel 사이의 간격을 조절합니다. */
+        }
+
+        /*  */
+        /* 팝업 */
+        .popup {
+            /* position: absolute;
+            border : 1px solid red;
+            width : 300px;
+            height : 200px;
+            top : 0; */
+        }
+
+        .add_img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: rgb(214, 214, 214);
+            /* border: 1px solid red; */
+            width: 800px;
+
+            /* 팝업높이수정 */
+            height: 800px;
+            /* 팝업 디스플레이 */
+            display: none;
+            /* display: flex; */
+            flex-direction: column;
+            align-items: center;
+
+        }
+
+        .Stock_page {
+            /* border: 1px solid blue; */
+            line-height: 100px;
+            width: 210px;
+            margin: auto;
+            font-size: 30px;
+        }
+
+        .searchbox {
+            /* margin-left: 10px; */
+            border: 1px solid rgb(165, 165, 165);
+            height: 22px;
+            width: 300px;
+            display: flex;
+            margin: auto;
+            padding: 5px;
+            margin-top: 20px;
+        }
+
+        .glasses {
+            padding: 1px;
+            height: 20px;
+        }
+
+        .search {
+            width: 200px;
+        }
+
+        .item {
+            width: 490px;
+            /* border: 1px solid red; */
+            display: flex;
+            margin: auto;
+        }
+
+        .choice {
+            /* display: none; */
+            width: 100px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .choice input {
+            border: none;
+            /* display: none; */
+            background-color: rgb(214, 214, 214);
+            width: 100px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .cpu_img {
+            width: 200px;
+            /* margin : auto; */
+        }
+
+        .cpu1,
+        .cpu2 {
+            font-size: 30px;
+            border: 0px;
+            background-color: rgb(214, 214, 214);
+            width: 285px;
+            text-align: center;
+        }
+
+        .button_ac {
+            /* border: 1px solid red; */
+            width: 300px;
+            margin: auto;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        /*  */
+
+
+        /* 버튼 스타일 */
+        .add_Stock,
+        .drop,
+        .pic1,
+        .pic2 {
+            /* margin-top: 10px; */
+            width: 40px;
+            height: 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+            background: #3498DB;
+        }
+
+        .add_Stock_bar,
+        #add_text,
+        #cancel {
+            /* margin-top: 10px; */
+            width: 100px;
+            height: 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+            background: #3498DB;
+        }
+
+        .add {
+            margin-top: 70px;
+            margin-right: 80px;
+        }
+
+        .add_Stock:hover,
+        .drop:hover,
+        .pic1:hover,
+        .pic2:hover,
+        .add_Stock_bar:hover,
+        #add_text:hover,
+        #cancel:hover {
+            background-color: rgb(0, 47, 255);
+            transition: 0.2s;
+        }
+
+        .drop {
+            /* margin: 0 10px; */
+            background-color: red;
+            /* margin-top: 10px; */
+            width: 40px;
+            height: 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+        }
+
+        .drop:hover {
+            background-color: rgb(163, 6, 6);
+            transition: 0.2s;
+        }
+
+        .order {
+            background: #333;
+            color: #fff;
+            border: 0;
+            border-radius: 10px;
+            width: 120px;
+            height: 45px;
+            cursor: pointer;
+        }
+
+        .order:hover {
+            background-color: #555;
+            transition: 0.2s;
+        }
+
+
+        .pic {
+            /* border : 1px solid red; */
+            /* height : 50px; */
+            line-height: 200px;
+        }
+
+        .delete1 {
+            background: #333;
+            color: #fff;
+            border: 0;
+            border-radius: 10px;
+            width: 40px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .delete1 :hover {
+            background-color: #555;
+            transition: 0.2s;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="workerTitle">
+        <div id="workerLogo">
+            <a href="#">
+                <image
+                    src="https://cdn.discordapp.com/attachments/1185161279804026893/1200675420325036082/Jlogo.png?ex=65c70b1f&is=65b4961f&hm=ae28f53e9280fe71cffc1fc2ca74aec892875f13143ef4e109da28023c5b414b&"
+                    class="logo"></image>
+            </a>
+        </div>
+        <h1 id="mainTitle1">작업자 페이지</h1>
+        <h1 id="mainTitle2">관리자 페이지</h1>
+        <div id="myPage">
+            <div id="myPageLogo">
+                <image
+                    src="https://cdn.discordapp.com/attachments/1185161279804026893/1200675420551520370/workerP.jpg?ex=65c70b1f&is=65b4961f&hm=c49f91b245305c4bb33c58e626bc4960b4f601257e433425a8d7cc0da454126e&"
+                    class="workerPic">
+            </div>
+            <span id="workerName"><a href="#">이도연 대리님</a></span>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <div class="header-nav-container">
+            <header>
+                <ul>
+                    <li><a href="#" class="hover" title="작업지시서">작업</a></li>
+                    <li><a href="#" class="hover" title="품질검사">설비</a></li>
+                    <li><a href="#" class="hover" title="건의사항">재고관리</a></li>
+                    <li><a href="#" class="hover" title="직원 게시판">게시판</a></li>
+                </ul>
+            </header>
+            <nav>
+                <div class="menu-bar">
+                    <div class="menu-bar-content">
+                        <ul>
+                            <li><a href="#">작업 지침서</a></li>
+                            <li><a href="#">안전 지침서</a></li>
+                            <li><a href="#">품질검사</a></li>
+                            <li><a href="#">일일 현황</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-bar-content">
+                        <ul>
+                            <li><a href="#">설비 모니터링</a></li>
+                            <ul id="menu-bar-content-sub">
+                                <li><a href="#">레이아웃</a></li>
+                                <li><a href="#">공정</a></li>
+                            </ul>
+                            <li><a href="#">설비 설정</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-bar-content">
+                        <ul>
+                            <li><a href="#">재고 현황</a></li>
+                            <li><a href="#">재고 신청</a></li>
+                            <li><a href="#">완제품 관리</a></li>
+                            <li><a href="#">재고 불량 신고</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-bar-content">
+                        <ul>
+                            <li><a href="#">자유게시판</a></li>
+                            <li><a href="#">건의사항</a></li>
+                            <li><a href="#">Q&A</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="aside-section-container">
+            <aside>
+                <!-- aside 영역내에 메뉴 추가 가능함 -->
+
+                <div id="left-nav">
+                    <ul>
+                        <li>
+                            재고현황
+                        </li>
+                        <li>
+                            재고신청
+                        </li>
+                        <li>
+                            완제품관리
+                        </li>
+                        <li>
+                            재고불량신고
+                        </li>
+                    </ul>
+                </div>
+
+            </aside>
+            <section>
+                <article>
+
+
+
+                    <!-- 재고신청확인 -->
+                    <div class="stock_request_page">
+                        <div class="Stock_Request_confirm1">재고신청확인</div>
+                        <br>
+
+                        <!-- 재고신청내역 -->
+                        <div class="Stock_Request_History">
+                            <div class="table_SPH">
+                                <div class="row_SPH">
+                                    <div class="cell_SPH">재고신청내역</div>
+                                    <div class="cell_SPH">수량</div>
+                                    <div class="cell_SPH">신청자</div>
+                                </div>
+                                <div class="row_SPH">
+                                    <div class="cell_SPH"><input type="text" value="CPU1" READONLY></div>
+                                    <div class="cell_SPH"><input type="text" value="120" READONLY></div>
+                                    <div class="cell_SPH"><input type="text" value="팀장 정장훈" READONLY></div>
+                                </div>
+                                <div class="row_SPH">
+                                    <div class="cell_SPH"><input type="text" value="메인보드2" READONLY></div>
+                                    <div class="cell_SPH"><input type="text" value="200" READONLY></div>
+                                    <div class="cell_SPH"><input type="text" value="팀장 정장훈" READONLY></div>
+                                </div>
+                                <div class="row_SPH">
+                                    <div class="cell_SPH"><input type="text" value="메모리" READONLY></div>
+                                    <div class="cell_SPH"><input type="text" value="15" READONLY></div>
+                                    <div class="cell_SPH"><input type="text" value="팀장 정장훈" READONLY></div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                        <!-- 재고신청 -->
+                        <div class="Stock_Request_confirm2">재고신청</div>
+                        <br>
+                        <div class="Stock_Request">
+                            <div class="table_SR">
+                                <div class="row_SR">
+
+                                    <div class="cell_SR" style="background-color: #888888; width : 40%;">재고명</div>
+                                    <div class="cell_SR" style="background-color: #888888; width : 50%">수량</div>
+                                    <div class="cell_SR" style="background-color: #888888; width : 10%;"></div>
+
+                                </div>
+                                <div class="row_SR1">
+                                    <div class="cell_SR" style="width : 40%"><input type="text" style="width : 100px"
+                                            class="item_name" value="" readonly>
+
+                                    </div>
+                                    <div class="cell_SR" style="width : 50%"><input type="text" style="width : 100px;"
+                                            class="count" value="0" id="number">
+                                        <input type="button" style="width : 25px; cursor: pointer;" value="+"
+                                            onclick="plus(this)">
+                                        <input type="button" style="width : 25px; cursor: pointer;" value="-"
+                                            onclick="minus(this)">
+                                        <button type="button" class="add_Stock">선택</button>
+                                        <button type="button" class="drop">지움</button>
+                                    </div>
+                                    <div class="cell_SR" style="width : 10%;"><button type="button"
+                                            class="delete1">삭제</button></div>
+                                    <!-- <div class="cell_SR" style="width : 10%;"></div> -->
+                                </div>
+                                <div class="new_div">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="ㄴㄴ">
+                            <div class="delete">삭제</div>
+                        </div> -->
+                        <div class="add"> <input type="button" class="add_Stock_bar" value="추가"></div>
+                        <br>
+                        <br>
+
+                        <br>
+                        <br>
+                        <div>
+                            <div class="submit">
+                                <button type="button" class="order">업체 주문 요청</button>
+                            </div>
+                            <!-- <input type="button" value="업체 주문 요청"> -->
+                            <!-- <button type="button" class="order">취소하기</button> -->
+                            <!-- <div class="cancel"> <input type="button" value="취소하기"></div> -->
+
+                        </div>
+                    </div>
+
+                    <!-- 팝업 -->
+
+                    <div class="popup"></div>
+                    <div class="add_img">
+                        <div class="Stock_page">품목선택 page</div>
+                        <div class="searchbox">
+                            <div class="search">품목검색</div>
+                            <div> <input type="text" class="search_text" value=""> </input></div>
+                            <div> <img class="glasses"
+                                    src="https://media.discordapp.net/attachments/1186454147558551552/1201320591920218232/2866321.png?ex=65c963fc&is=65b6eefc&hm=f58ed04bf70d9aa052a073134c27106ecce4726dd07fb3124e0ba9b81fddcadd&=&format=webp&quality=lossless&width=468&height=468"></img>
+                            </div>
+                        </div>
+
+                        <br>
+                        <div class="item">
+                            <div> <img class="cpu_img"
+                                    src="https://media.discordapp.net/attachments/1186454147558551552/1201687978230173706/image.png?ex=65caba24&is=65b84524&hm=bd86b0025fb9ddc7b872d912c5a5b8ae55dd00d9e73964fbefffcfa4f54f77d7&=&format=webp&quality=lossless&width=468&height=468">
+                            </div>
+                            <div>
+                                <div> <input type="text" class="cpu1" value="CPU 1"> </div>
+
+                                <div class="cpu1_index"> <br> 메인보드 처럼 생긴 CPU <br></div>
+                            </div>
+                            <div class="pic"> <button type="button" class="pic1" style="width : 50px;">선택</div>
+                        </div>
+                        <div class="item">
+                            <div> <img class="cpu_img"
+                                    src="https://media.discordapp.net/attachments/1186454147558551552/1201687978230173706/image.png?ex=65caba24&is=65b84524&hm=bd86b0025fb9ddc7b872d912c5a5b8ae55dd00d9e73964fbefffcfa4f54f77d7&=&format=webp&quality=lossless&width=468&height=468">
+                            </div>
+                            <div>
+                                <div> <input type="text" class="cpu2" value="CPU 2"> </div>
+
+                                <div class="cpu2_index"> <br> CPU1이랑 똑같이 생겼지만 다른 CPU <br></div>
+                            </div>
+                            <div class="pic"> <button type="button" class="pic2" style="width : 50px;">선택</div>
+                        </div>
+                        <div class="choice"> 선택 품목 <input type="text" style="width : 100px;" class="choice_text"
+                                value="" readonly></div>
+                        <br>
+                        <br>
+                        <div class="button_ac">
+                            <button type="button" id="add_text">추가하기</button>
+                            <button type="button" id="cancel">취소하기</button>
+                            <!-- <input type="button" id="add_text" value="추가하기"> -->
+                            <!-- <input type="button" id="cancel" value="취소하기"> -->
+                        </div>
+                    </div>
+
+
+
+                    <!--  -->
+
+
+                </article>
+            </section>
+        </div>
+        <footer>ⓒ2024 J.company System</footer>
+    </div>
+
+    <script>
+
+        window.onload = function () {
+            let add_Stock = document.querySelector(".add_Stock");
+            let cancel = document.querySelector("#cancel");
+            let add_text = document.querySelector("#add_text");
+            let add_img = document.querySelector(".add_img");
+            let cpu1 = document.querySelector(".cpu1");
+            let cpu2 = document.querySelector(".cpu2");
+
+            let drop = document.querySelector(".drop");
+            let add_Stock_bar = document.querySelector(".add_Stock_bar");
+            let choice_text = document.querySelector(".choice_text");
+            let pic1 = document.querySelector(".pic1");
+            let pic2 = document.querySelector(".pic2");
+            let count = document.querySelector(".count");
+            let delete1 = document.querySelector(".delete1");
+
+
+
+            // let delete = document.querySeletor(".delete");
+            let lastbtn = 0;
+            document.querySelector('.add_Stock').addEventListener('click', function () {
+                add_img.style.display = "inline-block";
+                lastbtn = this;
+            });
+
+            // document.querySelector('.cancel').addEventListner('click', function(){
+            //     add_img.style.display = "none";
+            //     // lastbtn = this;
+
+            // });
+
+
+
+
+
+
+            pic1.onclick = function () {
+                choice_text.value = cpu1.value;
+            }
+            pic2.onclick = function () {
+                choice_text.value = cpu2.value;
+            }
+
+
+
+            cancel.onclick = function () {
+                add_img.style.display = "none";
+                choice_text.value = "";
+            }
+
+            add_Stock.onclick = function () {
+                add_img.style.display = "inline-block";
+            }
+
+
+            drop.onclick = function () {
+                let item_name = document.querySelector(".item_name");
+                item_name.value = "";
+                count.value = "";
+            }
+
+
+
+
+            add_Stock_bar.onclick = function () {
+                let newRow = document.createElement('div');
+                newRow.className = 'Stock_Request';
+                newRow.innerHTML = `
+                        <div class="table_SR">
+                            <div class="row_SR1">
+                                    <div class="cell_SR" style="width : 260px;"><input type="text"  style = "width : 100px;" class="item_name"
+                                            value="" readonly>
+
+                                    </div>
+                                    <div class="cell_SR" style="width : 325px;"><input type="text" class = "count" style = "width : 100px;" value="0" id="number">
+                                        <input type="button" style = "width : 25px; cursor: pointer;" value="+" onclick="plus(this)">
+                                        <input type="button" style = "width : 25px; cursor: pointer;" value="-" onclick="minus(this)">
+                                        <button type="button" class="add_Stock">선택</button>
+                                        <button type="button" class="drop">지움</button>
+                                    </div>
+                                    <div class="cell_SR" style="width : 65px;"><button type="button"
+                                            class="delete1">삭제</button></div>
+                                </div>
+                            </div>    
+                        </div>    
+        `;
+                document.querySelector('.new_div').appendChild(newRow);
+
+                newRow.querySelector('.add_Stock').addEventListener('click', function () {
+                    add_img.style.display = "inline-block";
+                    lastbtn = this;
+                });
+
+            }
+
+            // 이 위가 window.onload
+
+
+
+
+
+
+            // 이 아래가 document
+
+            //  도연이
+
+
+            // document.querySelector('.delete1').addEventListener('click', function () {
+ 
+            // })
+
+
+
+
+            // 도연이
+
+
+
+
+            // 새로 생성된 팝업창의 추가를 누를 때의 동작
+            document.querySelector('.button_ac').addEventListener('click', function (event) {
+                if (event.target.id === 'add_text') {
+                    add_img.style.display = "none";
+                    let choiceValue = choice_text.value;
+
+                    item_name = lastbtn.parentNode.parentNode.querySelector('.item_name');
+                    item_name.value = choiceValue;
+                    choice_text.value = "";
+
+                }
+
+
+            });
+
+            // 지움 버튼 누르면 재고명에 공백
+
+            document.addEventListener('click', function (event) {
+                if (event.target.classList.contains('drop')) {
+                    item_name = event.target.parentNode.parentNode.querySelector('.item_name');
+                    count = event.target.parentNode.querySelector('.count');
+                    item_name.value = "";
+                    count.value = "";
+                }
+
+            });
+            
+            
+            // 삭제 버튼을 누르면 새로 생성된 div 삭제
+            
+            document.addEventListener('click', function (event) {
+                if (event.target.classList.contains('delete1')) {
+                    let row_SR1_length = document.querySelectorAll('.row_SR1').length;
+                    if (row_SR1_length > 1) {
+                        let Stock_Request = event.target.closest(".row_SR1");
+                        Stock_Request.remove();
+                        // let row_SR1 = document.querySelector(".row_SR1");
+                        // row_SR1.remove();
+                        // delete2.onclick = function () {
+                        // }
+                    } else {
+                        alert("1개는 남겨둬야합니다.");
+                    }
+                }
+                
+            });
+
+        }
+
+
+        // 여기는 function
+        //  + - 누르면 숫자 증가 감소
+
+
+        function plus(clickedElement) {
+            var parentRow = clickedElement.parentNode.parentNode;
+            var input = parentRow.querySelector('.count');
+            var value = parseInt(input.value, 10);
+            value = isNaN(value) ? 0 : value;
+            if (value < 999) {
+                value++;
+                input.value = value;
+            } else {
+                alert("1000이상 구매할 수 없습니다.");
+            }
+        }
+
+        function minus(clickedElement) {
+            var parentRow = clickedElement.parentNode.parentNode;
+            var input = parentRow.querySelector('.count');
+            var value = parseInt(input.value, 10);
+            value = isNaN(value) ? 0 : value;
+            if (value > 0) {
+                value--;
+                input.value = value;
+            } else {
+                alert("음수는 입력할 수 없습니다.");
+            }
+        }
+
+
+        // + - 여기까지
+
+
+
+
+        const hover = document.querySelectorAll('a.hover');
+        const menuBar = document.querySelector('.menu-bar');
+        const nav = document.querySelector('nav');
+        const wrap = document.querySelector('.wrap');
+
+        // if() {
+        // document.querySelector("#mainTitle1").style.display = "block";
+        // } else {
+        document.querySelector("#mainTitle2").style.display = "block";
+        // }
+
+        let isHovered = false;
+
+        hover.forEach(button => {
+            button.addEventListener('mouseover', () => {
+                showMenuBar();
+                isHovered = true;
+            });
+        });
+
+        wrap.addEventListener("mouseleave", function () {
+            if (!isHovered) {
+                hideMenuBar();
+            }
+        });
+
+        menuBar.addEventListener("mouseenter", function () {
+            isHovered = true;
+        });
+
+        menuBar.addEventListener("mouseleave", function () {
+            hideMenuBar();
+        });
+
+        function showMenuBar() {
+            nav.classList.add('active');
+        }
+
+        function hideMenuBar() {
+            nav.classList.remove('active');
+        }
+
+    </script>
+</body>
+
+</html>
