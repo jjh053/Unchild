@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Management System</title>
+    <style>
+        @font-face {
+            font-family: "SOYOMapleBoldTTF";
+            src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/SOYOMapleBoldTTF.woff2") format("woff2");
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: "SOYOMapleBoldTTF";
+            margin: 0 auto;
+            /* font-family: Arial, sans-serif; */
+            background: #fff;
+            color: #333;
+            background-color: #ccc;
+        }
+/* title */
+        #workerTitle {
+            display: flex;
+            width: 1000px;
+            justify-content: space-between;
+            padding: 5px;
+
+        }
+        
+        #workerLogo {
+            width: 200px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        #workerTitle h1 {
+            width: 200px;
+            color: #000;
+        }
+
+        #mainTitle1 {
+            display: none;
+        }
+
+        #mainTitle2 {
+            display: none;
+        }
+
+        #myPage {
+            width: 200px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        #myPageLogo {
+            width: 80px;
+            height: 80px;
+            margin-right: 3%;
+        }
+
+        #workerName a {
+            text-decoration: none;
+            color: #333;
+
+        }
+
+        #workerName a:hover {
+            text-decoration: none;
+            color: #888;
+            transition: color 0.2s ease;
+        }
+
+        #workerTitle .workerPic {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+        }
+
+        #workerTitle .logo {
+            width: 200px;
+            height: 70px;
+        }
+/* title end */
+
+        .wrap {
+            width: 1000px;
+            /* height: 100vh; */
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+        }
+/* header와 nav의 집합 */
+        .header-nav-container {
+            position: relative;
+            width: 100%;
+            /* wrap과 동일한 너비 */
+        }
+/* header 코드 */
+        header {
+            width: 100%;
+            background: #000;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        header h1 {
+            font-size: 30px;
+            margin: 0;
+        }
+
+        header ul {
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+            list-style: none;
+            align-items: center;
+        }
+
+        header ul li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+
+        header ul li a {
+            font-size: 18px;
+            text-decoration: none;
+            color: #fff;
+            transition: color 0.3s ease;
+        }
+
+        header ul li a:hover {
+            color: #aaa;
+        }
+/* header 코드 끝 */
+
+        nav {
+            width: 100%;
+            position: absolute;
+            top: 100%;
+            /* header 높이에 맞게 조정 */
+            left: 0;
+            right: 0;
+            background: #eee;
+            max-height: 0;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear;
+            visibility: hidden;
+            z-index: 100;
+            /* opacity: 0; */
+        }
+        
+        /* nav 숨김요소 */
+        nav.active {
+            max-height: 500px;
+            /* 활성화될 때 최대 높이 설정 */
+            visibility: visible;
+            opacity: 1;
+            transition: max-height 0.5s ease, visibility 0s, opacity 0.5s linear;
+        }
+/* nav 안의 menu-bar요소 */
+        .menu-bar {
+            width: 100%;
+            height: 220px;
+            border-top: 0px;
+            border-right: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            display: flex;
+        }
+
+        .menu-bar-content {
+            margin-left: 40px;
+            width: 20%;
+            display: inline-block;
+            box-sizing: border-box;
+        }
+
+        .menu-bar-content ul li {
+            padding: 10px;
+        }
+
+        .menu-bar-content ul li a {
+            text-decoration: none;
+            color: #444;
+        }
+
+        .menu-bar-content ul li a:hover {
+            color: #aaa;
+            transition: color 0.2s ease;
+        }
+
+        #menu-bar-content-sub {
+            list-style: circle;
+            font-size: 14px;
+            padding-left: 20px;
+        }
+
+        #menu-bar-content-sub li {
+            padding: 5px;
+        }
+/* menu-bar요소 끝 */
+
+/* aside, section */
+        .aside-section-container {
+            width: 100%;
+            display: flex;
+            /* height: 100%; */
+        }
+
+        /* 좌측 메뉴바 */
+        aside {
+            width: 20%;
+            background: #5f5f5f;
+        }
+
+        .aside-section-container ul li {
+            margin-top: 25%;
+            list-style: none;
+        }
+
+        .aside-section-container ul li a:hover {
+            color: black;
+        }
+
+        .aside-section-container ul li a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        /* 섹션 창을 조작하기바람 */
+        section {
+            border: 1px solid red;
+            display: flex;
+            justify-content: center;
+            width: 80%;
+            overflow: auto;
+            background: #eee;
+            z-index: 50;
+            align-items: center;
+        }
+
+        #article-container {
+            width: 100%;
+            border: 1px solid red;
+        }
+
+        #article-work-main {
+            text-align: center;
+        }
+        
+        #main-content {
+            display: flex;
+            justify-content: center;
+        }
+
+        #work-checker {
+            width: 60%;
+            text-align: center;
+        }
+
+        #work-checker-img {
+            margin-top: 10%;
+        }
+
+        #work-checker-img img {
+            width: 50%;   
+        }
+
+        #work-checker-history {
+            margin-top: 20%;
+        }
+
+        #work-checker-button {
+            background: #333;
+            color: #fff;
+            border: 0;
+            border-radius: 10px;
+            width: 120px;
+            height: 50px;
+            cursor: pointer;
+        }
+
+        #work-checker-button:hover {
+            background-color: #555;
+            transition: 0.2s;
+        }
+
+        #work-quality {
+            width: 40%;
+            margin-top: 4%;
+        }
+
+        .work-check-list h4 {
+            text-align: center;
+        }
+
+        .work-check-list ul {
+            margin-top: 0;
+            margin-left: 0;
+            text-align: right;
+            
+        }
+        
+        .work-check-list ul li {
+            margin-top: 0;
+            margin-left: 0;
+        }
+
+        .work-check-list ul li span {
+            font-size: 12px;
+        }
+
+        #complete-button-div {
+            text-align: center;
+            margin-top: 5%;
+            margin-bottom: 5%;
+            /* display: none; */
+        }
+
+        #complete-button {
+            background-color: #3498DB;
+            margin-top: 10px;
+            width: 80px;
+            height: 40px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+        }
+
+        #complete-button:hover {
+            background-color: rgb(0, 47, 255);
+            transition: 0.2s;
+        }
+
+        /* 팝업 */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .popup-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            width: 70%;
+            border-radius: 5px;
+            position: relative;
+            margin-top: 4%;
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .popup-title {
+            text-align: center;
+        }
+
+        .quality-list {
+            display: flex;
+            justify-content: center;
+        }
+
+        .quality-list div {
+            padding: 5%;
+        }
+
+        #quality-history {
+            display: none;
+        }
+
+        /* 관리자 페이지 */
+
+        #admin-main {
+            width: 100%;
+            margin-top: 4%;
+            display: none;
+            text-align: center;
+        }
+
+        #admin-quality {
+            border: 1px solid red;
+            width: 80%;
+            display: inline-block;
+        }
+
+        .admin-check-list {
+            border: 1px solid blue;
+            position: relative;
+        }
+
+        .admin-check-list h4 {
+            text-align: center;
+            border: 1px solid blue;
+        }
+        
+        .delete-checkbox-div {
+            position: absolute;
+            top: 22px;
+            right: 50px;
+            display: none;
+        }
+
+        .error-checkbox-div {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        .admin-check-list ul {
+            margin-top: 0;
+            margin-left: 0;
+            text-align: left;
+        }
+        
+        .admin-check-list ul li {
+            width: 80%;
+            margin-top: 4%;
+            margin-left: 0;
+            position: relative;
+        }
+
+        .admin-check-list ul li span {
+            margin-top: 10%;
+            margin-right: 20%;
+        }
+
+        .list-delete-button {
+            margin: 0 10px;
+            background-color: red;
+            margin-top: 10px;
+            width: 80px;
+            height: 40px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+        }
+
+        .list-delete-button:hover {
+            background-color: rgb(190, 52, 52);
+            transition: 0.2s;
+        }
+
+        #add-button-div {
+            margin-top: 5%;
+            margin-bottom: 5%;
+            display: none;
+        }
+
+        .add-button {
+            background-color: #3498DB;
+            margin-top: 10px;
+            width: 80px;
+            height: 40px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+        }
+
+        .add-button:hover {
+            background-color: rgb(0, 47, 255);
+            transition: 0.2s;
+        }
+
+        /* 품질불량 체크 수정 팝업 */
+        .add-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .add-popup-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            width: 70%;
+            border-radius: 5px;
+            position: relative;
+            text-align: center;
+        }
+
+        .add-note {
+            width: 50%;
+            display: inline-block;
+        }
+
+        .add-popup-content p {
+            width: 50%;
+            margin-left: 4%;
+            margin-bottom: 0;
+        }
+
+        .add-title {
+            width: 90%;
+            margin-top: 2%;
+        }
+
+        .add-detail {
+            width: 90%;
+            height: 300px;
+            margin-top: 2%;
+            resize: none;
+        }
+
+        .add-apply-div {
+            width: 100%;
+            margin-top: 3%;
+        }
+
+        .apply-button {
+            background-color: #3498DB;
+            margin-top: 10px;
+            width: 80px;
+            height: 40px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+        }
+
+        .apply-button:hover {
+            background-color: rgb(0, 47, 255);
+            transition: 0.2s;
+        }
+
+
+/* aside, section 끝*/
+
+        footer {
+            width: 100%;
+            background: #000;
+            color: #fff;
+            text-align: center;
+            height: 7%;
+            line-height: 70px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <div id="workerTitle">
+        <div id="workerLogo">
+            <a href="#">
+                <image
+                    src="https://cdn.discordapp.com/attachments/1185161279804026893/1200675420325036082/Jlogo.png?ex=65c70b1f&is=65b4961f&hm=ae28f53e9280fe71cffc1fc2ca74aec892875f13143ef4e109da28023c5b414b&"
+                    class="logo"></image>
+            </a>
+        </div>
+        <h1 id="mainTitle1">작업자 페이지</h1>
+        <h1 id="mainTitle2">관리자 페이지</h1>
+        <div id="myPage">
+            <div id="myPageLogo">
+                <image
+                    src="https://image.spreadshirtmedia.net/image-server/v1/compositions/T996A1PA2179PT10X17Y18D172654919W7098H6789/views/1,width=550,height=550,appearanceId=1,backgroundColor=FFFFFF,noPt=true/pixel-art-fox-fox-podstawki.jpg"
+                    class="workerPic">
+            </div>
+            <span id="workerName"><a href="#">이성현 대리님</a></span>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <div class="header-nav-container">
+            <header>
+                <ul>
+                    <li><a href="#" class="hover" title="작업지시서">작업</a></li>
+                    <li><a href="#" class="hover" title="품질검사">설비</a></li>
+                    <li><a href="#" class="hover" title="건의사항">재고관리</a></li>
+                    <li><a href="#" class="hover" title="직원 게시판">게시판</a></li>
+                </ul>
+            </header>
+            <nav>
+                <div class="menu-bar">
+                    <div class="menu-bar-content">
+                        <ul>
+                            <li><a href="#">작업 지침서</a></li>
+                            <li><a href="#">안전 지침서</a></li>
+                            <li><a href="#">품질검사</a></li>
+                            <li><a href="#">일일 현황</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-bar-content">
+                        <ul>
+                            <li><a href="#">설비 모니터링</a></li>
+                            <ul id="menu-bar-content-sub">
+                                <li><a href="#">레이아웃</a></li>
+                                <li><a href="#">공정</a></li>
+                            </ul>
+                            <li><a href="#">설비 설정</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-bar-content">
+                        <ul>
+                            <li><a href="#">재고 현황</a></li>
+                            <li><a href="#">재고 신청</a></li>
+                            <li><a href="#">완제품 관리</a></li>
+                            <li><a href="#">재고 불량 신고</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-bar-content">
+                        <ul>
+                            <li><a href="#">자유게시판</a></li>
+                            <li><a href="#">건의사항</a></li>
+                            <li><a href="#">Q&A</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="aside-section-container">
+            <aside>
+                <ul>
+                    <li><a href="#">작업지침서</a></li>
+                    <li><a href="#">안전지침서</a></li>
+                    <li><a href="#">품질검사</a></li>
+                    <li><a href="#">작업보고</a></li>
+                </ul>
+            </aside>
+            <section>
+                <article id="article-container">
+                    <div id="article-work-main">
+                        <div id="admin-main-title">
+                            <h2>품질불량 체크사항</h2>
+                        </div>
+                        <div id="main-content">
+                            <div id="work-checker">
+                                <div id="work-checker-img">
+                                    <img src="https://cdn.pixabay.com/photo/2016/08/31/11/54/icon-1633249_1280.png">
+                                </div>
+                                <div id="work-checker-info">
+                                    <div>1차 품질관리인 정장훈</div>
+                                    <div>
+                                        010-0000-0000<br>
+                                        aaa@naver.com
+                                    </div>
+                                </div>
+                                <div id="work-checker-history">
+                                    <button type="button" id="work-checker-button">품질검사 지침서</button>
+                                </div>
+                            </div>
+                            
+                            <div id="admin-quality">
+                                <div id="admin-list1" class="admin-check-list">
+                                    <h4>
+                                        케이스 외관 확인사항
+                                        <div class="delete-checkbox-div">
+                                            <input type="checkbox" class="delete-checkbox">
+                                        </div>
+                                    </h4>                              
+                                    <ul>
+                                        <li>
+                                            <span>-도장상태</span>
+                                            <div class="error-checkbox-div">
+                                                <input type="checkbox" class="error-checkbox">
+                                            </div>    
+                                        </li>
+                                        <li>
+                                            <span>-금형상태</span>
+                                            <div class="error-checkbox-div">
+                                                <input type="checkbox" class="error-checkbox">
+                                            </div> 
+                                        </li>
+                                        <li>
+                                            <span>-찍힘</span>
+                                            <div class="error-checkbox-div">
+                                                <input type="checkbox" class="error-checkbox">
+                                            </div> 
+                                        </li>
+                                        <li>
+                                            <span>-볼트체결</span>
+                                            <div class="error-checkbox-div">
+                                                <input type="checkbox" class="error-checkbox">
+                                            </div> 
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div id="admin-list2" class="admin-check-list">
+                                    <h4>
+                                        전원부 확인사항
+                                        <div class="delete-checkbox-div">
+                                            <input type="checkbox" class="delete-checkbox">
+                                        </div>
+                                    </h4>
+                                    <ul>
+                                        <li>
+                                            <span>-LED 붉은색 부팅시 오류</span>
+                                            <div class="error-checkbox-div">
+                                                <input type="checkbox" class="error-checkbox">
+                                            </div> 
+                                        </li>
+                                        <li>
+                                            <span>-팬 회전 여부</span>
+                                            <div class="error-checkbox-div">
+                                                <input type="checkbox" class="error-checkbox">
+                                            </div> 
+                                        </li>
+                                        <li>
+                                            <span>-팬 등 소음여부</span>
+                                            <div class="error-checkbox-div">
+                                                <input type="checkbox" class="error-checkbox">
+                                            </div> 
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div id="admin-list3" class="admin-check-list">
+                                    <h4>
+                                        윈도우 설치 및 구동확인
+                                        <div class="delete-checkbox-div">
+                                            <input type="checkbox" class="delete-checkbox">
+                                        </div>
+                                    </h4>
+                                    <ul>
+                                        <li>
+                                            <span>-윈도우 작동</span>
+                                            <div class="error-checkbox-div">
+                                                <input type="checkbox" class="error-checkbox">
+                                            </div> 
+                                        </li>
+                                        <li>
+                                            <span>-시스템 사양 및 일련번호</span>
+                                            <div class="error-checkbox-div">
+                                                <input type="checkbox" class="error-checkbox">
+                                            </div> 
+                                        </li>
+                                        <li>
+                                            <span>-시스템 정보</span>
+                                            <div class="error-checkbox-div">
+                                                <input type="checkbox" class="error-checkbox">
+                                            </div> 
+                                        </li>
+                                        <li>
+                                            <span>-창의 제품 일련번호</span>
+                                            <div class="error-checkbox-div">
+                                                <input type="checkbox" class="error-checkbox">
+                                            </div> 
+                                        </li>
+                                        <li>
+                                            <span>-작업관리자 진입 후 성능탭의 부품명</span>
+                                            <div class="error-checkbox-div">
+                                                <input type="checkbox" class="error-checkbox">
+                                            </div> 
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div id="complete-button-div">
+                            <button type="button" id="complete-button">완료</button>
+                        </div>
+                        <div id="add-button-div">
+                            <button type="button" id="list-add-button" class="add-button">추가하기</button>
+                            <button type="button" id="list-delete" class="list-delete-button">삭제하기</button>
+                            <button type="button" id="user" class="add-button">유저</button>
+                        </div>
+                    </div>
+                    <!-- 품질검사 지침서 팝업 -->
+                    <div id="work-popup" class="popup">
+                        <div class="popup-content">
+                            <span id="close-popup-btn" class="popup-close">&times;</span>
+                            <div class="popup-title">
+                                    <h3>품질검사 지침서</h3>
+                            </div>
+                            <div class="quality-list">
+                                <div class="quality-order">
+                                    <p>
+                                        품질검사
+                                        <br>
+                                        각각의 체크사항에서 사진을 제시해서 시각적으로 작업자가 쉽게 파악하도록 유도한다
+                                        <br><br>
+                                        1. 외관체크
+                                        <br><br>
+                                        케이스 외관 확인 사항
+                                        <br>
+                                        양품 사진 첨부 위 아래 좌 우 정도
+                                        <br>
+                                        체크사항
+                                        <br>
+                                        도장상태
+                                        <br>
+                                        도장 까짐이 있는지 확인해준다 기본 도장은 블랙과 화이트 두가지
+                                        <br>
+                                        금형상태
+                                        <br>
+                                        눌리거나 휜곳이 있는지 확인
+                                        <br>
+                                        찍힘
+                                        <br>
+                                        볼트체결
+                                        <br><br><br>             
+                                        2.전원부
+                                        <br><br>
+                                        전원부 예시 사진)led 파란색 점등 정상부팅 붉은색 부팅 오류
+                                        <br>
+                                        팬 회전 여부 
+                                        <br>
+                                        팬등의 소음 
+                                        <br><br><br>
+                                        3.윈도우 설치및 구동(윈도우 설치법 첨부)
+                                        <br><br>
+                                        체크사항
+                                        <br><br>
+                                        윈도우즈
+                                        <br>
+                                        시스템 사양 및 일련번호 
+                                        <br>
+                                        시스템 정보창의 제품 일련번호 
+                                        <br>
+                                        작업관리자 진입후 성능탭의 부품 각각의 부품명  
+                                    </p>
+                                </div>
+                                <div class="workImg">
+                                    <img src="https://image.spreadshirtmedia.net/image-server/v1/compositions/T996A1PA2179PT10X17Y18D172654919W7098H6789/views/1,width=550,height=550,appearanceId=1,backgroundColor=FFFFFF,noPt=true/pixel-art-fox-fox-podstawki.jpg"
+                                        width="100px">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 관리자 페이지 -->
+                    <div id="admin-main">
+                        
+                        
+                        
+                        
+
+                    </div>
+                    <!-- 품질불량 체크사항 추가팝업 -->
+                    <div id="quality-add-popup" class="add-popup">
+                        <div class="add-popup-content">
+                            <h2>품질불량 체크사항 추가하기</h2>
+                            <div class="add-note">
+                                <p>추가할 제목</p>
+                                <input type="text" id="add-title" class="add-title" placeholder="제목입력">
+                                <p>추가할 목록</p>
+                                <textarea id="add-detail" class="add-detail" rows="5" cols="50" placeholder="내용입력"></textarea>
+                            </div>
+                            <div class="add-apply-div">
+                                <button type="button" id="add-apply-button" class="apply-button">적용하기</button>
+                            </div>
+                        </div>
+                    </div>
+                
+                    
+                </article>
+            </section>
+        </div>
+        <footer>ⓒ2024 J.company System</footer>
+    </div>
+
+    <script>
+        const hover = document.querySelectorAll('a.hover');
+        const menuBar = document.querySelector('.menu-bar');
+        const nav = document.querySelector('nav');
+        const wrap = document.querySelector('.wrap');
+
+        let id = "admin";
+
+        document.querySelector("#complete-button")
+                .addEventListener("click", function() {
+                    id = "admin";
+                    user_check(id);
+                });
+        document.querySelector("#user")
+                .addEventListener("click", function() {
+                    id = "user";
+                    user_check(id);
+                });
+                
+                
+        function user_check(id) {
+            
+            if(id == "user") {
+                document.querySelector("#mainTitle1").style.display = "block";
+                document.querySelector("#mainTitle2").style.display = "none";
+                document.querySelector("#article-work-main").style.display = "block";
+                document.querySelector("#complete-button-div").style.display = "block";
+                document.querySelector("#work-checker").style.display = "block";
+                document.querySelector("#add-button-div").style.display = "none";
+                
+                let delete_checkbox_div = document.getElementsByClassName("delete-checkbox-div");
+
+                for(let i = 0; i < delete_checkbox_div.length; i++) {
+                    delete_checkbox_div[i].style.display = "none";
+                }
+
+                let error_checkbox_div = document.getElementsByClassName("error-checkbox-div");
+
+                for(let i = 0; i < error_checkbox_div.length; i++) {
+                    error_checkbox_div[i].style.display = "block";
+                }
+
+            } else if(id == "admin"){
+                document.querySelector("#mainTitle1").style.display = "none";
+                document.querySelector("#mainTitle2").style.display = "block";
+                document.querySelector("#article-work-main").style.display = "block";
+                document.querySelector("#add-button-div").style.display = "block";
+                document.querySelector("#work-checker").style.display = "none";
+                document.querySelector("#complete-button-div").style.display = "none";
+
+                let delete_checkbox_div = document.getElementsByClassName("delete-checkbox-div");
+
+                for(let i = 0; i < delete_checkbox_div.length; i++) {
+                    delete_checkbox_div[i].style.display = "block";
+                }
+
+                let error_checkbox_div = document.getElementsByClassName("error-checkbox-div");
+
+                for(let i = 0; i < error_checkbox_div.length; i++) {
+                    error_checkbox_div[i].style.display = "none";
+                }
+
+            }
+
+        };
+
+                
+                
+                
+        
+        let isHovered = false;
+
+        hover.forEach(button => {
+            button.addEventListener('mouseover', () => {
+                showMenuBar();
+                isHovered = true;
+            });
+        });
+
+        wrap.addEventListener("mouseleave", function () {
+            if (!isHovered) {
+                hideMenuBar();
+            }
+        });
+
+        menuBar.addEventListener("mouseenter", function () {
+            isHovered = true;
+        });
+
+        menuBar.addEventListener("mouseleave", function () {
+            hideMenuBar();
+        });
+
+        function showMenuBar() {
+            nav.classList.add('active');
+        }
+
+        function hideMenuBar() {
+            nav.classList.remove('active');
+        }
+
+        // 품질검사 지침서 팝업
+        // 팝업 div 랑 버튼가져오기
+        const work_popup = document.getElementById("work-popup");
+        const work_button = document.getElementById("work-checker-button");
+        const close_btn = document.getElementById("close-popup-btn");
+
+        // 팝업 div 열기
+        work_button.addEventListener("click", function () {
+            work_popup.style.display = "block";
+            // 다른영역 클릭 비활성화
+            work_popup.style.pointerEvents = "auto";
+        });
+
+        // 팝업 div 닫기 => 닫기버튼누를시
+        close_btn.addEventListener("click", function () {
+            work_popup.style.display = "none";
+            // 다른영역 클릭 활성화
+            work_popup.style.pointerEvents = "none";
+        });
+
+        // 팝업 div 닫기버튼 비활성화
+        work_popup.addEventListener("click", function (event) {
+            event.stopPropagation();
+        });
+
+        // 팝업 div 닫기버튼 활성화
+        window.addEventListener("click", function (event) {
+            if (event.target == modal) {
+                work_popup.style.display = "none";
+                // 다른영역 클릭 활성화
+                work_popup.style.pointerEvents = "none";
+            }
+        });
+
+
+
+
+
+
+
+        // 품질불량 체크사항 삭제하기 --기본사항
+        const list_delete =  document.getElementById("list-delete");
+        
+        
+        list_delete.addEventListener("click", function() {
+
+            const delete_checked = document.querySelectorAll(".delete-checkbox:checked");
+            
+            for(let i = 0; i < delete_checked.length; i++) {
+
+
+                delete_checked[i].closest(".admin-check-list").style.display = "none";
+            }
+
+        });
+        
+        
+
+
+
+
+
+        // 품질불량 체크사항 추가하기 팝업
+        const add_popup = document.getElementById("quality-add-popup");
+        const list_add_button = document.getElementById("list-add-button");
+        const add_apply_button = document.getElementById("add-apply-button");
+
+        // 팝업 div 열기
+        list_add_button.addEventListener("click", function () {
+            add_popup.style.display = "block";
+
+            // 다른영역 클릭 비활성화
+            add_popup.style.pointerEvents = "auto";
+        });
+
+        // 팝업 div 닫기 => 닫기버튼누를시
+        add_apply_button.addEventListener("click", function () {
+            add_popup.style.display = "none";
+            // 다른영역 클릭 활성화
+            add_popup.style.pointerEvents = "none";
+        });
+
+        // 팝업 div 닫기버튼 비활성화
+        add_popup.addEventListener("click", function (event) {
+            event.stopPropagation();
+        });
+
+        // 팝업 div 닫기버튼 활성화
+        window.addEventListener("click", function (event) {
+
+            if (event.target == modal) {
+                add_popup.style.display = "none";
+                // 다른영역 클릭 활성화
+                add_popup.style.pointerEvents = "none";
+            }
+        });
+
+
+
+        // 품질불량 체크사항 추가사항 적용하기
+        let add_count = 4;
+        
+        document.querySelector("#add-apply-button")
+                .addEventListener("click", function() {
+                    
+        const add_title = document.querySelector("#add-title");
+        const add_detail = document.querySelector("#add-detail");
+        const admin_quality = document.querySelector("#admin-quality");
+
+        
+
+
+        // admin-quality div 안에 원래 값 + 새로 추가할 div 를 넣어줌
+        admin_quality.innerHTML = admin_quality.innerHTML + `<div id="admin-list${add_count}" class="admin-check-list">
+                                                                <h4>
+                                                                    ${add_title.value}
+                                                                    <div class="delete-checkbox-div">
+                                                                        <input type="checkbox" class="delete-checkbox">
+                                                                    </div>
+                                                                </h4>
+                                                                <ul id="add-ul${add_count}">                                                                    
+                                                                </ul>
+                                                            </div>`
+
+        
+        let delete_checkbox_div = document.getElementsByClassName("delete-checkbox-div");
+
+        for(let i = 0; i < delete_checkbox_div.length; i++) {
+            delete_checkbox_div[i].style.display = "block";
+        }
+
+        
+
+
+
+        
+        // 내용을 "-" 기준으로 배열에 담음
+        let detail = add_detail.value.split("\n");
+        console.log(detail);
+
+        // 가져온 내용을 담은 배열을 뽑은뒤 출력하는 반복문
+        let add_ul = document.querySelector(`#add-ul${add_count}`);
+
+        for(let i = 0; i < detail.length; i++) {
+            
+
+            add_ul.innerHTML = add_ul.innerHTML + `<li>
+                                                        <span>-${detail[i]}</span>
+                                                        <div class="error-checkbox-div">
+                                                            <input type="checkbox" class="error-checkbox">
+                                                        </div>
+                                                    </li>`
+
+        
+            let error_checkbox_div = document.getElementsByClassName("error-checkbox-div");
+
+            for(let i = 0; i < error_checkbox_div.length; i++) {
+                error_checkbox_div[i].style.display = "none";
+            }
+
+        
+        
+        };
+
+        add_title.value = "";
+        add_detail.value = "";
+
+        add_count++;
+        
+        });
+
+
+
+
+    </script>
+</body>
+
+</html>
