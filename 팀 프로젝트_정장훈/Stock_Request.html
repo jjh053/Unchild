@@ -262,11 +262,8 @@
 
         /* 섹션 창을 조작하기바람 */
         section {
-            /* border: 1px solid red; */
-            /* display: flex; */
             justify-content: center;
             width: 80%;
-            /* overflow: auto; */
             background: #eee;
             z-index: 50;
             align-items: center;
@@ -274,12 +271,9 @@
             position: relative;
         }
 
-        article {}
-
         article .workList {
             width: 100%;
             display: flex;
-            /* border: 1px solid green; */
             justify-content: space-around;
         }
 
@@ -418,18 +412,10 @@
         /* 재고신청 내역*/
 
         .Stock_Request {
-            /* position: relative;
-            top: 10px;
-            left: 500px; */
-            /* border: 1px solid blue; */
             width: 700px;
-            /* height: 498px; */
-            /* border : 1px solid black; */
             display: flex;
             justify-content: center;
-            /* align-items: center; */
-            /* height: 100vh; */
-            /* margin: 0; */
+            
         }
 
         /* .Stock_Request1{
@@ -470,11 +456,7 @@
             width : 10px !important; 
             border : 1px solid red;
         } */
-
-        .cell_SR {
-            /* width: 300px; */
-        }
-
+       
         .cell_SR {
             /* flex: 1; */
             padding: 8px;
@@ -512,14 +494,7 @@
         }
 
         /*  */
-        /* 팝업 */
-        .popup {
-            /* position: absolute;
-            border : 1px solid red;
-            width : 300px;
-            height : 200px;
-            top : 0; */
-        }
+        
 
         .request_result {
             position: absolute;
@@ -560,18 +535,14 @@
             position: absolute;
             top: 0;
             left: 0;
-            background-color: rgb(214, 214, 214);
+            height: 100%;
+            background-color: #eee;
             /* border: 1px solid red; */
             width: 800px;
-
             /* 팝업높이수정 */
-            height: 300px;
             /* 팝업 디스플레이 */
             display: none;
             /* display: flex; */
-            flex-direction: column;
-            align-items: center;
-
         }
 
         .Stock_page {
@@ -580,6 +551,7 @@
             width: 210px;
             margin: auto;
             font-size: 30px;
+            /* position: absolute; */
         }
 
         .searchbox {
@@ -869,9 +841,6 @@
             </aside>
             <section>
                 <article>
-
-
-
                     <!-- 재고신청확인 -->
                     <div class="stock_request_page">
                         <div class="Stock_Request_confirm1">재고신청확인</div>
@@ -962,7 +931,6 @@
 
                     <!-- 팝업 -->
 
-                    <div class="popup"></div>
                     <div class="add_img">
                         <div class="Stock_page">품목선택 page</div>
                         <div class="searchbox">
