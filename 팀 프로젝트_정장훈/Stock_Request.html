@@ -521,7 +521,7 @@
             top : 0; */
         }
 
-        .add_img {
+        .request_result {
             position: absolute;
             top: 0;
             left: 0;
@@ -531,6 +531,41 @@
 
             /* 팝업높이수정 */
             height: 800px;
+            /* 팝업 디스플레이 */
+            display: none;
+            /* display: flex; */
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .result {
+            /* border: 1px solid red; */
+            width: 300px;
+            height: 70px;
+            margin: auto;
+            text-align: center;
+            line-height: 70px;
+            /* display: flex; */
+        }
+
+        .result input {
+            background-color: rgb(214, 214, 214);
+            width: 100px;
+            border: 0px;
+            text-align: center;
+        }
+
+
+        .add_img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: rgb(214, 214, 214);
+            /* border: 1px solid red; */
+            width: 800px;
+
+            /* 팝업높이수정 */
+            height: 300px;
             /* 팝업 디스플레이 */
             display: none;
             /* display: flex; */
@@ -604,6 +639,13 @@
             text-align: center;
         }
 
+        .button_RR {
+            width: 300px;
+            margin: auto;
+            display: flex;
+            justify-content: space-around;
+        }
+
         .button_ac {
             /* border: 1px solid red; */
             width: 300px;
@@ -632,7 +674,8 @@
 
         .add_Stock_bar,
         #add_text,
-        #cancel {
+        #cancel,
+        .order_rr {
             /* margin-top: 10px; */
             width: 100px;
             height: 30px;
@@ -654,8 +697,25 @@
         .pic2:hover,
         .add_Stock_bar:hover,
         #add_text:hover,
-        #cancel:hover {
+        #cancel:hover,
+        .order_rr:hover {
             background-color: rgb(0, 47, 255);
+            transition: 0.2s;
+        }
+        
+        .cancel_rr{
+            /* margin: 0 10px; */
+            background-color: red;
+            /* margin-top: 10px; */
+            width: 100px;
+            height: 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+        }
+        .cancel_rr:hover{
+            background-color: rgb(163, 6, 6);
             transition: 0.2s;
         }
 
@@ -857,25 +917,26 @@
                                     <div class="cell_SR" style="background-color: #888888; width : 10%;"></div>
 
                                 </div>
-                                <div class="row_SR1">
-                                    <div class="cell_SR" style="width : 40%"><input type="text" style="width : 100px"
-                                            class="item_name" value="" readonly>
 
-                                    </div>
-                                    <div class="cell_SR" style="width : 50%"><input type="text" style="width : 100px;"
-                                            class="count" value="0" id="number">
-                                        <input type="button" style="width : 25px; cursor: pointer;" value="+"
-                                            onclick="plus(this)">
-                                        <input type="button" style="width : 25px; cursor: pointer;" value="-"
-                                            onclick="minus(this)">
-                                        <button type="button" class="add_Stock">선택</button>
-                                        <button type="button" class="drop">지움</button>
-                                    </div>
-                                    <div class="cell_SR" style="width : 10%;"><button type="button"
-                                            class="delete1">삭제</button></div>
-                                    <!-- <div class="cell_SR" style="width : 10%;"></div> -->
-                                </div>
                                 <div class="new_div">
+                                    <div class="row_SR1">
+                                        <div class="cell_SR" style="width : 40%"><input type="text"
+                                                style="width : 100px" class="item_name" value="" readonly>
+
+                                        </div>
+                                        <div class="cell_SR" style="width : 50%"><input type="text"
+                                                style="width : 100px;" class="count" value="0">
+                                            <input type="button" style="width : 25px; cursor: pointer;" value="+"
+                                                onclick="plus(this)">
+                                            <input type="button" style="width : 25px; cursor: pointer;" value="-"
+                                                onclick="minus(this)">
+                                            <button type="button" class="add_Stock">선택</button>
+                                            <button type="button" class="drop">지움</button>
+                                        </div>
+                                        <div class="cell_SR" style="width : 10%;"><button type="button"
+                                                class="delete1">삭제</button></div>
+                                        <!-- <div class="cell_SR" style="width : 10%;"></div> -->
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -949,7 +1010,20 @@
 
 
 
-                    <!--  -->
+                    <!-- 팝업2 -->
+                    <div class="request_result">
+                        <!-- <div class="result"><input type="text" class="RRN" value=""> : <input type="text" class="RRC" -->
+                        <!-- value=""></div> -->
+                        <div class="new_RR"></div>
+                        <div class="button_RR">
+                            <button type="button" class="order_rr">주문하기</button>
+                            <button type="button" class="cancel_rr">취소하기</button>
+                        </div>
+
+
+                    </div>
+
+
 
 
                 </article>
@@ -967,7 +1041,7 @@
             let add_img = document.querySelector(".add_img");
             let cpu1 = document.querySelector(".cpu1");
             let cpu2 = document.querySelector(".cpu2");
-
+            let item_name = document.querySelector(".item_name");
             let drop = document.querySelector(".drop");
             let add_Stock_bar = document.querySelector(".add_Stock_bar");
             let choice_text = document.querySelector(".choice_text");
@@ -975,15 +1049,52 @@
             let pic2 = document.querySelector(".pic2");
             let count = document.querySelector(".count");
             let delete1 = document.querySelector(".delete1");
-
-
+            let order = document.querySelector(".order");
+            let RRN = document.querySelector(".RRN");
+            let RRC = document.querySelector(".RRC");
+            let request_result = document.querySelector(".request_result");
+            let cancel_rr = document.querySelector(".cancel_rr");
 
             // let delete = document.querySeletor(".delete");
             let lastbtn = 0;
+            let aa = 0;
+
+
             document.querySelector('.add_Stock').addEventListener('click', function () {
                 add_img.style.display = "inline-block";
                 lastbtn = this;
+                // e.target;
             });
+
+
+            document.querySelector('.order').addEventListener('click', function () {
+                // 지움
+                document.querySelector('.new_RR').innerHTML = ""
+                // 재고 전체
+                rs = document.querySelectorAll('.row_SR1');
+
+                for (i = 0; i < rs.length; i++) {
+                    console.log(i, rs[i].querySelector('.item_name'));
+                    let newRR = document.createElement('div');
+                    newRR.className = 'result';
+                    newRR.innerHTML = `
+                <input type="text" class="RRN" value="${rs[i].querySelector('.item_name').value}"> : <input type="text" class="RRC" value="${rs[i].querySelector('.count').value}">
+                `;
+                    document.querySelector('.new_RR').appendChild(newRR);
+                    // console.log(a);
+                }
+
+
+
+                request_result.style.display = "inline-block";
+                // RRC.value = count.value;
+                // RRN.value = item_name.value;
+
+            })
+
+
+
+
 
             // document.querySelector('.cancel').addEventListner('click', function(){
             //     add_img.style.display = "none";
@@ -991,8 +1102,29 @@
 
             // });
 
+            // order , RRN, RRC
+            //             item_name , count
+
+            // document.querySelector('.order').addEventListener('click', function () {
+            //     // if (item_name.value !== "" && count.value !== "") {
+            //     request_result.style.display = "inline-block";
+            //     // let Stock_Request = event.target.closest(".row_SR1")
+            //     // let item_name = event.rarget.closest(".item_name")
+            //     // item_name = event.target.querySelector('.item_name');
+            //     RRC.value = count.value;
+            //     RRN.value = item_name.value;
+            //     // } else {
+            //     // alert("값을 입력해주세요.");
+            //     // }
+            // });
 
 
+
+            cancel_rr.onclick = function () {
+                request_result.style.display = "none";
+                RRN.value = ""
+                RRC.value = ""
+            }
 
 
 
@@ -1034,7 +1166,7 @@
                                             value="" readonly>
 
                                     </div>
-                                    <div class="cell_SR" style="width : 325px;"><input type="text" class = "count" style = "width : 100px;" value="0" id="number">
+                                    <div class="cell_SR" style="width : 325px;"><input type="text" class = "count" style = "width : 100px;" value="0">
                                         <input type="button" style = "width : 25px; cursor: pointer;" value="+" onclick="plus(this)">
                                         <input type="button" style = "width : 25px; cursor: pointer;" value="-" onclick="minus(this)">
                                         <button type="button" class="add_Stock">선택</button>
@@ -1048,33 +1180,31 @@
         `;
                 document.querySelector('.new_div').appendChild(newRow);
 
+
+                // 두번째 팝업 안에 div 추가
+                // let newRR = document.createElement('div');
+                // newRR.className = 'result';
+                // newRR.innerHTML = `
+                // <input type="text" class="RRN" value=""> : <input type="text" class="RRC" value="">
+                // `;
+                // document.querySelector('.new_RR').appendChild(newRR);
+
                 newRow.querySelector('.add_Stock').addEventListener('click', function () {
                     add_img.style.display = "inline-block";
                     lastbtn = this;
                 });
-
             }
+
+
+            //     // newRR.
+            // }
+
 
             // 이 위가 window.onload
 
 
 
 
-
-
-            // 이 아래가 document
-
-            //  도연이
-
-
-            // document.querySelector('.delete1').addEventListener('click', function () {
- 
-            // })
-
-
-
-
-            // 도연이
 
 
 
@@ -1085,7 +1215,7 @@
                     add_img.style.display = "none";
                     let choiceValue = choice_text.value;
 
-                    item_name = lastbtn.parentNode.parentNode.querySelector('.item_name');
+                    let item_name = lastbtn.parentNode.parentNode.querySelector('.item_name');
                     item_name.value = choiceValue;
                     choice_text.value = "";
 
@@ -1093,6 +1223,10 @@
 
 
             });
+
+
+
+
 
             // 지움 버튼 누르면 재고명에 공백
 
@@ -1105,10 +1239,10 @@
                 }
 
             });
-            
-            
+
+
             // 삭제 버튼을 누르면 새로 생성된 div 삭제
-            
+
             document.addEventListener('click', function (event) {
                 if (event.target.classList.contains('delete1')) {
                     let row_SR1_length = document.querySelectorAll('.row_SR1').length;
@@ -1123,7 +1257,7 @@
                         alert("1개는 남겨둬야합니다.");
                     }
                 }
-                
+
             });
 
         }
