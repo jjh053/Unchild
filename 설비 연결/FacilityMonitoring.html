@@ -233,29 +233,54 @@
             min-height: 800px;
         }
 
+        aside ul li {
+            list-style: none;
+            padding-top: 20px;
+            padding-bottom: 40px;
+        }
+
+        aside ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        aside ul li ul li {
+            padding-top: 20px;
+            padding-bottom: 0px;
+
+        }
+
+        aside ul li a:hover {
+            color: #888;
+            transition: color 0.2s ease;
+        }
+
         /* 섹션 창을 조작하기바람 */
         section {
-            /* display: flex; */
-            justify-content: center;
             width: 80%;
             background: #eee;
             z-index: 50;
-            align-items: center;
+            text-align: center;
             min-height: 800px;
         }
 
         .monitor {
-            background-color: #333;
-            color: #fff;
+            background-color: #eee;
+            color: #000;
             padding: 10px;
             text-align: center;
         }
 
         #total-defect-rate-section {
-            background-color: #555;
-            color: white;
+            display: inline-block;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 92%;
+            background-color: #fff;
+            color: #000;
             padding: 10px 0;
             text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
         .total-defect-rate-display {
@@ -326,7 +351,7 @@
             position: relative;
             margin: 20px auto;
             width: 80%;
-            height: 500px;
+            height: 300px;
             background-color: #f9f9f9;
             border: 1px solid #ccc;
             border-radius: 5px;
@@ -455,6 +480,18 @@
         <div class="aside-section-container">
             <aside>
                 <!-- aside 영역내에 메뉴 추가 가능함 -->
+                <ul>
+                    <li>
+                        <a href="FacilityMonitoring.html">설비 모니터링</a>
+                        <ul>
+                            <li><a href="#"> - 레이아웃</li></a>
+                            <li><a href="process.html"> - 공정도</li></a>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="facilitiespage.html">설비설정</a>
+                    </li>
+                </ul>
             </aside>
             <section>
                 <div class="monitor">

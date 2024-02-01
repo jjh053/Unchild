@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facilities Page</title>
+    <style>
+        @font-face {
+            font-family: "SOYOMapleBoldTTF";
+            src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/SOYOMapleBoldTTF.woff2") format("woff2");
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: "SOYOMapleBoldTTF";
+            margin: 0 auto;
+            /* font-family: Arial, sans-serif; */
+            background: #fff;
+            color: #333;
+            background-color: #ccc;
+        }
+
+        .wrap {
+            width: 1000px;
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+        }
+
+        .header-nav-container {
+            position: relative;
+            width: 100%;
+            /* wrap과 동일한 너비 */
+        }
+
+        header {
+            width: 100%;
+            background: #000;
+            /* background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 40%, rgba(0, 212, 255, 1) 100%); */
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        header h1 {
+            font-size: 30px;
+            margin: 0;
+        }
+
+        header ul {
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+            list-style: none;
+            align-items: center;
+        }
+
+        header ul li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+
+        header ul li a {
+            font-size: 18px;
+            text-decoration: none;
+            color: #fff;
+            transition: color 0.3s ease;
+        }
+
+        header ul li a:hover {
+            color: #aaa;
+        }
+
+        nav {
+            width: 100%;
+            position: absolute;
+            top: 100%;
+            /* header 높이에 맞게 조정 */
+            left: 0;
+            right: 0;
+            background: #eee;
+            max-height: 0;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear;
+            visibility: hidden;
+            z-index: 100;
+        }
+
+        /* nav 숨김요소 */
+        nav.active {
+            max-height: 500px;
+            /* 활성화될 때 최대 높이 설정 */
+            visibility: visible;
+            opacity: 1;
+            transition: max-height 0.5s ease, visibility 0s, opacity 0.5s linear;
+        }
+
+        .aside-section-container {
+            width: 100%;
+            display: flex;
+        }
+
+        /* 좌측 메뉴바 */
+        aside {
+            min-height: 800px;
+            width: 20%;
+            background: #5f5f5f;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 섹션 창을 조작하기바람 */
+        section {
+            width: 80%;
+            min-height: 800px;
+            background: #eee;
+            z-index: 50;
+            position: relative;
+        }
+
+        .menu-bar {
+            width: 100%;
+            height: 220px;
+            border-top: 0px;
+            border-right: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            display: flex;
+        }
+
+        .menu-bar-content {
+            margin-left: 40px;
+            width: 20%;
+            display: inline-block;
+            box-sizing: border-box;
+        }
+
+        .menu-bar-content ul li {
+            padding: 10px;
+        }
+
+        .menu-bar-content ul li a {
+            text-decoration: none;
+            color: #444;
+        }
+
+        .menu-bar-content ul li a:hover {
+            color: #aaa;
+            transition: color 0.2s ease;
+        }
+
+        footer {
+            width: 100%;
+            background: #000;
+            color: #fff;
+            text-align: center;
+            height: 7%;
+            line-height: 70px;
+        }
+
+        #workerLogo {
+            width: 200px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            /* border: 1px solid red; */
+        }
+
+        #workerTitle {
+            /* border: 1px solid red; */
+            display: flex;
+            width: 1000px;
+            /* display: flex; */
+            /* border: 1px solid red; */
+            justify-content: space-between;
+            padding: 5px;
+
+        }
+
+        #workerTitle h1 {
+            width: 200px;
+            color: #000;
+            /* border: 1px solid red; */
+        }
+
+        #myPage {
+            width: 200px;
+            height: 80px;
+            /* border: 1px solid red; */
+            display: flex;
+            align-items: center;
+        }
+
+        #myPageLogo {
+            width: 80px;
+            height: 80px;
+            /* border: 1px solid red; */
+            margin-right: 3%;
+        }
+
+
+        #workerName a {
+            text-decoration: none;
+            color: #333;
+
+        }
+
+        #workerName a:hover {
+            text-decoration: none;
+            color: #888;
+            transition: color 0.2s ease;
+        }
+
+        .workerPic {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+        }
+
+        .logo {
+            width: 200px;
+            height: 70px;
+        }
+
+        #menu-bar-content-sub {
+            list-style: circle;
+            font-size: 14px;
+            padding-left: 20px;
+        }
+
+        #menu-bar-content-sub li {
+            padding: 5px;
+        }
+
+        #mainTitle1 {
+            display: none;
+        }
+
+        #mainTitle2 {
+            display: none;
+        }
+
+        aside ul li {
+            list-style: none;
+            padding-top: 20px;
+            padding-bottom: 40px;
+        }
+
+        aside ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        aside ul li ul li {
+            padding-top: 20px;
+            padding-bottom: 0px;
+
+        }
+
+        aside ul li a:hover {
+            color: #888;
+            transition: color 0.2s ease;
+        }
+
+        #options-container {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        section .lego-option {
+            display: inline-block;
+            margin-right: 50px;
+            width: 700px;
+            border-top: 1px solid #444;
+            border-bottom: 1px solid #444;
+            margin-bottom: 10px;
+            vertical-align: middle;
+            margin-top: 20px;
+            margin-left: 50px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        section .lego-option div {
+            padding-left: 20px;
+            padding-right: 20px;
+            vertical-align: middle;
+            display: inline-block;
+            /* border: 1px solid red; */
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .lego-option input {
+            font-family: "SOYOMapleBoldTTF";
+            margin: 5px 0px;
+            height: 20px;
+        }
+
+        .lego-option select {
+            font-family: "SOYOMapleBoldTTF";
+            width: 100px;
+            height: 30px;
+        }
+
+        #add-option-btn {
+            background-color: #3498DB;
+            color: #fff;
+            border: 0;
+            border-radius: 10px;
+            width: 100px;
+            height: 50px;
+            cursor: pointer;
+            margin-left: 650px;
+        }
+
+        #add-option-btn:hover {
+            background-color: rgb(0, 47, 255);
+            transition: 0.2s;
+        }
+
+        .lego-option button {
+            background: #333;
+            color: #fff;
+            border: 0;
+            border-radius: 10px;
+            width: 70px;
+            height: 50px;
+            cursor: pointer;
+        }
+
+        .lego-option button:hover {
+            background-color: #555;
+            transition: 0.2s;
+        }
+
+        #optionpage-option-select-page div .optionpage-lego-option {
+            font-family: "SOYOMapleBoldTTF";
+            width: 100px;
+            height: 17px;
+            margin-bottom: 5px;
+            padding: 5px;
+        }
+
+        .optionpage-lego-option-select1 {
+            font-family: "SOYOMapleBoldTTF";
+            width: 200px;
+            height: 30px;
+            padding: 5px;
+        }
+
+        .optionpage-lego-option-select2 {
+            font-family: "SOYOMapleBoldTTF";
+            width: 200px;
+            height: 30px;
+            padding: 5px;
+        }
+
+        .optionpage-lego-option-select3 {
+            font-family: "SOYOMapleBoldTTF";
+            width: 200px;
+            height: 30px;
+            padding: 5px;
+        }
+
+        .optionpage-delete-btn {
+            margin-top: 10px;
+            width: 80px;
+            height: 40px;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #5e5e5e;
+            color: #fff;
+            border: 0;
+        }
+
+        .optionpage-application-btn {
+            background-color: #3498DB;
+            margin-top: 10px;
+            width: 80px;
+            height: 40px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+        }
+
+        .optionpage-application-btn:hover {
+            background-color: rgb(0, 47, 255);
+            transition: 0.2s;
+        }
+
+        #optionpage-option-select-page {
+            display: none;
+            background: #eee;
+            width: 778px;
+            height: 97%;
+            text-align: center;
+            /* border: 1px solid red; */
+            padding: 10px;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+
+        .optionpage-spacebar-btn {
+            display: inline-block;
+            width: 80px;
+        }
+
+        #openModalBtn {
+            display: block;
+            background-color: #888;
+            color: #fff;
+            border: 0;
+            border-radius: 10px;
+            width: 100px;
+            height: 50px;
+            cursor: pointer;
+            margin: 50px auto;
+        }
+
+        #openModalBtn:hover {
+            background-color: #555;
+            transition: 0.2s;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            width: 30%;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 10px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .optionpage-delete-btn:hover {
+            transition: 0.2s;
+            background-color: #333;
+        }
+
+        .modal-content h3 {
+            text-align: center;
+        }
+
+        .modal-content .okay-btn {
+            background-color: #3498DB;
+            margin-top: 10px;
+            width: 80px;
+            height: 40px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+        }
+
+        .modal-content .nono-btn {
+            margin: 0 10px;
+            background-color: red;
+            margin-top: 10px;
+            width: 80px;
+            height: 40px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+        }
+
+        .option-check-botton-zip {
+            text-align: center;
+        }
+
+        .optionpage-button-zip {
+            margin-top: 200px;
+        }
+
+        .optionpage-button {
+            margin-left: 200px;
+        }
+
+        .optionpage-button .optionpage-add-option-btn {
+            background-color: #3498DB;
+            margin-top: 10px;
+            width: 60px;
+            height: 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+        }
+
+        .optionpage-button .optionpage-add-option-btn:hover {
+            background-color: rgb(0, 47, 255);
+            transition: 0.2s;
+        }
+
+        .optionpage-button .optionpage-delete-option-btn,
+        .optionpage-delete-option-real-btn {
+            margin: 0 10px;
+            background-color: red;
+            margin-top: 10px;
+            width: 60px;
+            height: 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+        }
+
+        .optionpage-button .optionpage-delete-option-btn:hover,
+        .optionpage-delete-option-real-btn:hover {
+            background-color: rgb(163, 6, 6);
+            transition: 0.2s;
+        }
+
+        .optionpage-delete-option-real-btn {
+            display: none;
+        }
+
+        .detail-title-value {
+            margin-top: 17px;
+            font-family: "SOYOMapleBoldTTF";
+            width: 100px;
+        }
+
+        .detail-content-value {
+            font-family: "SOYOMapleBoldTTF";
+            width: 200px;
+        }
+
+        #detail-select-btn {
+            background-color: #3498DB;
+            margin-top: 10px;
+            width: 60px;
+            height: 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+        }
+
+        #detail-select-btn:hover {
+            background-color: rgb(0, 47, 255);
+            transition: 0.2s;
+        }
+
+        .option-delete-box {
+            width: 25px;
+            height: 25px;
+            vertical-align: middle;
+            display: none;
+        }
+    </style>
+
+</head>
+
+<body>
+    <form name="frm">
+        <div id="workerTitle">
+            <div id="workerLogo">
+                <a href="#">
+                    <image
+                        src="https://cdn.discordapp.com/attachments/1185161279804026893/1200675420325036082/Jlogo.png?ex=65c70b1f&is=65b4961f&hm=ae28f53e9280fe71cffc1fc2ca74aec892875f13143ef4e109da28023c5b414b&"
+                        class="logo"></image>
+                </a>
+            </div>
+            <h1 id="mainTitle1">작업자 페이지</h1>
+            <h1 id="mainTitle2">관리자 페이지</h1>
+            <div id="myPage">
+                <div id="myPageLogo">
+                    <image
+                        src="https://cdn.discordapp.com/attachments/1185161279804026893/1200675420551520370/workerP.jpg?ex=65c70b1f&is=65b4961f&hm=c49f91b245305c4bb33c58e626bc4960b4f601257e433425a8d7cc0da454126e&"
+                        class="workerPic">
+                </div>
+                <span id="workerName"><a href="#">이도연 대리님</a></span>
+            </div>
+        </div>
+
+        <div class="wrap">
+            <div class="header-nav-container">
+                <header>
+                    <ul>
+                        <li><a href="#" class="hover" title="작업지시서">작업</a></li>
+                        <li><a href="#" class="hover" title="품질검사">설비</a></li>
+                        <li><a href="#" class="hover" title="건의사항">재고관리</a></li>
+                        <li><a href="#" class="hover" title="직원 게시판">게시판</a></li>
+                    </ul>
+                </header>
+                <nav>
+                    <div class="menu-bar">
+                        <div class="menu-bar-content">
+                            <ul>
+                                <li><a href="#">작업 지침서</a></li>
+                                <li><a href="#">안전 지침서</a></li>
+                                <li><a href="#">품질검사</a></li>
+                                <li><a href="#">일일 현황</a></li>
+                            </ul>
+                        </div>
+                        <div class="menu-bar-content">
+                            <ul>
+                                <li><a href="#">설비 모니터링</a></li>
+                                <ul id="menu-bar-content-sub">
+                                    <li><a href="#">레이아웃</a></li>
+                                    <li><a href="process.html">공정</a></li>
+                                </ul>
+                                <li><a href="facilitiespage.html">설비 설정</a></li>
+                            </ul>
+                        </div>
+                        <div class="menu-bar-content">
+                            <ul>
+                                <li><a href="#">재고 현황</a></li>
+                                <li><a href="#">재고 신청</a></li>
+                                <li><a href="#">완제품 관리</a></li>
+                                <li><a href="#">재고 불량 신고</a></li>
+                            </ul>
+                        </div>
+                        <div class="menu-bar-content">
+                            <ul>
+                                <li><a href="#">자유게시판</a></li>
+                                <li><a href="#">건의사항</a></li>
+                                <li><a href="#">Q&A</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="aside-section-container">
+                <aside>
+                    <ul>
+                        <li>
+                            <a href="FacilityMonitoring.html">설비 모니터링</a>
+                            <ul>
+                                <li><a href="#"> - 레이아웃</li></a>
+                                <li><a href="process.html"> - 공정도</li></a>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="facilitiespage.html">설비설정</a>
+                        </li>
+                    </ul>
+                </aside>
+                <section>
+                    <h1 style="text-align: center; font-size: 30px; margin-top: 40px">설비 설정</h1>
+                    <!-- 알아서 article 추가하셈 -->
+                    <!-- <article></article> -->
+                    <div class="options-container">
+                        <div class="lego-option">
+                            <div>
+                                1번 생산라인
+                            </div>
+                            <div>
+                                <select name="cpu-option" class="cpu-option">
+                                    <option value="1">퍼포먼스</option>
+                                    <option value="2">메인스트림</option>
+                                    <option value="3">엔트리</option>
+                                </select>
+                            </div>
+                            <div>
+                                <input type="text" value="그래픽카드 : RTX 3080ti" class="option-value1" readonly><br>
+                                <input type="text" value="SSD : 1TB" class="option-value2" readonly><br>
+                                <input type="text" value="RAM : 32GB" class="option-value3" readonly><br>
+                            </div>
+                            <div>
+                                <button type="button" class="change-option">수정</button>
+                            </div>
+                        </div>
+                        <div id="optionpage-option-select-page">
+                            <h2>옵션 변경 PAGE</h2>
+                            <div id="optionpage-option-select-box">
+                                <div class="parent-div">
+                                    <input type="checkbox" class="option-delete-box">
+                                    <input type="text" readonly value="그래픽카드" class="optionpage-lego-option">
+                                    <select class="optionpage-lego-option-select1" name="gpu-option">
+                                        <option value="그래픽카드 : RTX 3060" name="graphics-card">
+                                            RTX 3060
+                                        </option>
+                                        <option value="그래픽카드 : RTX 3070ti" name="graphics-card">
+                                            RTX 3070ti
+                                        </option>
+                                        <option value="그래픽카드 : RTX 3080ti" name="graphics-card">
+                                            RTX 3080ti
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="parent-div">
+                                    <input type="checkbox" class="option-delete-box">
+                                    <input type="text" readonly value="저장장치" class="optionpage-lego-option">
+                                    <select class="optionpage-lego-option-select2" name="ssd-option">
+                                        <option value="SSD : 250GB" name="storage">
+                                            SSD 250GB
+                                        </option>
+                                        <option value="SSD : 500GB" name="storage">
+                                            SSD 500GB
+                                        </option>
+                                        <option value="SSD : 1TB" name="storage">
+                                            SSD 1TB
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="parent-div">
+                                    <input type="checkbox" class="option-delete-box">
+                                    <input type="text" readonly value="메모리" class="optionpage-lego-option">
+                                    <select class="optionpage-lego-option-select3" name="ram-option">
+                                        <option value="RAM : 8GB" name="memory">
+                                            RAM 8GB
+                                        </option>
+                                        <option value="RAM : 16GB" name="memory">
+                                            RAM 16GB
+                                        </option>
+                                        <option value="RAM : 32GB" name="memory">
+                                            RAM 32GB
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="optionpage-button">
+                                <button type="button" class="optionpage-add-option-btn">추가</button>
+                                <button type="button" class="optionpage-delete-option-btn">삭제</button>
+                                <button type="button" class="optionpage-delete-option-real-btn">삭제</button>
+                            </div>
+                            <div class="optionpage-button-zip">
+                                <button type="button" class="optionpage-application-btn">적용</button>
+                                <div class="optionpage-spacebar-btn"></div>
+                                <button type="button" class="optionpage-delete-btn">취소</button>
+                            </div>
+                            <div id="detail-option-select" class="modal">
+                                <div class="modal-content">
+                                    <span id="closeDetailBtn" class="close">
+                                        <image width="20" height="20"
+                                            src="https://cdn.discordapp.com/attachments/1185161279804026893/1201735089197957160/15287.png?ex=65cae604&is=65b87104&hm=e986c916b65b591d57dfc74b65c46d3425de849f447a26132c493960a55a129b&">
+                                        </image>
+                                    </span>
+                                    <h2>세부 옵션 선택</h2>
+                                    <p>
+                                        <input type="text" class="detail-title-value">
+                                        <input type="text" class="detail-content-value">
+                                    </p>
+                                    <button type="button" id="detail-select-btn">추가</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" id="add-option-btn">추가</button>
+                    <button type="button" id="openModalBtn">설정</button>
+
+                    <div id="myModal" class="modal">
+                        <div class="modal-content">
+                            <span id="closeModalBtn" class="close">
+                                <image
+                                    src="https://cdn.discordapp.com/attachments/1185161279804026893/1201735089197957160/15287.png?ex=65cae604&is=65b87104&hm=e986c916b65b591d57dfc74b65c46d3425de849f447a26132c493960a55a129b&"
+                                    style="width:20px; height:20px"></image>
+                            </span>
+                            <h3>설비설정을 완료 하시겠습니까?</h3>
+                            <div class="option-check-botton-zip">
+                                <button type="button" class="okay-btn">확인</button>
+                                <button type="button" class="nono-btn">취소</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+            </div>
+            <footer>ⓒ2024 J.company System</footer>
+        </div>
+    </form>
+    <script>
+        const hover = document.querySelectorAll('a.hover');
+        const menuBar = document.querySelector('.menu-bar');
+        const nav = document.querySelector('nav');
+        const wrap = document.querySelector('.wrap');
+        let currentOptionBeingEdited = null; // This will hold the currently editing option.
+
+        document.querySelector("#mainTitle2").style.display = "block";
+
+        let isHovered = false;
+
+        hover.forEach(button => {
+            button.addEventListener('mouseover', () => {
+                showMenuBar();
+                isHovered = true;
+            });
+        });
+
+        wrap.addEventListener("mouseleave", function () {
+            if (!isHovered) {
+                hideMenuBar();
+            }
+        });
+
+        menuBar.addEventListener("mouseenter", function () {
+            isHovered = true;
+        });
+
+        menuBar.addEventListener("mouseleave", function () {
+            hideMenuBar();
+        });
+
+        function showMenuBar() {
+            nav.classList.add('active');
+        }
+
+        function hideMenuBar() {
+            nav.classList.remove('active');
+        }
+
+        updateAllOptions();
+
+        // 옵션 변경 시에 호출되는 함수 등록
+        document.querySelector('.options-container').addEventListener('change', function (event) {
+            if (event.target.classList.contains('cpu-option')) {
+                updateOption(event.target);
+            }
+        });
+
+        document.querySelector('.options-container').addEventListener('click', function (event) {
+            if (event.target.classList.contains('delete-option-btn')) {
+                event.target.closest('.lego-option').remove();
+            } else if (event.target.classList.contains('change-option')) {
+                // Store the .lego-option that is being edited.
+                currentOptionBeingEdited = event.target.closest('.lego-option');
+                showOptionPopup(currentOptionBeingEdited);
+            }
+        });
+
+        document.getElementById('add-option-btn').addEventListener('click', function () {
+            let originalOption = document.querySelector('.lego-option');
+            let lineNumber = document.querySelectorAll('.lego-option').length;
+
+            // 4번까지만 추가
+            if (lineNumber < 4) {
+                let newOption = originalOption.cloneNode(true);
+                document.querySelector('.options-container').appendChild(newOption);
+
+                // 생산라인 번호 증가
+                let productionLine = newOption.querySelector('div:first-child');
+                productionLine.textContent = (lineNumber + 1) + '번 생산라인';
+
+                // 삭제 버튼 추가
+                let deleteButton = document.createElement('button');
+                deleteButton.type = 'button';
+                deleteButton.className = 'delete-option-btn';
+                deleteButton.textContent = '삭제';
+                newOption.querySelector('div:last-child').appendChild(deleteButton);
+
+                // 옵션 변경 시에 호출되는 함수 등록
+                newOption.querySelector('.cpu-option').addEventListener('change', function () {
+                    updateOption(this);
+                });
+
+                // 삭제 시 해당 복제체 삭제
+                deleteButton.addEventListener('click', function () {
+                    newOption.remove();
+                });
+            } else {
+                alert("4번 생산라인까지만 추가가 가능합니다!");
+            }
+        });
+
+        function updateAllOptions() {
+            document.querySelectorAll(".cpu-option").forEach(function (select) {
+                updateOption(select);
+            });
+        }
+
+        function updateOption(selectedOption) {
+            let optionContainer = selectedOption.closest('.lego-option');
+            let optionValue1 = optionContainer.querySelector(".option-value1");
+            let optionValue2 = optionContainer.querySelector(".option-value2");
+            let optionValue3 = optionContainer.querySelector(".option-value3");
+
+            if (selectedOption.value == "1") {
+                optionValue1.value = '그래픽카드 : RTX 3080ti';
+                optionValue2.value = 'SSD : 1TB';
+                optionValue3.value = 'RAM : 32GB';
+            } else if (selectedOption.value == "2") {
+                optionValue1.value = '그래픽카드 : RTX 3070ti';
+                optionValue2.value = 'SSD : 500GB';
+                optionValue3.value = 'RAM : 16GB';
+            } else {
+                optionValue1.value = '그래픽카드 : RTX 3060';
+                optionValue2.value = 'SSD : 250GB';
+                optionValue3.value = 'RAM : 8GB';
+            }
+        }
+
+        function showOptionPopup(optionContainer) {
+            // Set the values in the popup based on the currentOptionBeingEdited
+            let selectedGraphicsCard = optionContainer.querySelector('.option-value1').value;
+            let selectedStorage = optionContainer.querySelector('.option-value2').value;
+            let selectedMemory = optionContainer.querySelector('.option-value3').value;
+
+            // Set the values in the popup
+            document.querySelector('.optionpage-lego-option-select1').value = selectedGraphicsCard.split(' : ')[1];
+            document.querySelector('.optionpage-lego-option-select2').value = selectedStorage.split(' : ')[1];
+            document.querySelector('.optionpage-lego-option-select3').value = selectedMemory.split(' : ')[1];
+
+            // Show the popup
+            document.querySelector("#optionpage-option-select-page").style.display = "block";
+        }
+
+        // When '적용' button is clicked in the popup
+        document.querySelector('.optionpage-application-btn').addEventListener('click', function () {
+            if (currentOptionBeingEdited) {
+                applyOption(currentOptionBeingEdited);
+                currentOptionBeingEdited = null; // Reset the reference
+            }
+        });
+
+        function applyOption(optionContainer) {
+            var selectedGraphicsCard = document.querySelector('.optionpage-lego-option-select1').value;
+            var selectedStorage = document.querySelector('.optionpage-lego-option-select2').value;
+            var selectedMemory = document.querySelector('.optionpage-lego-option-select3').value;
+
+            optionContainer.querySelector('.option-value1').value = selectedGraphicsCard;
+            optionContainer.querySelector('.option-value2').value = selectedStorage;
+            optionContainer.querySelector('.option-value3').value = selectedMemory;
+
+            document.querySelector("#optionpage-option-select-page").style.display = "none";
+        }
+
+
+        // 설정버튼
+        var modal = document.getElementById("myModal");
+        var openModalBtn = document.getElementById("openModalBtn");
+        var closeModalBtn = document.getElementById("closeModalBtn");
+        let closebtn = document.querySelector(".nono-btn");
+        let okaybtn = document.querySelector(".okay-btn");
+
+        // Open the modal
+        openModalBtn.addEventListener("click", function () {
+            modal.style.display = "block";
+            // Disable the click event on other shadow parts
+            modal.style.pointerEvents = "auto";
+        });
+
+        // Close the modal only when clicking the "x" button
+        closeModalBtn.addEventListener("click", function () {
+            modal.style.display = "none";
+            // Re-enable the click event on other shadow parts
+            modal.style.pointerEvents = "none";
+        });
+
+        closebtn.addEventListener("click", function () {
+            modal.style.display = "none";
+            // Re-enable the click event on other shadow parts
+            modal.style.pointerEvents = "none";
+        });
+
+        okaybtn.addEventListener("click", function () {
+            location.reload();
+        })
+
+        // Disable closing the modal by clicking outside of it
+        modal.addEventListener("click", function (event) {
+            event.stopPropagation();
+        });
+
+        // Enable closing the modal by clicking outside of it
+        window.addEventListener("click", function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+                // Re-enable the click event on other shadow parts
+                modal.style.pointerEvents = "none";
+            }
+        });
+
+        document.querySelector('.optionpage-delete-btn').addEventListener('click', function () {
+            document.querySelector("#optionpage-option-select-page").style.display = "none";
+        });
+
+        var detailOption = document.querySelector("#detail-option-select");
+        var openDetailBtn = document.querySelector(".optionpage-add-option-btn");
+        var closeDetailBtn = document.querySelector("#closeDetailBtn");
+
+        // Open the modal
+        openDetailBtn.addEventListener("click", function () {
+            detailOption.style.display = "block";
+            // Disable the click event on other shadow parts
+            detailOption.style.pointerEvents = "auto";
+        });
+
+        // Close the modal only when clicking the "x" button
+        closeDetailBtn.addEventListener("click", function () {
+            detailOption.style.display = "none";
+            // Re-enable the click event on other shadow parts
+            detailOption.style.pointerEvents = "none";
+        });
+
+        // Disable closing the modal by clicking outside of it
+        detailOption.addEventListener("click", function (event) {
+            event.stopPropagation();
+        });
+
+        // Enable closing the modal by clicking outside of it
+        window.addEventListener("click", function (event) {
+            if (event.target == modal) {
+                detailOption.style.display = "none";
+                // Re-enable the click event on other shadow parts
+                detailOption.style.pointerEvents = "none";
+            }
+        });
+
+        document.querySelector(".optionpage-add-option-btn").addEventListener("click", function () {
+            let selectBox = document.querySelector("#optionpage-option-select-box");
+            let selectBoxContent = selectBox.innerHTML;
+
+            document.querySelector("#detail-select-btn").addEventListener("click", function () {
+                let inputTitleValue = document.querySelector(".detail-title-value").value;
+                let inputContentValue = document.querySelector(".detail-content-value").value;
+                let optionCast =
+                    `<div class='parent-div'>
+                    <input type="checkbox" class="option-delete-box">
+                    <input type='text' readonly value='${inputTitleValue}' class='optionpage-lego-option'>
+                    <select class='optionpage-lego-option-select3' name='add-option'>
+                        <option value='RAM : 8GB' name='memory'>
+                            ${inputContentValue}
+                        </option>
+                        </select>
+                        </div>`;
+                document.querySelector("#optionpage-option-select-box").innerHTML = selectBoxContent + optionCast;
+                detailOption.style.display = "none";
+                // Re-enable the click event on other shadow parts
+                detailOption.style.pointerEvents = "none";
+            });
+        });
+
+        document.querySelector(".optionpage-delete-option-btn").addEventListener("click", function () {
+            let elements = document.querySelectorAll(".option-delete-box");
+            for (let i = 0; i < elements.length; i++) {
+                elements[i].style.display = "inline-block";
+            }
+            let deleteBtn = document.querySelector(".optionpage-delete-option-real-btn").style.display = "inline-block";
+            let deleteRealBtn = document.querySelector(".optionpage-delete-option-btn").style.display = "none";
+
+            document.querySelector(".optionpage-delete-option-real-btn").addEventListener("click", function () {
+                let checkedBoxes = document.querySelectorAll(".option-delete-box:checked");
+
+                checkedBoxes.forEach(function (checkbox) {
+                    let parentDiv = checkbox.closest('.parent-div');
+                    if (parentDiv) {
+                        parentDiv.remove();
+                    }
+                });
+                let deleteBtn = document.querySelector(".optionpage-delete-option-real-btn").style.display = "none";
+                let deleteRealBtn = document.querySelector(".optionpage-delete-option-btn").style.display = "inline-block";
+                for (let i = 0; i < elements.length; i++) {
+                    elements[i].style.display = "none";
+                }
+            });
+
+
+        });
+    </script>
+</body>
+
+</html>
