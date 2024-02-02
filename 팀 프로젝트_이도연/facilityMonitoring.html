@@ -673,39 +673,31 @@
 
             function runProcess() {
                 if (iteration < maxIterations) {
-                    // Run CPU process
                     cpuStatus.textContent = 'Running';
                     cpuStatus.style.color = 'red';
+                    gpuStatus.textContent = 'Running';
+                    gpuStatus.style.color = 'red';
+                    caseStatus.textContent = 'Running';
+                    caseStatus.style.color = 'red';
+                    
                     setTimeout(() => {
                         cpuStatus.textContent = 'Completed';
                         cpuStatus.style.color = 'green';
+                        gpuStatus.textContent = 'Completed';
+                        gpuStatus.style.color = 'green';
+                        caseStatus.textContent = 'Completed';
+                        caseStatus.style.color = 'green';
                         cpuOperationsCount++;
-                        cpuDefectCount += simulateDefects(0.01);  // cpu 불량률 1%
-
-                        // Run GPU process
-                        gpuStatus.textContent = 'Running';
-                        gpuStatus.style.color = 'red';
+                        cpuDefectCount += simulateDefects(0.01);  // 1번 라인 불량률 1%
+                        gpuOperationsCount++;
+                        gpuDefectCount += simulateDefects(0.03);  // 2번 라인 불량률 3%
+                        caseOperationsCount++;
+                        caseDefectCount += simulateDefects(0.05);  // 3번 라인 불량률 5%
+                        updateCountsAndRates();
+                       
                         setTimeout(() => {
-                            gpuStatus.textContent = 'Completed';
-                            gpuStatus.style.color = 'green';
-                            gpuOperationsCount++;
-                            gpuDefectCount += simulateDefects(0.03);  // gpu 불량률 3%
-
-                            // Run Case process
-                            caseStatus.textContent = 'Running';
-                            caseStatus.style.color = 'red';
-                            setTimeout(() => {
-                                caseStatus.textContent = 'Completed';
-                                caseStatus.style.color = 'green';
-                                caseOperationsCount++;
-                                caseDefectCount += simulateDefects(0.05);  // 케이스 불량률 5%
-
-                                updateCountsAndRates();
-
-                                iteration++;
-                                runProcess();
-
-                            }, 3000);
+                            iteration++;
+                            runProcess();
                         }, 3000);
                     }, 3000);
                 }
