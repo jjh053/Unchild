@@ -41,7 +41,7 @@
         height: 30px;
         border: none;
         padding: 0;
-        background-color: #ffffff;
+        background-color: #fff;
         vertical-align: middle;
         color: black;
     }
@@ -113,6 +113,10 @@
         color: #c8c8c8;
     }
 
+    .calendar>.dates>.date.gray {
+        color: #c8c8c8;
+    }
+
     body {
         font-family: "SOYOMapleBoldTTF";
     }
@@ -140,9 +144,79 @@
         border-bottom: 1px solid #555;
     }
 
-    #myprofilecontent #todaywork {
+    #myprofilecontent #my-mail-page {
+        position: relative;
         border-bottom: 1px solid #555;
-        height: 100px;
+        height: 70px;
+    }
+
+    #myprofilecontent #my-mail-page img {
+        width: 69px;
+        height: 69px;
+        display: inline-block;
+        /* border: 1px solid red; */
+        box-sizing: border-box;
+        cursor: pointer;
+    }
+
+    #myprofilecontent #my-mail-page div {
+        box-sizing: border-box;
+        margin: auto;
+        /* border: 1px solid red; */
+        display: inline-block;
+        position: absolute;
+        top: 15px;
+        left: 80px;
+        line-height: 20px;
+    }
+
+    #myprofilecontent #my-mail-page div a {
+        text-decoration: none;
+        color: #000;
+    }
+
+    #myprofilecontent #my-mail-page div a:hover {
+        color: blue;
+        transition: 0.3s;
+    }
+
+    #vacation-btn {
+        position: absolute;
+        top: 410px;
+        left: 527px;
+        background-color: #3498DB;
+        margin-top: 10px;
+        width: 80px;
+        height: 40px;
+        border-radius: 5px;
+        cursor: pointer;
+        color: #fff;
+        border: 0;
+    }
+
+    #vacation-btn:hover {
+        background-color: rgb(0, 47, 255);
+        transition: 0.2s;
+    }
+
+    #close-btn {
+        position: absolute;
+        top: 410px;
+        left:0;
+        margin: 0 10px;
+        background-color: red;
+        margin-top: 10px;
+        width: 80px;
+        height: 40px;
+        border-radius: 5px;
+        cursor: pointer;
+        color: #fff;
+        border: 0;
+    }
+
+    #close-btn:hover {
+        background-color: rgb(163, 6, 6);
+        transition: 0.2s;
     }
 </style>
 
@@ -151,18 +225,25 @@
         <div id="myprofile">
             <div id="myprofliePic">
                 <image
-                    src="https://cdn.discordapp.com/attachments/1185161279804026893/1200675420551520370/workerP.jpg?ex=65c70b1f&is=65b4961f&hm=c49f91b245305c4bb33c58e626bc4960b4f601257e433425a8d7cc0da454126e&"
+                    src="https://cdn.discordapp.com/attachments/1185161279804026893/1202801354821861386/pixel-art-fox-fox-podstawki.png?ex=65cec70d&is=65bc520d&hm=53608f4fce79f3b2c251bb6c1037d3395258d8736460630902291572d2fae1e9&"
                     class="mypic"></image>
             </div>
             <div id="myprofilecard">
-                팀장 정장훈<br>
-                전화번호 : 010 - 2345 - 1234<br>
-                이메일 : jjh0120@human.com<br><br>
+                관리자 이성현<br>
+                전화번호 : 010 - 5553 - 7887<br>
+                이메일 : lsh0916@human.com<br><br>
                 <span style="margin-left: 130px"><a href="#">수정하기</a></span>
             </div>
             <div id="myprofilecontent">
-                <div id="todaywork">
-                    오늘할일
+                <div id="my-mail-page">
+                    <a href="#">
+                        <img
+                            src="https://cdn.discordapp.com/attachments/1185161279804026893/1202848629878956052/mail-99218_640.png?ex=65cef315&is=65bc7e15&hm=42c1b645ea72a9b7e4a824c362af1060465ffd76b04acf05af7c6faa0b0c9420&">
+                    </a>
+                    <div>
+                        <a href="#">메일</a><br>
+                        <a href="#">메일쓰기</a>
+                    </div>
                 </div>
                 <div id="instructions">
                     지시사항
@@ -187,90 +268,116 @@
             <div class="dates"></div>
         </div>
     </div>
-
-    <script type="text/javascript">
-        var CDate = new Date();
-        var today = new Date();
-        var selectCk = 0;
-
-        var buildcalendar = function () {
-            var htmlDates = '';
-            var prevLast = new Date(CDate.getFullYear(), CDate.getMonth(), 0);
-            var thisFirst = new Date(CDate.getFullYear(), CDate.getMonth(), 1);
-            var thisLast = new Date(CDate.getFullYear(), CDate.getMonth() + 1, 0);
-            document.querySelector(".year").innerHTML = CDate.getFullYear() + "년";
-            document.querySelector(".month").innerHTML = (CDate.getMonth() + 1) + "월";
-            const dates = [];
-            if (thisFirst.getDay() != 0) {
-                for (var i = 0; i < thisFirst.getDay(); i++) {
-                    dates.unshift(prevLast.getDate() - i);
-                }
-            }
-            for (var i = 1; i <= thisLast.getDate(); i++) {
-                dates.push(i);
-            }
-            for (var i = 1; i <= 13 - thisLast.getDay(); i++) {
-                dates.push(i);
-            }
-
-            for (var i = 0; i < 42; i++) {
-                if (i < thisFirst.getDay()) {
-                    htmlDates += '<div class="date last">' + dates[i] + '</div>';
-                } else if (today.getDate() == dates[i] && today.getMonth() == CDate.getMonth() && today.getFullYear() == CDate.getFullYear()) {
-                    htmlDates += '<div id="date_' + dates[i] + '" class="date today" style="background-color: lightblue;" onclick="fn_selectDate(' + dates[i] + ');">' + dates[i] + '</div>';
-                } else if (i >= dates.length) {
-                    htmlDates += '<div class="date next-month">' + (i - dates.length + 1) + '</div>';
-                } else {
-                    htmlDates += '<div id="date_' + dates[i] + '" class="date" onclick="fn_selectDate(' + dates[i] + ');">' + dates[i] + '</div>';
-                }
-            }
-            document.querySelector(".dates").innerHTML = htmlDates;
-        }
-
-        function prevCal() {
-            CDate.setMonth(CDate.getMonth() - 1);
-            buildcalendar();
-        }
-        function nextCal() {
-            CDate.setMonth(CDate.getMonth() + 1);
-            buildcalendar();
-        }
-
-        function fn_selectDate(date) {
-            var year = CDate.getFullYear();
-            var month = CDate.getMonth() + 1;
-            var date_txt = "";
-            if (CDate.getMonth + 1 < 10) {
-                month = "0" + (CDate.getMonth() + 1);
-            }
-            if (date < 10) {
-                date_txt = "0" + date;
-            }
-
-            if (selectCk == 0) {
-                $(".date").css("background-color", "");
-                $(".date").css("color", "");
-                $("#date_" + date).css("background-color", "red");
-                $("#date_" + date).css("color", "white");
-
-                $("#period_1").val(year + "-" + month + "-" + date);
-                $("#period_2").val("");
-                selectCk = date;
-            } else {
-                $("#date_" + date).css("background-color", "red");
-                $("#date_" + date).css("color", "white");
-                for (var i = selectCk + 1; i < date; i++) {
-                    $("#date_" + i).css("background-color", "#FFDDDD");
-                }
-
-                $("#period_2").val(year + "-" + month + "-" + date);
-                selectCk = 0;
-            }
-
-        }
-
-        buildcalendar();
-    </script>
+    <button type="button" id="close-btn">닫기</button>
+    <button type="button" id="vacation-btn">휴가신청</button>
 </body>
+<script type="text/javascript">
+    var CDate = new Date();
+    var today = new Date();
+    var selectCk = 0;
+
+    var buildcalendar = function () {
+        var htmlDates = '';
+        var prevLast = new Date(CDate.getFullYear(), CDate.getMonth(), 0);
+        var thisFirst = new Date(CDate.getFullYear(), CDate.getMonth(), 1);
+        var thisLast = new Date(CDate.getFullYear(), CDate.getMonth() + 1, 0);
+        document.querySelector(".year").innerHTML = CDate.getFullYear() + "년";
+        document.querySelector(".month").innerHTML = (CDate.getMonth() + 1) + "월";
+        const dates = [];
+        if (thisFirst.getDay() != 0) {
+            for (var i = 0; i < thisFirst.getDay(); i++) {
+                dates.unshift(prevLast.getDate() - i);
+            }
+        }
+        for (var i = 1; i <= thisLast.getDate(); i++) {
+            dates.push(i);
+        }
+        // Calculate the next month's dates correctly
+        var nextMonthStart = 1;
+        for (var i = thisFirst.getDay() + thisLast.getDate(); i < 42; i++) {
+            dates.push(nextMonthStart++);
+        }
+
+        for (var i = 0; i < 42; i++) {
+            var classList = 'date';
+            // Add weekend classes for the current month
+            if (i % 7 === 0) classList += ' red'; // Sunday
+            if (i % 7 === 6) classList += ' blue'; // Saturday
+
+            // Dates from the previous month
+            if (i < thisFirst.getDay()) {
+                htmlDates += '<div class="' + classList + ' last">' + dates[i] + '</div>';
+            }
+            // Dates from the current month
+            else if (i < thisFirst.getDay() + thisLast.getDate()) {
+                if (today.getDate() === dates[i] && today.getMonth() === CDate.getMonth() && today.getFullYear() === CDate.getFullYear()) {
+                    htmlDates += '<div id="date_' + dates[i] + '" class="' + classList + ' current-month today" style="background-color: lightblue;">' + dates[i] + '</div>';
+                } else {
+                    htmlDates += '<div id="date_' + dates[i] + '" class="' + classList + ' current-month" onclick="fn_selectDate(' + dates[i] + ');">' + dates[i] + '</div>';
+                }
+            }
+            // Dates from the next month
+            else {
+                if (i % 7 === 0 || i % 7 === 6) {
+                    // Make the weekends gray for the next month
+                    htmlDates += '<div class="' + classList + ' next-month gray">' + dates[i] + '</div>';
+                } else {
+                    htmlDates += '<div class="' + classList + ' next-month">' + dates[i] + '</div>';
+                }
+            }
+        }
+        document.querySelector(".dates").innerHTML = htmlDates;
+    }
+
+    function prevCal() {
+        CDate.setMonth(CDate.getMonth() - 1);
+        buildcalendar();
+    }
+    function nextCal() {
+        CDate.setMonth(CDate.getMonth() + 1);
+        buildcalendar();
+    }
+
+    function fn_selectDate(date) {
+        var clickedDateElement = document.getElementById('date_' + date);
+        var monthAttribute = clickedDateElement.getAttribute('data-month');
+
+        if (monthAttribute !== 'current') {
+            return;
+        }
+
+        var year = CDate.getFullYear();
+        var month = CDate.getMonth() + 1;
+        var date_txt = "";
+        if (CDate.getMonth() + 1 < 10) {
+            month = "0" + (CDate.getMonth() + 1);
+        }
+        if (date < 10) {
+            date_txt = "0" + date;
+        }
+
+        if (selectCk == 0) {
+            $(".date.current-month").css("background-color", "");
+            $(".date.current-month").css("color", "");
+            $("#date_" + date + ".current-month").css("background-color", "red");
+            $("#date_" + date + ".current-month").css("color", "white");
+
+            $("#period_1").val(year + "-" + month + "-" + date);
+            $("#period_2").val("");
+            selectCk = date;
+        } else {
+            $("#date_" + date + ".current-month").css("background-color", "red");
+            $("#date_" + date + ".current-month").css("color", "white");
+            for (var i = selectCk + 1; i < date; i++) {
+                $("#date_" + i + ".current-month").css("background-color", "#FFDDDD");
+            }
+
+            $("#period_2").val(year + "-" + month + "-" + date);
+            selectCk = 0;
+        }
+    }
+
+    buildcalendar();
+</script>
 
 </html>
