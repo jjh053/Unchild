@@ -22,6 +22,7 @@
         position: absolute;
         left: 207px;
         width: 400px;
+        height: 400px;
         padding: 5px 20px 20px 20px;
         box-sizing: border-box;
         border: 1px solid;
@@ -70,16 +71,18 @@
     .calendar>.dates {
         display: flex;
         flex-wrap: wrap;
+        align-items: center;
         width: 100%;
-
+        height: 50px;
     }
 
     .calendar>.dates>.date {
         text-align: center;
         width: calc(100%/7);
-        height: 50px;
+        height: 40px;
+        line-height: 40px;
+        margin-bottom: 10px;
         box-sizing: border-box;
-        line-height: 3;
         border-radius: 50%;
         cursor: pointer;
     }
@@ -123,7 +126,7 @@
 
     #myprofile {
         width: 200px;
-        height: 406px;
+        height: 400px;
         border: 1px solid #555;
         position: absolute;
         font-size: 12px;
@@ -146,6 +149,11 @@
 
     #myprofilecontent #my-mail-page {
         position: relative;
+        border-bottom: 1px solid #555;
+        height: 70px;
+    }
+
+    #todayWork {
         border-bottom: 1px solid #555;
         height: 70px;
     }
@@ -202,7 +210,7 @@
     #close-btn {
         position: absolute;
         top: 410px;
-        left:0;
+        left: 0;
         margin: 0 10px;
         background-color: red;
         margin-top: 10px;
@@ -218,6 +226,239 @@
         background-color: rgb(163, 6, 6);
         transition: 0.2s;
     }
+
+    #modify-profile {
+        margin-left: 130px;
+        cursor: pointer;
+    }
+
+    #modify-profile:hover {
+        color: blue;
+        transition: 0.3s;
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .modal2,
+    .modal3 {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .modal-content {
+        background-color: white;
+        margin-top: 50px;
+        margin-left: 50px;
+        padding: 20px;
+        width: 40%;
+        border-radius: 5px;
+        position: relative;
+    }
+
+    .modal-content input {
+        margin: 3px;
+        font-family: "SOYOMapleBoldTTF";
+        width: 150px;
+        font-size: 16px;
+    }
+
+    .modal-content h2 {
+        /* border: 1px solid red; */
+        text-align: center;
+    }
+
+    .close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    .close img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .btn-zip,
+    .vacation-btn-zip {
+        text-align: center;
+    }
+
+    #apply-btn,
+    #applyVacationBtn {
+        background-color: #3498DB;
+        margin-top: 10px;
+        width: 80px;
+        height: 40px;
+        border-radius: 5px;
+        cursor: pointer;
+        color: #fff;
+        border: 0;
+    }
+
+    #apply-btn:hover,
+    #applyVacationBtn:hover {
+        background-color: rgb(0, 47, 255);
+        transition: 0.2s;
+    }
+
+    #delete-btn,
+    #deleteVacationBtn {
+        margin: 0 10px;
+        background-color: red;
+        margin-top: 10px;
+        width: 80px;
+        height: 40px;
+        border-radius: 5px;
+        cursor: pointer;
+        color: #fff;
+        border: 0;
+    }
+
+    #delete-btn:hover,
+    #deleteVacationBtn:hover {
+        background-color: rgb(163, 6, 6);
+        transition: 0.2s;
+    }
+
+    #mycard {
+        margin-bottom: 30px;
+    }
+
+    .vacation-word {
+        position: absolute;
+        top: 433px;
+        left: 300px;
+        display: inline-block;
+    }
+
+    #reasonZip {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        margin-left: 40px;
+    }
+
+
+    .vacationReason {
+        width: 80px;
+        height: 40px;
+        background: #ccc;
+        border-radius: 10px;
+        text-align: center;
+        line-height: 40px;
+        margin-right: 40px;
+        margin-bottom: 20px;
+        cursor: pointer;
+    }
+
+    .vacationReason:hover {
+        background-color: #999;
+        transition: 0.3s;
+    }
+
+    #instructions {
+        height: 70px;
+    }
+
+    #vacationSchedule {
+        display: none;
+        width: 198px;
+        height: 46px;
+        border-top: 1px solid #555;
+        box-sizing: border-box;
+    }
+
+    .today-work-zip {
+        cursor: pointer;
+    }
+
+    .today-work-zip ul li:hover {
+        transition: 0.3s;
+        color: blue;
+    }
+
+    .work-btn-zip {
+        text-align: center;
+    }
+
+    #closeWorkBox {
+        margin: 0 10px;
+        background-color: red;
+        margin-top: 10px;
+        width: 60px;
+        height: 30px;
+        border-radius: 5px;
+        cursor: pointer;
+        color: #fff;
+        border: 0;
+    }
+
+    #closeWorkBox:hover {
+        background-color: rgb(163, 6, 6);
+        transition: 0.2s;
+    }
+
+    #workTable {
+        border-collapse: collapse;
+        border: 1px solid #555;
+        margin: 0 auto;
+    }
+
+    #workTable th,
+    td {
+        border: 1px solid #555;
+        padding: 10px;
+    }
+
+    #workTable td {
+        font-size: 14px;
+    }
+
+    #workTable input {
+        width: 10px;
+        height: 10px;
+    }
+
+    #workCheckBox {
+        background-color: #3498DB;
+        margin-top: 10px;
+        width: 60px;
+        height: 30px;
+        border-radius: 5px;
+        cursor: pointer;
+        color: #fff;
+        border: 0;
+    }
+
+    #workCheckBox:hover {
+        background-color: rgb(0, 47, 255);
+        transition: 0.2s;
+    }
+
+    .today-work-zip ul {
+        margin: 0;
+        margin-left: -30px;
+    }
+
+    .today-work-zip ul li {
+        list-style: none;
+        font-size: 8px;
+    }
 </style>
 
 <body>
@@ -229,10 +470,12 @@
                     class="mypic"></image>
             </div>
             <div id="myprofilecard">
-                관리자 이성현<br>
-                전화번호 : 010 - 5553 - 7887<br>
-                이메일 : lsh0916@human.com<br><br>
-                <span style="margin-left: 130px"><a href="#">수정하기</a></span>
+                <div id="mycard">
+                    이름 : 이성현<br>
+                    전화번호 : 010 - 5553 - 7887<br>
+                    이메일 : lsh0916@human.com
+                </div>
+                <span id="modify-profile">수정하기</span>
             </div>
             <div id="myprofilecontent">
                 <div id="my-mail-page">
@@ -245,8 +488,22 @@
                         <a href="#">메일쓰기</a>
                     </div>
                 </div>
+                <div id="todayWork">
+                    오늘 할일
+                    <div class="today-work-zip">
+                        <ul>
+                            <li>- 3번 라인 불량 검수</li>
+                            <li>- CPU 재고 확인</li>
+                            <li>- 창고 불량 재고 관리</li>
+                            <li>- 환불 내역 확인</li>
+                            <li>- 설비 설정 수정</li>
+                        </ul>
+                    </div>
+                </div>
                 <div id="instructions">
                     지시사항
+                </div>
+                <div id="vacationSchedule">
                 </div>
             </div>
         </div>
@@ -269,7 +526,98 @@
         </div>
     </div>
     <button type="button" id="close-btn">닫기</button>
+    <div class="vacation-word"></div>
     <button type="button" id="vacation-btn">휴가신청</button>
+
+
+    <!-- 명함 수정 팝업 -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span id="closeModalBtn" class="close"><img
+                    src="https://cdn.discordapp.com/attachments/1185161279804026893/1201735089197957160/15287.png?ex=65cae604&is=65b87104&hm=e986c916b65b591d57dfc74b65c46d3425de849f447a26132c493960a55a129b&"></span>
+            <h2>정보 수정</h2>
+            <p style="width: 390px; text-align: right;">
+                이름 : <input type="text" id="myName"><br>
+                전화번호 : <input type="text" id="myNumber"><br>
+                이메일 : <input type="text" id="myMail">
+            </p>
+            <div class="btn-zip">
+                <button type="button" id="apply-btn">적용</button>
+                <button type="reset" id="delete-btn">취소</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 오늘 할일 팝업 -->
+    <div id="todayWorkPage" class="modal3">
+        <div class="modal-content">
+            <span id="closeWorkBtn" class="close"><img
+                    src="https://cdn.discordapp.com/attachments/1185161279804026893/1201735089197957160/15287.png?ex=65cae604&is=65b87104&hm=e986c916b65b591d57dfc74b65c46d3425de849f447a26132c493960a55a129b&"></span>
+            <div class="todayWorkTable">
+                <table id="workTable">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" id="totalChkBtn"></th>
+                            <th width="180">오늘 할 일</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="checkbox" class="work-check-box"></td>
+                            <td class="tdContent">3번 라인 불량 검수</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="work-check-box"></td>
+                            <td class="tdContent">CPU 재고 확인</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="work-check-box"></td>
+                            <td class="tdContent">창고 불량 재고 관리</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="work-check-box"></td>
+                            <td class="tdContent">환불 내역 확인</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="work-check-box"></td>
+                            <td class="tdContent">설비 설정 수정</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="work-btn-zip">
+                <button type="button" id="workCheckBox">삭제</button>
+                <button type="reset" id="closeWorkBox">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 휴가 신청 팝업 -->
+    <div id="vacationCard" class="modal2">
+        <div class="modal-content">
+            <span id="closeVacationBtn" class="close"><img
+                    src="https://cdn.discordapp.com/attachments/1185161279804026893/1201735089197957160/15287.png?ex=65cae604&is=65b87104&hm=e986c916b65b591d57dfc74b65c46d3425de849f447a26132c493960a55a129b&"></span>
+            <h2>휴가 신청</h2>
+            <div id="reasonZip">
+                <div class="vacationReason">연차</div>
+                <div class="vacationReason">월차</div>
+                <div class="vacationReason">반차</div>
+                <div class="vacationReason">포상</div>
+                <div class="vacationReason">외출</div>
+                <div class="vacationReason">기타</div>
+            </div>
+            <div id="vacationWeek" style="margin-left: 100px; width: 300px; text-align: left;">
+            </div>
+            <div style="margin-left: 100px">사유 : <input type="text" class="reasonBox"></div>
+            <div class="vacation-btn-zip">
+                <button type="button" id="applyVacationBtn">신청</button>
+                <button type="reset" id="deleteVacationBtn">취소</button>
+            </div>
+        </div>
+    </div>
+
+
+
 </body>
 <script type="text/javascript">
     var CDate = new Date();
@@ -377,7 +725,364 @@
         }
     }
 
+    // 프로필 수정
+    let openModalBtn = document.querySelector("#modify-profile");
+    var modal = document.getElementById("myModal");
+    var closeModalBtn = document.getElementById("closeModalBtn");
+    let deleteBtn = document.querySelector("#delete-btn");
+
+    // Open the modal
+    openModalBtn.addEventListener("click", function () {
+        modal.style.display = "block";
+        // Disable the click event on other shadow parts
+        modal.style.pointerEvents = "auto";
+    });
+
+    // Close the modal only when clicking the "x" button
+    closeModalBtn.addEventListener("click", function () {
+        modal.style.display = "none";
+        // Re-enable the click event on other shadow parts
+        modal.style.pointerEvents = "none";
+    });
+
+    deleteBtn.addEventListener("click", function () {
+        modal.style.display = "none";
+        // Re-enable the click event on other shadow parts
+        modal.style.pointerEvents = "none";
+    });
+
+    // Disable closing the modal by clicking outside of it
+    modal.addEventListener("click", function (event) {
+        event.stopPropagation();
+    });
+
+    // Enable closing the modal by clicking outside of it
+    window.addEventListener("click", function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+            // Re-enable the click event on other shadow parts
+            modal.style.pointerEvents = "none";
+        }
+    });
+
     buildcalendar();
+
+    document.querySelector("#apply-btn").addEventListener("click", () => {
+        let myName = document.querySelector("#myName").value;
+        let myNumber = document.querySelector("#myNumber").value;
+        let myMail = document.querySelector("#myMail").value;
+
+        console.log("myName : " + myName);
+        console.log("myNumber : " + myNumber);
+        console.log("myMail : " + myMail);
+
+        let firstNumber = myNumber.substr(0, 3);
+        let secondNumber = myNumber.substr(3, 4);
+        let thirdNumber = myNumber.substr(7);
+
+        document.querySelector("#mycard").innerHTML =
+            `이름 : ${myName}<br>
+        전화번호 : ${firstNumber} - ${secondNumber} - ${thirdNumber}<br>
+        이메일 : ${myMail}`;
+
+        modal.style.display = 'none';
+        modal.style.pointerEvents = "none";
+    });
+
+
+
+
+    let openVacationPopup = document.querySelector("#vacationCard");
+    let closeVacationPopup = document.querySelector("#closeVacationBtn");
+    let deleteVacationPopup = document.querySelector("#deleteVacationBtn");
+    let vacationWeek = document.querySelector("#vacationWeek");
+
+    closeVacationPopup.addEventListener("click", () => {
+        openVacationPopup.style.display = "none";
+        openVacationPopup.style.pointerEvents = "none";
+    })
+
+    deleteVacationPopup.addEventListener("click", () => {
+        openVacationPopup.style.display = "none";
+        // Re-enable the click event on other shadow parts
+        openVacationPopup.style.pointerEvents = "none";
+    })
+
+
+    let vacationSchedule = document.querySelector("#vacationSchedule");
+
+    // 휴가신청
+    document.querySelector("#vacation-btn").addEventListener("click", function (event) {
+        let selectedStartDate = null;
+
+        function resetSelection() {
+            selectedStartDate = null;
+            document.querySelectorAll(".date.current-month.selected").forEach(function (element) {
+                element.style.backgroundColor = "#fc5555";
+                element.classList.remove("selected");
+            });
+            document.querySelector(".vacation-word").innerHTML = "휴가 신청일을 선택해주세요.";
+        }
+
+        resetSelection();
+
+        document.querySelector(".dates").addEventListener("click", function (event) {
+            let clickedDate = event.target;
+            if (clickedDate.classList.contains("current-month")) {
+                if (!selectedStartDate) {
+                    // Select start date
+                    selectedStartDate = clickedDate;
+                    selectedStartDate.classList.add("selected");
+                    document.querySelector(".vacation-word").innerHTML = "휴가 복귀일을 선택해주세요.";
+                } else {
+                    // Select return date
+                    let currentDate = parseInt(clickedDate.innerText);
+                    let startDate = parseInt(selectedStartDate.innerText);
+
+                    if (currentDate >= startDate) {
+                        for (let i = startDate; i <= currentDate; i++) {
+                            let dateElement = document.getElementById('date_' + i);
+                            if (dateElement) {
+                                dateElement.style.borderRadius = "0px"
+                                dateElement.style.backgroundColor = "#fc5555";
+                                document.querySelector(`#date_${startDate}`).style.borderTopLeftRadius = "20px";
+                                document.querySelector(`#date_${startDate}`).style.borderBottomLeftRadius = "20px";
+                                document.querySelector(`#date_${currentDate}`).style.borderTopRightRadius = "20px";
+                                document.querySelector(`#date_${currentDate}`).style.borderBottomRightRadius = "20px";
+                            }
+                        }
+                    }
+                    resetSelection();
+                    document.querySelector(".vacation-word").innerHTML = '';
+                    openVacationPopup.style.display = 'inline-block';
+                    vacationWeek.innerHTML = `휴가 : ${document.querySelector(".month").innerText} ${startDate}일 ~ 
+                    ${document.querySelector(".month").innerText} ${currentDate}일`;
+                    document.querySelector("#applyVacationBtn").addEventListener("click", () => {
+                        openVacationPopup.style.display = "none";
+                        openVacationPopup.style.pointerEvents = "none";
+                        vacationSchedule.style.display = 'block';
+                        vacationSchedule.innerHTML = `휴가 기간 : ${document.querySelector(".month").innerText} ${startDate}일 ~ 
+                    ${document.querySelector(".month").innerText} ${currentDate}일<br>휴가 사유 : ${reasonBox.value}`;
+                    })
+                }
+            }
+
+        });
+    });
+
+    let reasonBtn = document.querySelectorAll(".vacationReason");
+    let reasonBox = document.querySelector(".reasonBox");
+
+    reasonBtn[0].addEventListener("click", function (event) {
+        console.log(event.target);
+        reasonBtn[0].style.backgroundColor = "#999";
+        reasonBtn[1].style.backgroundColor = "#ccc";
+        reasonBtn[2].style.backgroundColor = "#ccc";
+        reasonBtn[3].style.backgroundColor = "#ccc";
+        reasonBtn[4].style.backgroundColor = "#ccc";
+        reasonBtn[5].style.backgroundColor = "#ccc";
+        reasonBox.value = "연차";
+        reasonBox.readOnly = true;
+    });
+
+    reasonBtn[1].addEventListener("click", function (event) {
+        console.log(event.target);
+        reasonBtn[1].style.backgroundColor = "#999";
+        reasonBtn[0].style.backgroundColor = "#ccc";
+        reasonBtn[2].style.backgroundColor = "#ccc";
+        reasonBtn[3].style.backgroundColor = "#ccc";
+        reasonBtn[4].style.backgroundColor = "#ccc";
+        reasonBtn[5].style.backgroundColor = "#ccc";
+        reasonBox.value = "월차";
+        reasonBox.readOnly = true;
+    });
+
+    reasonBtn[2].addEventListener("click", function (event) {
+        console.log(event.target);
+        event.target.style.backgroundColor = "#999";
+        reasonBtn[1].style.backgroundColor = "#ccc";
+        reasonBtn[0].style.backgroundColor = "#ccc";
+        reasonBtn[3].style.backgroundColor = "#ccc";
+        reasonBtn[4].style.backgroundColor = "#ccc";
+        reasonBtn[5].style.backgroundColor = "#ccc";
+        reasonBox.value = "반차";
+        reasonBox.readOnly = true;
+    });
+
+    reasonBtn[3].addEventListener("click", function (event) {
+        console.log(event.target);
+        event.target.style.backgroundColor = "#999";
+        reasonBtn[1].style.backgroundColor = "#ccc";
+        reasonBtn[2].style.backgroundColor = "#ccc";
+        reasonBtn[0].style.backgroundColor = "#ccc";
+        reasonBtn[4].style.backgroundColor = "#ccc";
+        reasonBtn[5].style.backgroundColor = "#ccc";
+        reasonBox.value = "포상";
+        reasonBox.readOnly = true;
+    });
+
+    reasonBtn[4].addEventListener("click", function (event) {
+        console.log(event.target);
+        event.target.style.backgroundColor = "#999";
+        reasonBtn[1].style.backgroundColor = "#ccc";
+        reasonBtn[2].style.backgroundColor = "#ccc";
+        reasonBtn[3].style.backgroundColor = "#ccc";
+        reasonBtn[0].style.backgroundColor = "#ccc";
+        reasonBtn[5].style.backgroundColor = "#ccc";
+        reasonBox.value = "외출";
+        reasonBox.readOnly = true;
+    });
+
+    reasonBtn[5].addEventListener("click", function (event) {
+        console.log(event.target);
+        event.target.style.backgroundColor = "#999";
+        reasonBtn[1].style.backgroundColor = "#ccc";
+        reasonBtn[2].style.backgroundColor = "#ccc";
+        reasonBtn[3].style.backgroundColor = "#ccc";
+        reasonBtn[4].style.backgroundColor = "#ccc";
+        reasonBtn[0].style.backgroundColor = "#ccc";
+
+        reasonBox.value = "";
+        reasonBox.placeholder = "직접 작성";
+        reasonBox.readOnly = false;
+    });
+
+    let openWorkPopup = document.querySelector(".today-work-zip");
+    let closeWorkPopup = document.querySelector("#closeWorkBtn");
+    let closeWorkBox = document.querySelector("#closeWorkBox");
+    let workPage = document.querySelector("#todayWorkPage");
+    let todayWorkZip = document.querySelector(".today-work-zip")
+
+    openWorkPopup.addEventListener("click", function () {
+        workPage.style.display = "block";
+        // Disable the click event on other shadow parts
+        workPage.style.pointerEvents = "auto";
+    });
+
+    // Close the modal only when clicking the "x" button
+    closeWorkPopup.addEventListener("click", function () {
+        workPage.style.display = "none";
+        // Re-enable the click event on other shadow parts
+        workPage.style.pointerEvents = "none";
+    });
+
+    let tdContent = document.querySelectorAll(".tdContent").length;
+    console.log(tdContent);
+    
+    closeWorkBox.addEventListener("click", function () {
+        workPage.style.display = "none";
+        // Re-enable the click event on other shadow parts
+        workPage.style.pointerEvents = "none";
+        // todayWorkZip.innerHTML = `
+        // <ul>
+        //     <li>${document.querySelector()}</li>
+        //     </ul>
+        //     `;
+        console.log(tdContent);
+    });
+
+    deleteBtn.addEventListener("click", function () {
+        workPage.style.display = "none";
+        // Re-enable the click event on other shadow parts
+        workPage.style.pointerEvents = "none";
+    });
+
+    // Disable closing the modal by clicking outside of it
+    workPage.addEventListener("click", function (event) {
+        event.stopPropagation();
+    });
+
+    // Enable closing the modal by clicking outside of it
+    window.addEventListener("click", function (event) {
+        if (event.target == workPage) {
+            workPage.style.display = "none";
+            // Re-enable the click event on other shadow parts
+            workPage.style.pointerEvents = "none";
+        }
+    });
+
+
+    document.querySelector("#workCheckBox").addEventListener("click", function () {
+        // checkbox가 선택된 줄을
+        // 1. 모든 줄마다 check 여부를 검사
+        // 2. check된 것만 선택 - 당첨
+        let list_checked = document.querySelectorAll(".work-check-box:checked");
+        let list_check = document.querySelectorAll(".tdContent");
+
+        for (let i = 0; i < list_checked.length; i++) {
+            list_checked[i].parentNode.parentNode.remove();
+            list_check[i].remove();
+            // 인덱스 번호 수정하기
+        }
+    })
+
+    // 전체 선택 check박스를 클릭하면
+    // 체크상태에 따라서
+    // 전부 체크 한 상태로
+    // 전부 체크 안 한 상태로
+    document.querySelector("#totalChkBtn").addEventListener("click", function (event) {
+        // 클릭된 요소가
+        let list_check = document.querySelectorAll(".work-check-box");
+        if (event.target.checked) {
+            // 체크상태라면
+            for (let i = 0; i < list_check.length; i++) {
+                list_check[i].checked = true;
+            }
+        } else {
+            // 체크상태가 아니라면
+            for (let i = 0; i < list_check.length; i++) {
+                list_check[i].checked = false;
+            }
+        }
+    });
+
+    document.querySelector(".work-check-box").addEventListener("click", function (event) {
+        if (!event.target.checked) {
+            document.querySelector("#totalChkBtn").checked = false;
+        } else {
+            let allCount = document.querySelectorAll(".work-check-box").length;
+            let checkedCount = document.querySelectorAll(".work-check-box:checked").length;
+
+            if (allCount == checkedCount) {
+                document.querySelector("#totalChkBtn").checked = true;
+            } else {
+                document.querySelector("#totalChkBtn").checked = false;
+            }
+        }
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // 관리자 / 작업자 로그인에 따라서 인터페이스 변경
+    let vacationBtn = document.querySelector("#vacation-btn");
+    let myMailPage = document.querySelector("#my-mail-page");
+    let todayWork = document.querySelector("#todayWork");
+
+    // 관리자
+    // vacationBtn.style.display = "none";
+    // myMailPage.style.display = "block";
+    // todayWork.style.display = "none";
+
+    // 작업자
+    vacationBtn.style.display = "block";
+    myMailPage.style.display = "none";
+    todayWork.style.display = "block";
+
 </script>
 
 </html>
