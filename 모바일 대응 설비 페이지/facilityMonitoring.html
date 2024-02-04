@@ -515,7 +515,7 @@
             }
 
             #total-defect-rate-section {
-                width: 305px;
+                width: 406px;
             }
 
             .total-defect-rate-display {
@@ -524,7 +524,7 @@
             }
 
             .process {
-                width: 110px;
+                width: 160px;
                 height: 190px;
                 padding: 20px;
                 display: flex;
@@ -538,7 +538,7 @@
 
             .operations {
                 font-size: 12px;
-                width: 130px;
+                width: 160px;
             }
 
             .graph-container {
@@ -698,6 +698,15 @@
         const nav = document.querySelector('nav');
         const wrap = document.querySelector('.wrap');
         const section = document.querySelector('section');
+
+        hover.forEach(link => {
+            link.addEventListener("click", function (event) {
+                event.preventDefault();
+                if (nav.classList.contains('active') && window.matchMedia("(max-width: 430px)").matches) {
+                    nav.style.height = `${section.offsetHeight}px`
+                }
+            });
+        });
 
         // if() {
         // document.querySelector("#mainTitle1").style.display = "block";
