@@ -298,30 +298,7 @@
             transition: 0.2s;
         }
 
-        #work-quality {
-            width: 40%;
-            margin-top: 4%;
-        }
 
-        .work-check-list h4 {
-            text-align: center;
-        }
-
-        .work-check-list ul {
-            margin-top: 0;
-            margin-left: 0;
-            text-align: right;
-            
-        }
-        
-        .work-check-list ul li {
-            margin-top: 0;
-            margin-left: 0;
-        }
-
-        .work-check-list ul li span {
-            font-size: 12px;
-        }
 
         #complete-button-div {
             text-align: center;
@@ -394,27 +371,17 @@
 
         /* 관리자 페이지 */
 
-        #admin-main {
-            width: 100%;
-            margin-top: 4%;
-            display: none;
-            text-align: center;
-        }
-
-        #admin-quality {
-            border: 1px solid red;
+        #work-quality {
             width: 80%;
             display: inline-block;
         }
 
-        .admin-check-list {
-            border: 1px solid blue;
+        .work-check-list {
             position: relative;
         }
 
-        .admin-check-list h4 {
+        .work-check-list h4 {
             text-align: center;
-            border: 1px solid blue;
         }
         
         .delete-checkbox-div {
@@ -430,20 +397,20 @@
             right: 0;
         }
 
-        .admin-check-list ul {
+        .work-check-list ul {
             margin-top: 0;
             margin-left: 0;
             text-align: left;
         }
         
-        .admin-check-list ul li {
+        .work-check-list ul li {
             width: 80%;
             margin-top: 4%;
             margin-left: 0;
             position: relative;
         }
 
-        .admin-check-list ul li span {
+        .work-check-list ul li span {
             margin-top: 10%;
             margin-right: 20%;
         }
@@ -552,6 +519,23 @@
             transition: 0.2s;
         }
 
+        .cancel-button {
+            margin: 0 10px;
+            background-color: red;
+            margin-top: 10px;
+            width: 80px;
+            height: 40px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+        }
+
+        .cancel-button:hover {
+            background-color: rgb(190, 52, 52);
+            transition: 0.2s;
+        }
+
 
 /* aside, section 끝*/
 
@@ -649,7 +633,7 @@
             <section>
                 <article id="article-container">
                     <div id="article-work-main">
-                        <div id="admin-main-title">
+                        <div id="work-main-title">
                             <h2>품질불량 체크사항</h2>
                         </div>
                         <div id="main-content">
@@ -669,8 +653,8 @@
                                 </div>
                             </div>
                             
-                            <div id="admin-quality">
-                                <div id="admin-list1" class="admin-check-list">
+                            <div id="work-quality">
+                                <div id="work-list1" class="work-check-list">
                                     <h4>
                                         케이스 외관 확인사항
                                         <div class="delete-checkbox-div">
@@ -704,7 +688,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <div id="admin-list2" class="admin-check-list">
+                                <div id="work-list2" class="work-check-list">
                                     <h4>
                                         전원부 확인사항
                                         <div class="delete-checkbox-div">
@@ -732,7 +716,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <div id="admin-list3" class="admin-check-list">
+                                <div id="work-list3" class="work-check-list">
                                     <h4>
                                         윈도우 설치 및 구동확인
                                         <div class="delete-checkbox-div">
@@ -846,14 +830,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- 관리자 페이지 -->
-                    <div id="admin-main">
-                        
-                        
-                        
-                        
 
-                    </div>
                     <!-- 품질불량 체크사항 추가팝업 -->
                     <div id="quality-add-popup" class="add-popup">
                         <div class="add-popup-content">
@@ -862,10 +839,11 @@
                                 <p>추가할 제목</p>
                                 <input type="text" id="add-title" class="add-title" placeholder="제목입력">
                                 <p>추가할 목록</p>
-                                <textarea id="add-detail" class="add-detail" rows="5" cols="50" placeholder="내용입력"></textarea>
+                                <textarea id="add-detail" class="add-detail" rows="5" cols="50" placeholder="목록입력시 한목록당 엔터 쳐주세요"></textarea>
                             </div>
                             <div class="add-apply-div">
                                 <button type="button" id="add-apply-button" class="apply-button">적용하기</button>
+                                <button type="button" id="cancel-apply-button" class="cancel-button">취소하기</button>
                             </div>
                         </div>
                     </div>
@@ -1029,7 +1007,7 @@
             for(let i = 0; i < delete_checked.length; i++) {
 
 
-                delete_checked[i].closest(".admin-check-list").style.display = "none";
+                delete_checked[i].closest(".work-check-list").style.display = "none";
             }
 
         });
@@ -1044,6 +1022,7 @@
         const add_popup = document.getElementById("quality-add-popup");
         const list_add_button = document.getElementById("list-add-button");
         const add_apply_button = document.getElementById("add-apply-button");
+        const cancel_apply_button = document.getElementById("cancel-apply-button");
 
         // 팝업 div 열기
         list_add_button.addEventListener("click", function () {
@@ -1053,7 +1032,7 @@
             add_popup.style.pointerEvents = "auto";
         });
 
-        // 팝업 div 닫기 => 닫기버튼누를시
+        // 팝업 div 닫기 => 적용,취소버튼누를시
         add_apply_button.addEventListener("click", function () {
             add_popup.style.display = "none";
             // 다른영역 클릭 활성화
@@ -1085,13 +1064,13 @@
                     
         const add_title = document.querySelector("#add-title");
         const add_detail = document.querySelector("#add-detail");
-        const admin_quality = document.querySelector("#admin-quality");
+        const work_quality = document.querySelector("#work-quality");
 
         
 
 
-        // admin-quality div 안에 원래 값 + 새로 추가할 div 를 넣어줌
-        admin_quality.innerHTML = admin_quality.innerHTML + `<div id="admin-list${add_count}" class="admin-check-list">
+        // work-quality div 안에 원래 값 + 새로 추가할 div 를 넣어줌
+        work_quality.innerHTML = work_quality.innerHTML + `<div id="work-list${add_count}" class="work-check-list">
                                                                 <h4>
                                                                     ${add_title.value}
                                                                     <div class="delete-checkbox-div">
