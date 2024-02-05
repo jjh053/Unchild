@@ -810,6 +810,427 @@
         .process-chart {
             display: block;
         }
+
+        @media screen and (max-width: 430px) {
+
+            form {
+                width: 100%;
+            }
+
+            /* 전체 페이지 */
+            .wrap {
+                width: 100%;
+            }
+
+            /* 헤더 */
+            header {
+                width: 100%;
+                background: #000;
+                color: #fff;
+                text-align: center;
+                padding: 5px;
+                box-sizing: border-box;
+                border-radius: 0px;
+            }
+
+            header ul li a {
+                font-size: 15px;
+                text-decoration: none;
+                color: #fff;
+                transition: color 0.3s ease;
+            }
+
+            #workerTitle {
+                display: none;
+            }
+
+            nav {
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                /* header 높이에 맞게 조정 */
+                left: 0;
+                right: 0;
+                background: #eee;
+                max-height: 881px;
+                overflow: hidden;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+                transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear;
+                transform: translateX(0%);
+                visibility: hidden;
+                z-index: 100;
+                /* opacity: 0; */
+            }
+
+            nav.active {
+                height: 881px;
+                max-height: 881px;
+                width: 200px;
+                visibility: visible;
+                opacity: 1;
+                transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear;
+                transform: translateX(0%);
+            }
+
+            /* 왼쪽에서 오른쪽으로 나오는 애니메이션을 추가합니다. */
+            nav {
+                transform: translateX(-100%);
+                transition: transform 0.5s ease;
+            }
+
+            nav.active {
+                transform: translateX(0%);
+                transition: transform 0.5s ease;
+            }
+
+            nav.closing {
+                transform: translateX(-100%);
+                transition: transform 0.5s ease;
+            }
+
+            nav .menu-bar {
+                width: 100%;
+                height: 100%;
+                border-top: 0px;
+                border-right: 1px solid #ccc;
+                border-bottom: 1px solid #ccc;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+                display: flex;
+                flex-direction: column;
+            }
+
+            .menu-bar-content {
+                width: 100%;
+                margin-left: 0px;
+            }
+
+            .menu-bar-content ul li {
+                padding: 10px;
+            }
+
+            aside {
+                display: none;
+            }
+
+            /* 섹션 목록 */
+            section {
+                width: 100%;
+            }
+
+            .tree-graph-line-title1,
+            .tree-graph-line-title2,
+            .tree-graph-line-title3,
+            .tree-graph-line-title4 {
+                border: 1px solid #444;
+                border-radius: 10px;
+                font-size: 50%;
+                width: 23.2%;
+                height: 6%;
+                line-height: 50px;
+                text-align: center;
+                cursor: pointer;
+                background-color: #eee;
+            }
+
+            .tree-graph-line-title1 {
+                background-color: #aaa;
+            }
+
+            .tree-graph-line-title1:hover,
+            .tree-graph-line-title2:hover,
+            .tree-graph-line-title3:hover,
+            .tree-graph-line-title4:hover {
+                background-color: #aaa;
+                transition: 0.2s;
+            }
+
+            .tree-line1 {
+                margin-top: 10%;
+                margin-left: 9.3%;
+                border-top: 10px solid #888;
+                border-right: 10px solid #888;
+                border-bottom: 10px solid #888;
+                border-top-right-radius: 20px;
+                border-bottom-right-radius: 20px;
+                width: 81.4%;
+                height: 130px;
+            }
+
+            .tree-line2 {
+                margin-top: -2.3%;
+                margin-left: 4.65%;
+                border-top: 10px solid #888;
+                border-bottom: 10px solid #888;
+                border-left: 10px solid #888;
+                border-top-left-radius: 20px;
+                border-bottom-left-radius: 20px;
+                width: 81.4%;
+                height: 130px;
+            }
+
+            .tree-graph-circle1 {
+                position: absolute;
+                top: 20%;
+                left: 8.1%;
+                width: 18.6%;
+                height: 10%;
+                background-color: rgb(86, 86, 202);
+                border-radius: 50%;
+                color: #fff;
+                font-size: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .tree-graph-circle2 {
+                position: absolute;
+                top: 20%;
+                left: 39.5%;
+                width: 18.6%;
+                height: 10%;
+                background-color: rgb(86, 86, 202);
+                border-radius: 50%;
+                font-size: 50%;
+                color: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .tree-graph-circle3 {
+                position: absolute;
+                top: 20%;
+                left: 71%;
+                width: 18.6%;
+                height: 10%;
+                background-color: rgb(86, 86, 202);
+                border-radius: 50%;
+                font-size: 50%;
+                color: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+
+            .tree-graph-circle4 {
+                position: absolute;
+                top: 37.6%;
+                left: 71%;
+                width: 18.6%;
+                height: 10%;
+                background-color: rgb(86, 86, 202);
+                border-radius: 50%;
+                color: #fff;
+                font-size: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .tree-graph-circle5 {
+                position: absolute;
+                top: 37.6%;
+                left: 39.5%;
+                width: 18.6%;
+                height: 10%;
+                background-color: rgb(86, 86, 202);
+                border-radius: 50%;
+                color: #fff;
+                font-size: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .tree-graph-circle6 {
+                position: absolute;
+                top: 37.6%;
+                left: 8%;
+                width: 18.6%;
+                height: 10%;
+                background-color: rgb(86, 86, 202);
+                border-radius: 50%;
+                color: #fff;
+                font-size: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .tree-graph-circle7 {
+                position: absolute;
+                top: 55%;
+                left: 8%;
+                width: 18.6%;
+                height: 10%;
+                background-color: rgb(86, 86, 202);
+                border-radius: 50%;
+                font-size: 50%;
+                color: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .tree-graph-circle8 {
+                position: absolute;
+                top: 55%;
+                left: 39.6%;
+                width: 18.6%;
+                height: 10%;
+                background-color: rgb(86, 86, 202);
+                border-radius: 50%;
+                color: #fff;
+                font-size: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .tree-graph-circle9 {
+                position: absolute;
+                top: 55%;
+                left: 71%;
+                width: 18.6%;
+                height: 10%;
+                background-color: rgb(86, 86, 202);
+                border-radius: 50%;
+                color: #fff;
+                font-size: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .tree-graph-bar1 {
+                position: absolute;
+                top: 32%;
+                left: 88.5%;
+                background-color: #fff;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                text-align: center;
+            }
+
+
+
+            .tree-graph-bar2 {
+                position: absolute;
+                top: 50%;
+                left: 2.3%;
+                background-color: #fff;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                text-align: center;
+            }
+
+            .tree-graph-bar3 {
+                position: absolute;
+                top: 23.1%;
+                left: 29.7%;
+                background-color: #fff;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                text-align: center;
+                transform: rotate(-90deg);
+            }
+
+
+            .tree-graph-bar4 {
+                position: absolute;
+                top: 23.1%;
+                left: 61.1%;
+                background-color: #fff;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                text-align: center;
+                transform: rotate(-90deg);
+            }
+
+
+            .tree-graph-bar5 {
+                position: absolute;
+                top: 40.7%;
+                left: 61.1%;
+                background-color: #fff;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                text-align: center;
+                transform: rotate(90deg);
+            }
+
+
+            .tree-graph-bar6 {
+                position: absolute;
+                top: 40.7%;
+                left: 29.7%;
+                background-color: #fff;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                text-align: center;
+                transform: rotate(90deg);
+            }
+
+
+            .tree-graph-bar7 {
+                position: absolute;
+                top: 58.4%;
+                left: 29.7%;
+                background-color: #fff;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                text-align: center;
+                transform: rotate(-90deg);
+            }
+
+
+
+            .tree-graph-bar8 {
+                position: absolute;
+                top: 58.4%;
+                left: 61.1%;
+                background-color: #fff;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                text-align: center;
+                transform: rotate(-90deg);
+            }
+
+            .process-chart-time-table {
+                text-align: center;
+                border-collapse: collapse;
+                margin: 0 auto;
+                margin-top: 100px;
+                margin-bottom: 50px;
+                font-size: 11px;
+                width: 88%;
+                height: 151px;
+            }
+
+            .process-chart-time-table th {
+                border: 0;
+                border: 1px solid #555;
+                width: 33%;
+                height: 40px;
+                background: #ddd;
+            }
+
+            .process-chart-time-table td {
+                border: 1px solid #555;
+                padding: 15px;
+            }
+
+        }
     </style>
 
 </head>
@@ -859,10 +1280,9 @@
                         <div class="menu-bar-content">
                             <ul>
                                 <li><a href="facilityMonitoring.html">설비 모니터링</a></li>
-                                <ul id="menu-bar-content-sub">
-                                    <li><a href="#">레이아웃</a></li>
-                                    <li><a href="process.html">공정</a></li>
-                                </ul>
+    
+                                <li><a href="process.html">공정</a></li>
+    
                                 <li><a href="facilitiespage.html">설비 설정</a></li>
                             </ul>
                         </div>
@@ -888,11 +1308,11 @@
                 <aside>
                     <ul>
                         <li>
-                            <a href="facilityMonitoring.html">설비 모니터링</a>
-                            <ul>
-                                <li><a href="#"> - 레이아웃</li></a>
-                                <li><a href="process.html"> - 공정도</li></a>
-                            </ul>
+                            <a href="FacilityMonitoring.html">설비 모니터링</a>
+                        </li>
+                        <li>
+                            <a href="process.html">공정도</a>
+    
                         </li>
                         <li>
                             <a href="facilitiespage.html">설비설정</a>
@@ -1088,7 +1508,17 @@
         const menuBar = document.querySelector('.menu-bar');
         const nav = document.querySelector('nav');
         const wrap = document.querySelector('.wrap');
-        let currentOptionBeingEdited = null; // This will hold the currently editing option.
+        const section = document.querySelector('section');
+        let currentOptionBeingEdited = null;
+
+        hover.forEach(link => {
+            link.addEventListener("click", function (event) {
+                event.preventDefault();
+                if (nav.classList.contains('active') && window.matchMedia("(max-width: 430px)").matches) {
+                    nav.style.height = `${section.offsetHeight}px`
+                }
+            });
+        });
 
         document.querySelector("#mainTitle2").style.display = "block";
 
@@ -1114,6 +1544,10 @@
         menuBar.addEventListener("mouseleave", function () {
             hideMenuBar();
         });
+
+        section.addEventListener("click", function () {
+            hideMenuBar();
+        })
 
         function showMenuBar() {
             nav.classList.add('active');
