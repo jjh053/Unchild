@@ -5,38 +5,586 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Facilities Page</title>
-    <link rel="stylesheet" href="facilitiespage.css">
 
 </head>
 <style>
-            @font-face {
-            font-family: "SOYOMapleBoldTTF";
-            src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/SOYOMapleBoldTTF.woff2") format("woff2");
-            font-weight: 400;
-            font-style: normal;
-        }
+    @font-face {
+        font-family: "SOYOMapleBoldTTF";
+        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/SOYOMapleBoldTTF.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+    }
 
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-family: "SOYOMapleBoldTTF";
-            margin: 0 auto;
-            background: #fff;
-            color: #333;
-            background-color: #ccc;
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: "SOYOMapleBoldTTF";
+        margin: 0 auto;
+        background: #fff;
+        color: #333;
+        background-color: #ccc;
+    }
+
+    .wrap {
+        width: 1000px;
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+    }
+
+    .header-nav-container {
+        position: relative;
+        width: 100%;
+    }
+
+    header {
+        width: 100%;
+        background: #000;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+        box-sizing: border-box;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    header h1 {
+        font-size: 30px;
+        margin: 0;
+    }
+
+    header ul {
+        padding: 0;
+        display: flex;
+        justify-content: space-around;
+        list-style: none;
+        align-items: center;
+    }
+
+    header ul li {
+        display: inline-block;
+        margin: 0 15px;
+    }
+
+    header ul li a {
+        font-size: 18px;
+        text-decoration: none;
+        color: #fff;
+        transition: color 0.3s ease;
+    }
+
+    header ul li a:hover {
+        color: #aaa;
+    }
+
+    nav {
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        /* header 높이에 맞게 조정 */
+        left: 0;
+        right: 0;
+        background: #eee;
+        max-height: 0;
+        overflow: hidden;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear;
+        visibility: hidden;
+        z-index: 100;
+    }
+
+    /* nav 숨김요소 */
+    nav.active {
+        max-height: 500px;
+        /* 활성화될 때 최대 높이 설정 */
+        visibility: visible;
+        opacity: 1;
+        transition: max-height 0.5s ease, visibility 0s, opacity 0.5s linear;
+    }
+
+    .aside-section-container {
+        box-sizing: border-box;
+        width: 100%;
+        display: flex;
+    }
+
+    /* 좌측 메뉴바 */
+    aside {
+        min-height: 800px;
+        width: 20%;
+        background: #5f5f5f;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* 섹션 창을 조작하기바람 */
+    section {
+        box-sizing: border-box;
+        width: 80%;
+        min-height: 800px;
+        background: #eee;
+        z-index: 50;
+        position: relative;
+        min-height: 815px;
+    }
+
+    .menu-bar {
+        width: 100%;
+        height: 220px;
+        border-top: 0px;
+        border-right: 1px solid #ccc;
+        display: flex;
+    }
+
+    .menu-bar-content {
+        margin-left: 40px;
+        width: 20%;
+        display: inline-block;
+        box-sizing: border-box;
+    }
+
+    .menu-bar-content ul li {
+        padding: 10px;
+    }
+
+    .menu-bar-content ul li a {
+        text-decoration: none;
+        color: #444;
+    }
+
+    .menu-bar-content ul li a:hover {
+        color: #aaa;
+        transition: color 0.2s ease;
+    }
+
+
+
+    #workerLogo {
+        width: 200px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        /* border: 1px solid red; */
+    }
+
+    #workerTitle {
+        /* border: 1px solid red; */
+        display: flex;
+        width: 1000px;
+        /* display: flex; */
+        /* border: 1px solid red; */
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px;
+
+    }
+
+    #workerTitle h1 {
+        width: 200px;
+        color: #000;
+        /* border: 1px solid red; */
+    }
+
+    #myPage {
+        width: 200px;
+        height: 80px;
+        /* border: 1px solid red; */
+        display: flex;
+        align-items: center;
+    }
+
+    #myPageLogo {
+        width: 80px;
+        height: 80px;
+        /* border: 1px solid red; */
+        margin-right: 3%;
+    }
+
+
+    #workerName a {
+        text-decoration: none;
+        color: #333;
+        font-size: 9px;
+
+    }
+
+    #workerName a:hover {
+        text-decoration: none;
+        color: #888;
+        transition: color 0.2s ease;
+    }
+
+    .workerPic {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+    }
+
+    .logo {
+        width: 200px;
+        height: 70px;
+    }
+
+    #menu-bar-content-sub {
+        list-style: circle;
+        font-size: 14px;
+        padding-left: 20px;
+    }
+
+    #menu-bar-content-sub li {
+        padding: 5px;
+    }
+
+    #mainTitle1 {
+        display: none;
+    }
+
+    #mainTitle2 {
+        display: none;
+    }
+
+    aside ul li {
+        list-style: none;
+        padding-top: 20px;
+        padding-bottom: 40px;
+    }
+
+    aside ul li a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    aside ul li ul li {
+        padding-top: 20px;
+        padding-bottom: 0px;
+
+    }
+
+    aside ul li a:hover {
+        color: #888;
+        transition: color 0.2s ease;
+    }
+
+    #options-container {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    section .lego-option {
+        display: inline-block;
+        margin-right: 50px;
+        width: 700px;
+        border-top: 1px solid #444;
+        border-bottom: 1px solid #444;
+        margin-bottom: 10px;
+        vertical-align: middle;
+        margin-top: 20px;
+        margin-left: 50px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    section .lego-option div {
+        padding-left: 20px;
+        padding-right: 20px;
+        vertical-align: middle;
+        display: inline-block;
+        /* border: 1px solid red; */
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .lego-option input {
+        font-family: "SOYOMapleBoldTTF";
+        margin: 5px 0px;
+        height: 20px;
+    }
+
+    .lego-option select {
+        font-family: "SOYOMapleBoldTTF";
+        width: 100px;
+        height: 30px;
+    }
+
+    #add-option-btn {
+        background-color: #3498DB;
+        color: #fff;
+        border: 0;
+        border-radius: 10px;
+        width: 100px;
+        height: 50px;
+        cursor: pointer;
+        margin-left: 650px;
+    }
+
+    #add-option-btn:hover {
+        background-color: rgb(0, 47, 255);
+        transition: 0.2s;
+    }
+
+    .lego-option button {
+        background: #333;
+        color: #fff;
+        border: 0;
+        border-radius: 10px;
+        width: 70px;
+        height: 50px;
+        cursor: pointer;
+    }
+
+    .lego-option button:hover {
+        background-color: #555;
+        transition: 0.2s;
+    }
+
+    #optionpage-option-select-page div .optionpage-lego-option {
+        font-family: "SOYOMapleBoldTTF";
+        width: 100px;
+        height: 17px;
+        margin-bottom: 5px;
+        padding: 5px;
+    }
+
+    .parent-div select {
+        font-family: "SOYOMapleBoldTTF";
+        width: 200px;
+        height: 30px;
+        padding: 5px;
+    }
+
+    .optionpage-delete-btn {
+        margin-top: 10px;
+        width: 80px;
+        height: 40px;
+        border-radius: 5px;
+        cursor: pointer;
+        background-color: #5e5e5e;
+        color: #fff;
+        border: 0;
+    }
+
+    .optionpage-application-btn {
+        background-color: #3498DB;
+        margin-top: 10px;
+        width: 80px;
+        height: 40px;
+        border-radius: 5px;
+        cursor: pointer;
+        color: #fff;
+        border: 0;
+    }
+
+    .optionpage-application-btn:hover {
+        background-color: rgb(0, 47, 255);
+        transition: 0.2s;
+    }
+
+    #optionpage-option-select-page {
+        display: none;
+        background: #eee;
+        width: 778px;
+        height: 97%;
+        text-align: center;
+        /* border: 1px solid red; */
+        padding: 10px;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }
+
+    .optionpage-spacebar-btn {
+        display: inline-block;
+        width: 80px;
+    }
+
+    #openModalBtn {
+        display: block;
+        background-color: #888;
+        color: #fff;
+        border: 0;
+        border-radius: 10px;
+        width: 100px;
+        height: 50px;
+        cursor: pointer;
+        margin: 50px auto;
+    }
+
+    #openModalBtn:hover {
+        background-color: #555;
+        transition: 0.2s;
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .modal-content {
+        background-color: white;
+        margin: 15% auto;
+        padding: 20px;
+        width: 30%;
+        border-radius: 5px;
+        position: relative;
+    }
+
+    .close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 10px;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+    }
+
+    .optionpage-delete-btn:hover {
+        transition: 0.2s;
+        background-color: #333;
+    }
+
+    .modal-content h3 {
+        text-align: center;
+    }
+
+    .modal-content .okay-btn {
+        background-color: #3498DB;
+        margin-top: 10px;
+        width: 80px;
+        height: 40px;
+        border-radius: 5px;
+        cursor: pointer;
+        color: #fff;
+        border: 0;
+    }
+
+    .modal-content .nono-btn {
+        margin: 0 10px;
+        background-color: red;
+        margin-top: 10px;
+        width: 80px;
+        height: 40px;
+        border-radius: 5px;
+        cursor: pointer;
+        color: #fff;
+        border: 0;
+    }
+
+    .option-check-botton-zip {
+        text-align: center;
+    }
+
+    .optionpage-button-zip {
+        margin-top: 200px;
+    }
+
+    .optionpage-button {
+        margin-left: 200px;
+    }
+
+    .optionpage-button .optionpage-add-option-btn {
+        background-color: #3498DB;
+        margin-top: 10px;
+        width: 60px;
+        height: 30px;
+        border-radius: 5px;
+        cursor: pointer;
+        color: #fff;
+        border: 0;
+    }
+
+    .optionpage-button .optionpage-add-option-btn:hover {
+        background-color: rgb(0, 47, 255);
+        transition: 0.2s;
+    }
+
+    .optionpage-button .optionpage-delete-option-btn,
+    .optionpage-delete-option-real-btn {
+        margin: 0 10px;
+        background-color: red;
+        margin-top: 10px;
+        width: 60px;
+        height: 30px;
+        border-radius: 5px;
+        cursor: pointer;
+        color: #fff;
+        border: 0;
+    }
+
+    .optionpage-button .optionpage-delete-option-btn:hover,
+    .optionpage-delete-option-real-btn:hover {
+        background-color: rgb(163, 6, 6);
+        transition: 0.2s;
+    }
+
+    .optionpage-delete-option-real-btn {
+        display: none;
+    }
+
+    .detail-title-value {
+        margin-top: 17px;
+        font-family: "SOYOMapleBoldTTF";
+        width: 100px;
+    }
+
+    .detail-content-value {
+        font-family: "SOYOMapleBoldTTF";
+        width: 200px;
+    }
+
+    #detail-select-btn {
+        background-color: #3498DB;
+        margin-top: 10px;
+        width: 60px;
+        height: 30px;
+        border-radius: 5px;
+        cursor: pointer;
+        color: #fff;
+        border: 0;
+    }
+
+    #detail-select-btn:hover {
+        background-color: rgb(0, 47, 255);
+        transition: 0.2s;
+    }
+
+    .option-delete-box {
+        width: 25px;
+        height: 25px;
+        vertical-align: middle;
+        display: none;
+    }
+
+    /* aside, section 끝*/
+    footer {
+        width: 100%;
+        background: #000;
+        color: #fff;
+        text-align: center;
+        height: 7%;
+        line-height: 70px;
+    }
+
+    @media screen and (max-width: 430px) {
+
+        form {
+            width: 100%;
+            min-height: 800px;
         }
 
         .wrap {
-            width: 1000px;
-            display: flex;
-            flex-direction: column;
-            margin: auto;
+            width: 100%;
         }
 
-        .header-nav-container {
-            position: relative;
-            width: 100%;
+        #workerTitle {
+            display: none;
         }
 
         header {
@@ -44,39 +592,16 @@
             background: #000;
             color: #fff;
             text-align: center;
-            padding: 20px;
+            padding: 5px;
             box-sizing: border-box;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
-        }
-
-        header h1 {
-            font-size: 30px;
-            margin: 0;
-        }
-
-        header ul {
-            padding: 0;
-            display: flex;
-            justify-content: space-around;
-            list-style: none;
-            align-items: center;
-        }
-
-        header ul li {
-            display: inline-block;
-            margin: 0 15px;
+            border-radius: 0px;
         }
 
         header ul li a {
-            font-size: 18px;
+            font-size: 15px;
             text-decoration: none;
             color: #fff;
             transition: color 0.3s ease;
-        }
-
-        header ul li a:hover {
-            color: #aaa;
         }
 
         nav {
@@ -86,227 +611,97 @@
             /* header 높이에 맞게 조정 */
             left: 0;
             right: 0;
-            background: #eee;
-            max-height: 0;
+            background: #dde;
             overflow: hidden;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
             transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear;
+            transform: translateX(0%);
             visibility: hidden;
             z-index: 100;
+            /* opacity: 0; */
         }
 
-        /* nav 숨김요소 */
         nav.active {
-            max-height: 500px;
-            /* 활성화될 때 최대 높이 설정 */
+            min-height: 815px;
+            max-height: none;
+            width: 200px;
             visibility: visible;
             opacity: 1;
-            transition: max-height 0.5s ease, visibility 0s, opacity 0.5s linear;
+            transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear;
+            transform: translateX(0%);
         }
 
-        .aside-section-container {
-            box-sizing: border-box;
+        /* 왼쪽에서 오른쪽으로 나오는 애니메이션을 추가합니다. */
+        nav {
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
+        }
+
+        nav.active {
+            transform: translateX(0%);
+            transition: transform 0.5s ease;
+        }
+
+        nav.closing {
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
+        }
+
+        nav .menu-bar {
             width: 100%;
-            display: flex;
-        }
-
-        /* 좌측 메뉴바 */
-        aside {
-            min-height: 800px;
-            width: 20%;
-            background: #5f5f5f;
+            height: 100%;
+            border-top: 0px;
+            border-right: 1px solid #ccc;
             display: flex;
             flex-direction: column;
         }
 
-        /* 섹션 창을 조작하기바람 */
-        section {
-            box-sizing: border-box;
-            width: 80%;
-            min-height: 800px;
-            background: #eee;
-            z-index: 50;
-            position: relative;
-            min-height: 815px;
-        }
-
-        .menu-bar {
-            width: 100%;
-            height: 220px;
-            border-top: 0px;
-            border-right: 1px solid #ccc;
-            display: flex;
-        }
-
         .menu-bar-content {
-            margin-left: 40px;
-            width: 20%;
-            display: inline-block;
-            box-sizing: border-box;
+            width: 100%;
+            margin-left: 0px;
         }
 
         .menu-bar-content ul li {
             padding: 10px;
         }
 
-        .menu-bar-content ul li a {
-            text-decoration: none;
-            color: #444;
-        }
-
-        .menu-bar-content ul li a:hover {
-            color: #aaa;
-            transition: color 0.2s ease;
-        }
-
-
-
-        #workerLogo {
-            width: 200px;
-            height: 80px;
-            display: flex;
-            align-items: center;
-            /* border: 1px solid red; */
-        }
-
-        #workerTitle {
-            /* border: 1px solid red; */
-            display: flex;
-            width: 1000px;
-            /* display: flex; */
-            /* border: 1px solid red; */
-            justify-content: space-between;
-            align-items: center;
-            padding: 5px;
-
-        }
-
-        #workerTitle h1 {
-            width: 200px;
-            color: #000;
-            /* border: 1px solid red; */
-        }
-
-        #myPage {
-            width: 200px;
-            height: 80px;
-            /* border: 1px solid red; */
-            display: flex;
-            align-items: center;
-        }
-
-        #myPageLogo {
-            width: 80px;
-            height: 80px;
-            /* border: 1px solid red; */
-            margin-right: 3%;
-        }
-
-
-        #workerName a {
-            text-decoration: none;
-            color: #333;
-            font-size: 9px;
-
-        }
-
-        #workerName a:hover {
-            text-decoration: none;
-            color: #888;
-            transition: color 0.2s ease;
-        }
-
-        .workerPic {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-        }
-
-        .logo {
-            width: 200px;
-            height: 70px;
-        }
-
-        #menu-bar-content-sub {
-            list-style: circle;
-            font-size: 14px;
-            padding-left: 20px;
-        }
-
-        #menu-bar-content-sub li {
-            padding: 5px;
-        }
-
-        #mainTitle1 {
+        aside {
             display: none;
         }
 
-        #mainTitle2 {
-            display: none;
-        }
-
-        aside ul li {
-            list-style: none;
-            padding-top: 20px;
-            padding-bottom: 40px;
-        }
-
-        aside ul li a {
-            color: #fff;
-            text-decoration: none;
-        }
-
-        aside ul li ul li {
-            padding-top: 20px;
-            padding-bottom: 0px;
-
-        }
-
-        aside ul li a:hover {
-            color: #888;
-            transition: color 0.2s ease;
-        }
-
-        #options-container {
+        section {
+            width: 100%;
             display: flex;
             flex-direction: column;
-            text-align: center;
-        }
-
-        section .lego-option {
-            display: inline-block;
-            margin-right: 50px;
-            width: 700px;
-            border-top: 1px solid #444;
-            border-bottom: 1px solid #444;
-            margin-bottom: 10px;
-            vertical-align: middle;
-            margin-top: 20px;
-            margin-left: 50px;
-            padding-top: 20px;
-            padding-bottom: 20px;
-        }
-
-        section .lego-option div {
-            padding-left: 20px;
-            padding-right: 20px;
-            vertical-align: middle;
-            display: inline-block;
-            /* border: 1px solid red; */
             align-items: center;
-            justify-content: space-around;
         }
 
-        .lego-option input {
-            font-family: "SOYOMapleBoldTTF";
-            margin: 5px 0px;
-            height: 20px;
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            font-size: 12px;
         }
 
-        .lego-option select {
-            font-family: "SOYOMapleBoldTTF";
-            width: 100px;
-            height: 30px;
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            top: 30%;
+            width: 60%;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .modal-content input {
+            margin-top: 10px;
         }
 
         #add-option-btn {
@@ -314,15 +709,25 @@
             color: #fff;
             border: 0;
             border-radius: 10px;
-            width: 100px;
-            height: 50px;
+            width: 70px;
+            height: 30px;
             cursor: pointer;
-            margin-left: 650px;
+            margin-left: 210px;
         }
 
-        #add-option-btn:hover {
-            background-color: rgb(0, 47, 255);
-            transition: 0.2s;
+        section .lego-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            width: 300px;
+            border-top: 1px solid #444;
+            border-bottom: 1px solid #444;
+            margin-bottom: 10px;
+            margin-top: 20px;
+            gap: 5px;
+            justify-content: space-evenly;
+            box-sizing: border-box;
         }
 
         .lego-option button {
@@ -331,28 +736,46 @@
             border: 0;
             border-radius: 10px;
             width: 70px;
-            height: 50px;
+            height: 30px;
             cursor: pointer;
         }
 
-        .lego-option button:hover {
-            background-color: #555;
-            transition: 0.2s;
+        /* 옵션변경 페이지 */
+        #optionpage-option-select-page {
+            display: none;
+            flex-direction: column;
+            background: #eee;
+            width: 100%;
+            box-sizing: border-box;
+            height: 100%;
+            text-align: center;
+            /* border: 1px solid red; */
+            padding: 10px;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+
+        .optionpage-spacebar-btn {
+            width: 0;
         }
 
         #optionpage-option-select-page div .optionpage-lego-option {
             font-family: "SOYOMapleBoldTTF";
-            width: 100px;
+            width: 300px;
             height: 17px;
-            margin-bottom: 5px;
-            padding: 5px;
+            /* margin-bottom: 5px; */
+            /* padding: 5px; */
+            box-sizing: border-box;
+            text-align: center;
         }
 
         .parent-div select {
             font-family: "SOYOMapleBoldTTF";
-            width: 200px;
+            width: 300px;
             height: 30px;
             padding: 5px;
+            margin-bottom: 5px;
         }
 
         .optionpage-delete-btn {
@@ -377,486 +800,13 @@
             border: 0;
         }
 
-        .optionpage-application-btn:hover {
-            background-color: rgb(0, 47, 255);
-            transition: 0.2s;
-        }
-
-        #optionpage-option-select-page {
-            display: none;
-            background: #eee;
-            width: 778px;
-            height: 97%;
-            text-align: center;
-            /* border: 1px solid red; */
-            padding: 10px;
-            position: absolute;
-            top: 0px;
-            left: 0px;
-        }
-
-        .optionpage-spacebar-btn {
-            display: inline-block;
-            width: 80px;
-        }
-
-        #openModalBtn {
-            display: block;
-            background-color: #888;
-            color: #fff;
-            border: 0;
-            border-radius: 10px;
-            width: 100px;
-            height: 50px;
-            cursor: pointer;
-            margin: 50px auto;
-        }
-
-        #openModalBtn:hover {
-            background-color: #555;
-            transition: 0.2s;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-        }
-
-        .modal-content {
-            background-color: white;
-            margin: 15% auto;
-            padding: 20px;
-            width: 30%;
-            border-radius: 5px;
-            position: relative;
-        }
-
-        .close {
-            position: absolute;
-            top: 0;
-            right: 0;
-            padding: 10px;
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-        }
-
-        .optionpage-delete-btn:hover {
-            transition: 0.2s;
-            background-color: #333;
-        }
-
-        .modal-content h3 {
-            text-align: center;
-        }
-
-        .modal-content .okay-btn {
-            background-color: #3498DB;
-            margin-top: 10px;
-            width: 80px;
-            height: 40px;
-            border-radius: 5px;
-            cursor: pointer;
-            color: #fff;
-            border: 0;
-        }
-
-        .modal-content .nono-btn {
-            margin: 0 10px;
-            background-color: red;
-            margin-top: 10px;
-            width: 80px;
-            height: 40px;
-            border-radius: 5px;
-            cursor: pointer;
-            color: #fff;
-            border: 0;
-        }
-
-        .option-check-botton-zip {
-            text-align: center;
-        }
-
-        .optionpage-button-zip {
-            margin-top: 200px;
-        }
-
         .optionpage-button {
-            margin-left: 200px;
+            margin: 0;
         }
 
-        .optionpage-button .optionpage-add-option-btn {
-            background-color: #3498DB;
-            margin-top: 10px;
-            width: 60px;
-            height: 30px;
-            border-radius: 5px;
-            cursor: pointer;
-            color: #fff;
-            border: 0;
-        }
-
-        .optionpage-button .optionpage-add-option-btn:hover {
-            background-color: rgb(0, 47, 255);
-            transition: 0.2s;
-        }
-
-        .optionpage-button .optionpage-delete-option-btn,
-        .optionpage-delete-option-real-btn {
-            margin: 0 10px;
-            background-color: red;
-            margin-top: 10px;
-            width: 60px;
-            height: 30px;
-            border-radius: 5px;
-            cursor: pointer;
-            color: #fff;
-            border: 0;
-        }
-
-        .optionpage-button .optionpage-delete-option-btn:hover,
-        .optionpage-delete-option-real-btn:hover {
-            background-color: rgb(163, 6, 6);
-            transition: 0.2s;
-        }
-
-        .optionpage-delete-option-real-btn {
-            display: none;
-        }
-
-        .detail-title-value {
-            margin-top: 17px;
-            font-family: "SOYOMapleBoldTTF";
-            width: 100px;
-        }
-
-        .detail-content-value {
-            font-family: "SOYOMapleBoldTTF";
-            width: 200px;
-        }
-
-        #detail-select-btn {
-            background-color: #3498DB;
-            margin-top: 10px;
-            width: 60px;
-            height: 30px;
-            border-radius: 5px;
-            cursor: pointer;
-            color: #fff;
-            border: 0;
-        }
-
-        #detail-select-btn:hover {
-            background-color: rgb(0, 47, 255);
-            transition: 0.2s;
-        }
-
-        .option-delete-box {
-            width: 25px;
-            height: 25px;
-            vertical-align: middle;
-            display: none;
-        }
-
-        /* aside, section 끝*/
-        footer {
-            width: 100%;
-            background: #000;
-            color: #fff;
-            text-align: center;
-            height: 7%;
-            line-height: 70px;
-        }
-
-        @media screen and (max-width: 770px) {
-            
-            form{
-                width: 100%;
-            }
-
-            #workerTitle {
-                width: 100%;
-            }
-
-            .wrap{
-                width: 100%;
-            }
-            
-            section{
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-
-            section .lego-option {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                margin: 0;
-                width: 570px;
-                border-top: 1px solid #444;
-                border-bottom: 1px solid #444;
-                margin-bottom: 10px;
-                margin-top: 20px;
-                padding-top: 20px;
-                padding-bottom: 20px;
-                box-sizing: border-box;
-            }
-
-            .optionpage-button {
-                margin: 0;
-            }
-
-            #add-option-btn {
-                background-color: #3498DB;
-                color: #fff;
-                border: 0;
-                border-radius: 10px;
-                width: 70px;
-                height: 30px;
-                cursor: pointer;
-                margin-left: 500px;
-            }
-        }
-
-        @media screen and (max-width: 430px) {
-
-            form {
-                width: 100%;
-                min-height: 800px;
-            }
-
-            .wrap {
-                width: 100%;
-            }
-
-            #workerTitle {
-                display: none;
-            }
-
-            header {
-                width: 100%;
-                background: #000;
-                color: #fff;
-                text-align: center;
-                padding: 5px;
-                box-sizing: border-box;
-                border-radius: 0px;
-            }
-
-            header ul li a {
-                font-size: 15px;
-                text-decoration: none;
-                color: #fff;
-                transition: color 0.3s ease;
-            }
-
-            nav {
-                width: 100%;
-                position: absolute;
-                top: 100%;
-                /* header 높이에 맞게 조정 */
-                left: 0;
-                right: 0;
-                background: #eee;
-                overflow: hidden;
-                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-                transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear;
-                transform: translateX(0%);
-                visibility: hidden;
-                z-index: 100;
-                /* opacity: 0; */
-            }
-
-            nav.active {
-                min-height: 815px;
-                max-height: 1287px;
-                width: 200px;
-                visibility: visible;
-                opacity: 1;
-                transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear;
-                transform: translateX(0%);
-            }
-
-            /* 왼쪽에서 오른쪽으로 나오는 애니메이션을 추가합니다. */
-            nav {
-                transform: translateX(-100%);
-                transition: transform 0.5s ease;
-            }
-
-            nav.active {
-                transform: translateX(0%);
-                transition: transform 0.5s ease;
-            }
-
-            nav.closing {
-                transform: translateX(-100%);
-                transition: transform 0.5s ease;
-            }
-
-            nav .menu-bar {
-                width: 100%;
-                height: 100%;
-                border-top: 0px;
-                border-right: 1px solid #ccc;
-                display: flex;
-                flex-direction: column;
-            }
-
-            .menu-bar-content {
-                width: 100%;
-                margin-left: 0px;
-            }
-
-            .menu-bar-content ul li {
-                padding: 10px;
-            }
-
-
-            aside {
-                display: none;
-            }
-
-            section {
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .modal {
-                display: none;
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color: rgba(0, 0, 0, 0.7);
-                font-size: 12px;
-            }
-
-            .modal-content {
-                background-color: white;
-                margin: 15% auto;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                padding: 20px;
-                top: 30%;
-                width: 60%;
-                border-radius: 5px;
-                position: relative;
-            }
-
-            .modal-content input {
-                margin-top: 10px;
-            }
-
-            #add-option-btn {
-                background-color: #3498DB;
-                color: #fff;
-                border: 0;
-                border-radius: 10px;
-                width: 70px;
-                height: 30px;
-                cursor: pointer;
-                margin-left: 210px;
-            }
-
-            section .lego-option {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                margin: 0;
-                width: 300px;
-                border-top: 1px solid #444;
-                border-bottom: 1px solid #444;
-                margin-bottom: 10px;
-                margin-top: 20px;
-                gap: 5px;
-                justify-content: space-evenly;
-                box-sizing: border-box;
-            }
-
-            .lego-option button {
-                background: #333;
-                color: #fff;
-                border: 0;
-                border-radius: 10px;
-                width: 70px;
-                height: 30px;
-                cursor: pointer;
-            }
-
-            /* 옵션변경 페이지 */
-            #optionpage-option-select-page {
-                display: none;
-                background: #eee;
-                width: 100%;
-                height: 100%;
-                text-align: center;
-                /* border: 1px solid red; */
-                padding: 10px;
-                position: absolute;
-                top: 0px;
-                left: 0px;
-            }
-
-            .optionpage-spacebar-btn {
-                width: 0;
-            }
-
-            #optionpage-option-select-page div .optionpage-lego-option {
-                font-family: "SOYOMapleBoldTTF";
-                width: 300px;
-                height: 17px;
-                /* margin-bottom: 5px; */
-                /* padding: 5px; */
-                box-sizing: border-box;
-                text-align: center;
-            }
-
-            .parent-div select {
-                font-family: "SOYOMapleBoldTTF";
-                width: 300px;
-                height: 30px;
-                padding: 5px;
-                margin-bottom: 5px;
-            }
-
-            .optionpage-delete-btn {
-                margin-top: 10px;
-                width: 80px;
-                height: 40px;
-                border-radius: 5px;
-                cursor: pointer;
-                background-color: #5e5e5e;
-                color: #fff;
-                border: 0;
-            }
-
-            .optionpage-application-btn {
-                background-color: #3498DB;
-                margin-top: 10px;
-                width: 80px;
-                height: 40px;
-                border-radius: 5px;
-                cursor: pointer;
-                color: #fff;
-                border: 0;
-            }
-
-            .optionpage-button {
-                margin: 0;
-            }
-
-        }
+    }
 </style>
+
 <body>
     <form name="frm">
         <div id="workerTitle">
@@ -900,10 +850,7 @@
                         <div class="menu-bar-content">
                             <ul>
                                 <li><a href="facilityMonitoring.html">설비 모니터링</a></li>
-                                <ul id="menu-bar-content-sub">
-                                    <li><a href="#">레이아웃</a></li>
-                                    <li><a href="process.html">공정</a></li>
-                                </ul>
+                                <li><a href="process.html">공정도</a></li>
                                 <li><a href="facilitiespage.html">설비 설정</a></li>
                             </ul>
                         </div>
@@ -930,10 +877,9 @@
                     <ul>
                         <li>
                             <a href="facilityMonitoring.html">설비 모니터링</a>
-                            <ul>
-                                <li><a href="#"> - 레이아웃</li></a>
-                                <li><a href="process.html"> - 공정도</li></a>
-                            </ul>
+                        <li>
+                            <a href="process.html">공정도</a>
+                        </li>
                         </li>
                         <li>
                             <a href="facilitiespage.html">설비설정</a>
@@ -1072,9 +1018,9 @@
         let currentOptionBeingEdited = null;
 
         hover.forEach(link => {
-            link.addEventListener("click", function(event){
+            link.addEventListener("click", function (event) {
                 event.preventDefault();
-                if(nav.classList.contains('active') && window.matchMedia("(max-width: 430px)").matches) {
+                if (nav.classList.contains('active') && window.matchMedia("(max-width: 430px)").matches) {
                     nav.style.height = `${section.offsetHeight}px`
                 }
             });
@@ -1104,7 +1050,7 @@
             hideMenuBar();
         });
 
-        section.addEventListener("click", function(){
+        section.addEventListener("click", function () {
             hideMenuBar();
         })
 
@@ -1133,7 +1079,7 @@
             }
         });
 
-        
+
         document.getElementById('add-option-btn').addEventListener('click', function () {
             let originalOption = document.querySelector('.lego-option');
             let lineNumber = document.querySelectorAll('.lego-option').length;
@@ -1161,7 +1107,7 @@
             } else {
                 alert("4번 생산라인까지만 추가가 가능합니다!");
             }
-            
+
         });
 
         function updateAllOptions() {
@@ -1197,12 +1143,12 @@
             let parentDivLength = document.querySelectorAll(".parent-div").length;
 
             for (let i = 1; i <= parentDivLength; i++) {
-                try{
+                try {
                     let selectOption = optionContainer.querySelector(`.option-value${i}`).value;
                     let selectElement = document.querySelector(`.optionpage-lego-option-select${i}`);
-    
+
                     let [value, text] = selectOption.split(' : ');
-    
+
                     for (let option of selectElement.options) {
                         if (option.value === value && option.text === text) {
                             option.selected = true;
@@ -1214,7 +1160,7 @@
                 }
             }
 
-            document.querySelector("#optionpage-option-select-page").style.display = "block";
+            document.querySelector("#optionpage-option-select-page").style.display = "flex";
         }
 
 
