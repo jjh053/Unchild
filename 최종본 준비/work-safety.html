@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Management System</title>
+    <script src="workSafety.js"></script>
+    <style>
+        @font-face {
+            font-family: "SOYOMapleBoldTTF";
+            src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/SOYOMapleBoldTTF.woff2") format("woff2");
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: "SOYOMapleBoldTTF";
+            margin: 0 auto;
+            /* font-family: Arial, sans-serif; */
+            background: #fff;
+            color: #333;
+            background-color: #ccc;
+        }
+
+        /* title */
+        #workerTitle {
+            display: flex;
+            width: 1000px;
+            justify-content: space-between;
+            padding: 5px;
+
+        }
+
+        #workerLogo {
+            width: 200px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        #workerTitle h1 {
+            width: 200px;
+            color: #000;
+        }
+
+        #mainTitle1 {
+            display: none;
+        }
+
+        #mainTitle1 a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        #mainTitle2 {
+            display: none;
+        }
+
+        #mainTitle2 a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        #myPage {
+            width: 200px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        #myPageLogo {
+            width: 80px;
+            height: 80px;
+            margin-right: 3%;
+        }
+
+        #workerName a {
+            text-decoration: none;
+            color: #333;
+
+        }
+
+        #workerName a:hover {
+            text-decoration: none;
+            color: #888;
+            transition: color 0.2s ease;
+        }
+
+        #workerTitle .workerPic {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+        }
+
+        #workerTitle .logo {
+            width: 200px;
+            height: 70px;
+        }
+
+        /* title end */
+
+        .wrap {
+            width: 1000px;
+            /* height: 100vh; */
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+        }
+
+        /* header와 nav의 집합 */
+        .header-nav-container {
+            position: relative;
+            width: 100%;
+            /* wrap과 동일한 너비 */
+        }
+
+        /* header 코드 */
+        header {
+            width: 100%;
+            background: #000;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        header h1 {
+            font-size: 30px;
+            margin: 0;
+        }
+
+        header ul {
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+            list-style: none;
+            align-items: center;
+        }
+
+        header ul li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+
+        header ul li a {
+            font-size: 18px;
+            text-decoration: none;
+            color: #fff;
+            transition: color 0.3s ease;
+        }
+
+        header ul li a:hover {
+            color: #aaa;
+        }
+
+        /* header 코드 끝 */
+
+        nav {
+            width: 100%;
+            position: absolute;
+            top: 100%;
+            /* header 높이에 맞게 조정 */
+            left: 0;
+            right: 0;
+            background: #eee;
+            max-height: 0;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear;
+            visibility: hidden;
+            z-index: 100;
+            /* opacity: 0; */
+        }
+
+        /* nav 숨김요소 */
+        nav.active {
+            max-height: 500px;
+            /* 활성화될 때 최대 높이 설정 */
+            visibility: visible;
+            opacity: 1;
+            transition: max-height 0.5s ease, visibility 0s, opacity 0.5s linear;
+        }
+
+        /* nav 안의 menu-bar요소 */
+        .menu-bar {
+            width: 100%;
+            height: 220px;
+            border-top: 0px;
+            border-right: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            display: flex;
+        }
+
+        .menu-bar-content {
+            margin-left: 40px;
+            width: 20%;
+            display: inline-block;
+            box-sizing: border-box;
+        }
+
+        .menu-bar-content ul li {
+            padding: 10px;
+        }
+
+        .menu-bar-content ul li a {
+            text-decoration: none;
+            color: #444;
+        }
+
+        .menu-bar-content ul li a:hover {
+            color: #aaa;
+            transition: color 0.2s ease;
+        }
+
+        #menu-bar-content-sub {
+            list-style: circle;
+            font-size: 14px;
+            padding-left: 20px;
+        }
+
+        #menu-bar-content-sub li {
+            padding: 5px;
+        }
+
+        /* menu-bar요소 끝 */
+
+        /* aside, section */
+        .aside-section-container {
+            width: 100%;
+            display: flex;
+            /* height: 100%; */
+        }
+
+        /* 좌측 메뉴바 */
+        aside {
+            width: 20%;
+            background: #5f5f5f;
+        }
+
+        .aside-section-container ul li {
+            margin-top: 25%;
+            list-style: none;
+        }
+
+        .aside-section-container ul li a:hover {
+            color: black;
+        }
+
+        .aside-section-container ul li a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        /* 섹션 창을 조작하기바람 */
+        section {
+            border: 1px solid red;
+            display: flex;
+            justify-content: center;
+            width: 80%;
+            overflow: auto;
+            background: #eee;
+            z-index: 50;
+            align-items: center;
+        }
+
+        .work-safety-main {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .work-safety-content {
+            margin-bottom: 5%;
+            width: 100%;
+            background-color: #eee;
+        }
+
+        .work-safety-title .work-safety-order {
+            text-align: center;
+            width: 100%;
+        }
+
+        .work-safety-list-zip {
+            width: 80%;
+            border: 1px solid rgb(168, 168, 168);
+            border-radius: 5px;
+            margin-left: 10%;
+            margin-bottom: 5%;
+            background-color: #fff;
+        }
+
+        .work-ann {
+            margin-left: -63%;
+        }
+
+        .work-safety-list {
+            width: 100%;
+            margin-top: 2%;
+            display: flex;
+            justify-content: center;
+            border-bottom: 1px solid #555;
+        }
+
+        .work-safety-list span {
+            width: 100%;
+            font-size: 15px;
+        }
+
+        .work-safety-list p {
+            width: 100%;
+            font-size: 13px;
+        }
+
+        .work-safety-order {
+            width: 60%;
+        }
+
+        .work-safety-img {
+            width: 30%;
+            display: inline-block;
+            margin-right: -10%;
+        }
+
+        .work-safety-img img {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 2%;
+            border: 1px solid #555;
+        }
+
+        .delete-safety-checkbox {
+            display: block;
+            margin-top: 2%;
+            margin-left: -4%;
+            margin-right: 2%;
+        }
+
+        .work-safety-order h3 {
+            text-align: center;
+            font-size: 30px;
+        }
+
+        .safety-button-div {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 5%;
+        }
+
+        .safety-user-button-div {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 5%;
+            display: none;
+        }
+
+        .add-button {
+            background-color: #3498DB;
+            margin-top: 10px;
+            width: 80px;
+            height: 40px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+        }
+
+        .add-button:hover {
+            background-color: rgb(0, 47, 255);
+            transition: 0.2s;
+        }
+
+        .list-delete-button {
+            margin: 0 10px;
+            background-color: red;
+            margin-top: 10px;
+            width: 80px;
+            height: 40px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+        }
+
+        .list-delete-button:hover {
+            background-color: rgb(190, 52, 52);
+            transition: 0.2s;
+        }
+
+        .admin-change-button {
+            background-color: #3498DB;
+            margin-top: 10px;
+            width: 80px;
+            height: 40px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+        }
+
+        .admin-change-button:hover {
+            background-color: rgb(0, 47, 255);
+            transition: 0.2s;
+        }
+
+
+
+
+        /* 추가하기 팝업 */
+        .add-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .safety-add-popup-content {
+            background-color: white;
+            margin: 15% auto;
+            margin-top: 5%;
+            padding: 20px;
+            width: 70%;
+            border-radius: 5px;
+            position: relative;
+            text-align: center;
+        }
+
+        .add-note {
+            width: 50%;
+            display: inline-block;
+        }
+
+        .add-note p {
+            text-align: left;
+        }
+
+        .img-note {
+            width: 50%;
+            display: inline-block;
+        }
+
+        .img-note span {
+            margin-left: 0%;
+            margin-right: 10%;
+        }
+
+        .img-select-button,
+        .img-button {
+            margin-top: 3%;
+        }
+
+        .img-select-button {
+            background: #333;
+            font-size: 12px;
+            color: #fff;
+            border: 0;
+            border-radius: 10px;
+            width: 70px;
+            height: 25px;
+            cursor: pointer;
+            margin-left: 18%;
+        }
+
+        .img-select-button:hover {
+            background-color: #555;
+            transition: 0.2s;
+        }
+
+        #add-img {
+            width: 45%;
+        }
+
+        .img-preview img {
+            width: 150px;
+            height: 150px;
+        }
+
+        .safety-add-popup-content p {
+            width: 50%;
+            margin-left: 4%;
+            margin-bottom: 0;
+        }
+
+        .add-title {
+            width: 90%;
+            margin-top: 2%;
+        }
+
+        .add-detail {
+            width: 90%;
+            height: 300px;
+            margin-top: 2%;
+            resize: none;
+        }
+
+        .add-apply-div {
+            width: 100%;
+            margin-top: 3%;
+        }
+
+        .apply-button {
+            background-color: #3498DB;
+            margin-top: 10px;
+            width: 80px;
+            height: 40px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+        }
+
+        .apply-button:hover {
+            background-color: rgb(0, 47, 255);
+            transition: 0.2s;
+        }
+
+        .cancel-button {
+            margin: 0 10px;
+            background-color: red;
+            margin-top: 10px;
+            width: 80px;
+            height: 40px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+        }
+
+        .cancel-button:hover {
+            background-color: rgb(190, 52, 52);
+            transition: 0.2s;
+        }
+
+
+
+        /* 이미지 팝업
+        .img-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .img-popup-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            width: 70%;
+            border-radius: 5px;
+            position: relative;
+            text-align: center;
+        }
+
+        .img-note {
+            width: 50%;
+            display: inline-block;
+        }
+
+        .img-popup-content p {
+            width: 50%;
+            margin-left: 4%;
+            margin-bottom: 0;
+        }
+
+        .img-select-button, .img-button {
+            margin-top: 3%;
+        }
+
+        .img-select-button {
+            background: #333;
+            font-size: 12px;
+            color: #fff;
+            border: 0;
+            border-radius: 10px;
+            width: 70px;
+            height: 25px;
+            cursor: pointer;
+            margin-left: 18%;
+        }
+
+        .img-select-button:hover {
+            background-color: #555;
+            transition: 0.2s;
+        }
+
+        .img-apply-div {
+            width: 100%;
+            margin-top: 3%;
+        }
+
+        .img-apply-button {
+            background-color: #3498DB;
+            margin-top: 10px;
+            width: 80px;
+            height: 40px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+        }
+
+        .img-apply-button:hover {
+            background-color: rgb(0, 47, 255);
+            transition: 0.2s;
+        }
+
+        .img-cancel-button {
+            margin: 0 10px;
+            background-color: red;
+            margin-top: 10px;
+            width: 80px;
+            height: 40px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+        }
+
+        .img-cancel-button:hover {
+            background-color: rgb(190, 52, 52);
+            transition: 0.2s;
+        } */
+
+
+
+        /* aside, section 끝*/
+
+        footer {
+            width: 100%;
+            background: #000;
+            color: #fff;
+            text-align: center;
+            height: 7%;
+            line-height: 70px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="workerTitle">
+        <div id="workerLogo">
+            <a href="#">
+                <image
+                    src="https://cdn.discordapp.com/attachments/1185161279804026893/1200675420325036082/Jlogo.png?ex=65c70b1f&is=65b4961f&hm=ae28f53e9280fe71cffc1fc2ca74aec892875f13143ef4e109da28023c5b414b&"
+                    class="logo"></image>
+            </a>
+        </div>
+        <h1 id="mainTitle1"><a href="main.html">작업자 페이지</a></h1>
+        <h1 id="mainTitle2"><a href="main.html">관리자 페이지</a></h1>
+        <div id="myPage">
+            <div id="myPageLogo">
+                <image
+                    src="https://image.spreadshirtmedia.net/image-server/v1/compositions/T996A1PA2179PT10X17Y18D172654919W7098H6789/views/1,width=550,height=550,appearanceId=1,backgroundColor=FFFFFF,noPt=true/pixel-art-fox-fox-podstawki.jpg"
+                    class="workerPic">
+            </div>
+            <span id="workerName"><a href="#">이성현 대리님</a></span>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <div class="header-nav-container">
+            <header>
+                <ul>
+                    <li><a href="#" class="hover" title="작업지시서">작업</a></li>
+                    <li><a href="#" class="hover" title="품질검사">설비</a></li>
+                    <li><a href="#" class="hover" title="건의사항">재고관리</a></li>
+                    <li><a href="#" class="hover" title="직원 게시판">게시판</a></li>
+                </ul>
+            </header>
+            <nav>
+                <div class="menu-bar">
+                    <div class="menu-bar-content">
+                        <ul>
+                            <li><a href="work-order.html">작업 지침서</a></li>
+                            <li><a href="work-safety.html">안전 지침서</a></li>
+                            <li><a href="work-quality.html">품질검사</a></li>
+                            <li><a href="#">일일 현황</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-bar-content">
+                        <ul>
+                            <li><a href="facilityMonitoring.html">설비 모니터링</a></li>
+                            <li><a href="process.html">공정도</a></li>
+                            <li><a href="facilitiespage.html">설비 설정</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-bar-content">
+                        <ul>
+                            <li><a href="stock_status.html">재고 현황</a></li>
+                            <li><a href="Stock_Request.html">재고 신청</a></li>
+                            <li><a href="Finished_product_management.html">완제품 관리</a></li>
+                            <li><a href="Report_of_defective_inventory.html">재고 불량 신고</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-bar-content">
+                        <ul>
+                            <li><a href="#">자유게시판</a></li>
+                            <li><a href="#">건의사항</a></li>
+                            <li><a href="#">Q&A</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="aside-section-container">
+            <aside>
+                <ul>
+                    <li><a href="work-order.html">작업지침서</a></li>
+                    <li><a href="work-safety.html">안전지침서</a></li>
+                    <li><a href="work-quality.html">품질검사</a></li>
+                    <li><a href="#">작업보고</a></li>
+                </ul>
+            </aside>
+            <section>
+                <article>
+                    <div class="work-safety-main">
+                        <div id="work-safety-content" class="work-safety-content">
+
+                            <div class="work-safety-title">
+                                <div class="work-safety-order">
+                                    <h3>안전지침서</h3>
+                                </div>
+                            </div>
+                            <div class="work-safety-list-zip">
+
+                                <div class="work-safety-list">
+                                    <div class="work-ann">
+                                        <h4>
+                                            안전 지침서는 다음과 같습니다
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div class="work-safety-list">
+                                    <div class="delete-safety-checkbox">
+                                        <input type="checkbox" class="delete-safety-check">
+                                    </div>
+                                    <div class="work-safety-order">
+                                        <p>
+                                            * 안전작업 준수사항(공통)<br>
+                                            - 2인 1조 작업으로 실시한다.<br>
+                                            - 안전화 / 안전모 / 안전장갑을 착용한다. (필요시 보호 안경 착용)<br>
+                                            - 작업 전, 설비 이상 여부를 확인 후 사용한다.<br>
+                                            - 작업자는 안전감독자 통제하에 진행한다.<br>
+                                            - 위험요소 발건시 즉각 작업을 중지한다.<br>
+                                            - 작업 완료 시 까지 설비실 이탈을 금지하며, 관련자 이외 출입을 통제한다.<br>
+                                        </p>
+                                    </div>
+                                    <div class="work-safety-img">
+                                        <img
+                                            src="https://image.spreadshirtmedia.net/image-server/v1/compositions/T996A1PA2179PT10X17Y18D172654919W7098H6789/views/1,width=550,height=550,appearanceId=1,backgroundColor=FFFFFF,noPt=true/pixel-art-fox-fox-podstawki.jpg">
+                                    </div>
+                                </div>
+                                <div class="work-safety-list">
+                                    <div class="delete-safety-checkbox">
+                                        <input type="checkbox" class="delete-safety-check">
+                                    </div>
+                                    <div class="work-safety-order">
+                                        <p>
+                                            * 조립 설비 안전수칙<br>
+                                            - 장비 설명서를 잘 읽고 이해한 후에 사용한다.<br>
+                                            - 설비 장치 작동 부위에 먼지나 이물질을 마른 걸레로 닦아준다.<br>
+                                            - 안전지침 및 작업지침을 숙지한 사람 이외에는 사용을 금지한다.<br>
+                                            - 손상 또는 이상발생 설비는 사용하지 않는다.<br>
+                                        </p>
+                                    </div>
+                                    <div class="work-safety-img">
+                                        <img
+                                            src="https://image.spreadshirtmedia.net/image-server/v1/compositions/T996A1PA2179PT10X17Y18D172654919W7098H6789/views/1,width=550,height=550,appearanceId=1,backgroundColor=FFFFFF,noPt=true/pixel-art-fox-fox-podstawki.jpg">
+                                    </div>
+                                </div>
+                                <div class="work-safety-list">
+                                    <div class="delete-safety-checkbox">
+                                        <input type="checkbox" class="delete-safety-check">
+                                    </div>
+                                    <div class="work-safety-order">
+                                        <p>
+                                            * 사용 중 준수사항<br>
+                                            - 라인 사용시 주위에 접근을 금지한다.<br>
+                                            - 라인 설비를 임의로 개조하지 않는다.<br>
+                                        </p>
+                                    </div>
+                                    <div class="work-safety-img">
+                                        <img
+                                            src="https://image.spreadshirtmedia.net/image-server/v1/compositions/T996A1PA2179PT10X17Y18D172654919W7098H6789/views/1,width=550,height=550,appearanceId=1,backgroundColor=FFFFFF,noPt=true/pixel-art-fox-fox-podstawki.jpg">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="safety-button-div">
+                            <button type="button" id="list-add-button" class="add-button">추가하기</button>
+                            <button type="button" id="list-delete" class="list-delete-button">삭제하기</button>
+                            <button type="button" id="user" class="add-button">유저</button>
+                        </div>
+                        <div class="safety-user-button-div">
+                            <button type="button" id="admin-change-button" class="admin-change-button">관리자</button>
+                        </div>
+
+                    </div>
+
+                    <div id="safety-add-popup" class="add-popup">
+                        <div class="safety-add-popup-content">
+                            <h2>안전지침 체크사항 추가하기</h2>
+                            <div class="add-note">
+                                <p>추가할 제목</p>
+                                <input type="text" id="add-title" class="add-title" placeholder="제목입력">
+                                <p>추가할 목록</p>
+                                <textarea id="add-detail" class="add-detail" rows="5" cols="50"
+                                    placeholder="내용 입력란(줄바꿈시 엔터)"></textarea>
+                            </div>
+
+                            <div class="img-note">
+                                <span>
+                                    이미지 링크 첨부하기
+                                </span>
+                                <input type="text" id="add-img">
+                                <input type="file" id="add-img-button" class="img-button" type="file"
+                                    name="add-img-button">
+                                <button type="button" id="img-select-button" class="img-select-button">사진 선택</button>
+                                <div class="img-preview">
+
+                                </div>
+                            </div>
+
+                            <div class="add-apply-div">
+                                <button type="button" id="add-apply-button" class="apply-button">적용하기</button>
+                                <button type="button" id="cancel-apply-button" class="cancel-button">취소하기</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </article>
+            </section>
+        </div>
+        <footer>ⓒ2024 J.company System</footer>
+    </div>
+
+</body>
+
+</html>

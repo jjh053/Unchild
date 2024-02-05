@@ -50,8 +50,18 @@
             display: none;
         }
 
+        #mainTitle1 a {
+            text-decoration: none;
+            color: #333;
+        }
+
         #mainTitle2 {
             display: none;
+        }
+
+        #mainTitle2 a {
+            text-decoration: none;
+            color: #333;
         }
 
         #myPage {
@@ -437,26 +447,26 @@
             border-right: 1px solid #ddd;
         }
 
-        .cell:first-child{
+        .cell:first-child {
             border-left: 1px solid #ddd;
             flex: 0.5;
         }
 
-        .cell:nth-child(2){
+        .cell:nth-child(2) {
             flex: 2.0;
         }
 
-        .cell:last-child{
+        .cell:last-child {
             flex: 0.6;
         }
 
-        .more{
+        .more {
             width: 100%;
             text-align: right;
             margin-top: 10px;
         }
 
-        .more a{
+        .more a {
             border: 1px solid #ddd;
             border-radius: 5px;
             text-decoration: none;
@@ -540,8 +550,8 @@
                     class="logo"></image>
             </a>
         </div>
-        <h1 id="mainTitle1">작업자 페이지</h1>
-        <h1 id="mainTitle2">관리자 페이지</h1>
+        <h1 id="mainTitle1"><a href="main.html">작업자 페이지</a></h1>
+        <h1 id="mainTitle2"><a href="main.html">관리자 페이지</a></h1>
         <div id="myPage">
             <div id="myPageLogo">
                 <image
@@ -566,28 +576,25 @@
                 <div class="menu-bar">
                     <div class="menu-bar-content">
                         <ul>
-                            <li><a href="#">작업 지침서</a></li>
-                            <li><a href="#">안전 지침서</a></li>
-                            <li><a href="#">품질검사</a></li>
+                            <li><a href="work-order.html">작업 지침서</a></li>
+                            <li><a href="work-safety.html">안전 지침서</a></li>
+                            <li><a href="work-quality.html">품질검사</a></li>
                             <li><a href="#">일일 현황</a></li>
                         </ul>
                     </div>
                     <div class="menu-bar-content">
                         <ul>
-                            <li><a href="#">설비 모니터링</a></li>
-                            <ul id="menu-bar-content-sub">
-                                <li><a href="#">레이아웃</a></li>
-                                <li><a href="#">공정</a></li>
-                            </ul>
-                            <li><a href="#">설비 설정</a></li>
+                            <li><a href="facilityMonitoring.html">설비 모니터링</a></li>
+                            <li><a href="process.html">공정도</a></li>
+                            <li><a href="facilitiespage.html">설비 설정</a></li>
                         </ul>
                     </div>
                     <div class="menu-bar-content">
                         <ul>
-                            <li><a href="#">재고 현황</a></li>
-                            <li><a href="#">재고 신청</a></li>
-                            <li><a href="#">완제품 관리</a></li>
-                            <li><a href="#">재고 불량 신고</a></li>
+                            <li><a href="stock_status.html">재고 현황</a></li>
+                            <li><a href="Stock_Request.html">재고 신청</a></li>
+                            <li><a href="Finished_product_management.html">완제품 관리</a></li>
+                            <li><a href="Report_of_defective_inventory.html">재고 불량 신고</a></li>
                         </ul>
                     </div>
                     <div class="menu-bar-content">
@@ -610,54 +617,56 @@
                 </div>
                 <div class="dashboard-main">
                     <div class="card">
-                        <div class="card-header">
-                            제작 현황
-                        </div>
-                        <div class="card-content">
-                            <canvas id="productionChart"></canvas>
-                        </div>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>등급</th>
-                                    <th>수량</th>
-                                    <th>상태</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>퍼포먼스</td>
-                                    <td>12</td>
-                                    <td>생산</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>메인 스트림</td>
-                                    <td>50</td>
-                                    <td>출고</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>엔트리</td>
-                                    <td>120</td>
-                                    <td>출고</td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <a href="Finished_product_management.html" style="color: inherit; text-decoration: none;">
+                            <div class="card-header">
+                                제작 현황
+                            </div>
+                            <div class="card-content">
+                                <canvas id="productionChart"></canvas>
+                            </div>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>등급</th>
+                                        <th>수량</th>
+                                        <th>상태</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>퍼포먼스</td>
+                                        <td>12</td>
+                                        <td>생산</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>메인 스트림</td>
+                                        <td>50</td>
+                                        <td>출고</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>엔트리</td>
+                                        <td>120</td>
+                                        <td>출고</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </a>
                     </div>
                     <div class="card">
                         <div class="card-header">
@@ -724,57 +733,61 @@
 
                     <div class="line-cards">
                         <div class="line-card">
-                            <div class="card-header2">
-                                <h3>생산 라인</h3>
-                            </div>
-                            <div class="card-content2">
-                                <div class="status" id="cpu-status">Pending</div>
-                                <div class="defect-rate" id="cpu-defect-rate">불량률: 0%</div>
-                                <div class="defect-count" id="cpu-defect-count">불량: 0</div>
-                                <div class="good-count" id="cpu-good-count">통과: 0</div>
-                                <div class="cycle-count" id="cpu-operations">사이클 횟수: 0</div>
-                            </div>
+                            <a href="facilityMonitoring.html" style="color: inherit; text-decoration: none;">
+                                <div class="card-header2">
+                                    <h3>생산 라인</h3>
+                                </div>
+                                <div class="card-content2">
+                                    <div class="status" id="cpu-status">Pending</div>
+                                    <div class="defect-rate" id="cpu-defect-rate">불량률: 0%</div>
+                                    <div class="defect-count" id="cpu-defect-count">불량: 0</div>
+                                    <div class="good-count" id="cpu-good-count">통과: 0</div>
+                                    <div class="cycle-count" id="cpu-operations">사이클 횟수: 0</div>
+                                </div>
+                            </a>
                         </div>
                         <div class="line-card">
-                            <div class="card-header2">
-                                <h3>재고현황</h3>
-                            </div>
-                            <div class="card-content3">
-                                <table class="table2">
-                                    <thead>
-                                        <tr>
-                                            <th>품목</th>
-                                            <th>양품 수량</th>
-                                            <th>양품 재고위치</th>
-                                            <th>불량 수량</th>
-                                            <th>불량 재고위치</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>CPU1</td>
-                                            <td>100</td>
-                                            <td>A-01</td>
-                                            <td>20</td>
-                                            <td>A-11</td>
-                                        </tr>
-                                        <tr>
-                                            <td>CPU2</td>
-                                            <td>75</td>
-                                            <td>A-02</td>
-                                            <td>10</td>
-                                            <td>A-12</td>
-                                        </tr>
-                                        <tr>
-                                            <td>CPU3</td>
-                                            <td>20</td>
-                                            <td>A-03</td>
-                                            <td>5</td>
-                                            <td>B-13</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                            <a href="stock_status.html" style="color: inherit; text-decoration: none;">
+                                <div class="card-header2">
+                                    <h3>재고현황</h3>
+                                </div>
+                                <div class="card-content3">
+                                    <table class="table2">
+                                        <thead>
+                                            <tr>
+                                                <th>품목</th>
+                                                <th>양품 수량</th>
+                                                <th>양품 재고위치</th>
+                                                <th>불량 수량</th>
+                                                <th>불량 재고위치</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>CPU1</td>
+                                                <td>100</td>
+                                                <td>A-01</td>
+                                                <td>20</td>
+                                                <td>A-11</td>
+                                            </tr>
+                                            <tr>
+                                                <td>CPU2</td>
+                                                <td>75</td>
+                                                <td>A-02</td>
+                                                <td>10</td>
+                                                <td>A-12</td>
+                                            </tr>
+                                            <tr>
+                                                <td>CPU3</td>
+                                                <td>20</td>
+                                                <td>A-03</td>
+                                                <td>5</td>
+                                                <td>B-13</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>

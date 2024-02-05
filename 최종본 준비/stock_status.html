@@ -1,0 +1,1756 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Management System</title>
+    <style>
+        @font-face {
+            font-family: "SOYOMapleBoldTTF";
+            src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/SOYOMapleBoldTTF.woff2") format("woff2");
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: "SOYOMapleBoldTTF";
+            margin: 0 auto;
+            /* font-family: Arial, sans-serif; */
+            background: #fff;
+            color: #333;
+            background-color: #ccc;
+        }
+
+        /* title */
+        #workerTitle {
+            display: flex;
+            width: 1000px;
+            justify-content: space-between;
+            padding: 5px;
+
+        }
+
+        #workerLogo {
+            width: 200px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        #workerTitle h1 {
+            width: 200px;
+            color: #000;
+        }
+
+        #mainTitle1 {
+            display: none;
+        }
+
+        #mainTitle1 a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        #mainTitle2 {
+            display: none;
+        }
+
+        #mainTitle2 a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        #myPage {
+            width: 200px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        #myPageLogo {
+            width: 80px;
+            height: 80px;
+            margin-right: 3%;
+        }
+
+        #workerName a {
+            text-decoration: none;
+            color: #333;
+
+        }
+
+        #workerName a:hover {
+            text-decoration: none;
+            color: #888;
+            transition: color 0.2s ease;
+        }
+
+        #workerTitle .workerPic {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+        }
+
+        #workerTitle .logo {
+            width: 200px;
+            height: 70px;
+        }
+
+        /* title end */
+
+        .wrap {
+            width: 1000px;
+            /* height: 100vh; */
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+        }
+
+        /* header와 nav의 집합 */
+        .header-nav-container {
+            position: relative;
+            width: 100%;
+            /* wrap과 동일한 너비 */
+        }
+
+        /* header 코드 */
+        header {
+            width: 100%;
+            background: #000;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        header h1 {
+            font-size: 30px;
+            margin: 0;
+        }
+
+        header ul {
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+            list-style: none;
+            align-items: center;
+        }
+
+        header ul li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+
+        header ul li a {
+            font-size: 18px;
+            text-decoration: none;
+            color: #fff;
+            transition: color 0.3s ease;
+        }
+
+        header ul li a:hover {
+            color: #aaa;
+        }
+
+        /* header 코드 끝 */
+
+        nav {
+            width: 100%;
+            position: absolute;
+            top: 100%;
+            /* header 높이에 맞게 조정 */
+            left: 0;
+            right: 0;
+            background: #eee;
+            max-height: 0;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear;
+            visibility: hidden;
+            z-index: 100;
+            /* opacity: 0; */
+        }
+
+        /* nav 숨김요소 */
+        nav.active {
+            max-height: 500px;
+            /* 활성화될 때 최대 높이 설정 */
+            visibility: visible;
+            opacity: 1;
+            transition: max-height 0.5s ease, visibility 0s, opacity 0.5s linear;
+        }
+
+        /* nav 안의 menu-bar요소 */
+        .menu-bar {
+            width: 100%;
+            height: 220px;
+            border-top: 0px;
+            border-right: 1px solid #ccc;
+            display: flex;
+        }
+
+        .menu-bar-content {
+            margin-left: 40px;
+            width: 20%;
+            display: inline-block;
+            box-sizing: border-box;
+        }
+
+        .menu-bar-content ul li {
+            padding: 10px;
+        }
+
+        .menu-bar-content ul li a {
+            text-decoration: none;
+            color: #444;
+        }
+
+        .menu-bar-content ul li a:hover {
+            color: #aaa;
+            transition: color 0.2s ease;
+        }
+
+        #menu-bar-content-sub {
+            list-style: circle;
+            font-size: 14px;
+            padding-left: 20px;
+        }
+
+        #menu-bar-content-sub li {
+            padding: 5px;
+        }
+
+        /* menu-bar요소 끝 */
+
+        /* aside, section */
+        .aside-section-container {
+            width: 100%;
+            display: flex;
+            /* height: 100%; */
+        }
+
+        /* 좌측 메뉴바 */
+        aside {
+            width: 20%;
+            background: #5f5f5f;
+            min-height: 800px;
+        }
+
+        #left-nav {
+            height: 100%;
+            background: #666;
+            color: #fff;
+            box-sizing: border-box;
+            padding-top: 20px;
+
+        }
+
+        #left-nav ul li {
+            padding-bottom: 60px;
+            cursor: pointer;
+            list-style: none;
+
+        }
+
+        #left-nav ul li:hover {
+            color: #888;
+            transition: color 0.2s ease;
+        }
+
+        #left-nav a {
+            height: 100%;
+            background: #666;
+            color: #fff;
+            box-sizing: border-box;
+            padding-top: 20px;
+
+        }
+
+        #left-nav ul li a {
+            text-decoration: none;
+            padding-bottom: 60px;
+            cursor: pointer;
+            list-style: none;
+
+        }
+
+        #left-nav ul li a:hover {
+            color: #888;
+            transition: color 0.2s ease;
+        }
+
+        /* 섹션 창을 조작하기바람 */
+        section {
+            /* border: 1px solid red; */
+            display: flex;
+            justify-content: center;
+            width: 80%;
+            /* overflow: auto; */
+            background: #eee;
+            z-index: 50;
+            align-items: center;
+            min-height: 800px;
+            position: relative;
+        }
+
+        article .workList {
+            width: 100%;
+            display: flex;
+            /* border: 1px solid green; */
+            justify-content: space-around;
+        }
+
+        .workList p {
+            width: 100%;
+        }
+
+        .workOrder {
+            border: 1px solid orangered;
+            width: 450px;
+        }
+
+        .workImg {
+            border: 1px solid orangered;
+            width: 100px;
+            display: inline-block;
+        }
+
+        /* aside, section 끝*/
+
+        footer {
+            width: 100%;
+            background: #000;
+            color: #fff;
+            text-align: center;
+            height: 7%;
+            line-height: 70px;
+        }
+
+
+        /* 전체 div */
+        article {
+            width: 100%;
+        }
+
+        .stock_status_page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            /* border: 1px solid blue; */
+            /* height: 800px; */
+            /* margin-top: 20px; */
+
+
+        }
+
+        .searchArea {
+            width: 96%;
+            display: flex;
+            justify-content: end;
+        }
+
+        /*  품목검색 */
+        .searchbox {
+            width: 40%;
+            border: 1px solid rgb(165, 165, 165);
+            height: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 0;
+        }
+
+        .glasses {
+            height: 30px;
+            margin-top: 5px;
+            margin-left: 10px;
+            margin-right: 5px;
+            /* width: 26px; */
+        }
+
+        .search {
+            /* border : 1px solid black !important;  */
+            width: 80px;
+            height: 30px;
+            padding: 3px;
+            margin-left: 5px;
+            line-height: 30px;
+        }
+
+        .submit {
+            padding: 2px;
+        }
+
+        .stock_status {
+            /* position: relative;
+            top: 120px; */
+            /* left: 750px; */
+            font-size: 30px;
+            line-height: 100px;
+
+        }
+
+        .search_text {
+            width: 100%;
+            border: 1px solid black;
+            background-color: #fff;
+            height: 20px;
+            /* margin : auto !important; */
+        }
+
+        /* 품목들 */
+        .table {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .row {
+            display: flex;
+        }
+
+        .table1 {
+            background-color: #888888;
+        }
+
+        .cell {
+            padding: 8px;
+            border-right: 1px solid #ddd;
+        }
+
+        .cell:last-child {
+            border-right: none;
+        }
+
+
+        /*  */
+        .row_f {
+            display: flex;
+            /* border : 1px solid green; */
+            width: 780px;
+            /* border-bottom: 2px solid #ddd; */
+            /* 아래 테두리 스타일 지정 */
+        }
+
+        .row_f:first-child {
+            border-top: 2px solid #ddd;
+            background-color: #888888;
+            /* 첫 번째 행의 위 테두리 스타일 지정 */
+        }
+
+        .row {
+            display: flex;
+            width: 780px;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .cell_f {
+            width: 170px;
+            /* flex: 1; */
+            padding: 8px;
+            text-align: center;
+            border-right: 1px solid #ddd;
+            /* 오른쪽 테두리 스타일 지정 */
+        }
+
+        /* .cell_f:last-child {
+            border-right: none;
+            마지막 셀에서 오른쪽 테두리 제거
+        } */
+
+        /*  */
+        table input[type="text"] {
+            border: none;
+            text-align: center;
+            background-color: #eee;
+            height: 20px;
+            padding: 3px;
+            /* margin:auto; */
+
+        }
+
+        .table2 input {
+            width: 90%;
+        }
+
+        td {
+            border: 1px solid #ddd;
+            text-align: center;
+            line-height: 30px;
+            height: 30px;
+        }
+
+        td input {
+            margin-left: 5%;
+        }
+
+
+
+        /* 페이징 */
+
+        #pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 90%;
+            /* border: 1px solid red; */
+        }
+
+        .pagination button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* 페이징 번호 */
+        #page-numbers {
+            /* text-align: center; */
+            margin-right: 30px;
+
+        }
+
+
+
+        /* 이전, 다음버튼 */
+        #prevPage,
+        #nextPage {
+            border: 1px solid red;
+            background: #333;
+            color: #fff;
+            border: 0;
+            border-radius: 10px;
+            width: 50px;
+            height: 30px;
+            /* height: 50px; */
+            cursor: pointer;
+        }
+
+        #page-numbers li {
+            display: inline;
+            margin-right: 5px;
+        }
+
+        #page-numbers li a {
+            color: #fff;
+            background-color: #555;
+            margin-top: 10px;
+            padding: 5px 8px;
+            border-radius: 10px;
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+            text-decoration: none;
+        }
+
+        #page-numbers li a:hover {
+            background-color: black;
+            transition: 0.2s;
+        }
+
+        .table {
+            border-collapse: collapse;
+            /* width: 100%; */
+            /* padding: 1px; */
+            width: 770px;
+
+        }
+
+
+        .table1 td,
+        .table2 td {
+            border: 1px solid #ddd;
+            width: 160px;
+            text-align: left;
+        }
+
+        .table2_box {
+            /* border: 1px solid red; */
+            height: 500px;
+            width: 780px;
+
+        }
+
+        .f_box {
+            display: flex;
+            width: 790px;
+            justify-content: space-evenly;
+            /* border: 1px solid blue; */
+        }
+
+        .table2 {
+            display: flex;
+            width: 780px;
+            /* margin : auto; */
+            /* border: 1px solid blue; */
+            justify-content: space-evenly;
+        }
+
+        .items {
+            /* border: 1px solid red; */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* .table th {
+            background-color: #333;
+            color: #fff;
+        } */
+
+        /* 팝업 */
+
+        /* infor : 디스플레이 none
+        infor_box : 디스플레이 flex
+        item_infor : "품목설명"
+        item_img : 이미지가 들어갈 박스
+        item_name : 재고 이름
+        item_indx : 3가지 등급
+        item_textarea : 재고 설명문
+        commit > com : 확인 버튼 */
+
+        .infor_cpu1,
+        .infor_cpu2,
+        .infor_cpu3,
+        .infor_main1,
+        .infor_main2,
+        .infor_main3,
+        .infor_gpu1,
+        .infor_gpu2,
+        .infor_gpu3,
+        .infor_ssd1,
+        .infor_ssd2,
+        .infor_ssd3 {
+            display: none;
+        }
+
+        .com_cpu1,
+        .com_cpu2,
+        .com_cpu3,
+        .com_main1,
+        .com_main2,
+        .com_main3,
+        .com_gpu1,
+        .com_gpu2,
+        .com_gpu3,
+        .com_ssd1,
+        .com_ssd2,
+        .com_ssd3 {
+            background-color: #3498DB;
+            margin-top: 10px;
+            width: 80px;
+            height: 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+        }
+
+
+
+        .com_cpu1:hover,
+        .com_cpu2:hover,
+        .com_cpu3:hover,
+        .com_main1:hover,
+        .com_main2:hover,
+        .com_main3:hover,
+        .com_gpu1:hover,
+        .com_gpu2:hover,
+        .com_gpu3:hover,
+        .com_ssd1:hover,
+        .com_ssd2:hover,
+        .com_ssd3:hover {
+            background-color: rgb(0, 47, 255);
+            transition: 0.2s;
+        }
+
+        .infor_box {
+            position: absolute;
+            /* border: 1px solid red; */
+            width: 40%;
+            height: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            top: 25%;
+            left: 30%;
+            background-color: rgb(214, 214, 214);
+            z-index: 1001;
+        }
+
+        .item_img img {
+            width: 200px;
+            /* height: 50%; */
+        }
+
+        /* Modal 모달 */
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @media screen and (max-width: 430px) {
+
+            .wrap {
+                width: 100%;
+            }
+
+            #workerTitle {
+                display: none;
+            }
+
+            header {
+                width: 100%;
+                background: #000;
+                color: #fff;
+                text-align: center;
+                padding: 5px;
+                box-sizing: border-box;
+                border-radius: 0px;
+            }
+
+            header ul li a {
+                font-size: 15px;
+                text-decoration: none;
+                color: #fff;
+                transition: color 0.3s ease;
+            }
+
+            nav {
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                /* header 높이에 맞게 조정 */
+                left: 0;
+                right: 0;
+                background: #dde;
+                overflow: hidden;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+                transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear;
+                transform: translateX(0%);
+                visibility: hidden;
+                z-index: 100;
+                /* opacity: 0; */
+            }
+
+            nav.active {
+                min-height: 800px;
+                max-height: none;
+                width: 200px;
+                visibility: visible;
+                opacity: 1;
+                transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear;
+                transform: translateX(0%);
+            }
+
+            /* 왼쪽에서 오른쪽으로 나오는 애니메이션을 추가합니다. */
+            nav {
+                transform: translateX(-100%);
+                transition: transform 0.5s ease;
+            }
+
+            nav.active {
+                transform: translateX(0%);
+                transition: transform 0.5s ease;
+            }
+
+            nav.closing {
+                transform: translateX(-100%);
+                transition: transform 0.5s ease;
+            }
+
+            nav .menu-bar {
+                width: 100%;
+                height: 100%;
+                border-top: 0px;
+                border-right: 1px solid #ccc;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .menu-bar-content {
+                width: 100%;
+                margin-left: 0px;
+            }
+
+            .menu-bar-content ul li {
+                padding: 10px;
+            }
+
+            aside {
+                display: none;
+            }
+
+            section {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+
+
+            .items {
+                box-sizing: border-box;
+                width: 400px;
+            }
+
+
+            .row_f {
+                box-sizing: border-box;
+                font-size: 10px;
+                display: flex;
+                width: 95%;
+            }
+
+            .row {
+                box-sizing: border-box;
+                display: flex;
+                width: 380px;
+                border-bottom: 2px solid #ddd;
+            }
+
+            .cell_f {
+                width: none;
+                /* flex: 1; */
+                padding: 8px;
+                text-align: center;
+                border-right: 1px solid #ddd;
+                /* 오른쪽 테두리 스타일 지정 */
+            }
+
+            .table1 td,
+            .table2 td {
+                border: 1px solid #ccc;
+                width: none;
+                text-align: left;
+            }
+
+
+
+            .table2_box {
+                /* border: 1px solid red; */
+                height: 500px;
+                width: 94%;
+
+            }
+
+            .f_box {
+                display: flex;
+                width: 100%;
+                justify-content: space-evenly;
+                /* border: 1px solid blue; */
+            }
+
+            .table2 input {
+                width: 90%;
+                font-size: 11px;
+            }
+
+            td input {
+                margin-left: 1%;
+            }
+
+            .table2 {
+                display: flex;
+                width: 100%;
+                justify-content: space-evenly;
+            }
+
+            .searchArea {
+                justify-content: center;
+            }
+
+            .searchbox {
+                font-size: 15px;
+                width: 80%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 5px;
+                margin-left: 0;
+            }
+
+            .infor_box {
+                position: absolute;
+                /* border: 1px solid red; */
+                width: 60%;
+                height: 50%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                top: 25%;
+                left: 20%;
+                background-color: rgb(214, 214, 214);
+                z-index: 1001;
+            }
+
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="workerTitle">
+        <div id="workerLogo">
+            <a href="#">
+                <image
+                    src="https://cdn.discordapp.com/attachments/1185161279804026893/1200675420325036082/Jlogo.png?ex=65c70b1f&is=65b4961f&hm=ae28f53e9280fe71cffc1fc2ca74aec892875f13143ef4e109da28023c5b414b&"
+                    class="logo"></image>
+            </a>
+        </div>
+        <h1 id="mainTitle1"><a href="main.html">작업자 페이지</a></h1>
+        <h1 id="mainTitle2"><a href="main.html">관리자 페이지</a></h1>
+        <div id="myPage">
+            <div id="myPageLogo">
+                <image
+                    src="https://cdn.discordapp.com/attachments/1185161279804026893/1200675420551520370/workerP.jpg?ex=65c70b1f&is=65b4961f&hm=c49f91b245305c4bb33c58e626bc4960b4f601257e433425a8d7cc0da454126e&"
+                    class="workerPic">
+            </div>
+            <span id="workerName"><a href="#">이도연 대리님</a></span>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <div class="header-nav-container">
+            <header>
+                <ul>
+                    <li><a href="#" class="hover" title="작업지시서">작업</a></li>
+                    <li><a href="#" class="hover" title="품질검사">설비</a></li>
+                    <li><a href="#" class="hover" title="건의사항">재고관리</a></li>
+                    <li><a href="#" class="hover" title="직원 게시판">게시판</a></li>
+                </ul>
+            </header>
+            <nav>
+                <div class="menu-bar">
+                    <div class="menu-bar-content">
+                        <ul>
+                            <li><a href="work-order.html">작업 지침서</a></li>
+                            <li><a href="work-safety.html">안전 지침서</a></li>
+                            <li><a href="work-quality.html">품질검사</a></li>
+                            <li><a href="#">일일 현황</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-bar-content">
+                        <ul>
+                            <li><a href="facilityMonitoring.html">설비 모니터링</a></li>
+                            <li><a href="process.html">공정도</a></li>
+                            <li><a href="facilitiespage.html">설비 설정</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-bar-content">
+                        <ul>
+                            <li><a href="stock_status.html">재고 현황</a></li>
+                            <li><a href="Stock_Request.html">재고 신청</a></li>
+                            <li><a href="Finished_product_management.html">완제품 관리</a></li>
+                            <li><a href="Report_of_defective_inventory.html">재고 불량 신고</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-bar-content">
+                        <ul>
+                            <li><a href="#">자유게시판</a></li>
+                            <li><a href="#">건의사항</a></li>
+                            <li><a href="#">Q&A</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="aside-section-container">
+            <aside>
+                <!-- aside 영역내에 메뉴 추가 가능함 -->
+
+                <div id="left-nav">
+                    <ul>
+                        <li>
+                            <a href="stock_status.html">재고 현황</a>
+                        </li>
+                        <li>
+                            <a href="Stock_Request.html">재고 신청</a>
+                        </li>
+                        <li>
+                            <a href="Finished_product_management.html">완제품 관리</a>
+                        </li>
+                        <li>
+                            <a href="Report_of_defective_inventory.html">재고 불량 신고</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </aside>
+            <section>
+                <article>
+                    <div class="stock_status_page">
+                        <!-- 재고현황 등 검색텍스트 -->
+                        <div class="stock_status">재고현황</div>
+                        <div class="searchArea">
+                            <div class="searchbox">
+                                <div class="search">품목검색</div>
+                                <div> <input type="text" class="search_text" value=""></div>
+                                <div> <img class="glasses"
+                                        src="https://media.discordapp.net/attachments/1186454147558551552/1201320591920218232/2866321.png?ex=65c963fc&is=65b6eefc&hm=f58ed04bf70d9aa052a073134c27106ecce4726dd07fb3124e0ba9b81fddcadd&=&format=webp&quality=lossless&width=468&height=468">
+                                </div>
+                            </div>
+                        </div>
+                        <!--  -->
+                        <br>
+                        <!-- 품목들 -->
+                        <div class="items">
+                            <!-- <div class="f_box"> -->
+                            <div class="row_f">
+                                <div class="cell_f">품목</div>
+                                <div class="cell_f">양품수량</div>
+                                <div class="cell_f">양품재고위치</div>
+                                <div class="cell_f">불량수량</div>
+                                <div class="cell_f">불량재고위치</div>
+                            </div>
+                            <!-- </div> -->
+                            <div class="table2_box">
+                                <table class="table2">
+                                    <!-- <div class="data"> -->
+
+                                    <tr class="row">
+                                        <td><input type="text" value="CPU1" class="cpu1" READONLY></td>
+                                        <td><input type="text" value="100" READONLY></td>
+                                        <td><input type="text" value="A-01" READONLY></td>
+                                        <td><input type="text" value="2" READONLY></td>
+                                        <td><input type="text" value="A-11" READONLY></td>
+                                    </tr>
+                                    <tr class="row">
+                                        <td><input type="text" value="CPU2" class="cpu2" READONLY></td>
+                                        <td><input type="text" value="100" READONLY></td>
+                                        <td><input type="text" value="A-02" READONLY></td>
+                                        <td><input type="text" value="10" READONLY></td>
+                                        <td><input type="text" value="A-12" READONLY></td>
+                                    </tr>
+                                    <tr class="row">
+                                        <td><input type="text" value="CPU3" class="cpu3" READONLY></td>
+                                        <td><input type="text" value="20" READONLY></td>
+                                        <td><input type="text" value="A-03" READONLY></td>
+                                        <td><input type="text" value="10" READONLY></td>
+                                        <td><input type="text" value="B-13" READONLY></td>
+                                    </tr>
+                                    <tr class="row">
+                                        <td><input type="text" value="메인보드1" class="main1" READONLY></td>
+                                        <td><input type="text" value="25" READONLY></td>
+                                        <td><input type="text" value="B-01" READONLY></td>
+                                        <td><input type="text" value="0" READONLY></td>
+                                        <td><input type="text" value="B-11" READONLY></td>
+                                    </tr>
+                                    <tr class="row">
+                                        <td><input type="text" value="메인보드2" class="main2" READONLY></td>
+                                        <td><input type="text" value="190" READONLY></td>
+                                        <td><input type="text" value="B-02" READONLY></td>
+                                        <td><input type="text" value="2" READONLY></td>
+                                        <td><input type="text" value="B-12" READONLY></td>
+                                    </tr>
+                                    <tr class="row">
+                                        <td><input type="text" value="메인보드3" class="main3" READONLY></td>
+                                        <td><input type="text" value="70" READONLY></td>
+                                        <td><input type="text" value="B-03" READONLY></td>
+                                        <td><input type="text" value="0" READONLY></td>
+                                        <td><input type="text" value="B-13" READONLY></td>
+                                    </tr>
+                                    <tr class="row">
+                                        <td><input type="text" value="그래픽카드1" class="gpu1" READONLY></td>
+                                        <td><input type="text" value="100" READONLY></td>
+                                        <td><input type="text" value="C-01" READONLY></td>
+                                        <td><input type="text" value="2" READONLY></td>
+                                        <td><input type="text" value="C-11" READONLY></td>
+                                    </tr>
+                                    <tr class="row">
+                                        <td><input type="text" value="그래픽카드2" class="gpu2" READONLY></td>
+                                        <td><input type="text" value="100" READONLY></td>
+                                        <td><input type="text" value="C-02" READONLY></td>
+                                        <td><input type="text" value="10" READONLY></td>
+                                        <td><input type="text" value="C-12" READONLY></td>
+                                    </tr>
+                                    <tr class="row">
+                                        <td><input type="text" value="그래픽카드3" class="gpu3" READONLY></td>
+                                        <td><input type="text" value="20" READONLY></td>
+                                        <td><input type="text" value="C-03" READONLY></td>
+                                        <td><input type="text" value="10" READONLY></td>
+                                        <td><input type="text" value="C-13" READONLY></td>
+                                    </tr>
+                                    <tr class="row">
+                                        <td><input type="text" value="SSD1" class="ssd1" READONLY></td>
+                                        <td><input type="text" value="100" READONLY></td>
+                                        <td><input type="text" value="D-01" READONLY></td>
+                                        <td><input type="text" value="2" READONLY></td>
+                                        <td><input type="text" value="D-11" READONLY></td>
+                                    </tr>
+                                    <tr class="row">
+                                        <td><input type="text" value="SSD2" class="ssd2" READONLY></td>
+                                        <td><input type="text" value="100" READONLY></td>
+                                        <td><input type="text" value="E-02" READONLY></td>
+                                        <td><input type="text" value="10" READONLY></td>
+                                        <td><input type="text" value="E-12" READONLY></td>
+                                    </tr>
+                                    <tr class="row">
+                                        <td><input type="text" value="SSD3" class="ssd3" READONLY></td>
+                                        <td><input type="text" value="20" READONLY></td>
+                                        <td><input type="text" value="E-03" READONLY></td>
+                                        <td><input type="text" value="10" READONLY></td>
+                                        <td><input type="text" value="E-13" READONLY></td>
+                                    </tr>
+
+                                    <!-- </div> -->
+                                </table>
+                            </div>
+                        </div>
+
+                        <span id="currentPageNumber"></span>
+                        <div id="pagination">
+                            <button id="prevPage">이전</button>
+                            <ul id="page-numbers"></ul>
+                            <button id="nextPage">다음</button>
+                        </div>
+
+                    </div>
+                    <!--  -->
+
+
+                    <!-- 팝업 -->
+
+                    <div class="modal-overlay" id="modal-overlay" style="display: none;"></div>
+                    <!-- infor : 디스플레이 none
+                    infor_box : 디스플레이 flex
+                    item_infor : "품목설명"
+                    item_img : 이미지가 들어갈 박스
+                    item_name : 재고 이름
+                    item_indx : 3가지 등급
+                    item_textarea : 재고 설명문
+                    commit > com : 확인 버튼 -->
+
+                    <!-- cpu -->
+                    <div class="infor_cpu1">
+                        <div class="infor_box">
+                            <div class="item_infor">품목 설명</div>
+                            <div class="item_img"> <img
+                                    src="https://media.discordapp.net/attachments/1186454147558551552/1201687978230173706/image.png?ex=65caba24&is=65b84524&hm=bd86b0025fb9ddc7b872d912c5a5b8ae55dd00d9e73964fbefffcfa4f54f77d7&=&format=webp&quality=lossless&width=468&height=468">
+                            </div>
+                            <div class="item_name"> CPU 1 </div>
+                            <div class="item_index" style="text-align: center;"> <br> 퍼포먼스 <br></div>
+                            <div class="item_textarea"><textarea class="item_ta"></textarea></div>
+                            <div class="commit"> <button type="button" class="com_cpu1" style="width : 50px;">확인
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="infor_cpu2">
+                        <div class="infor_box">
+                            <div class="item_infor">품목 설명</div>
+                            <div class="item_img"> <img
+                                    src="https://media.discordapp.net/attachments/1186454147558551552/1201687978230173706/image.png?ex=65caba24&is=65b84524&hm=bd86b0025fb9ddc7b872d912c5a5b8ae55dd00d9e73964fbefffcfa4f54f77d7&=&format=webp&quality=lossless&width=468&height=468">
+                            </div>
+                            <div class="item_name"> CPU 2 </div>
+                            <div class="item_index" style="text-align: center;"> <br> 메인스트림 <br></div>
+                            <div class="item_textarea"><textarea class="item_ta"></textarea></div>
+                            <div class="commit"> <button type="button" class="com_cpu2" style="width : 50px;">확인
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="infor_cpu3">
+                        <div class="infor_box">
+                            <div class="item_infor">품목 설명</div>
+                            <div class="item_img"> <img
+                                    src="https://media.discordapp.net/attachments/1186454147558551552/1201687978230173706/image.png?ex=65caba24&is=65b84524&hm=bd86b0025fb9ddc7b872d912c5a5b8ae55dd00d9e73964fbefffcfa4f54f77d7&=&format=webp&quality=lossless&width=468&height=468">
+                            </div>
+                            <div class="item_name"> CPU 3 </div>
+                            <div class="item_index" style="text-align: center;"> <br> 엔트리 <br></div>
+                            <div class="item_textarea"><textarea class="item_ta"></textarea></div>
+                            <div class="commit"> <button type="button" class="com_cpu3" style="width : 50px;">확인
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 메인보드(main) -->
+
+                    <div class="infor_main1">
+                        <div class="infor_box">
+                            <div class="item_infor">품목 설명</div>
+                            <div class="item_img"> <img
+                                    src="https://media.discordapp.net/attachments/1186454147558551552/1203715419274215504/KakaoTalk_20240130_103821101.png?ex=65d21a57&is=65bfa557&hm=b93df409dd187db39658aabf1798314afc327ed99e15eeac2d7ab3627756f020&=&format=webp&quality=lossless&width=368&height=368">
+                            </div>
+                            <div class="item_name"> MAIN 1 </div>
+                            <div class="item_index" style="text-align: center;"> <br> 퍼포먼스 <br></div>
+                            <div class="item_textarea"><textarea class="item_ta"></textarea></div>
+                            <div class="commit"> <button type="button" class="com_main1" style="width : 50px;">확인
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="infor_main2">
+                        <div class="infor_box">
+                            <div class="item_infor">품목 설명</div>
+                            <div class="item_img"> <img
+                                    src="https://media.discordapp.net/attachments/1186454147558551552/1203715419811217428/KakaoTalk_20240130_103821101_01.png?ex=65d21a58&is=65bfa558&hm=bdf0e2cd1c64dd22077daeef88fe7340c7751a882888b9999685f997460014d4&=&format=webp&quality=lossless&width=368&height=368">
+                            </div>
+                            <div class="item_name"> MAIN 2 </div>
+                            <div class="item_index" style="text-align: center;"> <br> 메인스트림 <br></div>
+                            <div class="item_textarea"><textarea class="item_ta"></textarea></div>
+                            <div class="commit"> <button type="button" class="com_main2" style="width : 50px;">확인
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="infor_main3">
+                        <div class="infor_box">
+                            <div class="item_infor">품목 설명</div>
+                            <div class="item_img"> <img
+                                    src="https://media.discordapp.net/attachments/1186454147558551552/1203715420264075274/KakaoTalk_20240130_103821101_02.png?ex=65d21a58&is=65bfa558&hm=6c39ce3f3b54ab938b4c1584f5ce41d5b4ddda00185e0636fd1cf3a90dac31b6&=&format=webp&quality=lossless&width=368&height=368">
+                            </div>
+                            <div class="item_name"> MAIN 3 </div>
+                            <div class="item_index" style="text-align: center;"> <br> 엔트리 <br></div>
+                            <div class="item_textarea"><textarea class="item_ta"></textarea></div>
+                            <div class="commit"> <button type="button" class="com_main3" style="width : 50px;">확인
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- 그래픽카드(gpu) -->
+
+                    <div class="infor_gpu1">
+                        <div class="infor_box">
+                            <div class="item_infor">품목 설명</div>
+                            <div class="item_img"> <img
+                                    src="https://media.discordapp.net/attachments/1186454147558551552/1203715472621576242/KakaoTalk_20240130_140103929_01.png?ex=65d21a64&is=65bfa564&hm=180fa2cd659f749c70064ebe4ecaa1f7d875c6360ce62ba6d19bee80c0234e1d&=&format=webp&quality=lossless&width=368&height=368">
+                            </div>
+                            <div class="item_name"> GPU 1 </div>
+                            <div class="item_index" style="text-align: center;"> <br> 퍼포먼스 <br></div>
+                            <div class="item_textarea"><textarea class="item_ta"></textarea></div>
+                            <div class="commit"> <button type="button" class="com_gpu1" style="width : 50px;">확인
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="infor_gpu2">
+                        <div class="infor_box">
+                            <div class="item_infor">품목 설명</div>
+                            <div class="item_img"> <img
+                                    src="https://media.discordapp.net/attachments/1186454147558551552/1203715473024483450/KakaoTalk_20240130_140103929_02.png?ex=65d21a64&is=65bfa564&hm=d4d4dd12149d13e58a6d429283a13dd78a5570e19961670e1135834fcd357144&=&format=webp&quality=lossless&width=368&height=368">
+                            </div>
+                            <div class="item_name"> GPU 2 </div>
+                            <div class="item_index" style="text-align: center;"> <br> 메인스트림 <br></div>
+                            <div class="item_textarea"><textarea class="item_ta"></textarea></div>
+                            <div class="commit"> <button type="button" class="com_gpu2" style="width : 50px;">확인
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="infor_gpu3">
+                        <div class="infor_box">
+                            <div class="item_infor">품목 설명</div>
+                            <div class="item_img"> <img
+                                    src="https://media.discordapp.net/attachments/1186454147558551552/1203715473452310578/KakaoTalk_20240130_140103929.png?ex=65d21a64&is=65bfa564&hm=355b71c57e83b162c1648233f6e148eeb3741b294c1638c4af28f62d164ddf4d&=&format=webp&quality=lossless&width=368&height=368">
+                            </div>
+                            <div class="item_name"> GPU 3 </div>
+                            <div class="item_index" style="text-align: center;"> <br> 엔트리 <br></div>
+                            <div class="item_textarea"><textarea class="item_ta"></textarea></div>
+                            <div class="commit"> <button type="button" class="com_gpu3" style="width : 50px;">확인
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SSD(ssd) -->
+
+
+                    <div class="infor_ssd1">
+                        <div class="infor_box">
+                            <div class="item_infor">품목 설명</div>
+                            <div class="item_img"> <img
+                                    src="https://media.discordapp.net/attachments/1186454147558551552/1201687978230173706/image.png?ex=65caba24&is=65b84524&hm=bd86b0025fb9ddc7b872d912c5a5b8ae55dd00d9e73964fbefffcfa4f54f77d7&=&format=webp&quality=lossless&width=468&height=468">
+                            </div>
+                            <div class="item_name"> SSD 1 </div>
+                            <div class="item_index" style="text-align: center;"> <br> 퍼포먼스 <br></div>
+                            <div class="item_textarea"><textarea class="item_ta"></textarea></div>
+                            <div class="commit"> <button type="button" class="com_ssd1" style="width : 50px;">확인
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="infor_ssd2">
+                        <div class="infor_box">
+                            <div class="item_infor">품목 설명</div>
+                            <div class="item_img"> <img
+                                    src="https://media.discordapp.net/attachments/1186454147558551552/1201687978230173706/image.png?ex=65caba24&is=65b84524&hm=bd86b0025fb9ddc7b872d912c5a5b8ae55dd00d9e73964fbefffcfa4f54f77d7&=&format=webp&quality=lossless&width=468&height=468">
+                            </div>
+                            <div class="item_name"> SSD 2 </div>
+                            <div class="item_index" style="text-align: center;"> <br> 메인스트림 <br></div>
+                            <div class="item_textarea"><textarea class="item_ta"></textarea></div>
+                            <div class="commit"> <button type="button" class="com_ssd2" style="width : 50px;">확인
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="infor_ssd3">
+                        <div class="infor_box">
+                            <div class="item_infor">품목 설명</div>
+                            <div class="item_img"> <img
+                                    src="https://media.discordapp.net/attachments/1186454147558551552/1201687978230173706/image.png?ex=65caba24&is=65b84524&hm=bd86b0025fb9ddc7b872d912c5a5b8ae55dd00d9e73964fbefffcfa4f54f77d7&=&format=webp&quality=lossless&width=468&height=468">
+                            </div>
+                            <div class="item_name"> SSD 3 </div>
+                            <div class="item_index" style="text-align: center;"> <br> 엔트리 <br></div>
+                            <div class="item_textarea"><textarea class="item_ta"></textarea></div>
+                            <div class="commit"> <button type="button" class="com_ssd3" style="width : 50px;">확인
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <!--  -->
+
+                </article>
+            </section>
+        </div>
+        <footer>ⓒ2024 J.company System</footer>
+    </div>
+
+    <script>
+
+        // 품목 클릭시 이미지 팝업
+
+        /* infor : 디스플레이 none
+        infor_box : 디스플레이 flex
+        item_infor : "품목설명"
+        item_img : 이미지가 들어갈 박스
+        item_name : 재고 이름
+        item_indx : 3가지 등급
+        item_textarea : 재고 설명문
+        commit > com : 확인 버튼 */
+
+        //cpu1
+        document.querySelector(".cpu1").addEventListener('click', function () {
+            let modal_overlay = document.querySelector(".modal-overlay");
+            modal_overlay.style.display = "flex";
+            let infor = document.querySelector(".infor_cpu1");
+            infor.style.display = "block";
+        });
+
+        document.querySelector(".com_cpu1").addEventListener('click', function () {
+            let modal_overlay = document.querySelector(".modal-overlay");
+            modal_overlay.style.display = "none";
+            let infor = document.querySelector(".infor_cpu1");
+            infor.style.display = "none";
+        });
+
+        //cpu2
+        document.querySelector(".cpu2").addEventListener('click', function () {
+            let modal_overlay = document.querySelector(".modal-overlay");
+            modal_overlay.style.display = "flex";
+            let infor = document.querySelector(".infor_cpu2");
+            infor.style.display = "block";
+        });
+
+        document.querySelector(".com_cpu2").addEventListener('click', function () {
+            let modal_overlay = document.querySelector(".modal-overlay");
+            modal_overlay.style.display = "none";
+            let infor = document.querySelector(".infor_cpu2");
+            infor.style.display = "none";
+        });
+
+        //cpu3
+        document.querySelector(".cpu3").addEventListener('click', function () {
+            let modal_overlay = document.querySelector(".modal-overlay");
+            modal_overlay.style.display = "flex";
+            let infor = document.querySelector(".infor_cpu3");
+            infor.style.display = "block";
+        });
+
+        document.querySelector(".com_cpu3").addEventListener('click', function () {
+            let modal_overlay = document.querySelector(".modal-overlay");
+            modal_overlay.style.display = "none";
+            let infor = document.querySelector(".infor_cpu3");
+            infor.style.display = "none";
+        });
+
+        // 메인보드
+
+        //main1
+        document.querySelector(".main1").addEventListener('click', function () {
+            let modal_overlay = document.querySelector(".modal-overlay");
+            modal_overlay.style.display = "flex";
+            let infor = document.querySelector(".infor_main1");
+            infor.style.display = "block";
+        });
+
+        document.querySelector(".com_main1").addEventListener('click', function () {
+            let modal_overlay = document.querySelector(".modal-overlay");
+            modal_overlay.style.display = "none";
+            let infor = document.querySelector(".infor_main1");
+            infor.style.display = "none";
+        });
+
+        //main2
+        document.querySelector(".main2").addEventListener('click', function () {
+            let modal_overlay = document.querySelector(".modal-overlay");
+            modal_overlay.style.display = "flex";
+            let infor = document.querySelector(".infor_main2");
+            infor.style.display = "block";
+        });
+
+        document.querySelector(".com_main2").addEventListener('click', function () {
+            let modal_overlay = document.querySelector(".modal-overlay");
+            modal_overlay.style.display = "none";
+            let infor = document.querySelector(".infor_main2");
+            infor.style.display = "none";
+        });
+
+        //main3
+        document.querySelector(".main3").addEventListener('click', function () {
+            let modal_overlay = document.querySelector(".modal-overlay");
+            modal_overlay.style.display = "flex";
+            let infor = document.querySelector(".infor_main3");
+            infor.style.display = "block";
+        });
+
+        document.querySelector(".com_main3").addEventListener('click', function () {
+            let modal_overlay = document.querySelector(".modal-overlay");
+            modal_overlay.style.display = "none";
+            let infor = document.querySelector(".infor_main3");
+            infor.style.display = "none";
+        });
+
+        // 그래픽카드
+
+        //gpu1
+        document.querySelector(".gpu1").addEventListener('click', function () {
+            let modal_overlay = document.querySelector(".modal-overlay");
+            modal_overlay.style.display = "flex";
+            let infor = document.querySelector(".infor_gpu1");
+            infor.style.display = "block";
+        });
+
+        document.querySelector(".com_gpu1").addEventListener('click', function () {
+            let modal_overlay = document.querySelector(".modal-overlay");
+            modal_overlay.style.display = "none";
+            let infor = document.querySelector(".infor_gpu1");
+            infor.style.display = "none";
+        });
+
+        //gpu2
+        document.querySelector(".gpu2").addEventListener('click', function () {
+            let modal_overlay = document.querySelector(".modal-overlay");
+            modal_overlay.style.display = "flex";
+            let infor = document.querySelector(".infor_gpu2");
+            infor.style.display = "block";
+        });
+
+        document.querySelector(".com_gpu2").addEventListener('click', function () {
+            let modal_overlay = document.querySelector(".modal-overlay");
+            modal_overlay.style.display = "none";
+            let infor = document.querySelector(".infor_gpu2");
+            infor.style.display = "none";
+        });
+
+        //gpu3
+        document.querySelector(".gpu3").addEventListener('click', function () {
+            let modal_overlay = document.querySelector(".modal-overlay");
+            modal_overlay.style.display = "flex";
+            let infor = document.querySelector(".infor_gpu3");
+            infor.style.display = "block";
+        });
+
+        document.querySelector(".com_gpu3").addEventListener('click', function () {
+            let modal_overlay = document.querySelector(".modal-overlay");
+            modal_overlay.style.display = "none";
+            let infor = document.querySelector(".infor_gpu3");
+            infor.style.display = "none";
+        });
+
+        // SSD
+
+        //ssd1
+        document.querySelector(".ssd1").addEventListener('click', function () {
+            let modal_overlay = document.querySelector(".modal-overlay");
+            modal_overlay.style.display = "flex";
+            let infor = document.querySelector(".infor_ssd1");
+            infor.style.display = "block";
+        });
+
+        document.querySelector(".com_ssd1").addEventListener('click', function () {
+            let modal_overlay = document.querySelector(".modal-overlay");
+            modal_overlay.style.display = "none";
+            let infor = document.querySelector(".infor_ssd1");
+            infor.style.display = "none";
+        });
+
+        //ssd2
+        document.querySelector(".ssd2").addEventListener('click', function () {
+            let modal_overlay = document.querySelector(".modal-overlay");
+            modal_overlay.style.display = "flex";
+            let infor = document.querySelector(".infor_ssd2");
+            infor.style.display = "block";
+        });
+
+        document.querySelector(".com_ssd2").addEventListener('click', function () {
+            let modal_overlay = document.querySelector(".modal-overlay");
+            modal_overlay.style.display = "none";
+            let infor = document.querySelector(".infor_ssd2");
+            infor.style.display = "none";
+        });
+
+        //ssd3
+        document.querySelector(".ssd3").addEventListener('click', function () {
+            let modal_overlay = document.querySelector(".modal-overlay");
+            modal_overlay.style.display = "flex";
+            let infor = document.querySelector(".infor_ssd3");
+            infor.style.display = "block";
+        });
+
+        document.querySelector(".com_ssd3").addEventListener('click', function () {
+            let modal_overlay = document.querySelector(".modal-overlay");
+            modal_overlay.style.display = "none";
+            let infor = document.querySelector(".infor_ssd3");
+            infor.style.display = "none";
+        });
+
+
+
+
+        // 품목 클릭시 이미지 팝업 끝
+
+
+
+        // 검색
+        // 엔터나 클릭을 해야 검색
+        document.addEventListener('DOMContentLoaded', function () {
+            const searchInput = document.querySelector('.search_text');
+            const searchImage = document.querySelector('.glasses');
+            const tableRows = document.querySelectorAll('.items .row');
+
+            // const tableRows = document.querySelectorAll('.items .row:not(:first-child)');
+
+            function filterRows() {
+                const searchTerm = searchInput.value.toLowerCase();
+                console.log('Searching for:', searchTerm);
+
+                tableRows.forEach(row => {
+                    const cellValue = row.querySelector('td:first-child input').value.toLowerCase();
+
+                    console.log('Row value:', cellValue);
+
+                    if (cellValue.includes(searchTerm)) {
+                        row.style.display = '';
+                        console.log('Showing row:', row);
+                    } else {
+                        row.style.display = 'none';
+                        console.log('Hiding row:', row);
+                    }
+                });
+            }
+
+            // 검색 이미지를 클릭했을 때 검색 실행
+            searchImage.addEventListener('click', filterRows);
+
+            // 또는 Enter 키를 눌렀을 때도 검색 실행 가능
+            searchInput.addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    filterRows();
+                }
+            });
+        });
+
+        // 엔터나 클릭을 해야 검색
+
+
+        // 글씨만 써져도 나오게 검색
+        // document.addEventListener('DOMContentLoaded', function () {
+        //     const searchInput = document.querySelector('.search_text');
+        //     const searchImage = document.querySelector('.glasses');
+        //     const tableRows = document.querySelectorAll('.items .row');
+
+        //     function filterRows() {
+        //         const searchTerm = searchInput.value.toLowerCase();
+        //         console.log('Searching for:', searchTerm);
+
+        //         tableRows.forEach(row => {
+        //             // 첫 번째 행부터 마지막 행까지 검색
+        //             const cellValue = row.querySelector('td:first-child input').value.toLowerCase();
+
+        //             console.log('Row value:', cellValue);
+
+        //             if (cellValue.includes(searchTerm)) {
+        //                 row.style.display = '';
+        //                 console.log('Showing row:', row);
+        //             } else {
+        //                 row.style.display = 'none';
+        //                 console.log('Hiding row:', row);
+        //             }
+        //         });
+        //     }
+
+        //     // 검색 이미지를 클릭했을 때 검색 실행
+        //     searchImage.addEventListener('click', filterRows);
+
+        //     // 입력 필드에서 키를 누를 때마다 검색 실행
+        //     searchInput.addEventListener('keyup', filterRows);
+        // });
+
+        // 글씨만 써져도 나오게 끝
+
+
+        // 검색
+
+        // 페이징
+        document.addEventListener("DOMContentLoaded", function () {
+            var items = document.querySelectorAll(".row"); // 페이지네이션할 요소 선택
+            var itemsPerPage = 10; // 페이지당 보여줄 항목 수
+            var totalPages = Math.ceil(items.length / itemsPerPage); // 전체 페이지 수
+            var currentPage = 1;
+
+            var prevPageBtn = document.getElementById("prevPage");
+            var nextPageBtn = document.getElementById("nextPage");
+            var currentPageNumber = document.getElementById("currentPageNumber");
+
+            // 페이지 번호를 생성하고 추가하는 함수
+            function displayPageNumbers() {
+                var pageNumbers = document.getElementById("page-numbers");
+                pageNumbers.innerHTML = '';
+
+                for (var i = 1; i <= totalPages; i++) {
+                    var li = document.createElement("li");
+                    var a = document.createElement("a");
+                    a.href = "#";
+                    a.textContent = i;
+                    li.appendChild(a);
+                    pageNumbers.appendChild(li);
+                }
+            }
+
+            // 페이지를 보여주는 함수
+            function showPage(pageNumber) {
+                var startIndex = (pageNumber - 1) * itemsPerPage;
+                var endIndex = startIndex + itemsPerPage;
+
+                // 모든 항목을 숨김
+                items.forEach(function (item) {
+                    item.style.display = "none";
+                });
+
+                // 현재 페이지의 항목을 보여줌
+                for (var i = startIndex; i < endIndex; i++) {
+                    if (items[i]) {
+                        items[i].style.display = "table-row";
+                    }
+                }
+
+                // 현재 페이지 정보 업데이트
+                currentPageNumber.textContent = "현재는 " + pageNumber + "페이지 입니다.";
+            }
+
+            // 이전 페이지 버튼 이벤트 처리
+            prevPageBtn.addEventListener("click", function () {
+                if (currentPage > 1) {
+                    currentPage--;
+                    showPage(currentPage);
+                }
+            });
+
+            // 다음 페이지 버튼 이벤트 처리
+            nextPageBtn.addEventListener("click", function () {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    showPage(currentPage);
+                }
+            });
+
+            // 페이지 번호를 클릭했을 때의 이벤트 처리
+            document.getElementById("page-numbers").addEventListener("click", function (event) {
+                if (event.target.tagName === "A") {
+                    var pageNumber = parseInt(event.target.textContent);
+                    currentPage = pageNumber;
+                    showPage(pageNumber);
+                }
+            });
+
+            // 초기 페이지 번호 표시
+            displayPageNumbers();
+            showPage(currentPage); // 페이지 로드 시 첫 페이지 보여주기
+        });
+
+
+        // 페이징 끝
+
+
+
+        const hover = document.querySelectorAll('a.hover');
+        const menuBar = document.querySelector('.menu-bar');
+        const nav = document.querySelector('nav');
+        const wrap = document.querySelector('.wrap');
+        const section = document.querySelector('section');
+
+        hover.forEach(link => {
+            link.addEventListener("click", function (event) {
+                event.preventDefault();
+                if (nav.classList.contains('active') && window.matchMedia("(max-width: 430px)").matches) {
+                    nav.style.height = `${section.offsetHeight}px`
+                }
+            });
+        });
+
+        // if() {
+        // document.querySelector("#mainTitle1").style.display = "block";
+        // } else {
+        document.querySelector("#mainTitle2").style.display = "block";
+        // }
+
+        let isHovered = false;
+
+        hover.forEach(button => {
+            button.addEventListener('mouseover', () => {
+                showMenuBar();
+                isHovered = true;
+            });
+        });
+
+        wrap.addEventListener("mouseleave", function () {
+            if (!isHovered) {
+                hideMenuBar();
+            }
+        });
+
+        menuBar.addEventListener("mouseenter", function () {
+            isHovered = true;
+        });
+
+        menuBar.addEventListener("mouseleave", function () {
+            hideMenuBar();
+        });
+
+        section.addEventListener("click", function () {
+            hideMenuBar();
+        })
+
+        function showMenuBar() {
+            nav.classList.add('active');
+        }
+
+        function hideMenuBar() {
+            nav.classList.remove('active');
+        }
+
+    </script>
+</body>
+
+</html>
