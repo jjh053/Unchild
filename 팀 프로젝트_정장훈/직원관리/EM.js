@@ -1,5 +1,99 @@
 // 직원관리 js
 
+
+// 팝업 3에 대한 클릭이벤트
+
+
+
+let lastbtn = 0;
+
+document.querySelector(".cancel3").addEventListener("click", function () {
+    let EAI3 = document.querySelector(".popup3");
+    EAI3.style.display = "none";
+    let modal_overlay = document.querySelector(".modal-overlay");
+    modal_overlay.style.display = "none";
+});
+
+
+document.querySelector(".add_eaib3").addEventListener("click", function () {
+    let EAI3 = document.querySelector(".popup3");
+    EAI3.style.display = "none";
+    let modal_overlay = document.querySelector(".modal-overlay");
+    modal_overlay.style.display = "none";
+});
+
+document.querySelector(".record").addEventListener("click", function () {
+    let EAI = document.querySelector(".popup");
+    EAI.style.display = "none";
+    let EAI3 = document.querySelector(".popup3");
+    EAI3.style.display = "block";
+    let modal_overlay = document.querySelector(".modal-overlay");
+    modal_overlay.style.display = "flex";
+
+});
+
+
+
+document.querySelector(".add_eaib3").addEventListener("click", function () {
+    let EAI = document.querySelector(".popup");
+    EAI.style.display = "none";
+    let EAI3 = document.querySelector(".popup3");
+    EAI3.style.display = "none";
+    let modal_overlay = document.querySelector(".modal-overlay");
+    modal_overlay.style.display = "none";
+
+    let eais_sel3 = document.querySelector(".eais_sel3").value;
+    let eais_name3 = document.querySelector(".name_text3").value;
+    let eais_rank3 = document.querySelector(".rank_text3").value;
+    let eais_number3 = document.querySelector(".number_text3").value;
+    let eais_ay3 = document.querySelector(".day_text3").value;
+    let eais_id3 = document.querySelector(".id_text3").value;
+    let eais_mail3 = document.querySelector(".mail_text3").value;
+    let mail_select3 = document.querySelector(".mail_select3").value;
+    let e_area3 = document.querySelector(".e_area3").value;
+
+    console.log(eais_sel3);
+    console.log(eais_name3);
+    console.log(eais_rank3);
+    console.log(eais_number3);
+    console.log(eais_ay3);
+    console.log(eais_id3);
+    console.log(eais_mail3);
+    console.log(mail_select3);
+    console.log(e_area3);
+
+    // 상세정보 버튼이 클릭되면
+    // 어떤 상세정보 버튼인지 저장해놓고
+    // 추가하기 버튼을 누르면
+    // date-id 등으로 만든 곳에 모든 내용을 덮어쓰기 (콘솔에 나온거 덮어쓰기)
+    lastbtn.parentNode.parentNode.setAttribute("data-sel", eais_sel3);
+    lastbtn.parentNode.parentNode.setAttribute("data-name", eais_name3);
+    lastbtn.parentNode.parentNode.setAttribute("data-rank", eais_rank3);
+    lastbtn.parentNode.parentNode.setAttribute("data-number", eais_number3);
+    lastbtn.parentNode.parentNode.setAttribute("data-day", eais_ay3);
+    lastbtn.parentNode.parentNode.setAttribute("data-id", eais_id3);
+    lastbtn.parentNode.parentNode.setAttribute("data-mail", eais_mail3);
+    lastbtn.parentNode.parentNode.setAttribute("data-mail-select", mail_select3);
+    lastbtn.parentNode.parentNode.setAttribute("data-area", e_area3);
+
+    // 라스트
+    // data-sel="${eais_sel}" data-name="${eais_name2}" data-rank="${eais_rank}" data-number="${eais_number2}" 
+    //                         data-day="${eais_ay2}" data-id = "${eais_id2}" data-mail = "${eais_mail2}" data-mail-select = "${mail_select}"
+    //                         data-area="${e_area2}">
+    // setAttribute("date-sel", 읽어온 값)로 첫번째 전달인자
+
+
+});
+
+
+
+
+
+
+
+
+
+
 // 팝업 2에 대한 클릭이벤트
 document.querySelector(".add_button").addEventListener("click", function () {
     let EAI2 = document.querySelector(".popup2");
@@ -31,10 +125,8 @@ document.querySelector(".cancel2").addEventListener("click", function () {
     // document.querySelector(".mail_select").innerHTML = "";
     document.querySelector(".e_area2").innerHTML = "";
 
-
-
-
 });
+
 
 // 팝업 2에 대한 수정하기
 document.querySelector(".add_eaib").addEventListener("click", function () {
@@ -66,7 +158,9 @@ document.querySelector(".add_eaib").addEventListener("click", function () {
     let mail_select = document.querySelector(".mail_select").value;
     let e_area2 = document.querySelector(".e_area2").value;
     let newRow = document.createElement('div');
+
     newRow.className = 'Employee';
+
     newRow.innerHTML = `
                         <div class="Employee_img"><img
                                 src="#">
@@ -91,8 +185,8 @@ document.querySelector(".add_eaib").addEventListener("click", function () {
         modal_overlay.style.display = "flex";
         EAI.style.display = "inline-block";
 
-
-
+        // 라스트비티엔 디스
+        lastbtn = this;
 
         // let eais_select = document.querySelector(".eais_select").value;
         let eais_sel = document.querySelector(".eais_sel");
@@ -112,10 +206,10 @@ document.querySelector(".add_eaib").addEventListener("click", function () {
         // console.log(e.target.parentNode.parentNode.getAttribute("data-sel"));
         document.querySelector(".eais_rank").innerHTML = e.target.parentNode.parentNode.getAttribute("data-rank");
         // console.log(eais_name2.value);
-        document.querySelector(".eais_number").innerHTML =  e.target.parentNode.parentNode.getAttribute("data-number");
+        document.querySelector(".eais_number").innerHTML = e.target.parentNode.parentNode.getAttribute("data-number");
         document.querySelector(".eais_ay").innerHTML = e.target.parentNode.parentNode.getAttribute("data-day");
-        document.querySelector(".eais_id").innerHTML = e.target.parentNode.parentNode.getAttribute("data-id"); 
-        document.querySelector(".eais_mail").innerHTML = e.target.parentNode.parentNode.getAttribute("data-mail") +e.target.parentNode.parentNode.getAttribute("data-mail-select");
+        document.querySelector(".eais_id").innerHTML = e.target.parentNode.parentNode.getAttribute("data-id");
+        document.querySelector(".eais_mail").innerHTML = e.target.parentNode.parentNode.getAttribute("data-mail") + e.target.parentNode.parentNode.getAttribute("data-mail-select");
         document.querySelector(".e_area").innerHTML = e.target.parentNode.parentNode.getAttribute("data-area");
         // document.querySelector('.eais_select').innerHTML = "정규직";
         // 삭제 버튼 이벤트 처리
@@ -142,6 +236,10 @@ document.querySelectorAll(".atomic_button").forEach(function (event) {
         let Employee = e.target.closest('.Employee');
 
         console.log(e.target.parentNode.parentNode.getAttribute("data-sel"));
+
+
+
+
 
         document.querySelector(".delete_button").addEventListener("click", function () {
             let EAI = document.querySelector(".popup");

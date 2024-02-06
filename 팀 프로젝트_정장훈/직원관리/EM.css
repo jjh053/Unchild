@@ -322,10 +322,10 @@ article {
     /* background-color: black; */
     justify-content: center;
     align-items: center;
-    position: absolute;
-    top: 110px;
-    left: 80px;
-    width: 100%;
+    position: fixed;
+    top: 20%;
+    left: 36%;
+    width: 50%;
     height: 100%;
     /* border: 1px solid red; */
     z-index: 1001;
@@ -536,14 +536,16 @@ article {
     /* background-color: black; */
     /* justify-content: center; */
     align-items: center;
-    position: absolute;
-    top: 110px;
-    left: 80px;
+    position: fixed;
+    top: 20%;
+    left: 36%;
+    width: 50%;
+    height: 100%;
     /* width: 100%; */
     /* height: 100%; */
-    border: 1px solid red;
-    width: 80%;
-    height: 50%;
+    /* border: 1px solid red; */
+    /* width: 80%; */
+    /* height: 50%; */
     z-index: 1001;
     /* background-color: #000; */
 }
@@ -768,8 +770,242 @@ article {
     transition: 0.2s;
 } */
 
+/* 팝업 3 시작 */
+
+/* 팝업  */
+.popup3 {
+    display: none;
+    /* background-color: black; */
+    /* justify-content: center; */
+    align-items: center;
+    position: fixed;
+    top: 20%;
+    left: 36%;
+    width: 50%;
+    height: 100%;
+    z-index: 1001;
+    /* background: #eee; */
+    /* background-color: #000; */
+}
+
+.Employee_atomic_information3 {
+    width: 80%;
+    height: 600px;
+    /* border: 1px solid red; */
+}
+
+.eai3 {
+    /* border: 1px solid red; */
+    width: 640px;
+    height: 710px;
+    display: flex;
+    background-color: #eee;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 상단 : 정보 */
+/* 상단 메인 */
+.Employee_atomic_infor3 {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 40%;
+    width: 100%;
+    /* border: 1px solid green; */
+}
+
+/* 상단 좌 */
+.Employee_atomic_infor_img3 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    /* border: 1px solid red; */
+    text-align: center;
+    height: 90%;
+    width: 30%;
+}
+
+.Employee_atomic_infor_img3 img {
+    /* border: 1px solid blue; */
+    height: 100%;
+    width: 100%;
+    margin-bottom: 10px;
+    
+}
+
+.img_choice3 {
+    /* border: 1px solid green; */
+    font-size: 15px;
+    background-color: #3498DB;
+    /* margin-top: 10px; */
+    line-height: 25px;
+    width: 65px;
+    height: 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    border: 0;
+}
+
+.img_choice3:hover {
+    background-color: rgb(0, 47, 255);
+    transition: 0.2s;
+}
 
 
+/* 상단 중 */
+.Employee_atomic_infor_title3 {
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid red; */
+    height: 90%;
+    width: 25%;
+}
+
+.Employee_atomic_infor_title3 div {
+    /* margin-right: 20px; */
+    /* display: flex; */
+    /* border: 1px solid blue; */
+    height: 20%;
+    width: 90%;
+    text-align: right;
+    /* line-height: 50px; */
+}
+
+/* 상단 우 */
+.Employee_atomic_infor_select3 {
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid red; */
+    height: 90%;
+    width: 40%
+}
+
+.Employee_atomic_infor_select3 div {
+    /* border: 1px solid red; */
+    /* text-align: center; */
+    /* line-height: 50px; */
+    height: 20%;
+    width: 100%
+}
+
+
+/* 중단 : 이력 */
+.Employee_atomic_infor_history3 {
+    /* border: 1px solid red; */
+    height: 40%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.eaih_area3 {
+    /* border: 1px solid green; */
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    width: 85%;
+    height: 80%;
+    background-color: #fff;
+    /* border: 1px solid red; */
+}
+
+.Employee_atomic_infor_history3 textarea {
+    font-family: "SOYOMapleBoldTTF";
+    line-height: 30px;
+    width: 90%;
+    height: 90%;
+    resize: none;
+    border: none;
+    /* border: 1px solid red; */
+}
+
+
+/* 하단 : 버튼 */
+.eaib3 {
+    /* border: 1px solid blue; */
+    width: 100%;
+    height: 15%;
+    display: flex;
+    flex-direction: column
+}
+
+.Employee_atomic_infor_button3 {
+    /* border: 1px solid red; */
+    background-color: #eee;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.add_eaib3 {
+    width: 15%;
+    text-align: center;
+    height: 35%;
+    line-height: 35px;
+    background-color: #3498DB;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    border: 0;
+}
+
+.add_eaib3:hover {
+    background-color: rgb(0, 47, 255);
+    transition: 0.2s;
+}
+
+.cancel3 {
+    width: 15%;
+    text-align: center;
+    height: 35%;
+    background-color: red;
+    line-height: 35px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    border: 0;
+}
+
+.cancel3:hover {
+    background-color: rgb(163, 6, 6);
+    transition: 0.2s;
+}
+
+/* 
+.delete2 {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    width : 80%;
+    height: 10%;
+    background-color: #eee;
+}
+
+.delete_button2 {
+    width: 10%;
+    text-align: center;
+    height: 20px;
+    background-color: red;
+    line-height: 25px;
+    font-size: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    border: 0;
+}
+
+.delete_button2:hover {
+    background-color: rgb(163, 6, 6);
+    transition: 0.2s;
+} */
 
 
 /* 팝업 끝 */
@@ -881,6 +1117,7 @@ article {
 
 .atomic_button {
     background-color: #3498DB;
+    /* position:relative; */
     line-height: 35px;
     text-align: center;
     width: 75px;
