@@ -4,7 +4,6 @@
 // 팝업 3에 대한 클릭이벤트
 
 
-
 let lastbtn = 0;
 
 document.querySelector(".cancel3").addEventListener("click", function () {
@@ -30,11 +29,41 @@ document.querySelector(".record").addEventListener("click", function () {
     let modal_overlay = document.querySelector(".modal-overlay");
     modal_overlay.style.display = "flex";
 
+    // 수정 전에 직원 목록에 바뀐 정보가 잘 뜨도록
+
+    // document.querySelector(".eai_img").src = imageLink;
+    // document.querySelector(".eais_select").innerHTML = lastbtn.parentNode.parentNode.getAttribute("data-sel");
+    // document.querySelector(".eais_name").innerHTML = lastbtn.parentNode.parentNode.getAttribute("data-name");
+    // // console.log(e.target.parentNode.parentNode.getAttribute("data-sel"));
+    // document.querySelector(".eais_rank").innerHTML = lastbtn.parentNode.parentNode.getAttribute("data-rank");
+    // // console.log(eais_name2.value);
+    // document.querySelector(".eais_number").innerHTML = lastbtn.parentNode.parentNode.getAttribute("data-number");
+    // document.querySelector(".eais_ay").innerHTML = lastbtn.parentNode.parentNode.getAttribute("data-day");
+    // document.querySelector(".eais_id").innerHTML = lastbtn.parentNode.parentNode.getAttribute("data-id");
+    // document.querySelector(".eais_mail").innerHTML = lastbtn.parentNode.parentNode.getAttribute("data-mail") + e.target.parentNode.parentNode.getAttribute("data-mail-select");
+    // document.querySelector(".e_area").innerHTML = lastbtn.parentNode.parentNode.getAttribute("data-area");
+
+
+    // 버튼 클릭 후에 적었던 기록들 삭제
+    let imageLink = "";
+    document.querySelector(".eai_img").src = imageLink;
+    let eais_sel3 = document.querySelector(".eais_sel3").value = "";
+    let eais_name3 = document.querySelector(".name_text3").value = "";
+    let eais_rank3 = document.querySelector(".rank_text3").value = "";
+    let eais_number3 = document.querySelector(".number_text3").value = "";
+    let eais_ay3 = document.querySelector(".day_text3").value = "";
+    let eais_id3 = document.querySelector(".id_text3").value = "";
+    let eais_mail3 = document.querySelector(".mail_text3").value = "";
+    let mail_select3 = document.querySelector(".mail_select3").value = "";
+    let e_area3 = document.querySelector(".e_area3").value = "";
+    // lastbtn.parentNode.parentNode.parentNode.querySelector(".eais_name").value = "";
+    // let name = lastbtn.parentNode.parentNode.parentNode.parentNode.document.querySelector(".name_text3");
+    // console.log(name);
 });
 
 
 
-document.querySelector(".add_eaib3").addEventListener("click", function () {
+document.querySelector(".add_eaib3").addEventListener("click", function (e) {
     let EAI = document.querySelector(".popup");
     EAI.style.display = "none";
     let EAI3 = document.querySelector(".popup3");
@@ -52,16 +81,15 @@ document.querySelector(".add_eaib3").addEventListener("click", function () {
     let mail_select3 = document.querySelector(".mail_select3").value;
     let e_area3 = document.querySelector(".e_area3").value;
 
-    console.log(eais_sel3);
-    console.log(eais_name3);
-    console.log(eais_rank3);
-    console.log(eais_number3);
-    console.log(eais_ay3);
-    console.log(eais_id3);
-    console.log(eais_mail3);
-    console.log(mail_select3);
-    console.log(e_area3);
-
+    // console.log(eais_sel3);
+    // console.log(eais_name3);
+    // console.log(eais_rank3);
+    // console.log(eais_number3);
+    // console.log(eais_ay3);
+    // console.log(eais_id3);
+    // console.log(eais_mail3);
+    // console.log(mail_select3);
+    // console.log(e_area3);
     // 상세정보 버튼이 클릭되면
     // 어떤 상세정보 버튼인지 저장해놓고
     // 추가하기 버튼을 누르면
@@ -81,17 +109,14 @@ document.querySelector(".add_eaib3").addEventListener("click", function () {
     //                         data-day="${eais_ay2}" data-id = "${eais_id2}" data-mail = "${eais_mail2}" data-mail-select = "${mail_select}"
     //                         data-area="${e_area2}">
     // setAttribute("date-sel", 읽어온 값)로 첫번째 전달인자
-
-
+    // Employee_name : 팀장, 이름
+    // Employee_ad_bum : 이메일 br 연락처
+    lastbtn.parentNode.parentNode.parentNode.querySelector(".Employee_name").innerText = eais_rank3 + " " + eais_name3;
+    // lastbtn.parentNode.parentNode.parentNode.querySelector(".Employee_ad_bum").innerText = eais_mail3 + mail_select3 + `<br>` + eais_number3;
+    lastbtn.parentNode.parentNode.parentNode.querySelector(".Employee_ad_bum").innerHTML = `${eais_mail3} ${mail_select3} <br> ${eais_number3}`;
+    // lastbtn.parentNode.parentNode.parentNode.querySelector(".Employee_name").innerText = eais_rank3 + " " + eais_name3;
+    // 수정 전에 직원 목록에 바뀐 정보가 잘 뜨도록
 });
-
-
-
-
-
-
-
-
 
 
 // 팝업 2에 대한 클릭이벤트
@@ -102,11 +127,6 @@ document.querySelector(".add_button").addEventListener("click", function () {
     EAI2.style.display = "inline-block";
 })
 
-
-
-
-
-
 // 팝업 2에 대한 취소하기
 document.querySelector(".cancel2").addEventListener("click", function () {
     let EAI2 = document.querySelector(".popup2");
@@ -115,7 +135,6 @@ document.querySelector(".cancel2").addEventListener("click", function () {
     modal_overlay.style.display = "none";
     let imageLink = "";
     document.querySelector(".eai_img2").src = imageLink;
-
     // document.querySelector(".eais_sel").value.innerHTML = "";
     document.querySelector(".name_text").value.innerHTML = "";
     document.querySelector(".number_text").value.innerHTML = "";
@@ -124,9 +143,7 @@ document.querySelector(".cancel2").addEventListener("click", function () {
     document.querySelector(".mail_text").value.innerHTML = "";
     // document.querySelector(".mail_select").innerHTML = "";
     document.querySelector(".e_area2").innerHTML = "";
-
 });
-
 
 // 팝업 2에 대한 수정하기
 document.querySelector(".add_eaib").addEventListener("click", function () {
@@ -135,16 +152,7 @@ document.querySelector(".add_eaib").addEventListener("click", function () {
     let modal_overlay = document.querySelector(".modal-overlay");
     modal_overlay.style.display = "none";
     let imageLink = "";
-
-
-
-
 });
-
-
-
-
-
 
 // 직원 추가
 document.querySelector(".add_eaib").addEventListener("click", function () {
@@ -158,9 +166,7 @@ document.querySelector(".add_eaib").addEventListener("click", function () {
     let mail_select = document.querySelector(".mail_select").value;
     let e_area2 = document.querySelector(".e_area2").value;
     let newRow = document.createElement('div');
-
     newRow.className = 'Employee';
-
     newRow.innerHTML = `
                         <div class="Employee_img"><img
                                 src="#">
@@ -184,10 +190,8 @@ document.querySelector(".add_eaib").addEventListener("click", function () {
         let modal_overlay = document.querySelector(".modal-overlay");
         modal_overlay.style.display = "flex";
         EAI.style.display = "inline-block";
-
         // 라스트비티엔 디스
         lastbtn = this;
-
         // let eais_select = document.querySelector(".eais_select").value;
         let eais_sel = document.querySelector(".eais_sel");
         let eais_name2 = document.querySelector(".name_text");
@@ -198,8 +202,8 @@ document.querySelector(".add_eaib").addEventListener("click", function () {
         let eais_mail2 = document.querySelector(".mail_text");
         let mail_select = document.querySelector(".mail_select");
         let e_area2 = document.querySelector(".e_area2");
-
         let imageLink = "#";
+
         document.querySelector(".eai_img").src = imageLink;
         document.querySelector(".eais_select").innerHTML = e.target.parentNode.parentNode.getAttribute("data-sel");
         document.querySelector(".eais_name").innerHTML = e.target.parentNode.parentNode.getAttribute("data-name");
@@ -219,7 +223,6 @@ document.querySelector(".add_eaib").addEventListener("click", function () {
             newRow.remove();
         });
     });
-
 });
 
 
@@ -234,13 +237,7 @@ document.querySelectorAll(".atomic_button").forEach(function (event) {
         modal_overlay.style.display = "flex";
         EAI.style.display = "inline-block";
         let Employee = e.target.closest('.Employee');
-
-        console.log(e.target.parentNode.parentNode.getAttribute("data-sel"));
-
-
-
-
-
+        // console.log(e.target.parentNode.parentNode.getAttribute("data-sel"));
         document.querySelector(".delete_button").addEventListener("click", function () {
             let EAI = document.querySelector(".popup");
             let modal_overlay = document.querySelector(".modal-overlay");
@@ -319,7 +316,6 @@ for (let i = 0; i < document.querySelectorAll(".atomic_button").length; i++) {
             document.querySelector(".eais_select").innerHTML = "정규직";
             document.querySelector(".eais_name").innerHTML = "이도연";
             document.querySelector(".eais_rank").innerHTML = "대리";
-
             document.querySelector(".eais_number").innerHTML = "010-7324-1894";
             document.querySelector(".eais_ay").innerHTML = "2022-07-21";
             document.querySelector(".eais_id").innerHTML = "doyean";
@@ -366,12 +362,8 @@ for (let i = 0; i < document.querySelectorAll(".atomic_button").length; i++) {
                 "직위 : 대리\n" +
                 "기타 : 장유유서없음 \n";
         }
-
     });
 }
-
-
-
 
 document.querySelector(".cancel").addEventListener("click", function () {
     let EAI = document.querySelector(".popup");
@@ -391,22 +383,22 @@ document.querySelector(".cancel").addEventListener("click", function () {
 });
 
 
-document.querySelector(".record").addEventListener("click", function () {
-    let EAI = document.querySelector(".popup");
-    EAI.style.display = "none";
-    let modal_overlay = document.querySelector(".modal-overlay");
-    modal_overlay.style.display = "none";
-    let imageLink = "";
-    document.querySelector(".eai_img").src = imageLink;
-    document.querySelector(".eais_select").innerHTML = "";
-    document.querySelector(".eais_name").innerHTML = "";
-    document.querySelector(".eais_number").innerHTML = "";
-    document.querySelector(".eais_ay").innerHTML = "";
-    document.querySelector(".eais_id").innerHTML = "";
-    document.querySelector(".eais_mail").innerHTML = "";
-    document.querySelector(".e_area").innerHTML =
-        ""
-});
+// document.querySelector(".record").addEventListener("click", function () {
+//     let EAI = document.querySelector(".popup");
+//     EAI.style.display = "none";
+//     // let modal_overlay = document.querySelector(".modal-overlay");
+//     // modal_overlay.style.display = "none";
+//     let imageLink = "";
+//     document.querySelector(".eai_img").src = imageLink;
+//     document.querySelector(".eais_select").innerHTML = "";
+//     document.querySelector(".eais_name").innerHTML = "";
+//     document.querySelector(".eais_number").innerHTML = "";
+//     document.querySelector(".eais_ay").innerHTML = "";
+//     document.querySelector(".eais_id").innerHTML = "";
+//     document.querySelector(".eais_mail").innerHTML = "";
+//     document.querySelector(".e_area").innerHTML =
+//         ""
+// });
 
 
 
