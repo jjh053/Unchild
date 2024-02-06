@@ -389,6 +389,100 @@
             justify-content: center;
             margin-top: 100px;
         }
+
+        .tdTitle:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 100px auto;
+            padding: 20px;
+            width: 40%;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .modal-content input {
+            margin: 3px;
+            font-family: "SOYOMapleBoldTTF";
+            width: 150px;
+            font-size: 14px;
+        }
+
+        .modal-content h2 {
+            /* border: 1px solid red; */
+            text-align: center;
+        }
+
+        .close {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .close img {
+            width: 20px;
+            height: 20px;
+        }
+
+        #readTable {
+            border-collapse: collapse;
+            border: 1px solid #555;
+            text-align: center;
+            margin: auto;
+        }
+
+        #readTable input {
+            border: 0;
+            width: 95%;
+            font-size: 16px;
+            font-family: "SOYOMapleBoldTTF";
+            outline: none;
+        }
+
+        #readTable textarea {
+            outline: none;
+            font-size: 16px;
+            font-family: "SOYOMapleBoldTTF";
+            border: 0;
+            resize: none;
+            text-align: left;
+        }
+
+        #readTable th,
+        td {
+            border: 1px solid #555;
+        }
+
+        #deleteBtn:hover {
+            background-color: rgb(163, 6, 6);
+            transition: 0.2s;
+        }
+
+        #deleteBtn {
+            background-color: red;
+            margin-top: 10px;
+            width: 80px;
+            height: 40px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+        }
     </style>
 
 </head>
@@ -518,7 +612,30 @@
                     <button type="button" class="numberBtn" style="margin-right: 20px;">2</button>
                     <button type="button" class="directBtn"> &gt; </button>
                     <button type="button" class="directBtn"> &gt;&gt; </button>
+                </div>
 
+                <div id="myModal" class="modal">
+                    <div class="modal-content">
+                        <span id="closeModalBtn" class="close"><img
+                                src="https://cdn.discordapp.com/attachments/1185161279804026893/1201735089197957160/15287.png?ex=65cae604&is=65b87104&hm=e986c916b65b591d57dfc74b65c46d3425de849f447a26132c493960a55a129b&"></span>
+                        <table id="readTable">
+                            <tr>
+                                <th width="70">제목</th>
+                                <td><input type="text" id="readTitle" readonly></td>
+                            </tr>
+                            <tr>
+                                <th height="30">작성자</th>
+                                <td><input type="text" id="writer" readonly></td>
+                            </tr>
+                            <tr>
+                                <th>내용</th>
+                                <td><textarea id="textContentBox" rows="10" cols="30" readonly></textarea></td>
+                            </tr>
+                        </table>
+                        <div class="btnZip">
+                            <button type="button" id="deleteBtn">닫기</button>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
@@ -648,28 +765,74 @@
             let tableBody = document.querySelector("#tableBody");
 
             let tableTrContent = `
-            <tr>
-                <td>${trCount + 1}</td>
-                <td>${userName}</td>
-                <td>${userTitle}</td>
-                <td>${nowYear}.${nowMonth}.${nowDate} ${nowHour}:${nowMin}</td>
-            </tr>`;
+        <tr>
+            <td>${trCount + 1}</td>
+            <td class="writer">${userName}</td>
+            <td class="tdTitle">${userTitle}</td>
+            <td style="display: none"><textarea class="contentBox">${userContent}</textarea></td>
+            <td>${nowYear}.${nowMonth}.${nowDate} ${nowHour}:${nowMin}</td>
+        </tr>`;
 
             tableBody.insertAdjacentHTML("afterbegin", tableTrContent);
 
+            let newRow = tableBody.querySelector("tr"); // 새로 생성된 첫 번째 행 선택
+            newEventRow(newRow);
         });
 
+        function newEventRow(row) {
+            // .tdTitle 클래스를 가진 요소(제목 셀)에 대한 클릭 이벤트 핸들러 추가
+            row.querySelector(".tdTitle").addEventListener("click", function () {
+                let modal = document.getElementById("myModal");
+                let closeModalBtn = document.getElementById("closeModalBtn");
+                let deleteBtn = document.querySelector("#deleteBtn");
+
+                modal.style.display = "block";
+                modal.style.pointerEvents = "auto";
+                document.querySelector("#readTitle").value = row.querySelector(".tdTitle").textContent;
+                document.querySelector("#writer").value = row.querySelector(".writer").textContent;
+                document.querySelector("#textContentBox").textContent = row.querySelector(".contentBox").value;
+
+                closeModalBtn.addEventListener("click", closeModal);
+                deleteBtn.addEventListener("click", closeModal);
+                modal.addEventListener("click", stopPropagation);
+                window.addEventListener("click", windowClickHandler);
+
+                function closeModal() {
+                    modal.style.display = "none";
+                    modal.style.pointerEvents = "none";
+                    removeEventListeners();
+                }
+
+                function stopPropagation(event) {
+                    event.stopPropagation();
+                }
+
+                function windowClickHandler(event) {
+                    if (event.target == modal) {
+                        closeModal();
+                    }
+                }
+
+                function removeEventListeners() {
+                    closeModalBtn.removeEventListener("click", closeModal);
+                    deleteBtn.removeEventListener("click", closeModal);
+                    modal.removeEventListener("click", stopPropagation);
+                    window.removeEventListener("click", windowClickHandler);
+                }
+            });
+        }
+
         // 관리자
-        // document.querySelector(".search-container").style.display = 'block';
-        // document.querySelector("#suggestBox").style.display = 'none';
-        // document.querySelector("#totalTable").style.display = "table";
-        // document.querySelector(".buttonZip").style.display = 'flex';
+        document.querySelector(".search-container").style.display = 'block';
+        document.querySelector("#suggestBox").style.display = 'none';
+        document.querySelector("#totalTable").style.display = "table";
+        document.querySelector(".buttonZip").style.display = 'flex';
 
         // 작업자
-        document.querySelector(".search-container").style.display = 'none';
-        document.querySelector("#suggestBox").style.display = 'block';
-        document.querySelector("#totalTable").style.display = "none";
-        document.querySelector(".buttonZip").style.display = 'none';
+        // document.querySelector(".search-container").style.display = 'none';
+        // document.querySelector("#suggestBox").style.display = 'block';
+        // document.querySelector("#totalTable").style.display = "none";
+        // document.querySelector(".buttonZip").style.display = 'none';
 
 
 
