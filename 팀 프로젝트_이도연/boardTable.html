@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project 1</title>
+    <title>Freedom_Table Page</title>
     <style>
         @font-face {
             font-family: "SOYOMapleBoldTTF";
@@ -525,6 +525,11 @@
             background-color: blue;
         }
 
+        #directBtnZip {
+            display: flex;
+            justify-content: center;
+        }
+
         
     </style>
 
@@ -591,7 +596,7 @@
                     <div class="menu-bar-content">
                         <ul>
                             <li><a href="boardTable.html">자유게시판</a></li>
-                            <li><a href="#">건의사항</a></li>
+                            <li><a href="suggestTable.html">건의사항</a></li>
                             <li><a href="#">Q&A</a></li>
                         </ul>
                     </div>
@@ -605,7 +610,7 @@
                         <a href="boardTable.html">자유게시판</a>
                     </li>
                     <li>
-                        <a href="#">건의사항</a>
+                        <a href="suggestTable.html">건의사항</a>
                     </li>
                     <li>
                         <a href="#">Q&A</a>
@@ -622,7 +627,7 @@
                 </div>
                 <table id="boardTable">
                     <thead>
-                        <tr>
+                        <tr style="background-color: #ddd;">
                             <th width="50">No.</th>
                             <th width="330">제목</th>
                             <th width="80">작성자</th>
@@ -654,14 +659,16 @@
                     </tbody>
                 </table>
                 <div class="button-zip">
+                    <button type="button" id="noticeWriteBtn">공지작성</button>
+                    <button type="button" id="writeBtn">글쓰기</button>
+                </div>
+                <div id="directBtnZip">
                     <button type="button" class="directBtn"> &lt;&lt; </button>
                     <button type="button" class="directBtn"> &lt; </button>
                     <button type="button" class="numberBtn" style="margin-left: 20px;">1</button>
                     <button type="button" class="numberBtn" style="margin-right: 20px;">2</button>
                     <button type="button" class="directBtn"> &gt; </button>
                     <button type="button" class="directBtn"> &gt;&gt; </button>
-                    <button type="button" id="noticeWriteBtn">공지작성</button>
-                    <button type="button" id="writeBtn">글쓰기</button>
                 </div>
                 <div id="writeDiv">
                     <div>
