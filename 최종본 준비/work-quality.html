@@ -192,7 +192,6 @@
             height: 220px;
             border-top: 0px;
             border-right: 1px solid #ccc;
-            border-bottom: 1px solid #ccc;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
             display: flex;
         }
@@ -259,7 +258,6 @@
 
         /* 섹션 창을 조작하기바람 */
         section {
-            border: 1px solid red;
             display: flex;
             justify-content: center;
             width: 80%;
@@ -271,7 +269,6 @@
 
         #article-container {
             width: 100%;
-            border: 1px solid red;
         }
 
         #article-work-main {
@@ -279,11 +276,25 @@
         }
 
         #main-content {
+            border: 1px solid #ddd;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            width: 95%;
+            background-color: #fff;
+            border-radius: 8px;
             display: flex;
             justify-content: center;
+            margin: 0 auto;
+            padding: 20px 0;
         }
 
+
+
         #work-checker {
+            border: 1px solid #ddd;
+            background-color: #eee;
+            margin-left: 20px;
+            /* box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); */
+            border-radius: 8px;
             width: 60%;
             text-align: center;
         }
@@ -314,6 +325,17 @@
             background-color: #555;
             transition: 0.2s;
         }
+
+        .work-check-list:nth-child(-n+4) ul {
+            margin: 0 auto;
+            width: 80%;
+            border: 1px solid #ddd;
+            background-color: #eee;
+            border-radius: 8px;
+            font-size: 13px;
+            padding: 15px;
+        }
+
 
 
 
@@ -415,21 +437,13 @@
         }
 
         .work-check-list ul {
-            margin-top: 0;
-            margin-left: 0;
             text-align: left;
         }
 
         .work-check-list ul li {
-            width: 80%;
             margin-top: 4%;
             margin-left: 0;
             position: relative;
-        }
-
-        .work-check-list ul li span {
-            margin-top: 10%;
-            margin-right: 20%;
         }
 
         .list-delete-button {
@@ -485,33 +499,51 @@
         .add-popup-content {
             background-color: white;
             margin: 15% auto;
+            margin-top: 5%;
             padding: 20px;
-            width: 70%;
+            width: 50%;
             border-radius: 5px;
             position: relative;
             text-align: center;
         }
 
         .add-note {
+            width: 95%;
+            margin: 0 auto;
+            text-align: left;
+            display: inline-block;
+            padding: 0;
+        }
+
+        .add-note p {
+            padding: 0;
+        }
+
+        .img-note {
             width: 50%;
             display: inline-block;
         }
 
         .add-popup-content p {
             width: 50%;
-            margin-left: 4%;
             margin-bottom: 0;
         }
 
         .add-title {
-            width: 90%;
-            margin-top: 2%;
+            margin: 5px auto;
+            width: 97%;
+            border: 1px solid #aba7a7;
+            padding: 8px;
+            border-radius: 5px;
         }
 
         .add-detail {
-            width: 90%;
-            height: 300px;
-            margin-top: 2%;
+            width: 97%;
+            border: 1px solid #aba7a7;
+            padding: 8px;
+            border-radius: 10px;
+            margin: 5px auto;
+            height: 200px;
             resize: none;
         }
 
@@ -606,7 +638,7 @@
                             <li><a href="work-order.html">작업 지침서</a></li>
                             <li><a href="work-safety.html">안전 지침서</a></li>
                             <li><a href="work-quality.html">품질검사</a></li>
-                            <li><a href="#">일일 현황</a></li>
+                            <li><a href="work-report.html">작업보고</a></li>
                         </ul>
                     </div>
                     <div class="menu-bar-content">
@@ -626,8 +658,8 @@
                     </div>
                     <div class="menu-bar-content">
                         <ul>
-                            <li><a href="#">자유게시판</a></li>
-                            <li><a href="#">건의사항</a></li>
+                            <li><a href="boardTable.html">자유게시판</a></li>
+                            <li><a href="suggestTable.html">건의사항</a></li>
                             <li><a href="#">Q&A</a></li>
                         </ul>
                     </div>
@@ -640,7 +672,7 @@
                     <li><a href="work-order.html">작업지침서</a></li>
                     <li><a href="work-safety.html">안전지침서</a></li>
                     <li><a href="work-quality.html">품질검사</a></li>
-                    <li><a href="#">작업보고</a></li>
+                    <li><a href="work-report.html">작업보고</a></li>
                 </ul>
             </aside>
             <section>

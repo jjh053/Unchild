@@ -264,10 +264,25 @@
         }
 
         .dashboard-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             background: #eee;
-            color: #555;
+            color: #333;
             font-size: 30px;
-            padding: 20px 20px;
+            padding: 20px 20px 0px 20px;
+        }
+
+        .clock {
+            width: 28%;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            background: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            font-size: 20px;
         }
 
         /* 대쉬보드 영역 스타일 */
@@ -541,7 +556,7 @@
 
 </head>
 
-<body>
+<body onload="showClock()">
     <div id="workerTitle">
         <div id="workerLogo">
             <a href="#">
@@ -579,7 +594,7 @@
                             <li><a href="work-order.html">작업 지침서</a></li>
                             <li><a href="work-safety.html">안전 지침서</a></li>
                             <li><a href="work-quality.html">품질검사</a></li>
-                            <li><a href="#">일일 현황</a></li>
+                            <li><a href="work-report.html">작업보고</a></li>
                         </ul>
                     </div>
                     <div class="menu-bar-content">
@@ -599,8 +614,8 @@
                     </div>
                     <div class="menu-bar-content">
                         <ul>
-                            <li><a href="#">자유게시판</a></li>
-                            <li><a href="#">건의사항</a></li>
+                            <li><a href="boardTable.html">자유게시판</a></li>
+                            <li><a href="suggestTable.html">건의사항</a></li>
                             <li><a href="#">Q&A</a></li>
                         </ul>
                     </div>
@@ -614,7 +629,10 @@
             <section>
                 <div class="dashboard-header">
                     메인 페이지
+                    <div id="divClock" class="clock">
+                    </div>
                 </div>
+                
                 <div class="dashboard-main">
                     <div class="card">
                         <a href="Finished_product_management.html" style="color: inherit; text-decoration: none;">
@@ -719,7 +737,7 @@
                                     <div class="cell">?</div>
                                 </div>
                             </div>
-                            <div class="more"><a href="#">더보기</a></div>
+                            <div class="more"><a href="suggestTable.html">더보기</a></div>
                         </div>
                     </div>
                     <div class="card">
@@ -799,6 +817,30 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.3.0/raphael.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/justgage/1.3.2/justgage.min.js"></script>
     <script>
+        function showClock() {
+            var currentDate = new Date();
+            var divClock = document.getElementById('divClock');
+            var msg = " ";
+            if (currentDate.getHours() > 12) {      //시간이 12보다 크다면 오후 아니면 오전
+                msg += "오후 ";
+                msg += currentDate.getHours() - 12 + "시 ";
+            }
+            else {
+                msg += "오전 ";
+                msg += currentDate.getHours() + "시 ";
+            }
+
+            msg += currentDate.getMinutes() + "분 ";
+            msg += currentDate.getSeconds() + "초";
+
+            divClock.innerText = msg;
+
+            if (currentDate.getMinutes() > 58) {    //정각 1분전부터 빨강색으로 출력
+                divClock.style.color = "red";
+            }
+            setTimeout(showClock, 1000);  //1초마다 갱신
+        }
+
         const hover = document.querySelectorAll('a.hover');
         const menuBar = document.querySelector('.menu-bar');
         const nav = document.querySelector('nav');

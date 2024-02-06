@@ -260,7 +260,6 @@
 
         /* 섹션 창을 조작하기바람 */
         section {
-            border: 1px solid red;
             display: flex;
             justify-content: center;
             width: 80%;
@@ -289,10 +288,11 @@
 
         .work-safety-list-zip {
             width: 80%;
-            border: 1px solid rgb(168, 168, 168);
+            border: 1px solid #ddd;
             border-radius: 5px;
             margin-left: 10%;
             margin-bottom: 5%;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
             background-color: #fff;
         }
 
@@ -305,7 +305,6 @@
             margin-top: 2%;
             display: flex;
             justify-content: center;
-            border-bottom: 1px solid #555;
         }
 
         .work-safety-list span {
@@ -428,15 +427,18 @@
             margin: 15% auto;
             margin-top: 5%;
             padding: 20px;
-            width: 70%;
+            width: 50%;
             border-radius: 5px;
             position: relative;
             text-align: center;
         }
 
         .add-note {
-            width: 50%;
+            width: 95%;
+            margin: 0 auto;
+            text-align: left;
             display: inline-block;
+            padding: 0;
         }
 
         .add-note p {
@@ -444,61 +446,98 @@
         }
 
         .img-note {
+            width: 100%;
+        }
+
+        .addImgBox {
             width: 50%;
-            display: inline-block;
+            display: flex;
+            flex-wrap: wrap;
+            align-content: space-evenly;
+            justify-content: space-evenly;
+            height: 80px;
         }
 
-        .img-note span {
-            margin-left: 0%;
-            margin-right: 10%;
+        #add-img,
+        #fileName {
+            border: 1px solid #8e8e8e;
+            width: 70%;
+            font-size: 13px;
+            line-height: 2;
+            border-radius: 5px;
+            padding: 0;
         }
 
-        .img-select-button,
-        .img-button {
-            margin-top: 3%;
+        #file-button {
+            width: 25%;
+            background-color: #007bff;
+            font-size: 14px;
+            color: white;
+            border-radius: 5px;
+            border: none;
+            transition: background-color 0.3s;
+            line-height: 2;
+        }
+
+
+        .img-select-button:hover,
+        #file-button:hover {
+            background-color: #0056b3;
         }
 
         .img-select-button {
-            background: #333;
-            font-size: 12px;
-            color: #fff;
-            border: 0;
-            border-radius: 10px;
-            width: 70px;
-            height: 25px;
-            cursor: pointer;
-            margin-left: 18%;
+            font-family: "SOYOMapleBoldTTF";
+            width: 25%;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            border: none;
+            transition: background-color 0.3s;
         }
 
-        .img-select-button:hover {
-            background-color: #555;
-            transition: 0.2s;
-        }
-
-        #add-img {
-            width: 45%;
+        .img-preview {
+            width: 150px;
+            height: 150px;
+            border: 1px solid #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            margin-left: 10px;
         }
 
         .img-preview img {
-            width: 150px;
-            height: 150px;
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .img-preview-box {
+            margin: 0 auto;
+            width: 90%;
+            display: flex;
+            justify-content: space-between;
         }
 
         .safety-add-popup-content p {
             width: 50%;
-            margin-left: 4%;
             margin-bottom: 0;
         }
 
         .add-title {
-            width: 90%;
-            margin-top: 2%;
+            margin: 5px auto;
+            width: 97%;
+            border: 1px solid #aba7a7;
+            padding: 8px;
+            border-radius: 5px;
         }
 
         .add-detail {
-            width: 90%;
-            height: 300px;
-            margin-top: 2%;
+            width: 97%;
+            border: 1px solid #aba7a7;
+            padding: 8px;
+            border-radius: 10px;
+            margin: 5px auto;
+            height: 200px;
             resize: none;
         }
 
@@ -687,7 +726,7 @@
                             <li><a href="work-order.html">작업 지침서</a></li>
                             <li><a href="work-safety.html">안전 지침서</a></li>
                             <li><a href="work-quality.html">품질검사</a></li>
-                            <li><a href="#">일일 현황</a></li>
+                            <li><a href="work-report.html">작업보고</a></li>
                         </ul>
                     </div>
                     <div class="menu-bar-content">
@@ -707,8 +746,8 @@
                     </div>
                     <div class="menu-bar-content">
                         <ul>
-                            <li><a href="#">자유게시판</a></li>
-                            <li><a href="#">건의사항</a></li>
+                            <li><a href="boardTable.html">자유게시판</a></li>
+                            <li><a href="suggestTable.html">건의사항</a></li>
                             <li><a href="#">Q&A</a></li>
                         </ul>
                     </div>
@@ -721,7 +760,7 @@
                     <li><a href="work-order.html">작업지침서</a></li>
                     <li><a href="work-safety.html">안전지침서</a></li>
                     <li><a href="work-quality.html">품질검사</a></li>
-                    <li><a href="#">작업보고</a></li>
+                    <li><a href="work-report.html">작업보고</a></li>
                 </ul>
             </aside>
             <section>
@@ -824,15 +863,20 @@
                             </div>
 
                             <div class="img-note">
-                                <span>
+                                <span class="img-note-title">
                                     이미지 링크 첨부하기
                                 </span>
-                                <input type="text" id="add-img">
-                                <input type="file" id="add-img-button" class="img-button" type="file"
-                                    name="add-img-button">
-                                <button type="button" id="img-select-button" class="img-select-button">사진 선택</button>
-                                <div class="img-preview">
-
+                                <div class="img-preview-box">
+                                    <div class="addImgBox">
+                                        <input type="text" id="add-img">
+                                        <input type="file" id="add-img-button" class="img-button" type="file"
+                                            style="display: none;" name="add-img-button">
+                                        <label for="add-img-button" id="file-button">파일선택</label>
+                                        <span id="fileName">선택된 파일 없음</span>
+                                        <button type="button" id="img-select-button"
+                                            class="img-select-button">사진선택</button>
+                                    </div>
+                                    <div class="img-preview">이미지 없음</div>
                                 </div>
                             </div>
 
