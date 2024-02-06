@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q&A Page</title>
+    <style>
+        @font-face {
+            font-family: "SOYOMapleBoldTTF";
+            src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/SOYOMapleBoldTTF.woff2") format("woff2");
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: "SOYOMapleBoldTTF";
+            margin: 0 auto;
+            /* font-family: Arial, sans-serif; */
+            background: #fff;
+            color: #333;
+            background-color: #ccc;
+        }
+
+        /* title */
+        #workerTitle {
+            display: flex;
+            width: 1000px;
+            justify-content: space-between;
+            padding: 5px;
+
+        }
+
+        #workerLogo {
+            width: 200px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        #workerTitle h1 {
+            width: 200px;
+            color: #000;
+        }
+
+        #mainTitle1 {
+            display: none;
+        }
+
+        #mainTitle2 {
+            display: none;
+        }
+
+        #myPage {
+            width: 200px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        #myPageLogo {
+            width: 80px;
+            height: 80px;
+            margin-right: 3%;
+        }
+
+        #workerName a {
+            text-decoration: none;
+            color: #333;
+
+        }
+
+        #workerName a:hover {
+            text-decoration: none;
+            color: #888;
+            transition: color 0.2s ease;
+        }
+
+        #workerTitle .workerPic {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+        }
+
+        #workerTitle .logo {
+            width: 200px;
+            height: 70px;
+        }
+
+        /* title end */
+
+        .wrap {
+            width: 1000px;
+            /* height: 100vh; */
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+        }
+
+        /* header와 nav의 집합 */
+        .header-nav-container {
+            position: relative;
+            width: 100%;
+            /* wrap과 동일한 너비 */
+        }
+
+        /* header 코드 */
+        header {
+            width: 100%;
+            background: #000;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        header h1 {
+            font-size: 30px;
+            margin: 0;
+        }
+
+        header ul {
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+            list-style: none;
+            align-items: center;
+        }
+
+        header ul li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+
+        header ul li a {
+            font-size: 18px;
+            text-decoration: none;
+            color: #fff;
+            transition: color 0.3s ease;
+        }
+
+        header ul li a:hover {
+            color: #aaa;
+        }
+
+        /* header 코드 끝 */
+
+        nav {
+            width: 100%;
+            position: absolute;
+            top: 100%;
+            /* header 높이에 맞게 조정 */
+            left: 0;
+            right: 0;
+            background: #eee;
+            max-height: 0;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            /* transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear; */
+            visibility: hidden;
+            z-index: 100;
+            /* opacity: 0; */
+        }
+
+        /* nav 숨김요소 */
+        nav.active {
+            max-height: 500px;
+            /* 활성화될 때 최대 높이 설정 */
+            visibility: visible;
+            opacity: 1;
+            transition: max-height 0.5s ease, visibility 0s, opacity 0.5s linear;
+        }
+
+        /* nav 안의 menu-bar요소 */
+        .menu-bar {
+            width: 100%;
+            height: 220px;
+            border-top: 0px;
+            border-right: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            display: flex;
+        }
+
+        .menu-bar-content {
+            margin-left: 40px;
+            width: 20%;
+            display: inline-block;
+            box-sizing: border-box;
+        }
+
+        .menu-bar-content ul li {
+            padding: 10px;
+        }
+
+        .menu-bar-content ul li a {
+            text-decoration: none;
+            color: #444;
+        }
+
+        .menu-bar-content ul li a:hover {
+            color: #aaa;
+            transition: color 0.2s ease;
+        }
+
+        #menu-bar-content-sub {
+            list-style: circle;
+            font-size: 14px;
+            padding-left: 20px;
+        }
+
+        #menu-bar-content-sub li {
+            padding: 5px;
+        }
+
+        /* menu-bar요소 끝 */
+
+        /* aside, section */
+        .aside-section-container {
+            width: 100%;
+            display: flex;
+        }
+
+        /* 좌측 메뉴바 */
+        aside {
+            width: 20%;
+            background: #5f5f5f;
+            min-height: 800px;
+        }
+
+        aside ul li {
+            list-style: none;
+            padding-top: 20px;
+            padding-bottom: 40px;
+        }
+
+        aside ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        aside ul li ul li {
+            padding-top: 20px;
+            padding-bottom: 0px;
+
+        }
+
+        aside ul li a:hover {
+            color: #888;
+            transition: color 0.2s ease;
+        }
+
+        /* 섹션 창을 조작하기바람 */
+        section {
+            width: 80%;
+            background: #eee;
+            z-index: 50;
+            text-align: center;
+            min-height: 800px;
+            position: relative;
+        }
+
+        footer {
+            width: 100%;
+            background: #000;
+            color: #fff;
+            text-align: center;
+            height: 7%;
+            line-height: 70px;
+        }
+
+        #boardTable {
+            border-collapse: collapse;
+            border: 1px solid #555;
+            margin: 0 auto;
+        }
+
+        #boardTable th,
+        td {
+            border: 1px solid #555;
+            padding: 2px;
+        }
+
+        .tableTdTitle {
+            cursor: pointer;
+        }
+
+        .tableTdTitle:hover {
+            text-decoration-line: underline;
+        }
+
+        #noticeWriteBtn,
+        #resetWrite,
+        #deleteBtn,
+        #noticeResetWrite {
+            background-color: red;
+            margin-top: 10px;
+            width: 80px;
+            height: 40px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+        }
+
+        #noticeWriteBtn {
+            margin-left: 20px;
+        }
+
+        #noticeWriteBtn:hover,
+        #resetWrite:hover,
+        #deleteBtn:hover,
+        #noticeResetWrite:hover {
+            background-color: rgb(163, 6, 6);
+            transition: 0.2s;
+        }
+
+        #writeBtn,
+        #clearWrite,
+        #applyBtn,
+        #noticeClearWrite {
+            background-color: #3498DB;
+            width: 80px;
+            height: 40px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+        }
+
+        #writeBtn:hover,
+        #clearWrite:hover,
+        #applyBtn:hover #noticeClearWrite:hover {
+            background-color: rgb(0, 47, 255);
+            transition: 0.2s;
+        }
+
+        .button-zip,
+        .noticeWrtieBtnZip {
+            text-align: right;
+            margin-right: 45px;
+        }
+
+        #writeTable,
+        #noticeWriteTable {
+            border: 1px solid #555;
+            border-collapse: collapse;
+            margin: 0 auto;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        #writeTable th,
+        td {
+            border: 1px solid #555;
+        }
+
+        #noticeWriteTable th,
+        td {
+            border: 1px solid #555;
+        }
+
+        #writeTable input,
+        #noticeWriteTable input {
+            border: 0;
+            background: #eee;
+            font-family: "SOYOMapleBoldTTF";
+            width: 98%;
+            outline: none;
+            font-size: 16px;
+        }
+
+        #writeTable textarea,
+        #noticeWriteTable textarea {
+            outline: none;
+            font-family: "SOYOMapleBoldTTF";
+            resize: none;
+            background: #eee;
+            border: 0;
+            font-size: 16px;
+        }
+
+        #writeDiv,
+        #noticeWriteDiv {
+            display: none;
+            position: absolute;
+            top: 30px;
+            width: 100%;
+            height: 90%;
+            background-color: #eee;
+        }
+
+        .wrtieBtnZip,
+        .noticeWriteBtnZip {
+            text-align: right;
+            margin-right: 50px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 100px auto;
+            padding: 20px;
+            width: 40%;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .modal-content input {
+            margin: 3px;
+            font-family: "SOYOMapleBoldTTF";
+            width: 150px;
+            font-size: 14px;
+        }
+
+        .modal-content h2 {
+            /* border: 1px solid red; */
+            text-align: center;
+        }
+
+        .close {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .close img {
+            width: 20px;
+            height: 20px;
+        }
+
+        #readTable {
+            border-collapse: collapse;
+            border: 1px solid #555;
+            text-align: center;
+            margin: auto;
+        }
+
+        #readTable input {
+            border: 0;
+            width: 95%;
+            font-size: 16px;
+            font-family: "SOYOMapleBoldTTF";
+            outline: none;
+        }
+
+        #readTable textarea {
+            outline: none;
+            font-size: 16px;
+            font-family: "SOYOMapleBoldTTF";
+            border: 0;
+            resize: none;
+            text-align: left;
+        }
+        
+        #readTable th,
+        td {
+            border: 1px solid #555;
+        }
+        
+        .search-container {
+            text-align: right;
+            margin-right: 70px;
+            margin-bottom: 10px;
+            position: relative;
+            
+        }
+
+        .search-container img {
+            position: absolute;
+            right: -30px;
+            cursor: pointer;
+        }
+        
+        .search_text {
+            font-family: "SOYOMapleBoldTTF";
+            font-size: 16px;
+        }
+
+        .directBtn {
+            background: #333;
+            color: #fff;
+            border: 0;
+            border-radius: 5px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .directBtn:hover {
+            background-color: #777;
+            transition: 0.3s ease;
+        }
+
+        .numberBtn {
+            background: #3498DB;
+            color: #fff;
+            border: 0;
+            border-radius: 5px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .numberBtn:hover {
+            transition: 0.3s ease;
+            background-color: blue;
+        }
+
+        #directBtnZip {
+            display: flex;
+            justify-content: center;
+        }
+
+        
+    </style>
+
+</head>
+
+<body>
+    <div id="workerTitle">
+        <div id="workerLogo">
+            <a href="#">
+                <image
+                    src="https://cdn.discordapp.com/attachments/1185161279804026893/1200675420325036082/Jlogo.png?ex=65c70b1f&is=65b4961f&hm=ae28f53e9280fe71cffc1fc2ca74aec892875f13143ef4e109da28023c5b414b&"
+                    class="logo"></image>
+            </a>
+        </div>
+        <h1 id="mainTitle1">작업자 페이지</h1>
+        <h1 id="mainTitle2">관리자 페이지</h1>
+        <div id="myPage">
+            <div id="myPageLogo">
+                <image
+                    src="https://cdn.discordapp.com/attachments/1185161279804026893/1200675420551520370/workerP.jpg?ex=65c70b1f&is=65b4961f&hm=c49f91b245305c4bb33c58e626bc4960b4f601257e433425a8d7cc0da454126e&"
+                    class="workerPic">
+            </div>
+            <span id="workerName">이도연 대리님</span>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <div class="header-nav-container">
+            <header>
+                <ul>
+                    <li><a href="#" class="hover" title="작업지시서">작업</a></li>
+                    <li><a href="facilityMonitoring.html" class="hover" title="품질검사">설비</a></li>
+                    <li><a href="#" class="hover" title="건의사항">재고관리</a></li>
+                    <li><a href="#" class="hover" title="직원 게시판">게시판</a></li>
+                </ul>
+            </header>
+            <nav>
+                <div class="menu-bar">
+                    <div class="menu-bar-content">
+                        <ul>
+                            <li><a href="#">작업 지침서</a></li>
+                            <li><a href="#">안전 지침서</a></li>
+                            <li><a href="#">품질검사</a></li>
+                            <li><a href="#">일일 현황</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-bar-content">
+                        <ul>
+                            <li><a href="facilityMonitoring.html">설비 모니터링</a></li>
+
+                            <li><a href="process.html">공정</a></li>
+
+                            <li><a href="facilitiespage.html">설비 설정</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-bar-content">
+                        <ul>
+                            <li><a href="#">재고 현황</a></li>
+                            <li><a href="#">재고 신청</a></li>
+                            <li><a href="#">완제품 관리</a></li>
+                            <li><a href="#">재고 불량 신고</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-bar-content">
+                        <ul>
+                            <li><a href="boardTable.html">자유게시판</a></li>
+                            <li><a href="suggestTable.html">건의사항</a></li>
+                            <li><a href="QA.html">Q&A</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="aside-section-container">
+            <aside>
+                <ul>
+                    <li>
+                        <a href="boardTable.html">자유게시판</a>
+                    </li>
+                    <li>
+                        <a href="suggestTable.html">건의사항</a>
+                    </li>
+                    <li>
+                        <a href="QA.html">Q&A</a>
+                    </li>
+                </ul>
+            </aside>
+            <section>
+                <div style="text-align: center; margin-top: 30px;">
+                    <h2 style="font-size: 30px;">Q & A</h2>
+                </div>
+                <div class="search-container">
+                    <input type="text" class="search_text" placeholder="Search...">
+                    <img width="25" height="25" src="https://cdn.discordapp.com/attachments/1186454147558551552/1201320591920218232/2866321.png?ex=65d29e7c&is=65c0297c&hm=5284e6af05cf1457e4f7d3b9801cf540e14d90d174b0003a4974d4691c79b6bb&" alt="Search" class="glasses">
+                </div>
+                <table id="boardTable">
+                    <thead>
+                        <tr style="background-color: #ddd;">
+                            <th width="50">No.</th>
+                            <th width="330">제목</th>
+                            <th width="80">작성자</th>
+                            <th width="170">작성일</th>
+                            <th width="50">조회수</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <tr class="noticeTr">
+                            <td>F & Q</td>
+                            <td class="tableTdTitle">어떤 안전대책을 시행하고 있나요?</td>
+                            <td style="display: none;"><textarea
+                                    class="contentBox">저희 생산공장에서는 안전이 최우선입니다. 정기적인 장비 점검, 전 직원 종합 교육, 개인보호장비(PPE) 의무화 등 엄격한 안전 프로토콜을 준수하고 있습니다. 저희 시설에는 최첨단 장비가 갖춰져 있습니다. 비상 차단 시스템, 화재 진압 장비, 위험 감지 센서를 포함한 미술 안전 기능을 갖추고 있습니다. 우리는 정기적인 안전 훈련을 실시하고 안전 위반에 대해 무관용 정책을 시행하여 모든 직원의 안전한 작업 환경을 보장합니다.</textarea>
+                            </td>
+                            <td class="writer">최민수</td>
+                            <td>24.02.05 14:00</td>
+                            <td>35</td>
+                        </tr>
+                        <tr class="noticeTr">
+                            <td>F & Q</td>
+                            <td class="tableTdTitle">환경 지속가능성을 어떻게 관리하나요?
+                            </td>
+                            <td style="display: none;"><textarea
+                                    class="contentBox">우리 공장은 지속 가능한 생산 관행에 전념하고 있습니다. 우리는 에너지 효율적인 기술을 활용하고 포괄적인 재활용 프로그램을 통해 폐기물을 최소화하는 것을 목표로 합니다. 혁신적인 재사용 및 처리 프로세스를 통해 물 보존이 시행됩니다. 우리는 지속적으로 탄소 배출량을 평가하고 재생 가능 에너지원에 투자합니다. 환경에 미치는 영향을 최소화하기 위해 노력하고 있습니다. 우리의 지속 가능성 이니셔티브는 글로벌 표준에 부합하며 지역 사회와 적극적으로 협력하여 환경 인식과 보존을 장려합니다.</textarea>
+                            </td>
+                            <td class="writer">최민수</td>
+                            <td>24.02.01 13:00</td>
+                            <td>51</td>
+                        </tr>
+                        <tr class="noticeTr">
+                            <td>F & Q</td>
+                            <td class="tableTdTitle">품질 관리 프로세스를 설명할 수 있습니까?
+                            </td>
+                            <td style="display: none;"><textarea
+                                    class="contentBox">품질은 우리 운영의 핵심입니다. 우리 공장은 생산의 모든 단계를 포괄하는 강력한 품질 관리 시스템을 사용합니다. 우리는 산업 표준 및 고객 사양을 준수하는지 확인하기 위해 원자재 검사, 공정 중 모니터링 및 최종 제품 테스트를 수행합니다. 우리의 전담 품질 관리 팀은 고급 분석 방법과 장비를 사용하여 품질 편차를 즉시 식별하고 해결합니다. 우리는 지속적인 개선에 전념하고 ISO 품질 관리 표준을 준수하여 우리 제품이 최고 품질 벤치마크를 충족하도록 보장합니다.</textarea>
+                            </td>
+                            <td class="writer">최민수</td>
+                            <td>24.01.28 13:00</td>
+                            <td>91</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="button-zip">
+                    <button type="button" id="noticeWriteBtn">공지</button>
+                    <button type="button" id="writeBtn">질문하기</button>
+                </div>
+                <div id="directBtnZip">
+                    <button type="button" class="directBtn"> &lt;&lt; </button>
+                    <button type="button" class="directBtn"> &lt; </button>
+                    <button type="button" class="numberBtn" style="margin-left: 20px;">1</button>
+                    <button type="button" class="numberBtn" style="margin-right: 20px;">2</button>
+                    <button type="button" class="directBtn"> &gt; </button>
+                    <button type="button" class="directBtn"> &gt;&gt; </button>
+                </div>
+                <div id="writeDiv">
+                    <div>
+                        <span style="font-size: 20px;">글 작성</span>
+                    </div>
+                    <table id="writeTable">
+                        <tr>
+                            <th width="70">제목</th>
+                            <td><input type="text" id="writeTitle"></td>
+                        </tr>
+                        <tr>
+                            <th>내용</th>
+                            <td><textarea id="textBox" rows="10" cols="60"></textarea></td>
+                        </tr>
+                    </table>
+                    <div class="wrtieBtnZip">
+                        <button type="button" id="clearWrite">작성</button>
+                        <button type="button" id="resetWrite">취소</button>
+                    </div>
+                </div>
+                <div id="noticeWriteDiv">
+                    <div>
+                        <span style="font-size: 20px;">공지 작성</span>
+                    </div>
+                    <table id="noticeWriteTable">
+                        <tr>
+                            <th width="70">제목</th>
+                            <td><input type="text" id="noticeWriteTitle"></td>
+                        </tr>
+                        <tr>
+                            <th>내용</th>
+                            <td><textarea id="noticeTextBox" rows="10" cols="60"></textarea></td>
+                        </tr>
+                    </table>
+                    <div class="noticeWrtieBtnZip">
+                        <button type="button" id="noticeClearWrite">작성</button>
+                        <button type="button" id="noticeResetWrite">취소</button>
+                    </div>
+                </div>
+                <div id="myModal" class="modal">
+                    <div class="modal-content">
+                        <span id="closeModalBtn" class="close"><img
+                                src="https://cdn.discordapp.com/attachments/1185161279804026893/1201735089197957160/15287.png?ex=65cae604&is=65b87104&hm=e986c916b65b591d57dfc74b65c46d3425de849f447a26132c493960a55a129b&"></span>
+                        <table id="readTable">
+                            <tr>
+                                <th width="70">제목</th>
+                                <td><input type="text" id="readTitle" readonly></td>
+                            </tr>
+                            <tr>
+                                <th height="30">작성자</th>
+                                <td><input type="text" id="writer" readonly></td>
+                            </tr>
+                            <tr>
+                                <th>내용</th>
+                                <td><textarea id="textContentBox" rows="10" cols="30" readonly></textarea></td>
+                            </tr>
+                        </table>
+                        <div class="btnZip">
+                            <button type="button" id="deleteBtn">닫기</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <footer>ⓒ2024 J.company System</footer>
+    </div>
+
+    <script>
+        const hover = document.querySelectorAll('a.hover');
+        const menuBar = document.querySelector('.menu-bar');
+        const nav = document.querySelector('nav');
+        const wrap = document.querySelector('.wrap');
+        const section = document.querySelector('section');
+
+        hover.forEach(link => {
+            link.addEventListener("click", function (event) {
+                event.preventDefault();
+                if (nav.classList.contains('active') && window.matchMedia("(max-width: 430px)").matches) {
+                    nav.style.height = `${section.offsetHeight}px`
+                }
+            });
+        });
+
+        // if() {
+        // document.querySelector("#mainTitle1").style.display = "block";
+        // } else {
+        document.querySelector("#mainTitle2").style.display = "block";
+        // }
+
+        let isHovered = false;
+
+        hover.forEach(button => {
+            button.addEventListener('mouseover', () => {
+                showMenuBar();
+                isHovered = true;
+            });
+        });
+
+        wrap.addEventListener("mouseleave", function () {
+            if (!isHovered) {
+                hideMenuBar();
+            }
+        });
+
+        menuBar.addEventListener("mouseenter", function () {
+            isHovered = true;
+        });
+
+        menuBar.addEventListener("mouseleave", function () {
+            hideMenuBar();
+        });
+
+        section.addEventListener("click", function () {
+            hideMenuBar();
+        })
+
+        function showMenuBar() {
+            nav.classList.add('active');
+        }
+
+        function hideMenuBar() {
+            nav.classList.remove('active');
+        }
+
+        document.querySelector("#writeBtn").addEventListener("click", () => {
+            document.querySelector("#writeDiv").style.display = "block";
+        });
+
+        document.querySelector("#clearWrite").addEventListener("click", () => {
+            let newTrTitle = document.querySelector("#writeTitle").value;
+            let newTextBox = document.querySelector("#textBox").value;
+            let trCount = document.querySelectorAll("#tableBody tr").length;
+            let todayTime = new Date();
+            let nowYear = todayTime.getFullYear() % 100;
+            let nowMonth = ('0' + (todayTime.getMonth() + 1)).slice(-2);
+            let nowDate = ('0' + todayTime.getDate()).slice(-2);
+            let nowHour = ('0' + todayTime.getHours()).slice(-2);
+            let nowMin = ('0' + todayTime.getMinutes()).slice(-2);
+
+            let tableText = `
+            <tr>
+                <td>${trCount - 2}</td>
+                <td class="tableTdTitle">${newTrTitle}</td>
+                <td class="writer">최민수</td>
+                <td style="display: none"><textarea class="contentBox">${newTextBox}</textarea></td>
+                <td>${nowYear}.${nowMonth}.${nowDate} ${nowHour}:${nowMin}</td>
+                <td>0</td>
+            </tr>`;
+            let noticeTrs = document.querySelectorAll(".noticeTr");
+            let lastNoticeTr = noticeTrs[noticeTrs.length - 1];
+
+            if (lastNoticeTr) {
+                lastNoticeTr.insertAdjacentHTML("afterend", tableText);
+            } else {
+                document.querySelector("#tableBody").insertAdjacentHTML("beforeend", tableText);
+            }
+
+
+            document.querySelector("#writeDiv").style.display = "none";
+            document.querySelector("#writeTitle").value = "";
+            document.querySelector("#textBox").value = "";
+
+            let tableTdTitles = document.querySelectorAll(".tableTdTitle");
+
+            for (let i = 0; i < tableTdTitles.length; i++) {
+                tableTdTitles[i].addEventListener("click", function () {
+                    modal.style.display = "block";
+                    modal.style.pointerEvents = "auto";
+                    document.querySelector("#readTitle").value = tableTdTitles[i].textContent;
+                    document.querySelector("#writer").value = document.querySelectorAll(".writer")[i].textContent;
+                    document.querySelector("#textContentBox").textContent = document.querySelectorAll(".contentBox")[i].value;
+                });
+            }
+            isWriteCompleted = false;
+        });
+        isWriteCompleted = true;
+
+        document.querySelector("#resetWrite").addEventListener("click", () => {
+            document.querySelector("#writeDiv").style.display = "none";
+        });
+
+
+        // 공지 작성
+        document.querySelector("#noticeWriteBtn").addEventListener("click", () => {
+            document.querySelector("#noticeWriteDiv").style.display = 'block';
+        });
+
+        document.querySelector("#noticeClearWrite").addEventListener("click", () => {
+            let newTrTitle = document.querySelector("#noticeWriteTitle").value;
+            let newTextBox = document.querySelector("#noticeTextBox").value;
+
+            let todayTime = new Date();
+            let nowYear = todayTime.getFullYear() % 100;
+            let nowMonth = ('0' + (todayTime.getMonth() + 1)).slice(-2);
+            let nowDate = ('0' + todayTime.getDate()).slice(-2);
+            let nowHour = ('0' + todayTime.getHours()).slice(-2);
+            let nowMin = ('0' + todayTime.getMinutes()).slice(-2);
+
+            let tableText = `
+            <tr>
+                <td>F & Q</td>
+                <td class="tableTdTitle">${newTrTitle}</td>
+                <td class="writer">최민수</td>
+                <td style="display: none"><textarea class="contentBox">${newTextBox}</textarea></td>
+                <td>${nowYear}.${nowMonth}.${nowDate} ${nowHour}:${nowMin}</td>
+                <td>0</td>
+            </tr>`;
+
+            document.querySelector("#tableBody").insertAdjacentHTML("afterbegin", tableText);
+            document.querySelector("#noticeWriteDiv").style.display = "none";
+            document.querySelector("#noticeWriteTitle").value = "";
+            document.querySelector("#noticeTextBox").value = "";
+
+            let tableTdTitles = document.querySelectorAll(".tableTdTitle");
+
+            for (let i = 0; i < tableTdTitles.length; i++) {
+                tableTdTitles[i].addEventListener("click", function () {
+                    modal.style.display = "block";
+                    modal.style.pointerEvents = "auto";
+                    document.querySelector("#readTitle").value = tableTdTitles[i].textContent;
+                    document.querySelector("#writer").value = document.querySelectorAll(".writer")[i].textContent;
+                    document.querySelector("#textContentBox").textContent = document.querySelectorAll(".contentBox")[i].value;
+                });
+            }
+            isWriteCompleted2 = false;
+        });
+        isWriteCompleted2 = true;
+
+
+
+        document.querySelector("#noticeResetWrite").addEventListener("click", () => {
+            document.querySelector("#noticeWriteDiv").style.display = "none";
+        });
+
+
+        // 마이페이지
+        document.querySelector("#workerName").addEventListener("click", () => {
+            window.open("myPage.html", '_blank', 'width = 630, height = 470, top=100, left=100');
+        });
+
+        let openModalBtn = document.querySelectorAll(".tableTdTitle");
+        var modal = document.getElementById("myModal");
+        var closeModalBtn = document.getElementById("closeModalBtn");
+        let deleteBtn = document.querySelector("#deleteBtn");
+
+        for (let i = 0; i < openModalBtn.length; i++) {
+            openModalBtn[i].addEventListener("click", function () {
+                modal.style.display = "block";
+                modal.style.pointerEvents = "auto";
+                document.querySelector("#readTitle").value = openModalBtn[i].textContent;
+                document.querySelector("#writer").value = document.querySelectorAll(".writer")[i].textContent;
+                document.querySelector("#textContentBox").textContent = document.querySelectorAll(".contentBox")[i].value;
+                return;
+            });
+        }
+
+        closeModalBtn.addEventListener("click", function () {
+            modal.style.display = "none";
+            modal.style.pointerEvents = "none";
+        });
+
+        deleteBtn.addEventListener("click", function () {
+            modal.style.display = "none";
+            modal.style.pointerEvents = "none";
+        });
+
+        modal.addEventListener("click", function (event) {
+            event.stopPropagation();
+        });
+
+        window.addEventListener("click", function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+                modal.style.pointerEvents = "none";
+            }
+        });
+
+
+        // 검색
+        // 엔터나 클릭을 해야 검색
+        document.addEventListener('DOMContentLoaded', function () {
+            const searchInput = document.querySelector('.search_text');
+            const searchImage = document.querySelector('.glasses');
+            const tableRows = document.querySelectorAll('#tableBody tr');
+
+            function filterRows() {
+                const searchTerm = searchInput.value.toLowerCase();
+                console.log('검색내용 : ', searchTerm);
+
+                tableRows.forEach(row => {
+                    const cellValue = row.querySelector('.tableTdTitle').textContent.toLowerCase();
+
+                    if (cellValue.includes(searchTerm)) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            }
+
+            // 검색 이미지를 클릭했을 때 검색 실행
+            searchImage.addEventListener('click', filterRows);
+
+            // 또는 Enter 키를 눌렀을 때도 검색 실행 가능
+            searchInput.addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    filterRows();
+                }
+            });
+        });
+
+
+
+    </script>
+</body>
+
+</html>
