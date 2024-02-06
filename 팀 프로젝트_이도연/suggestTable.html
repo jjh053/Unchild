@@ -549,7 +549,7 @@
                         <ul>
                             <li><a href="boardTable.html">자유게시판</a></li>
                             <li><a href="suggestTable.html">건의사항</a></li>
-                            <li><a href="#">Q&A</a></li>
+                            <li><a href="QA.html">Q&A</a></li>
                         </ul>
                     </div>
                 </div>
@@ -565,7 +565,7 @@
                         <a href="suggestTable.html">건의사항</a>
                     </li>
                     <li>
-                        <a href="#">Q&A</a>
+                        <a href="QA.html">Q&A</a>
                     </li>
                 </ul>
             </aside>
@@ -682,7 +682,7 @@
         menuBar.addEventListener("mouseenter", function () {
             isHovered = true;
         });
-
+        tableBody
         menuBar.addEventListener("mouseleave", function () {
             hideMenuBar();
         });
@@ -704,38 +704,38 @@
             window.open("myPage.html", '_blank', 'width = 630, height = 470, top=100, left=100');
         });
 
-        // 검색
-        // 엔터나 클릭을 해야 검색
-        document.addEventListener('DOMContentLoaded', function () {
-            const searchInput = document.querySelector('.search_text');
-            const searchImage = document.querySelector('.glasses');
-            const tableRows = document.querySelectorAll('#tableBody tr');
-
-            function filterRows() {
-                const searchTerm = searchInput.value.toLowerCase();
-                console.log('검색내용 : ', searchTerm);
-
-                tableRows.forEach(row => {
-                    const cellValue = row.querySelector('.tableTdTitle').textContent.toLowerCase();
-
-                    if (cellValue.includes(searchTerm)) {
-                        row.style.display = '';
-                    } else {
-                        row.style.display = 'none';
+        function search() {
+                const searchInput = document.querySelector('.search_text');
+                const searchImage = document.querySelector('.glasses');
+                const tableRows = document.querySelectorAll('#tableBody tr');
+    
+                function filterRows() {
+                    const searchTerm = searchInput.value.toLowerCase();
+    
+                    for (let i = 0; i < tableRows.length; i++) {
+                        const row = tableRows[i];
+                        const cellValue = row.querySelector('.tdTitle').textContent.toLowerCase();
+    
+                        if (cellValue.includes(searchTerm)) {
+                            row.style.display = '';
+                        } else {
+                            row.style.display = 'none';
+                        }
+                    }
+                }
+    
+                // 검색 이미지를 클릭했을 때 검색 실행
+                searchImage.addEventListener('click', filterRows);
+    
+                // 또는 Enter 키를 눌렀을 때도 검색 실행 가능
+                searchInput.addEventListener('keypress', function (e) {
+                    if (e.key === 'Enter') {
+                        filterRows();
                     }
                 });
-            }
+        }
 
-            // 검색 이미지를 클릭했을 때 검색 실행
-            searchImage.addEventListener('click', filterRows);
 
-            // 또는 Enter 키를 눌렀을 때도 검색 실행 가능
-            searchInput.addEventListener('keypress', function (e) {
-                if (e.key === 'Enter') {
-                    filterRows();
-                }
-            });
-        });
 
 
         document.querySelector("#suggestName").value = document.querySelector("#workerName").textContent;
@@ -754,7 +754,7 @@
             let userContent = document.querySelector("#suggestContent").value;
 
             let trCount = document.querySelectorAll("#tableBody tr").length;
-            console.log(trCount);
+            // console.log(trCount);
             let todayTime = new Date();
             let nowYear = todayTime.getFullYear() % 100;
             let nowMonth = ('0' + (todayTime.getMonth() + 1)).slice(-2);
@@ -777,6 +777,7 @@
 
             let newRow = tableBody.querySelector("tr"); // 새로 생성된 첫 번째 행 선택
             newEventRow(newRow);
+            search();
         });
 
         function newEventRow(row) {
@@ -830,7 +831,7 @@
 
         // 작업자
         // document.querySelector(".search-container").style.display = 'none';
-        // document.querySelector("#suggestBox").style.display = 'block';
+        document.querySelector("#suggestBox").style.display = 'block';
         // document.querySelector("#totalTable").style.display = "none";
         // document.querySelector(".buttonZip").style.display = 'none';
 
