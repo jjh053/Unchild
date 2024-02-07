@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project 1</title>
+    <title>Monitoring Page</title>
     <style>
         @font-face {
             font-family: "SOYOMapleBoldTTF";
@@ -188,7 +188,7 @@
         }
 
         .menu-bar-content {
-            margin-left: 40px;
+            /* margin-left: 40px; */
             width: 20%;
             display: inline-block;
             box-sizing: border-box;
@@ -406,6 +406,28 @@
             line-height: 70px;
         }
 
+        .workerGrade {
+            display: none;
+        }
+
+        #mainTitle1 {
+            display: none;
+        }
+
+        #mainTitle1 a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        #mainTitle2 {
+            display: none;
+        }
+
+        #mainTitle2 a {
+            text-decoration: none;
+            color: #333;
+        }
+
         /* 모바일 페이지 대응 테스트 */
         @media screen and (max-width: 430px) {
 
@@ -549,6 +571,16 @@
                 width: 18%;
                 font-size: 11px;
             }
+
+            .workerGrade {
+                display: inline;
+            }
+
+            .workerPic {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+            }
         }
     </style>
 
@@ -563,15 +595,15 @@
                     class="logo"></image>
             </a>
         </div>
-        <h1 id="mainTitle1">작업자 페이지</h1>
-        <h1 id="mainTitle2">관리자 페이지</h1>
+        <h1 id="mainTitle1"><a href="main.html">작업자 페이지</a></h1>
+        <h1 id="mainTitle2"><a href="main.html">관리자 페이지</a></h1>
         <div id="myPage">
             <div id="myPageLogo">
                 <image
                     src="https://cdn.discordapp.com/attachments/1185161279804026893/1200675420551520370/workerP.jpg?ex=65c70b1f&is=65b4961f&hm=c49f91b245305c4bb33c58e626bc4960b4f601257e433425a8d7cc0da454126e&"
                     class="workerPic">
             </div>
-            <span id="workerName">이도연 대리님</span>
+            <span id="workerName"><span class="workerGrade">작업자<br></span>이도연 대리님</span>
         </div>
     </div>
 
@@ -579,44 +611,52 @@
         <div class="header-nav-container">
             <header>
                 <ul>
-                    <li><a href="#" class="hover" title="작업지시서">작업</a></li>
+                    <li><a href="work-order.html" class="hover" title="작업지시서">작업</a></li>
                     <li><a href="facilityMonitoring.html" class="hover" title="품질검사">설비</a></li>
-                    <li><a href="#" class="hover" title="건의사항">재고관리</a></li>
-                    <li><a href="#" class="hover" title="직원 게시판">게시판</a></li>
+                    <li><a href="stock_status.html" class="hover" title="건의사항">재고관리</a></li>
+                    <li id="adminTitle"><a href="Employee_managemen.html" class="hover" title="직원관리">직원관리</a></li>
+                    <li><a href="boardTable.html" class="hover" title="직원 게시판">게시판</a></li>
                 </ul>
             </header>
             <nav>
                 <div class="menu-bar">
                     <div class="menu-bar-content">
                         <ul>
-                            <li><a href="#">작업 지침서</a></li>
-                            <li><a href="#">안전 지침서</a></li>
-                            <li><a href="#">품질검사</a></li>
-                            <li><a href="#">일일 현황</a></li>
+                            <li><a href="work-order.html">작업 지침서</a></li>
+                            <li><a href="work-safety.html">안전 지침서</a></li>
+                            <li><a href="work-quality.html">품질검사</a></li>
+                            <li><a href="work-report.html">작업보고</a></li>
                         </ul>
                     </div>
                     <div class="menu-bar-content">
                         <ul>
                             <li><a href="facilityMonitoring.html">설비 모니터링</a></li>
 
-                            <li><a href="process.html">공정</a></li>
+                            <li><a href="process.html">공정도</a></li>
 
                             <li><a href="facilitiespage.html">설비 설정</a></li>
                         </ul>
                     </div>
                     <div class="menu-bar-content">
                         <ul>
-                            <li><a href="#">재고 현황</a></li>
-                            <li><a href="#">재고 신청</a></li>
-                            <li><a href="#">완제품 관리</a></li>
-                            <li><a href="#">재고 불량 신고</a></li>
+                            <li><a href="stock_status.html">재고 현황</a></li>
+                            <li><a href="Stock_Request.html">재고 신청</a></li>
+                            <li><a href="Finished_product_management.html">완제품 관리</a></li>
+                            <li><a href="Report_of_defective_inventory.html">재고 불량 신고</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-bar-content" id="adminNav">
+                        <ul>
+                            <li><a href="Employee_managemen.html">직원목록</a></li>
+                            <li><a href="work-record.html">근무기록</a></li>
+                            <li><a href="vacation.html">휴가신청</a></li>
                         </ul>
                     </div>
                     <div class="menu-bar-content">
                         <ul>
-                            <li><a href="#">자유게시판</a></li>
-                            <li><a href="#">건의사항</a></li>
-                            <li><a href="#">Q&A</a></li>
+                            <li><a href="boardTable.html">자유게시판</a></li>
+                            <li><a href="suggestTable.html">건의사항</a></li>
+                            <li><a href="QA.html">Q&A</a></li>
                         </ul>
                     </div>
                 </div>
@@ -869,7 +909,47 @@
 
         document.querySelector("#workerName").addEventListener("click", () => {
             window.open("myPage.html", '_blank', 'width = 630, height = 470, top=100, left=100');
-        })
+        });
+
+
+        hover.forEach(link => {
+            link.addEventListener("click", function (event) {
+                let myPage = document.querySelector("#myPage");
+                // let myPageName = document.querySelector("#workerName");
+                // let myPageLogo = document.querySelector("#myPageLogo");
+                let menuBar = document.querySelector(".menu-bar");
+                let mainPage = document.querySelector(".wrap");
+                let companyLogo = document.querySelector("#workerLogo");
+
+                let ulLi = document.querySelectorAll(".menu-bar-content ul li");
+
+
+                event.preventDefault();
+                if (nav.classList.contains('active') && window.matchMedia("(max-width: 430px)").matches) {
+                    nav.style.height = `${section.offsetHeight}px`
+
+                    // 네비4
+                    // for (let i = 0; i < ulLi.length; i++) {
+                    //     ulLi[i].style.padding = '10px';
+                    // }
+
+                    // 네비5
+                    for (let i = 0; i < ulLi.length; i++) {
+                        ulLi[i].style.padding = '7px';
+                    }
+                    menuBar.prepend(myPage);
+                }
+            });
+        });
+
+        document.querySelector("#adminTitle").style.display = 'block';
+        document.querySelector("#adminNav").style.display = 'block';
+        document.querySelector(".workerGrade").innerHTML = '작업자<br>';
+        // document.querySelector(".workerGrade").innerHTML = '관리자<br>';
+
+        // document.querySelector("#adminTitle").style.display = 'none';
+        // document.querySelector("#adminNav").style.display = 'none';
+
     </script>
 </body>
 
