@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoring Page</title>
+    <style>
+        @font-face {
+            font-family: "SOYOMapleBoldTTF";
+            src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/SOYOMapleBoldTTF.woff2") format("woff2");
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: "SOYOMapleBoldTTF";
+            margin: 0 auto;
+            /* font-family: Arial, sans-serif; */
+            background: #fff;
+            color: #333;
+            background-color: #ccc;
+        }
+
+        /* title */
+        #workerTitle {
+            display: flex;
+            width: 1000px;
+            justify-content: space-between;
+            padding: 5px;
+
+        }
+
+        #workerLogo {
+            width: 200px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        #workerTitle h1 {
+            width: 200px;
+            color: #000;
+        }
+
+        #mainTitle1 {
+            display: none;
+        }
+
+        #mainTitle2 {
+            display: none;
+        }
+
+        #myPage {
+            width: 200px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        #myPageLogo {
+            width: 80px;
+            height: 80px;
+            margin-right: 3%;
+        }
+
+        #workerName a {
+            text-decoration: none;
+            color: #333;
+
+        }
+
+        #workerName a:hover {
+            text-decoration: none;
+            color: #888;
+            transition: color 0.2s ease;
+        }
+
+        #workerTitle .workerPic {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+        }
+
+        #workerTitle .logo {
+            width: 200px;
+            height: 70px;
+        }
+
+        /* title end */
+
+        .wrap {
+            width: 1000px;
+            /* height: 100vh; */
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+        }
+
+        /* header와 nav의 집합 */
+        .header-nav-container {
+            position: relative;
+            width: 100%;
+            /* wrap과 동일한 너비 */
+        }
+
+        /* header 코드 */
+        header {
+            width: 100%;
+            background: #000;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        header h1 {
+            font-size: 30px;
+            margin: 0;
+        }
+
+        header ul {
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+            list-style: none;
+            align-items: center;
+        }
+
+        header ul li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+
+        header ul li a {
+            font-size: 18px;
+            text-decoration: none;
+            color: #fff;
+            transition: color 0.3s ease;
+        }
+
+        header ul li a:hover {
+            color: #aaa;
+        }
+
+        /* header 코드 끝 */
+
+        nav {
+            width: 100%;
+            position: absolute;
+            top: 100%;
+            /* header 높이에 맞게 조정 */
+            left: 0;
+            right: 0;
+            background: #eee;
+            max-height: 0;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            /* transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear; */
+            visibility: hidden;
+            z-index: 100;
+            /* opacity: 0; */
+        }
+
+        /* nav 숨김요소 */
+        nav.active {
+            max-height: 500px;
+            /* 활성화될 때 최대 높이 설정 */
+            visibility: visible;
+            opacity: 1;
+            transition: max-height 0.5s ease, visibility 0s, opacity 0.5s linear;
+        }
+
+        /* nav 안의 menu-bar요소 */
+        .menu-bar {
+            width: 100%;
+            height: 220px;
+            border-top: 0px;
+            border-right: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            display: flex;
+        }
+
+        .menu-bar-content {
+            /* margin-left: 40px; */
+            width: 20%;
+            display: inline-block;
+            box-sizing: border-box;
+        }
+
+        .menu-bar-content ul li {
+            padding: 10px;
+        }
+
+        .menu-bar-content ul li a {
+            text-decoration: none;
+            color: #444;
+        }
+
+        .menu-bar-content ul li a:hover {
+            color: #aaa;
+            transition: color 0.2s ease;
+        }
+
+        #menu-bar-content-sub {
+            list-style: circle;
+            font-size: 14px;
+            padding-left: 20px;
+        }
+
+        #menu-bar-content-sub li {
+            padding: 5px;
+        }
+
+        /* menu-bar요소 끝 */
+
+        /* aside, section */
+        .aside-section-container {
+            width: 100%;
+            display: flex;
+        }
+
+        /* 좌측 메뉴바 */
+        aside {
+            width: 20%;
+            background: #5f5f5f;
+            min-height: 800px;
+        }
+
+        aside ul li {
+            list-style: none;
+            padding-top: 20px;
+            padding-bottom: 40px;
+        }
+
+        aside ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        aside ul li ul li {
+            padding-top: 20px;
+            padding-bottom: 0px;
+
+        }
+
+        aside ul li a:hover {
+            color: #888;
+            transition: color 0.2s ease;
+        }
+
+        /* 섹션 창을 조작하기바람 */
+        section {
+            width: 80%;
+            background: #eee;
+            z-index: 50;
+            text-align: center;
+            min-height: 800px;
+        }
+
+        .monitor {
+            background-color: #eee;
+            color: #000;
+            padding: 10px;
+            text-align: center;
+        }
+
+        #total-defect-rate-section {
+            display: inline-block;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 92%;
+            background-color: #fff;
+            color: #000;
+            padding: 10px 0;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .total-defect-rate-display {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0 auto;
+            padding: 5px;
+            width: calc(100% - 40px);
+        }
+
+        #monitoring {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .process {
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            width: 127px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .operations {
+            font-family: 맑은 고딕;
+            font-weight: bold;
+            margin-top: 10px;
+            background-color: #eef;
+            padding: 5px;
+            font-size: 14px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .process h4 {
+            margin-top: 0;
+        }
+
+        .status {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .status::before {
+            content: '🔴';
+            margin-right: 5px;
+        }
+
+        #cpu-status::before,
+        #gpu-status::before,
+        #case-status::before {
+            content: '🟢';
+        }
+
+        #graph-title {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+
+        .graph-container {
+            padding-top: 30px;
+            position: relative;
+            margin: 20px auto;
+            width: 80%;
+            height: 300px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .graph-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+            background-image: repeating-linear-gradient(to bottom,
+                    transparent,
+                    transparent 98%,
+                    #ddd 98%,
+                    #ddd 100%);
+            background-size: 100% 20%;
+        }
+
+        .bar {
+            width: 20%;
+            height: 0%;
+            background-color: #3498DB;
+            color: 555;
+            text-align: center;
+            /* border-top-right-radius: 5px;
+            border-top-left-radius: 5px; */
+            transition: height 0.3s ease-in-out;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 5px;
+            z-index: 2;
+        }
+
+
+
+        /* aside, section 끝*/
+
+        footer {
+            width: 100%;
+            background: #000;
+            color: #fff;
+            text-align: center;
+            height: 7%;
+            line-height: 70px;
+        }
+
+        .workerGrade {
+            display: none;
+        }
+
+        #mainTitle1 {
+            display: none;
+        }
+
+        #mainTitle1 a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        #mainTitle2 {
+            display: none;
+        }
+
+        #mainTitle2 a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        /* 모바일 페이지 대응 테스트 */
+        @media screen and (max-width: 430px) {
+
+            /* 전체 페이지 */
+            .wrap {
+                width: 100%;
+            }
+
+            /* 헤더 */
+            header {
+                width: 100%;
+                background: #000;
+                color: #fff;
+                text-align: center;
+                padding: 5px;
+                box-sizing: border-box;
+                border-radius: 0px;
+            }
+
+            header ul li a {
+                font-size: 15px;
+                text-decoration: none;
+                color: #fff;
+                transition: color 0.3s ease;
+            }
+
+            #workerTitle {
+                display: none;
+            }
+
+            nav {
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                /* header 높이에 맞게 조정 */
+                left: 0;
+                right: 0;
+                background: #eee;
+                max-height: 881px;
+                overflow: hidden;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+                transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear;
+                transform: translateX(0%);
+                visibility: hidden;
+                z-index: 100;
+                /* opacity: 0; */
+            }
+
+            nav.active {
+                height: 881px;
+                max-height: 881px;
+                width: 200px;
+                visibility: visible;
+                opacity: 1;
+                transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear;
+                transform: translateX(0%);
+            }
+
+            /* 왼쪽에서 오른쪽으로 나오는 애니메이션을 추가합니다. */
+            nav {
+                transform: translateX(-100%);
+                transition: transform 0.5s ease;
+            }
+
+            nav.active {
+                transform: translateX(0%);
+                transition: transform 0.5s ease;
+            }
+
+            nav.closing {
+                transform: translateX(-100%);
+                transition: transform 0.5s ease;
+            }
+
+            nav .menu-bar {
+                width: 100%;
+                height: 100%;
+                border-top: 0px;
+                border-right: 1px solid #ccc;
+                border-bottom: 1px solid #ccc;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+                display: flex;
+                flex-direction: column;
+                background-color: #dde;
+            }
+
+            .menu-bar-content {
+                width: 100%;
+                margin-left: 0px;
+            }
+
+            .menu-bar-content ul li {
+                padding: 10px;
+            }
+
+            aside {
+                display: none;
+            }
+
+            /* 섹션 목록 */
+            section {
+                width: 100%;
+            }
+
+            #monitoring {
+                gap: 5px;
+                padding: 5px;
+            }
+
+            #total-defect-rate-section {
+                width: 406px;
+            }
+
+            .total-defect-rate-display {
+                font-size: 18px;
+                padding: 2.5px;
+            }
+
+            .process {
+                width: 160px;
+                height: 190px;
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .status {
+                font-size: 12px;
+            }
+
+            .operations {
+                font-size: 12px;
+                width: 160px;
+            }
+
+            .graph-container {
+                height: 150px;
+            }
+
+            .bar {
+                width: 18%;
+                font-size: 11px;
+            }
+
+            .workerGrade {
+                display: inline;
+            }
+
+            .workerPic {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="workerTitle">
+        <div id="workerLogo">
+            <a href="#">
+                <image
+                    src="https://cdn.discordapp.com/attachments/1185161279804026893/1200675420325036082/Jlogo.png?ex=65c70b1f&is=65b4961f&hm=ae28f53e9280fe71cffc1fc2ca74aec892875f13143ef4e109da28023c5b414b&"
+                    class="logo"></image>
+            </a>
+        </div>
+        <h1 id="mainTitle1"><a href="main.html">작업자 페이지</a></h1>
+        <h1 id="mainTitle2"><a href="main.html">관리자 페이지</a></h1>
+        <div id="myPage">
+            <div id="myPageLogo">
+                <image
+                    src="https://cdn.discordapp.com/attachments/1185161279804026893/1200675420551520370/workerP.jpg?ex=65c70b1f&is=65b4961f&hm=c49f91b245305c4bb33c58e626bc4960b4f601257e433425a8d7cc0da454126e&"
+                    class="workerPic">
+            </div>
+            <span id="workerName"><span class="workerGrade">작업자<br></span>이도연 대리님</span>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <div class="header-nav-container">
+            <header>
+                <ul>
+                    <li><a href="work-order.html" class="hover" title="작업지시서">작업</a></li>
+                    <li><a href="facilityMonitoring.html" class="hover" title="품질검사">설비</a></li>
+                    <li><a href="stock_status.html" class="hover" title="건의사항">재고관리</a></li>
+                    <li id="adminTitle"><a href="Employee_managemen.html" class="hover" title="직원관리">직원관리</a></li>
+                    <li><a href="boardTable.html" class="hover" title="직원 게시판">게시판</a></li>
+                </ul>
+            </header>
+            <nav>
+                <div class="menu-bar">
+                    <div class="menu-bar-content">
+                        <ul>
+                            <li><a href="work-order.html">작업 지침서</a></li>
+                            <li><a href="work-safety.html">안전 지침서</a></li>
+                            <li><a href="work-quality.html">품질검사</a></li>
+                            <li><a href="work-report.html">작업보고</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-bar-content">
+                        <ul>
+                            <li><a href="facilityMonitoring.html">설비 모니터링</a></li>
+
+                            <li><a href="process.html">공정도</a></li>
+
+                            <li><a href="facilitiespage.html">설비 설정</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-bar-content">
+                        <ul>
+                            <li><a href="stock_status.html">재고 현황</a></li>
+                            <li><a href="Stock_Request.html">재고 신청</a></li>
+                            <li><a href="Finished_product_management.html">완제품 관리</a></li>
+                            <li><a href="Report_of_defective_inventory.html">재고 불량 신고</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-bar-content" id="adminNav">
+                        <ul>
+                            <li><a href="Employee_managemen.html">직원목록</a></li>
+                            <li><a href="work-record.html">근무기록</a></li>
+                            <li><a href="vacation.html">휴가신청</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-bar-content">
+                        <ul>
+                            <li><a href="boardTable.html">자유게시판</a></li>
+                            <li><a href="suggestTable.html">건의사항</a></li>
+                            <li><a href="QA.html">Q&A</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="aside-section-container">
+            <aside>
+                <!-- aside 영역내에 메뉴 추가 가능함 -->
+                <ul>
+                    <li>
+                        <a href="FacilityMonitoring.html">설비 모니터링</a>
+                    </li>
+                    <li>
+                        <a href="process.html">공정도</a>
+
+                    </li>
+                    <li>
+                        <a href="facilitiespage.html">설비설정</a>
+                    </li>
+                </ul>
+            </aside>
+            <section>
+                <div class="monitor">
+                    <h1>설비 모니터링</h1>
+                </div>
+                <div id="total-defect-rate-section">
+                    <div id="total-defect-rate" class="total-defect-rate-display">총 불량률: 0%</div>
+                </div>
+                <div id="monitoring">
+                    <div class="process">
+                        <h4>1번 라인</h4>
+                        <div id="cpu-status" class="status">Pending</div>
+                        <div id="cpu-defect-rate" class="operations">불량률: 0%</div>
+                        <div id="cpu-defect-count" class="operations">불량: 0</div>
+                        <div id="cpu-good-count" class="operations">통과: 0</div>
+                        <div id="cpu-operations" class="operations">사이클 횟수: 0</div>
+                    </div>
+                    <div class="process">
+                        <h4>2번 라인</h4>
+                        <div id="gpu-status" class="status">Pending</div>
+                        <div id="gpu-defect-rate" class="operations">불량률: 0%</div>
+                        <div id="gpu-defect-count" class="operations">불량: 0</div>
+                        <div id="gpu-good-count" class="operations">통과: 0</div>
+                        <div id="gpu-operations" class="operations">사이클 횟수: 0</div>
+                    </div>
+                    <div class="process">
+                        <h4>3번 라인</h4>
+                        <div id="case-status" class="status">Pending</div>
+                        <div id="case-defect-rate" class="operations">불량률: 0%</div>
+                        <div id="case-defect-count" class="operations">불량: 0</div>
+                        <div id="case-good-count" class="operations">통과: 0</div>
+                        <div id="case-operations" class="operations">사이클 횟수: 0</div>
+                    </div>
+                    <div class="process">
+                        <h4>4번 라인</h4>
+                        <div class="status">Standby</div>
+                        <div class="operations">불량률: 0%</div>
+                        <div class="operations">불량: 0</div>
+                        <div class="operations">통과: 0</div>
+                        <div class="operations">사이클 횟수: 0</div>
+                    </div>
+                </div>
+                <h3 id="graph-title">불량률 그래프</h3>
+                <div id="defect-rate-graph" class="graph-container">
+                    <div id="cpu-bar" class="bar">1번 라인 : 0.00%</div>
+                    <div id="gpu-bar" class="bar">2번 라인 : 0.00%</div>
+                    <div id="case-bar" class="bar">3번 라인 : 0.00%</div>
+                    <div class="bar">4번 라인 : 0.00%</div>
+                </div>
+            </section>
+        </div>
+        <footer>ⓒ2024 J.company System</footer>
+    </div>
+
+    <script>
+        const hover = document.querySelectorAll('a.hover');
+        const menuBar = document.querySelector('.menu-bar');
+        const nav = document.querySelector('nav');
+        const wrap = document.querySelector('.wrap');
+        const section = document.querySelector('section');
+
+        hover.forEach(link => {
+            link.addEventListener("click", function (event) {
+                event.preventDefault();
+                if (nav.classList.contains('active') && window.matchMedia("(max-width: 430px)").matches) {
+                    nav.style.height = `${section.offsetHeight}px`
+                }
+            });
+        });
+
+        // if() {
+        // document.querySelector("#mainTitle1").style.display = "block";
+        // } else {
+        document.querySelector("#mainTitle2").style.display = "block";
+        // }
+
+        let isHovered = false;
+
+        hover.forEach(button => {
+            button.addEventListener('mouseover', () => {
+                showMenuBar();
+                isHovered = true;
+            });
+        });
+
+        wrap.addEventListener("mouseleave", function () {
+            if (!isHovered) {
+                hideMenuBar();
+            }
+        });
+
+        menuBar.addEventListener("mouseenter", function () {
+            isHovered = true;
+        });
+
+        menuBar.addEventListener("mouseleave", function () {
+            hideMenuBar();
+        });
+
+        section.addEventListener("click", function () {
+            hideMenuBar();
+        })
+
+
+
+        function showMenuBar() {
+            nav.classList.add('active');
+        }
+
+        function hideMenuBar() {
+            nav.classList.remove('active');
+        }
+
+        // 모니터링 인터페이스 스크립트 페이지
+        document.addEventListener('DOMContentLoaded', function () {
+            const cpuStatus = document.getElementById('cpu-status');
+            const cpuOperations = document.getElementById('cpu-operations');
+            const gpuStatus = document.getElementById('gpu-status');
+            const gpuOperations = document.getElementById('gpu-operations');
+            const caseStatus = document.getElementById('case-status');
+            const caseOperations = document.getElementById('case-operations');
+            const cpuDefectRateElement = document.getElementById('cpu-defect-rate');
+            const gpuDefectRateElement = document.getElementById('gpu-defect-rate');
+            const caseDefectRateElement = document.getElementById('case-defect-rate');
+            const cpuDefectCountElement = document.getElementById('cpu-defect-count');
+            const gpuDefectCountElement = document.getElementById('gpu-defect-count');
+            const caseDefectCountElement = document.getElementById('case-defect-count');
+            const cpuGoodCountElement = document.getElementById('cpu-good-count');
+            const gpuGoodCountElement = document.getElementById('gpu-good-count');
+            const caseGoodCountElement = document.getElementById('case-good-count');
+            const totalDefectRateElement = document.getElementById('total-defect-rate');
+
+            let cpuOperationsCount = 0;
+            let gpuOperationsCount = 0;
+            let caseOperationsCount = 0;
+            let cpuDefectCount = 0;
+            let gpuDefectCount = 0;
+            let caseDefectCount = 0;
+            let iteration = 0;
+            const maxIterations = 50;
+
+            function simulateDefects(defectRate) {
+                return Math.random() < defectRate ? 1 : 0;
+            }
+
+            function calculateDefectRate(operationsCount, defectCount) {
+                if (operationsCount === 0) return "0.00";
+                const rate = (defectCount / operationsCount) * 100;
+                return rate.toFixed(2);
+            }
+
+            function calculateTotalDefectRate() {
+                const totalOperations = cpuOperationsCount + gpuOperationsCount + caseOperationsCount;
+                const totalDefects = cpuDefectCount + gpuDefectCount + caseDefectCount;
+                if (totalOperations === 0) return "0.00";
+                const rate = (totalDefects / totalOperations) * 100;
+                return rate.toFixed(2);
+            }
+
+            function updateCountsAndRates() {
+                // CPU
+                cpuOperations.textContent = `사이클 횟수: ${cpuOperationsCount}`;
+                cpuDefectCountElement.textContent = `불량: ${cpuDefectCount}`;
+                cpuGoodCountElement.textContent = `통과: ${Math.max(0, cpuOperationsCount - cpuDefectCount)}`;
+                cpuDefectRateElement.textContent = `불량률: ${calculateDefectRate(cpuOperationsCount, cpuDefectCount)}%`;
+
+                // GPU
+                gpuOperations.textContent = `사이클 횟수: ${gpuOperationsCount}`;
+                gpuDefectCountElement.textContent = `불량: ${gpuDefectCount}`;
+                gpuGoodCountElement.textContent = `통과: ${Math.max(0, gpuOperationsCount - gpuDefectCount)}`;
+                gpuDefectRateElement.textContent = `불량률: ${calculateDefectRate(gpuOperationsCount, gpuDefectCount)}%`;
+
+                // Case
+                caseOperations.textContent = `사이클 횟수: ${caseOperationsCount}`;
+                caseDefectCountElement.textContent = `불량: ${caseDefectCount}`;
+                caseGoodCountElement.textContent = `통과: ${Math.max(0, caseOperationsCount - caseDefectCount)}`;
+                caseDefectRateElement.textContent = `불량률: ${calculateDefectRate(caseOperationsCount, caseDefectCount)}%`;
+
+                // total
+                totalDefectRateElement.textContent = `총 불량률: ${calculateTotalDefectRate()}%`;
+
+                const cpuDefectRate = calculateDefectRate(cpuOperationsCount, cpuDefectCount);
+                const gpuDefectRate = calculateDefectRate(gpuOperationsCount, gpuDefectCount);
+                const caseDefectRate = calculateDefectRate(caseOperationsCount, caseDefectCount);
+
+                document.getElementById('cpu-bar').style.height = `${cpuDefectRate}%`;
+                document.getElementById('gpu-bar').style.height = `${gpuDefectRate}%`;
+                document.getElementById('case-bar').style.height = `${caseDefectRate}%`;
+
+                document.getElementById('cpu-bar').textContent = `1번라인 : ${cpuDefectRate}%`;
+                document.getElementById('gpu-bar').textContent = `2번라인 : ${gpuDefectRate}%`;
+                document.getElementById('case-bar').textContent = `3번라인 : ${caseDefectRate}%`;
+
+            }
+
+            function runProcess() {
+                if (iteration < maxIterations) {
+                    cpuStatus.textContent = 'Running';
+                    cpuStatus.style.color = 'red';
+                    gpuStatus.textContent = 'Running';
+                    gpuStatus.style.color = 'red';
+                    caseStatus.textContent = 'Running';
+                    caseStatus.style.color = 'red';
+
+                    setTimeout(() => {
+                        cpuStatus.textContent = 'Completed';
+                        cpuStatus.style.color = 'green';
+                        gpuStatus.textContent = 'Completed';
+                        gpuStatus.style.color = 'green';
+                        caseStatus.textContent = 'Completed';
+                        caseStatus.style.color = 'green';
+                        cpuOperationsCount++;
+                        cpuDefectCount += simulateDefects(0.01);  // 1번 라인 불량률 1%
+                        gpuOperationsCount++;
+                        gpuDefectCount += simulateDefects(0.03);  // 2번 라인 불량률 3%
+                        caseOperationsCount++;
+                        caseDefectCount += simulateDefects(0.05);  // 3번 라인 불량률 5%
+                        updateCountsAndRates();
+
+                        setTimeout(() => {
+                            iteration++;
+                            runProcess();
+                        }, 3000);
+                    }, 3000);
+                }
+            }
+
+            runProcess();
+        });
+
+        document.querySelector("#workerName").addEventListener("click", () => {
+            window.open("myPage.html", '_blank', 'width = 630, height = 470, top=100, left=100');
+        });
+
+
+        hover.forEach(link => {
+            link.addEventListener("click", function (event) {
+                let myPage = document.querySelector("#myPage");
+                // let myPageName = document.querySelector("#workerName");
+                // let myPageLogo = document.querySelector("#myPageLogo");
+                let menuBar = document.querySelector(".menu-bar");
+                let mainPage = document.querySelector(".wrap");
+                let companyLogo = document.querySelector("#workerLogo");
+
+                let ulLi = document.querySelectorAll(".menu-bar-content ul li");
+
+
+                event.preventDefault();
+                if (nav.classList.contains('active') && window.matchMedia("(max-width: 430px)").matches) {
+                    nav.style.height = `${section.offsetHeight}px`
+
+                    // 네비4
+                    // for (let i = 0; i < ulLi.length; i++) {
+                    //     ulLi[i].style.padding = '10px';
+                    // }
+
+                    // 네비5
+                    for (let i = 0; i < ulLi.length; i++) {
+                        ulLi[i].style.padding = '7px';
+                    }
+                    menuBar.prepend(myPage);
+                }
+            });
+        });
+
+        document.querySelector("#adminTitle").style.display = 'block';
+        document.querySelector("#adminNav").style.display = 'block';
+        document.querySelector(".workerGrade").innerHTML = '작업자<br>';
+        // document.querySelector(".workerGrade").innerHTML = '관리자<br>';
+
+        // document.querySelector("#adminTitle").style.display = 'none';
+        // document.querySelector("#adminNav").style.display = 'none';
+
+    </script>
+</body>
+
+</html>

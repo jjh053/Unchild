@@ -193,10 +193,11 @@
             border-top: 0px;
             border-right: 1px solid #ccc;
             display: flex;
+            justify-content: space-evenly;
         }
 
         .menu-bar-content {
-            margin-left: 40px;
+            /* margin-left: 40px; */
             width: 20%;
             display: inline-block;
             box-sizing: border-box;
@@ -621,6 +622,7 @@
                 border-right: 1px solid #ccc;
                 display: flex;
                 flex-direction: column;
+                justify-content: flex-start;
             }
 
             .menu-bar-content {
@@ -666,7 +668,7 @@
                 font-size: 15px;
             }
 
-            .card-content{
+            .card-content {
                 font-size: 12px;
             }
 
@@ -739,11 +741,11 @@
                 width: 100%;
             }
 
-            .table{
+            .table {
                 margin-top: 10px;
             }
 
-            h3{
+            h3 {
                 font-size: 15px;
             }
 
@@ -758,6 +760,12 @@
 
             .table2 {
                 font-size: 12px;
+            }
+
+            .workerPic {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
             }
         }
     </style>
@@ -781,7 +789,7 @@
                     src="https://cdn.discordapp.com/attachments/1185161279804026893/1200675420551520370/workerP.jpg?ex=65c70b1f&is=65b4961f&hm=c49f91b245305c4bb33c58e626bc4960b4f601257e433425a8d7cc0da454126e&"
                     class="workerPic">
             </div>
-            <span id="workerName"><a href="#">이도연 대리님</a></span>
+            <span id="workerName"><span class="workerGrade">작업자<br></span>이도연 대리님</span>
         </div>
     </div>
 
@@ -789,10 +797,11 @@
         <div class="header-nav-container">
             <header>
                 <ul>
-                    <li><a href="#" class="hover" title="작업지시서">작업</a></li>
-                    <li><a href="#" class="hover" title="품질검사">설비</a></li>
-                    <li><a href="#" class="hover" title="건의사항">재고관리</a></li>
-                    <li><a href="#" class="hover" title="직원 게시판">게시판</a></li>
+                    <li><a href="work-order.html" class="hover" title="작업지시서">작업</a></li>
+                    <li><a href="facilityMonitoring.html" class="hover" title="품질검사">설비</a></li>
+                    <li><a href="stock_status.html" class="hover" title="건의사항">재고관리</a></li>
+                    <li id="adminTitle"><a href="Employee_managemen.html" class="hover" title="직원관리">직원관리</a></li>
+                    <li><a href="boardTable.html" class="hover" title="직원 게시판">게시판</a></li>
                 </ul>
             </header>
             <nav>
@@ -808,7 +817,9 @@
                     <div class="menu-bar-content">
                         <ul>
                             <li><a href="facilityMonitoring.html">설비 모니터링</a></li>
+
                             <li><a href="process.html">공정도</a></li>
+
                             <li><a href="facilitiespage.html">설비 설정</a></li>
                         </ul>
                     </div>
@@ -820,11 +831,18 @@
                             <li><a href="Report_of_defective_inventory.html">재고 불량 신고</a></li>
                         </ul>
                     </div>
+                    <div class="menu-bar-content" id="adminNav">
+                        <ul>
+                            <li><a href="Employee_managemen.html">직원목록</a></li>
+                            <li><a href="work-record.html">근무기록</a></li>
+                            <li><a href="vacation.html">휴가신청</a></li>
+                        </ul>
+                    </div>
                     <div class="menu-bar-content">
                         <ul>
                             <li><a href="boardTable.html">자유게시판</a></li>
                             <li><a href="suggestTable.html">건의사항</a></li>
-                            <li><a href="#">Q&A</a></li>
+                            <li><a href="QA.html">Q&A</a></li>
                         </ul>
                     </div>
                 </div>
@@ -1105,6 +1123,47 @@
         function hideMenuBar() {
             nav.classList.remove('active');
         }
+
+
+        hover.forEach(link => {
+            link.addEventListener("click", function (event) {
+                let myPage = document.querySelector("#myPage");
+                // let myPageName = document.querySelector("#workerName");
+                // let myPageLogo = document.querySelector("#myPageLogo");
+                let menuBar = document.querySelector(".menu-bar");
+                let mainPage = document.querySelector(".wrap");
+                let companyLogo = document.querySelector("#workerLogo");
+
+                let ulLi = document.querySelectorAll(".menu-bar-content ul li");
+
+
+                event.preventDefault();
+                if (nav.classList.contains('active') && window.matchMedia("(max-width: 430px)").matches) {
+                    nav.style.height = `${section.offsetHeight}px`
+
+                    // 네비4
+                    // for (let i = 0; i < ulLi.length; i++) {
+                    //     ulLi[i].style.padding = '10px';
+                    //     ulLi[i].style.margin = '0px';
+                    // }
+
+                    // 네비5
+                    for (let i = 0; i < ulLi.length; i++) {
+                        ulLi[i].style.padding = '7px';
+
+                    }
+                    menuBar.prepend(myPage);
+                }
+            });
+        });
+
+        document.querySelector("#adminTitle").style.display = 'block';
+        document.querySelector("#adminNav").style.display = 'block';
+        document.querySelector(".workerGrade").innerHTML = '작업자<br>';
+        // document.querySelector(".workerGrade").innerHTML = '관리자<br>';
+
+        // document.querySelector("#adminTitle").style.display = 'none';
+        // document.querySelector("#adminNav").style.display = 'none';
 
         document.addEventListener('DOMContentLoaded', function () {
             // Initialize Chart.js Chart
