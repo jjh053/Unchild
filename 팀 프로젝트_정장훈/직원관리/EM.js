@@ -423,6 +423,22 @@ const hover = document.querySelectorAll('a.hover');
 const menuBar = document.querySelector('.menu-bar');
 const nav = document.querySelector('nav');
 const wrap = document.querySelector('.wrap');
+// 미디어테그, 네비게이션바 조작
+const section = document.querySelector('section');
+
+hover.forEach(link => {
+    link.addEventListener("click", function (event) {
+        event.preventDefault();
+        if (nav.classList.contains('active') && window.matchMedia("(max-width: 430px)").matches) {
+            nav.style.height = `${section.offsetHeight}px`
+        }
+    });
+});
+
+// 미디어테그 끝
+
+
+
 
 // if() {
 // document.querySelector("#mainTitle1").style.display = "block";
@@ -453,6 +469,10 @@ menuBar.addEventListener("mouseleave", function () {
     hideMenuBar();
 });
 
+section.addEventListener('click', function () {
+    hideMenuBar();
+})
+
 function showMenuBar() {
     nav.classList.add('active');
 }
@@ -460,3 +480,36 @@ function showMenuBar() {
 function hideMenuBar() {
     nav.classList.remove('active');
 }
+
+
+hover.forEach(link => {
+    link.addEventListener("click", function (event) {
+        let myPage = document.querySelector("#myPage");
+        // let myPageName = document.querySelector("#workerName");
+        // let myPageLogo = document.querySelector("#myPageLogo");
+        let menuBar = document.querySelector(".menu-bar");
+        let mainPage = document.querySelector(".wrap");
+        let companyLogo = document.querySelector("#workerLogo");
+
+        let ulLi = document.querySelectorAll(".menu-bar-content ul li");
+
+        // 네비4
+        for (let i = 0; i < ulLi.length; i++) {
+            ulLi[i].style.padding = '10px';
+            ulLi[i].style.margin = '0px';
+        }
+
+        // 네비5
+        for (let i = 0; i < ulLi.length; i++) {
+            ulLi[i].style.padding = '0px';
+            ulLi[i].style.margin = '10px';
+        }
+
+        event.preventDefault();
+        if (nav.classList.contains('active') && window.matchMedia("(max-width: 430px)").matches) {
+            nav.style.height = `${section.offsetHeight}px`
+
+            menuBar.prepend(myPage);
+        }
+    });
+});

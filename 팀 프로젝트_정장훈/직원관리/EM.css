@@ -178,10 +178,10 @@ nav.active {
     border-bottom: 1px solid #ccc;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     display: flex;
+    justify-content: space-evenly;
 }
 
 .menu-bar-content {
-    margin-left: 40px;
     width: 20%;
     display: inline-block;
     box-sizing: border-box;
@@ -595,7 +595,7 @@ article {
     height: 100%;
     width: 100%;
     margin-bottom: 10px;
-    
+
 }
 
 .img_choice {
@@ -832,7 +832,7 @@ article {
     height: 100%;
     width: 100%;
     margin-bottom: 10px;
-    
+
 }
 
 .img_choice3 {
@@ -1145,4 +1145,158 @@ article {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+
+
+
+
+
+
+
+
+/* 미디어테그 */
+@media screen and (max-width: 430px) {
+
+    .wrap {
+        width: 100%;
+    }
+
+    #workerTitle {
+        display: none;
+    }
+
+    header {
+        width: 100%;
+        background: #000;
+        color: #fff;
+        text-align: center;
+        padding: 5px;
+        box-sizing: border-box;
+        border-radius: 0px;
+    }
+
+    header ul li a {
+        font-size: 15px;
+        text-decoration: none;
+        color: #fff;
+        transition: color 0.3s ease;
+    }
+
+    nav {
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        /* header 높이에 맞게 조정 */
+        left: 0;
+        right: 0;
+        background: #dde;
+        overflow: hidden;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear;
+        transform: translateX(0%);
+        visibility: hidden;
+        z-index: 100;
+        /* opacity: 0; */
+    }
+
+    nav.active {
+        min-height: 800px;
+        max-height: none;
+        width: 200px;
+        visibility: visible;
+        opacity: 1;
+        transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear;
+        transform: translateX(0%);
+    }
+
+    /* 왼쪽에서 오른쪽으로 나오는 애니메이션을 추가합니다. */
+    nav {
+        transform: translateX(-100%);
+        transition: transform 0.5s ease;
+    }
+
+    nav.active {
+        transform: translateX(0%);
+        transition: transform 0.5s ease;
+    }
+
+    nav.closing {
+        transform: translateX(-100%);
+        transition: transform 0.5s ease;
+    }
+
+    nav .menu-bar {
+        width: 100%;
+        height: 100%;
+        border-top: 0px;
+        border-right: 1px solid #ccc;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+    }
+
+    .menu-bar-content {
+        width: 100%;
+        margin-left: 0px;
+    }
+
+    .menu-bar-content ul li {
+        padding: 10px;
+    }
+
+    aside {
+        display: none;
+    }
+
+    section {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* 위는 미디어 공통 */
+    /* 아래는 내꺼 */
+
+    .popup,
+    .popup2,
+    .popup3 {
+        width: 420px;
+        border: 1px solid red;
+        left: 1%;
+        top: 10%;
+    }
+
+    .eai,
+    .eai2,
+    .eai3 {
+        width: 420px;
+    }
+
+    .Employee_atomic_infor_select div,
+    .Employee_atomic_infor_title div,
+    .Employee_atomic_infor_select2 div,
+    .Employee_atomic_infor_title2 div,
+    .Employee_atomic_infor_select3 div,
+    .Employee_atomic_infor_title3 div {
+        font-size: 13px;
+    }
+
+    .Employee_atomic_infor_button,
+    .Employee_atomic_infor_button2,
+    .Employee_atomic_infor_button3 {
+        font-size: 12px;
+    }
+
+    .delete_button {
+        font-size: 10px;
+    }
+
+    .Employee_atomic_infor_select input,
+    .Employee_atomic_infor_select2 input,
+    .Employee_atomic_infor_select3 input {
+        width: 90%;
+    }
+
 }
