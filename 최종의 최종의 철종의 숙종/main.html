@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 1</title>
+    <style>
+        @font-face {
+            font-family: "SOYOMapleBoldTTF";
+            src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/SOYOMapleBoldTTF.woff2") format("woff2");
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: "SOYOMapleBoldTTF";
+            margin: 0 auto;
+            /* font-family: Arial, sans-serif; */
+            background: #fff;
+            color: #333;
+            background-color: #ccc;
+        }
+
+        /* title */
+        #workerTitle {
+            display: flex;
+            width: 1000px;
+            justify-content: space-between;
+            padding: 5px;
+
+        }
+
+        #workerLogo {
+            width: 200px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        #workerTitle h1 {
+            width: 200px;
+            color: #000;
+        }
+
+        #mainTitle1 {
+            display: none;
+        }
+
+        #mainTitle1 a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        #mainTitle2 {
+            display: none;
+        }
+
+        #mainTitle2 a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        #myPage {
+            width: 200px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        #myPageLogo {
+            width: 80px;
+            height: 80px;
+            margin-right: 3%;
+        }
+
+        #workerName a {
+            text-decoration: none;
+            color: #333;
+
+        }
+
+        #workerName a:hover {
+            text-decoration: none;
+            color: #888;
+            transition: color 0.2s ease;
+        }
+
+        #workerTitle .workerPic {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+        }
+
+        #workerTitle .logo {
+            width: 200px;
+            height: 70px;
+        }
+
+        /* title end */
+
+        .wrap {
+            width: 1000px;
+            /* height: 100vh; */
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+        }
+
+        /* header와 nav의 집합 */
+        .header-nav-container {
+            position: relative;
+            width: 100%;
+            /* wrap과 동일한 너비 */
+        }
+
+        /* header 코드 */
+        header {
+            width: 100%;
+            background: #000;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        /* 햄버거 메뉴 아이콘 */
+        .hamburger-menu {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 25px;
+            height: 20px;
+        }
+
+        .hamburger-menu span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: #fff;
+            transition: all 0.2s ease;
+        }
+
+        header h1 {
+            font-size: 30px;
+            margin: 0;
+        }
+
+        header ul {
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+            list-style: none;
+            align-items: center;
+        }
+
+        header ul li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+
+        header ul li a {
+            font-size: 18px;
+            text-decoration: none;
+            color: #fff;
+            transition: color 0.3s ease;
+        }
+
+        header ul li a:hover {
+            color: #aaa;
+        }
+
+        /* header 코드 끝 */
+
+        nav {
+            width: 100%;
+            position: absolute;
+            top: 100%;
+            /* header 높이에 맞게 조정 */
+            left: 0;
+            right: 0;
+            background: #eee;
+            max-height: 0;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear;
+            visibility: hidden;
+            z-index: 100;
+            /* opacity: 0; */
+        }
+
+        /* nav 숨김요소 */
+        nav.active {
+            max-height: 500px;
+            /* 활성화될 때 최대 높이 설정 */
+            visibility: visible;
+            opacity: 1;
+            transition: max-height 0.5s ease, visibility 0s, opacity 0.5s linear;
+        }
+
+        /* nav 안의 menu-bar요소 */
+        .menu-bar {
+            width: 100%;
+            height: 220px;
+            border-top: 0px;
+            border-right: 1px solid #ccc;
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .menu-bar-content {
+            /* margin-left: 40px; */
+            width: 20%;
+            display: inline-block;
+            box-sizing: border-box;
+        }
+
+        .menu-bar-content ul li {
+            padding: 10px;
+        }
+
+        .menu-bar-content ul li a {
+            text-decoration: none;
+            color: #444;
+        }
+
+        .menu-bar-content ul li a:hover {
+            color: #aaa;
+            transition: color 0.2s ease;
+        }
+
+        #menu-bar-content-sub {
+            list-style: circle;
+            font-size: 14px;
+            padding-left: 20px;
+        }
+
+        #menu-bar-content-sub li {
+            padding: 5px;
+        }
+
+        /* menu-bar요소 끝 */
+
+        /* aside, section */
+        .aside-section-container {
+            width: 100%;
+            display: flex;
+            /* height: 100%; */
+        }
+
+        /* 좌측 메뉴바 */
+        aside {
+            display: none;
+            min-height: 800px;
+            width: 20%;
+            background: #5f5f5f;
+        }
+
+        /* 섹션 창을 조작하기바람 */
+        section {
+            min-height: 800px;
+            justify-content: center;
+            width: 100%;
+            background: #eee;
+            z-index: 50;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .dashboard-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #eee;
+            color: #333;
+            font-size: 30px;
+            padding: 20px 20px 0px 20px;
+        }
+
+        .clock {
+            width: 28%;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            background: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            font-size: 20px;
+        }
+
+        /* 대쉬보드 영역 스타일 */
+        .dashboard-main {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+            box-sizing: border-box;
+            justify-content: center;
+        }
+
+        /* 전역 카드 설정 */
+        .card {
+            background: #fff;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-header {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .card-content {
+            font-size: 16px;
+            text-align: center;
+        }
+
+        /* 생산 라인 카드 설정 */
+        .line-cards {
+            width: 100%;
+            height: 220px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .line-card {
+            width: 26%;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+
+        }
+
+        .line-card:nth-child(2) {
+            width: 71.5%;
+        }
+
+
+        .card-header2 {
+            margin-bottom: 20px;
+            padding-left: 20px;
+            font-size: 18px;
+        }
+
+        .card-content2 {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            background: #eee;
+            width: 90%;
+            height: 60%;
+            font-size: 16px;
+            padding-bottom: 2%;
+            text-align: center;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .card-content3 {
+            width: 91%;
+            margin: 0 auto;
+            height: 63%;
+            border-radius: 8px;
+        }
+
+        /* 제작 현황 그래프 스타일 */
+        .card:nth-child(1) {
+            width: 63%;
+            margin-right: 20px;
+        }
+
+        .card:nth-child(2) {
+            width: 26%;
+        }
+
+        .card:nth-child(3) {
+            width: 44.5%;
+            margin-right: 20px;
+        }
+
+        .card:nth-child(4) {
+            width: 44.5%;
+        }
+
+
+        .table {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 40px;
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table th,
+        .table td {
+            text-align: center;
+            height: 36px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .table th {
+            background-color: #f2f2f2;
+        }
+
+        .table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .table2 {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table2 th,
+        .table2 td {
+            padding: 5px 0;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .table2 th {
+            background-color: #f2f2f2;
+        }
+
+        .table2 tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* 건의사항 */
+        .list {
+            display: flex;
+            flex-direction: column;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .row {
+            display: flex;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .row:first-child {
+            border-top: 2px solid #ddd;
+            background-color: #eee;
+        }
+
+        .cell {
+            padding: 5px 0;
+            flex: 1;
+            text-align: center;
+            border-right: 1px solid #ddd;
+        }
+
+        .cell:first-child {
+            border-left: 1px solid #ddd;
+            flex: 0.5;
+        }
+
+        .cell:nth-child(2) {
+            flex: 2.0;
+        }
+
+        .cell:last-child {
+            flex: 0.6;
+        }
+
+        .more {
+            width: 100%;
+            text-align: right;
+            margin-top: 10px;
+        }
+
+        .more a {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #333;
+            padding: 5px;
+        }
+
+        .more a:hover {
+            background-color: #ddd;
+            transition: color 0.5s ease;
+        }
+
+        #justGage {
+            width: 200px;
+            height: 160px;
+            display: inline-block;
+        }
+
+        .status {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .defect-rate,
+        .defect-count,
+        .good-count,
+        .cycle-count {
+            color: #333;
+        }
+
+        .line-card {
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .line-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 게이지 크기 */
+        #entryGage,
+        #mainStreamGage,
+        #performanceGage {
+            width: 250px;
+            height: 160px;
+            display: inline-block;
+        }
+
+
+        /* aside, section 끝*/
+
+        footer {
+            width: 100%;
+            background: #000;
+            color: #fff;
+            text-align: center;
+            height: 7%;
+            line-height: 70px;
+        }
+
+        @media screen and (max-width: 430px) {
+
+            form {
+                width: 100%;
+                min-height: 800px;
+            }
+
+            .wrap {
+                width: 100%;
+            }
+
+            #workerTitle {
+                display: none;
+            }
+
+            header {
+                width: 100%;
+                background: #000;
+                color: #fff;
+                text-align: center;
+                padding: 5px;
+                box-sizing: border-box;
+                border-radius: 0px;
+            }
+
+            /* 미디어 쿼리 헤더 영역 수정 코드 */
+            header ul {
+                display: none;
+            }
+
+            .header-content {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                position: relative;
+            }
+
+            #headerTitle {
+                display: block !important;
+                text-align: center;
+                color: #fff;
+                width: 100%;
+                font-size: 20px;
+            }
+
+            #headerTitle a {
+                text-decoration: none;
+                color: #fff;
+            }
+
+            .hamburger-menu {
+                position: absolute;
+                left: 0;
+                top: 0;
+                display: flex;
+            }
+
+            nav {
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                /* header 높이에 맞게 조정 */
+                left: 0;
+                right: 0;
+                background: #dde;
+                overflow: hidden;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+                transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear;
+                transform: translateX(0%);
+                visibility: hidden;
+                z-index: 100;
+                /* opacity: 0; */
+            }
+
+            nav.active {
+                min-height: 815px;
+                max-height: none;
+                width: 200px;
+                visibility: visible;
+                opacity: 1;
+                transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear;
+                transform: translateX(0%);
+            }
+
+            /* 왼쪽에서 오른쪽으로 나오는 애니메이션을 추가합니다. */
+            nav {
+                transform: translateX(-100%);
+                transition: transform 0.5s ease;
+            }
+
+            nav.active {
+                transform: translateX(0%);
+                transition: transform 0.5s ease;
+            }
+
+            nav.closing {
+                transform: translateX(-100%);
+                transition: transform 0.5s ease;
+            }
+
+            nav .menu-bar {
+                width: 100%;
+                height: 100%;
+                border-top: 0px;
+                border-right: 1px solid #ccc;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+            }
+
+            .menu-bar-content {
+                width: 100%;
+                margin-left: 0px;
+            }
+
+            .menu-bar-content ul li {
+                padding: 10px;
+            }
+
+            aside {
+                display: none;
+            }
+
+            section {
+                width: 100%;
+            }
+
+            .dashboard-main {
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                padding-top: 20px;
+                box-sizing: border-box;
+                justify-content: center;
+            }
+
+            .clock {
+                font-size: 13px;
+                width: 35%;
+            }
+
+            .card {
+                border: 1px solid #ddd;
+                box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+                margin-bottom: 20px;
+                padding: 20px;
+                transition: transform 0.3s, box-shadow 0.3s;
+            }
+
+            .card-header {
+                font-size: 15px;
+            }
+
+            .card-content {
+                font-size: 12px;
+            }
+
+            .card:nth-child(1) {
+                width: 100%;
+                margin-right: 0;
+                font-size: 10px;
+            }
+
+            .card:nth-child(2) {
+                width: 100%;
+            }
+
+            #entryGage,
+            #mainStreamGage,
+            #performanceGage {
+                width: 30%;
+                height: 55px;
+                display: inline-block;
+            }
+
+            .card:nth-child(2) .card-content:nth-child(2) {
+                font-size: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 80px;
+            }
+
+            .list {
+                display: flex;
+                flex-direction: column;
+                border-collapse: collapse;
+                font-size: 12px;
+            }
+
+            .more a {
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                text-decoration: none;
+                color: #333;
+                padding: 5px;
+                font-size: 12px;
+            }
+
+            .card:nth-child(3) {
+                width: 100%;
+                margin-right: 0;
+            }
+
+            .card:nth-child(4) {
+                width: 100%;
+            }
+
+            .line-cards {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+
+            .line-card {
+                padding-bottom: 10px;
+                width: 100%;
+            }
+
+            .line-card:nth-child(2) {
+                margin-top: 5%;
+                width: 100%;
+            }
+
+            .table {
+                margin-top: 10px;
+            }
+
+            h3 {
+                font-size: 15px;
+            }
+
+            .card-content2 {
+                font-size: 12px;
+            }
+
+            .table th,
+            .table td {
+                height: 20px;
+            }
+
+            .table2 {
+                font-size: 12px;
+            }
+
+            .workerPic {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+            }
+        }
+    </style>
+
+</head>
+
+<body onload="showClock()">
+    <div id="workerTitle">
+        <div id="workerLogo">
+            <a href="#">
+                <image
+                    src="https://cdn.discordapp.com/attachments/1185161279804026893/1200675420325036082/Jlogo.png?ex=65c70b1f&is=65b4961f&hm=ae28f53e9280fe71cffc1fc2ca74aec892875f13143ef4e109da28023c5b414b&"
+                    class="logo"></image>
+            </a>
+        </div>
+        <h1 id="mainTitle1"><a href="main.html">작업자 페이지</a></h1>
+        <h1 id="mainTitle2"><a href="main.html">관리자 페이지</a></h1>
+        <div id="myPage">
+            <div id="myPageLogo">
+                <image
+                    src="https://cdn.discordapp.com/attachments/1185161279804026893/1200675420551520370/workerP.jpg?ex=65c70b1f&is=65b4961f&hm=c49f91b245305c4bb33c58e626bc4960b4f601257e433425a8d7cc0da454126e&"
+                    class="workerPic">
+            </div>
+            <span id="workerName"><span class="workerGrade">작업자<br></span>이도연 대리님</span>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <div class="header-nav-container">
+            <header>
+                <!-- 모바일 헤더 코드 -->
+                <div class="header-content">
+                    <div class="hamburger-menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <h1 id="headerTitle" style="display: none;"><a href="main.html">J.company</a></h1>
+                </div>
+                <ul>
+                    <li><a href="work-order.html" class="hover" title="작업지시서">작업</a></li>
+                    <li><a href="facilityMonitoring.html" class="hover" title="품질검사">설비</a></li>
+                    <li><a href="stock_status.html" class="hover" title="건의사항">재고관리</a></li>
+                    <li id="adminTitle"><a href="Employee_managemen.html" class="hover" title="직원관리">직원관리</a></li>
+                    <li><a href="boardTable.html" class="hover" title="직원 게시판">게시판</a></li>
+                </ul>
+            </header>
+            <nav>
+                <div class="menu-bar">
+                    <div class="menu-bar-content">
+                        <ul>
+                            <li><a href="work-order.html">작업 지침서</a></li>
+                            <li><a href="work-safety.html">안전 지침서</a></li>
+                            <li><a href="work-quality.html">품질검사</a></li>
+                            <li><a href="work-report.html">작업보고</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-bar-content">
+                        <ul>
+                            <li><a href="facilityMonitoring.html">설비 모니터링</a></li>
+
+                            <li><a href="process.html">공정도</a></li>
+
+                            <li><a href="facilitiespage.html">설비 설정</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-bar-content">
+                        <ul>
+                            <li><a href="stock_status.html">재고 현황</a></li>
+                            <li><a href="Stock_Request.html">재고 신청</a></li>
+                            <li><a href="Finished_product_management.html">완제품 관리</a></li>
+                            <li><a href="Report_of_defective_inventory.html">재고 불량 신고</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-bar-content" id="adminNav">
+                        <ul>
+                            <li><a href="Employee_managemen.html">직원목록</a></li>
+                            <li><a href="work-record.html">근무기록</a></li>
+                            <li><a href="vacation.html">휴가신청</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-bar-content">
+                        <ul>
+                            <li><a href="boardTable.html">자유게시판</a></li>
+                            <li><a href="suggestTable.html">건의사항</a></li>
+                            <li><a href="QA.html">Q&A</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="aside-section-container">
+            <aside>
+                <!-- aside 영역내에 메뉴 추가 가능함 -->
+            </aside>
+            <section>
+                <div class="dashboard-header">
+                    메인 페이지
+                    <div id="divClock" class="clock">
+                    </div>
+                </div>
+
+                <div class="dashboard-main">
+                    <div class="card">
+                        <a href="Finished_product_management.html" style="color: inherit; text-decoration: none;">
+                            <div class="card-header">
+                                제작 현황
+                            </div>
+                            <div class="card-content">
+                                <canvas id="productionChart"></canvas>
+                            </div>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>등급</th>
+                                        <th>수량</th>
+                                        <th>상태</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>퍼포먼스</td>
+                                        <td>12</td>
+                                        <td>생산</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>메인 스트림</td>
+                                        <td>50</td>
+                                        <td>출고</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>엔트리</td>
+                                        <td>120</td>
+                                        <td>출고</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </a>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            양품률
+                        </div>
+                        <div class="card-content">
+                            <div id="entryGage">
+                                <div class="gage-label">엔트리</div>
+                            </div>
+                            <div id="mainStreamGage">
+                                <div class="gage-label">메인스트림</div>
+                            </div>
+                            <div id="performanceGage">
+                                <div class="gage-label">퍼포먼스</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            건의사항
+                        </div>
+                        <div class="card-content">
+                            <div class="list">
+                                <!-- row는 행임 제목 영역에 제목 -->
+                                <div class="row">
+                                    <div class="cell">번호</div>
+                                    <div class="cell">제목</div>
+                                    <div class="cell">작성일</div>
+                                    <div class="cell">답변</div>
+                                </div>
+                                <div class="row">
+                                    <div class="cell">101</div>
+                                    <div class="cell">이도연 도망감</div>
+                                    <div class="cell">암튼어제</div>
+                                    <div class="cell">O</div>
+                                </div>
+                                <div class="row">
+                                    <div class="cell">103</div>
+                                    <div class="cell">untitle</div>
+                                    <div class="cell">Date</div>
+                                    <div class="cell">?</div>
+                                </div>
+                                <div class="row">
+                                    <div class="cell">104</div>
+                                    <div class="cell">untitle</div>
+                                    <div class="cell">Date</div>
+                                    <div class="cell">?</div>
+                                </div>
+                                <div class="row">
+                                    <div class="cell">107</div>
+                                    <div class="cell">untitle</div>
+                                    <div class="cell">Date</div>
+                                    <div class="cell">?</div>
+                                </div>
+                            </div>
+                            <div class="more"><a href="suggestTable.html">더보기</a></div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            작업지시
+                        </div>
+                        <div class="card-content">
+                            이도연 빨리 잡아오셈 선착순으로 뽀찌드림
+                        </div>
+                    </div>
+
+                    <div class="line-cards">
+                        <div class="line-card">
+                            <a href="facilityMonitoring.html" style="color: inherit; text-decoration: none;">
+                                <div class="card-header2">
+                                    <h3>생산 라인</h3>
+                                </div>
+                                <div class="card-content2">
+                                    <div class="status" id="cpu-status">Pending</div>
+                                    <div class="defect-rate" id="cpu-defect-rate">불량률: 0%</div>
+                                    <div class="defect-count" id="cpu-defect-count">불량: 0</div>
+                                    <div class="good-count" id="cpu-good-count">통과: 0</div>
+                                    <div class="cycle-count" id="cpu-operations">사이클 횟수: 0</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="line-card">
+                            <a href="stock_status.html" style="color: inherit; text-decoration: none;">
+                                <div class="card-header2">
+                                    <h3>재고현황</h3>
+                                </div>
+                                <div class="card-content3">
+                                    <table class="table2">
+                                        <thead>
+                                            <tr>
+                                                <th>품목</th>
+                                                <th>양품 수량</th>
+                                                <th>양품 재고위치</th>
+                                                <th>불량 수량</th>
+                                                <th>불량 재고위치</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>CPU1</td>
+                                                <td>100</td>
+                                                <td>A-01</td>
+                                                <td>20</td>
+                                                <td>A-11</td>
+                                            </tr>
+                                            <tr>
+                                                <td>CPU2</td>
+                                                <td>75</td>
+                                                <td>A-02</td>
+                                                <td>10</td>
+                                                <td>A-12</td>
+                                            </tr>
+                                            <tr>
+                                                <td>CPU3</td>
+                                                <td>20</td>
+                                                <td>A-03</td>
+                                                <td>5</td>
+                                                <td>B-13</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <footer>ⓒ2024 J.company System</footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.3.0/raphael.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/justgage/1.3.2/justgage.min.js"></script>
+    <script>
+        function showClock() {
+            var currentDate = new Date();
+            var divClock = document.getElementById('divClock');
+            var msg = " ";
+            if (currentDate.getHours() > 12) {      //시간이 12보다 크다면 오후 아니면 오전
+                msg += "오후 ";
+                msg += currentDate.getHours() - 12 + "시 ";
+            }
+            else {
+                msg += "오전 ";
+                msg += currentDate.getHours() + "시 ";
+            }
+
+            msg += currentDate.getMinutes() + "분 ";
+            msg += currentDate.getSeconds() + "초";
+
+            divClock.innerText = msg;
+
+            setTimeout(showClock, 1000);  //1초마다 갱신
+        }
+
+        const hover = document.querySelectorAll('a.hover');
+        const menuBar = document.querySelector('.menu-bar');
+        const nav = document.querySelector('nav');
+        const wrap = document.querySelector('.wrap');
+
+        // 모바일 스크립트 코드
+        const hamburgerMenu = document.querySelector('.hamburger-menu');
+        const myPage = document.querySelector('#myPage');
+
+        hamburgerMenu.addEventListener('click', function () {
+            nav.classList.toggle('active');
+
+            if (nav.classList.contains('active')) {
+                nav.prepend(myPage);
+                myPage.style.display = 'flex';
+                myPage.style.padding = '5px 0';
+                myPage.style.backgroundColor = '#dde';
+
+                let sectionHeight = section.offsetHeight;
+                nav.style.height = `${sectionHeight}px`;
+            } else {
+                workerTitle.appendChild(myPage);
+                myPage.style.display = '';
+                nav.style.height = '';
+            }
+        });
+        
+        const section = document.querySelector('section');
+
+        hover.forEach(link => {
+            link.addEventListener("click", function (event) {
+                event.preventDefault();
+                if (nav.classList.contains('active') && window.matchMedia("(max-width: 430px)").matches) {
+                    nav.style.height = `${section.offsetHeight}px`
+                }
+            });
+        });
+
+        // if() {
+        // document.querySelector("#mainTitle1").style.display = "block";
+        // } else {
+        document.querySelector("#mainTitle2").style.display = "block";
+        // }
+
+        let isHovered = false;
+
+        hover.forEach(button => {
+            button.addEventListener('mouseover', () => {
+                showMenuBar();
+                isHovered = true;
+            });
+        });
+
+        wrap.addEventListener("mouseleave", function () {
+            if (!isHovered) {
+                hideMenuBar();
+            }
+        });
+
+        menuBar.addEventListener("mouseenter", function () {
+            isHovered = true;
+        });
+
+        menuBar.addEventListener("mouseleave", function () {
+            hideMenuBar();
+        });
+
+        section.addEventListener('click', function () {
+            hideMenuBar();
+        })
+
+
+        function showMenuBar() {
+            nav.classList.add('active');
+        }
+
+        function hideMenuBar() {
+            nav.classList.remove('active');
+        }
+
+
+        hover.forEach(link => {
+            link.addEventListener("click", function (event) {
+                let myPage = document.querySelector("#myPage");
+                // let myPageName = document.querySelector("#workerName");
+                // let myPageLogo = document.querySelector("#myPageLogo");
+                let menuBar = document.querySelector(".menu-bar");
+                let mainPage = document.querySelector(".wrap");
+                let companyLogo = document.querySelector("#workerLogo");
+
+                let ulLi = document.querySelectorAll(".menu-bar-content ul li");
+
+
+                event.preventDefault();
+                if (nav.classList.contains('active') && window.matchMedia("(max-width: 430px)").matches) {
+                    nav.style.height = `${section.offsetHeight}px`
+
+                    // 네비4
+                    // for (let i = 0; i < ulLi.length; i++) {
+                    //     ulLi[i].style.padding = '10px';
+                    //     ulLi[i].style.margin = '0px';
+                    // }
+
+                    // 네비5
+                    for (let i = 0; i < ulLi.length; i++) {
+                        ulLi[i].style.padding = '7px';
+
+                    }
+                    menuBar.prepend(myPage);
+                }
+            });
+        });
+
+        document.querySelector("#adminTitle").style.display = 'block';
+        document.querySelector("#adminNav").style.display = 'block';
+        document.querySelector(".workerGrade").innerHTML = '작업자<br>';
+        // document.querySelector(".workerGrade").innerHTML = '관리자<br>';
+
+        // document.querySelector("#adminTitle").style.display = 'none';
+        // document.querySelector("#adminNav").style.display = 'none';
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize Chart.js Chart
+            const ctx = document.getElementById('productionChart').getContext('2d');
+            const productionChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['1월', '2월', '3월', '4월', '5월', '6월'],
+                    datasets: [{
+                        label: '퍼포먼스',
+                        data: [45, 30, 60, 40, 65, 55],
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 2,
+                        pointRadius: 3,
+                    }, {
+                        label: '메인 스트림',
+                        data: [200, 150, 220, 180, 250, 230],
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 2,
+                        pointRadius: 3,
+                    }, {
+                        label: '엔트리',
+                        data: [500, 450, 550, 480, 600, 580],
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 2,
+                        pointRadius: 3,
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            const levelColors = [
+                "#ff0000",
+                "#f9c802",
+                "#32CD32"
+            ];
+
+            const entryGage = new JustGage({
+                id: "entryGage",
+                value: "88",
+                title: "엔트리",
+                label: "%",
+                levelColors: levelColors
+            });
+
+            const mainStreamGage = new JustGage({
+                id: "mainStreamGage",
+                value: "90",
+                title: "메인 스트림",
+                label: "%",
+                levelColors: levelColors
+            });
+
+            const performanceGage = new JustGage({
+                id: "performanceGage",
+                value: "99",
+                title: "퍼포먼스",
+                label: "%",
+                levelColors: levelColors
+            });
+
+            const cpuStatus = document.getElementById('cpu-status');
+            const cpuOperations = document.getElementById('cpu-operations');
+            const cpuDefectRateElement = document.getElementById('cpu-defect-rate');
+            const cpuDefectCountElement = document.getElementById('cpu-defect-count');
+            const cpuGoodCountElement = document.getElementById('cpu-good-count');
+
+            let cpuOperationsCount = 0;
+            let cpuDefectCount = 0;
+            let iteration = 0;
+            const maxIterations = 50;
+
+            function simulateDefects(defectRate) {
+                return Math.random() < defectRate ? 1 : 0;
+            }
+
+            function calculateDefectRate(operationsCount, defectCount) {
+                if (operationsCount === 0) return "0.00";
+                const rate = (defectCount / operationsCount) * 100;
+                return rate.toFixed(2);
+            }
+
+            function updateCountsAndRates() {
+                cpuOperations.textContent = `사이클 횟수: ${cpuOperationsCount}`;
+                cpuDefectCountElement.textContent = `불량: ${cpuDefectCount}`;
+                cpuGoodCountElement.textContent = `통과: ${Math.max(0, cpuOperationsCount - cpuDefectCount)}`;
+                cpuDefectRateElement.textContent = `불량률: ${calculateDefectRate(cpuOperationsCount, cpuDefectCount)}%`;
+            }
+
+            function runProcess() {
+                if (iteration < maxIterations) {
+                    cpuStatus.textContent = 'Running';
+                    cpuStatus.style.color = 'red';
+
+                    setTimeout(() => {
+                        cpuStatus.textContent = 'Completed';
+                        cpuStatus.style.color = 'green';
+                        cpuOperationsCount++;
+                        cpuDefectCount += simulateDefects(0.01);  // 1% defect rate for illustration
+                        updateCountsAndRates();
+
+                        setTimeout(() => {
+                            iteration++;
+                            runProcess();
+                        }, 3000);
+                    }, 3000);
+                }
+            }
+
+            runProcess();
+        });
+
+    </script>
+</body>
+
+</html>

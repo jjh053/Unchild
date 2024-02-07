@@ -1,0 +1,1381 @@
+@font-face {
+    font-family: "SOYOMapleBoldTTF";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/SOYOMapleBoldTTF.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "SOYOMapleBoldTTF";
+    margin: 0 auto;
+    /* font-family: Arial, sans-serif; */
+    background: #fff;
+    color: #333;
+    background-color: #ccc;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+input:focus {
+    outline: none;
+}
+
+input {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 3px;
+}
+
+/* title */
+#workerTitle {
+    display: flex;
+    width: 1000px;
+    justify-content: space-between;
+    padding: 5px;
+
+}
+
+#workerLogo {
+    width: 200px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+}
+
+#workerTitle h1 {
+    width: 200px;
+    color: #000;
+}
+
+#mainTitle1 {
+    display: none;
+}
+
+#mainTitle2 {
+    display: none;
+}
+
+#myPage {
+    width: 200px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+}
+
+#myPageLogo {
+    width: 80px;
+    height: 80px;
+    margin-right: 3%;
+}
+
+#workerName a {
+    text-decoration: none;
+    color: #333;
+
+}
+
+#workerName a:hover {
+    text-decoration: none;
+    color: #888;
+    transition: color 0.2s ease;
+}
+
+#workerTitle .workerPic {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+#workerTitle .logo {
+    width: 200px;
+    height: 70px;
+}
+
+/* title end */
+
+.wrap {
+    width: 1000px;
+    /* height: 100vh; */
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+/* header와 nav의 집합 */
+.header-nav-container {
+    position: relative;
+    width: 100%;
+    /* wrap과 동일한 너비 */
+}
+
+/* header 코드 */
+header {
+    width: 100%;
+    background: #000;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+/* 햄버거 메뉴 아이콘 */
+.hamburger-menu {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25px;
+    height: 20px;
+}
+
+.hamburger-menu span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: #fff;
+    transition: all 0.2s ease;
+}
+
+header h1 {
+    font-size: 30px;
+    margin: 0;
+}
+
+header ul {
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    align-items: center;
+}
+
+header ul li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+header ul li a {
+    font-size: 18px;
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+header ul li a:hover {
+    color: #aaa;
+}
+
+/* header 코드 끝 */
+
+nav {
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    /* header 높이에 맞게 조정 */
+    left: 0;
+    right: 0;
+    background: #eee;
+    max-height: 0;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear;
+    visibility: hidden;
+    z-index: 100;
+    /* opacity: 0; */
+}
+
+/* nav 숨김요소 */
+nav.active {
+    max-height: 500px;
+    /* 활성화될 때 최대 높이 설정 */
+    visibility: visible;
+    opacity: 1;
+    transition: max-height 0.5s ease, visibility 0s, opacity 0.5s linear;
+}
+
+/* nav 안의 menu-bar요소 */
+.menu-bar {
+    width: 100%;
+    height: 220px;
+    border-top: 0px;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.menu-bar-content {
+    width: 20%;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.menu-bar-content ul li {
+    padding: 10px;
+}
+
+.menu-bar-content ul li a {
+    text-decoration: none;
+    color: #444;
+}
+
+.menu-bar-content ul li a:hover {
+    color: #aaa;
+    transition: color 0.2s ease;
+}
+
+#menu-bar-content-sub {
+    list-style: circle;
+    font-size: 14px;
+    padding-left: 20px;
+}
+
+#menu-bar-content-sub li {
+    padding: 5px;
+}
+
+/* menu-bar요소 끝 */
+
+/* aside, section */
+.aside-section-container {
+    width: 100%;
+    display: flex;
+    /* height: 100%; */
+}
+
+/* 좌측 메뉴바 */
+aside {
+    width: 20%;
+    background: #5f5f5f;
+    min-height: 800px;
+}
+
+#left-nav {
+    height: 100%;
+    background: #666;
+    color: #fff;
+    box-sizing: border-box;
+    padding-top: 20px;
+
+}
+
+#left-nav ul li {
+    padding-bottom: 60px;
+    cursor: pointer;
+    list-style: none;
+
+}
+
+#left-nav ul li:hover {
+    color: #888;
+    transition: color 0.2s ease;
+}
+
+#left-nav a {
+    height: 100%;
+    background: #666;
+    color: #fff;
+    box-sizing: border-box;
+    padding-top: 20px;
+
+}
+
+#left-nav ul li a {
+    text-decoration: none;
+    padding-bottom: 60px;
+    cursor: pointer;
+    list-style: none;
+
+}
+
+#left-nav ul li a:hover {
+    color: #888;
+    transition: color 0.2s ease;
+}
+
+
+
+
+
+/* 섹션 창을 조작하기바람 */
+section {
+    /* border: 1px solid blue; */
+    display: flex;
+    /* justify-content: center; */
+    /* width: 80%; */
+    /* overflow: auto; */
+    /* background: #eee; */
+    /* z-index: 50; */
+    /* align-items: center; */
+    /* min-height: 800px; */
+    justify-content: center;
+    width: 80%;
+    background: #eee;
+    z-index: 50;
+    align-items: center;
+    min-height: 800px;
+    position: relative;
+}
+
+
+
+/* aside, section 끝*/
+
+footer {
+    width: 100%;
+    background: #000;
+    color: #fff;
+    text-align: center;
+    height: 7%;
+    line-height: 70px;
+}
+
+/* 직원관리 CSS */
+
+article {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+/* 팝업 */
+.popup {
+    display: none;
+    /* background-color: black; */
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 10%;
+    left: 36%;
+    width: 50%;
+    height: 100%;
+    /* border: 1px solid red; */
+    z-index: 1001;
+}
+
+.Employee {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.Employee_atomic_information {
+    width: 80%;
+    height: 600px;
+    /* border: 1px solid red; */
+    /* background: #eee; */
+}
+
+.eai {
+    /* border: 1px solid red; */
+    width: 640px;
+    border-radius: 8px;
+    height: 710px;
+    display: flex;
+    background-color: #eee;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 상단 : 정보 */
+/* 상단 메인 */
+.Employee_atomic_infor {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 40%;
+    width: 85%;
+    /* border: 1px solid green; */
+}
+
+/* 상단 좌 */
+.Employee_atomic_infor_img {
+    display: flex;
+    align-items: center;
+    /* border: 1px solid red; */
+    text-align: center;
+    height: 80%;
+    width: 30%;
+}
+
+.Employee_atomic_infor_img img {
+    /* border: 1px solid red; */
+    /* height: 100%; */
+    width: 100%
+}
+
+/* 상단 중 */
+.Employee_atomic_infor_title {
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid red; */
+    height: 80%;
+    width: 25%;
+}
+
+.Employee_atomic_infor_title div {
+    /* margin-right: 20px; */
+    /* display: flex; */
+    /* border: 1px solid blue; */
+    height: 20%;
+    width: 90%;
+    text-align: right;
+    /* line-height: 50px; */
+}
+
+/* 상단 우 */
+.Employee_atomic_infor_select {
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid red; */
+    height: 80%;
+    width: 40%
+}
+
+.Employee_atomic_infor_select div {
+    /* border: 1px solid red; */
+    /* text-align: center; */
+    /* line-height: 50px; */
+    height: 20%;
+    width: 100%
+}
+
+
+/* 중단 : 이력 */
+.Employee_atomic_infor_history {
+    /* border: 1px solid red; */
+    height: 40%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.eaih_area {
+    border: 1px solid #ddd;
+    display: flex;
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+    width: 85%;
+    height: 80%;
+    background-color: #fff;
+    /* border: 1px solid red; */
+}
+
+.Employee_atomic_infor_history textarea {
+    font-family: "SOYOMapleBoldTTF";
+    line-height: 30px;
+    width: 90%;
+    height: 90%;
+    resize: none;
+    border: none;
+    /* border: 1px solid red; */
+}
+
+
+/* 하단 : 버튼 */
+.eaib {
+    /* border: 1px solid blue; */
+    width: 100%;
+    height: 15%;
+    display: flex;
+    flex-direction: column
+}
+
+.Employee_atomic_infor_button {
+    /* border: 1px solid red; */
+    background-color: #eee;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.record {
+    width: 15%;
+    text-align: center;
+    height: 35%;
+    line-height: 35px;
+    background-color: #3498DB;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    border: 0;
+}
+
+.record:hover {
+    background-color: rgb(0, 47, 255);
+    transition: 0.2s;
+}
+
+.cancel {
+    width: 15%;
+    text-align: center;
+    height: 35%;
+    background-color: red;
+    line-height: 35px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    border: 0;
+}
+
+.cancel:hover {
+    background-color: rgb(163, 6, 6);
+    transition: 0.2s;
+}
+
+.delete {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    /* border: 1px solid red; */
+    width: 80%;
+    height: 10%;
+    background-color: #eee;
+}
+
+.delete_button {
+    /* line-height: -35px; */
+    width: 10%;
+    text-align: center;
+    height: 20px;
+    background-color: red;
+    line-height: 25px;
+    font-size: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    border: 0;
+}
+
+.delete_button:hover {
+    background-color: rgb(163, 6, 6);
+    transition: 0.2s;
+}
+
+
+
+/* 팝업 2 */
+.popup2 {
+    display: none;
+    /* background-color: black; */
+    /* justify-content: center; */
+    align-items: center;
+    position: fixed;
+    top: 10%;
+    left: 36%;
+    width: 50%;
+    height: 100%;
+    /* width: 100%; */
+    /* height: 100%; */
+    /* border: 1px solid red; */
+    /* width: 80%; */
+    /* height: 50%; */
+    z-index: 1001;
+    /* background-color: #000; */
+}
+
+.Employee_atomic_information2 {
+    width: 80%;
+    height: 600px;
+    /* border: 1px solid red; */
+    /* background: #eee; */
+}
+
+.eai2 {
+    /* border: 1px solid red; */
+    width: 640px;
+    height: 710px;
+    display: flex;
+    border-radius: 8px;
+    background-color: #eee;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 상단 : 정보 */
+/* 상단 메인 */
+.Employee_atomic_infor2 {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 3%;
+    height: 40%;
+    width: 85%;
+    /* border: 1px solid green; */
+}
+
+/* 상단 좌 */
+.Employee_atomic_infor_img2 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    /* border: 1px solid red; */
+    text-align: center;
+    height: 90%;
+    width: 30%;
+}
+
+.Employee_atomic_infor_img2 img {
+    /* border: 1px solid blue; */
+    height: 100%;
+    width: 100%;
+    margin-bottom: 10px;
+
+}
+
+.img_choice {
+    /* border: 1px solid green; */
+    font-size: 15px;
+    background-color: #3498DB;
+    /* margin-top: 10px; */
+    line-height: 25px;
+    width: 65px;
+    height: 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    border: 0;
+}
+
+.img_choice:hover {
+    background-color: rgb(0, 47, 255);
+    transition: 0.2s;
+}
+
+
+/* 상단 중 */
+.Employee_atomic_infor_title2 {
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid red; */
+    height: 90%;
+    width: 25%;
+}
+
+.Employee_atomic_infor_title2 div {
+    /* margin-right: 20px; */
+    /* display: flex; */
+    /* border: 1px solid blue; */
+    height: 20%;
+    width: 90%;
+    text-align: right;
+    /* line-height: 50px; */
+}
+
+/* 상단 우 */
+.Employee_atomic_infor_select2 {
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid red; */
+    height: 90%;
+    width: 40%
+}
+
+.Employee_atomic_infor_select2 div {
+    /* border: 1px solid red; */
+    /* text-align: center; */
+    /* line-height: 50px; */
+    height: 20%;
+    width: 100%
+}
+
+
+
+/* 중단 : 이력 */
+.Employee_atomic_infor_history2 {
+    /* border: 1px solid red; */
+    height: 40%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.eaih_area2 {
+    border: 1px solid #ddd;
+    display: flex;
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+    width: 85%;
+    height: 80%;
+    background-color: #fff;
+    /* border: 1px solid red; */
+}
+
+.Employee_atomic_infor_history2 textarea {
+    font-family: "SOYOMapleBoldTTF";
+    line-height: 30px;
+    width: 90%;
+    height: 90%;
+    resize: none;
+    border: none;
+    /* border: 1px solid red; */
+}
+
+
+/* 하단 : 버튼 */
+.eaib2 {
+    /* border: 1px solid blue; */
+    width: 100%;
+    height: 15%;
+    display: flex;
+    flex-direction: column
+}
+
+.Employee_atomic_infor_button2 {
+    /* border: 1px solid red; */
+    background-color: #eee;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.add_eaib {
+    width: 15%;
+    text-align: center;
+    height: 35%;
+    line-height: 35px;
+    background-color: #3498DB;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    border: 0;
+}
+
+.add_eaib:hover {
+    background-color: rgb(0, 47, 255);
+    transition: 0.2s;
+}
+
+.cancel2 {
+    width: 15%;
+    text-align: center;
+    height: 35%;
+    background-color: red;
+    line-height: 35px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    border: 0;
+}
+
+.cancel2:hover {
+    background-color: rgb(163, 6, 6);
+    transition: 0.2s;
+}
+
+/* 
+.delete2 {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    width : 80%;
+    height: 10%;
+    background-color: #eee;
+}
+
+.delete_button2 {
+    width: 10%;
+    text-align: center;
+    height: 20px;
+    background-color: red;
+    line-height: 25px;
+    font-size: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    border: 0;
+}
+
+.delete_button2:hover {
+    background-color: rgb(163, 6, 6);
+    transition: 0.2s;
+} */
+
+/* 팝업 3 시작 */
+
+/* 팝업  */
+.popup3 {
+    display: none;
+    /* background-color: black; */
+    /* justify-content: center; */
+    align-items: center;
+    position: fixed;
+    top: 10%;
+    left: 36%;
+    width: 50%;
+    height: 100%;
+    z-index: 1001;
+    /* background: #eee; */
+    /* background-color: #000; */
+}
+
+.Employee_atomic_information3 {
+    width: 80%;
+    height: 600px;
+    /* border: 1px solid red; */
+}
+
+.eai3 {
+    /* border: 1px solid red; */
+    width: 640px;
+    height: 710px;
+    display: flex;
+    background-color: #eee;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 상단 : 정보 */
+/* 상단 메인 */
+.Employee_atomic_infor3 {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 40%;
+    width: 100%;
+    /* border: 1px solid green; */
+}
+
+/* 상단 좌 */
+.Employee_atomic_infor_img3 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    /* border: 1px solid red; */
+    text-align: center;
+    height: 90%;
+    width: 30%;
+}
+
+.Employee_atomic_infor_img3 img {
+    /* border: 1px solid blue; */
+    height: 100%;
+    width: 100%;
+    margin-bottom: 10px;
+
+}
+
+.img_choice3 {
+    /* border: 1px solid green; */
+    font-size: 15px;
+    background-color: #3498DB;
+    /* margin-top: 10px; */
+    line-height: 25px;
+    width: 65px;
+    height: 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    border: 0;
+}
+
+.img_choice3:hover {
+    background-color: rgb(0, 47, 255);
+    transition: 0.2s;
+}
+
+
+/* 상단 중 */
+.Employee_atomic_infor_title3 {
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid red; */
+    height: 90%;
+    width: 25%;
+}
+
+.Employee_atomic_infor_title3 div {
+    /* margin-right: 20px; */
+    /* display: flex; */
+    /* border: 1px solid blue; */
+    height: 20%;
+    width: 90%;
+    text-align: right;
+    /* line-height: 50px; */
+}
+
+/* 상단 우 */
+.Employee_atomic_infor_select3 {
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid red; */
+    height: 90%;
+    width: 40%
+}
+
+.Employee_atomic_infor_select3 div {
+    /* border: 1px solid red; */
+    /* text-align: center; */
+    /* line-height: 50px; */
+    height: 20%;
+    width: 100%
+}
+
+
+/* 중단 : 이력 */
+.Employee_atomic_infor_history3 {
+    /* border: 1px solid red; */
+    height: 40%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.eaih_area3 {
+    /* border: 1px solid green; */
+    display: flex;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+    width: 85%;
+    height: 80%;
+    background-color: #fff;
+    /* border: 1px solid red; */
+}
+
+.Employee_atomic_infor_history3 textarea {
+    font-family: "SOYOMapleBoldTTF";
+    line-height: 30px;
+    width: 90%;
+    height: 90%;
+    resize: none;
+    border: none;
+    /* border: 1px solid red; */
+}
+
+
+/* 하단 : 버튼 */
+.eaib3 {
+    /* border: 1px solid blue; */
+    width: 100%;
+    height: 15%;
+    display: flex;
+    flex-direction: column
+}
+
+.Employee_atomic_infor_button3 {
+    /* border: 1px solid red; */
+    background-color: #eee;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.add_eaib3 {
+    width: 15%;
+    text-align: center;
+    height: 35%;
+    line-height: 35px;
+    background-color: #3498DB;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    border: 0;
+}
+
+.add_eaib3:hover {
+    background-color: rgb(0, 47, 255);
+    transition: 0.2s;
+}
+
+.cancel3 {
+    width: 15%;
+    text-align: center;
+    height: 35%;
+    background-color: red;
+    line-height: 35px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    border: 0;
+}
+
+.cancel3:hover {
+    background-color: rgb(163, 6, 6);
+    transition: 0.2s;
+}
+
+/* 
+.delete2 {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    width : 80%;
+    height: 10%;
+    background-color: #eee;
+}
+
+.delete_button2 {
+    width: 10%;
+    text-align: center;
+    height: 20px;
+    background-color: red;
+    line-height: 25px;
+    font-size: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    border: 0;
+}
+
+.delete_button2:hover {
+    background-color: rgb(163, 6, 6);
+    transition: 0.2s;
+} */
+
+
+/* 팝업 끝 */
+
+.Staff_list {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.management {
+    width: 100%;
+    text-align: center;
+    margin-top: 48px;
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+.Staff_list_box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: space-around;
+    width: 100%;
+    height: 100%;
+}
+
+.Employee {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* margin-bottom: 48px; */
+    background-color: white;
+    /* width: 100%; */
+    /* height: 100%; */
+    margin-bottom: 48px;
+    width: 700px;
+    height: 200px;
+    /* border : 1px solid green; */
+}
+
+.Employee_img {
+    /* border : 1px solid red; */
+    /* margin-top: 30px; */
+    /* margin-left: 20px; */
+    display: flex;
+    align-items: center;
+    height: 70%;
+    width: 15.5%;
+}
+
+.Employee_img img {
+    /* height: 80%; */
+    width: 100%;
+    /* border : 1px solid red; */
+}
+
+.Employee_infor {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    /* border : 1px solid blue; */
+    height: 100%;
+    width: 79%;
+}
+
+.Employee_name {
+    height: 15%;
+    font-size: 23px;
+    margin-left: 20px;
+}
+
+.Employee_ad_bum {
+    height: 40%;
+    width: 90%;
+    margin-left: 20px;
+    /* border : 1px solid red; */
+}
+
+.Employee_atomic {
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+}
+
+.add_Employee {
+    display: flex;
+    flex-direction: row-reverse;
+    width: 85%;
+    padding: 20px;
+}
+
+.add_button {
+    background-color: #3498DB;
+    line-height: 40px;
+    text-align: center;
+    width: 90px;
+    height: 40px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    border: 0;
+}
+
+.add_button:hover {
+    background-color: rgb(0, 47, 255);
+    transition: 0.2s;
+}
+
+.atomic_button {
+    background-color: #3498DB;
+    /* position:relative; */
+    line-height: 35px;
+    text-align: center;
+    width: 75px;
+    height: 35px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    border: 0;
+}
+
+.atomic_button:hover {
+    background-color: rgb(0, 47, 255);
+    transition: 0.2s;
+}
+
+/* 모달 */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
+
+/* 미디어테그 */
+@media screen and (max-width: 430px) {
+
+    .wrap {
+        width: 100%;
+    }
+
+    #workerTitle {
+        display: none;
+    }
+
+    header {
+        width: 100%;
+        background: #000;
+        color: #fff;
+        text-align: center;
+        padding: 5px;
+        box-sizing: border-box;
+        border-radius: 0px;
+    }
+
+    /* 미디어 쿼리 헤더 영역 수정 코드 */
+    header ul {
+        display: none;
+    }
+
+    .header-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        position: relative;
+    }
+
+    #headerTitle {
+        display: block !important;
+        text-align: center;
+        color: #fff;
+        width: 100%;
+        font-size: 20px;
+    }
+
+    #headerTitle a {
+        text-decoration: none;
+        color: #fff;
+    }
+
+    .hamburger-menu {
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: flex;
+    }
+
+    nav {
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        /* header 높이에 맞게 조정 */
+        left: 0;
+        right: 0;
+        background: #dde;
+        overflow: hidden;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear;
+        transform: translateX(0%);
+        visibility: hidden;
+        z-index: 100;
+        /* opacity: 0; */
+    }
+
+    nav.active {
+        min-height: 800px;
+        max-height: none;
+        width: 200px;
+        visibility: visible;
+        opacity: 1;
+        transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear;
+        transform: translateX(0%);
+    }
+
+    /* 왼쪽에서 오른쪽으로 나오는 애니메이션을 추가합니다. */
+    nav {
+        transform: translateX(-100%);
+        transition: transform 0.5s ease;
+    }
+
+    nav.active {
+        transform: translateX(0%);
+        transition: transform 0.5s ease;
+    }
+
+    nav.closing {
+        transform: translateX(-100%);
+        transition: transform 0.5s ease;
+    }
+
+    nav .menu-bar {
+        width: 100%;
+        height: 100%;
+        border-top: 0px;
+        border-right: 1px solid #ccc;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+    }
+
+    .menu-bar-content {
+        width: 100%;
+        margin-left: 0px;
+    }
+
+    .menu-bar-content ul li {
+        padding: 10px;
+    }
+
+    aside {
+        display: none;
+    }
+
+    section {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* 위는 미디어 공통 */
+    /* 아래는 내꺼 */
+
+    .Employee_atomic_information,
+    .Employee_atomic_information2 {
+        width: 100%;
+    }
+
+    .popup,
+    .popup2,
+    .popup3 {
+        width: 90%;
+        left: 5%;
+        top: 10%;
+    }
+
+    .eai,
+    .eai2,
+    .eai3 {
+        width: 100%;
+    }
+
+    .Employee_atomic_infor_select div,
+    .Employee_atomic_infor_title div,
+    .Employee_atomic_infor_select2 div,
+    .Employee_atomic_infor_title2 div,
+    .Employee_atomic_infor_select3 div,
+    .Employee_atomic_infor_title3 div {
+        font-size: 12px;
+    }
+
+    .Employee_atomic_infor_button,
+    .Employee_atomic_infor_button2,
+    .Employee_atomic_infor_button3 {
+        font-size: 12px;
+    }
+
+    .delete_button {
+        font-size: 10px;
+    }
+
+    .Employee_atomic_infor_select input,
+    .Employee_atomic_infor_select2 input,
+    .Employee_atomic_infor_select3 input {
+        width: 90%;
+    }
+
+    .workerPic {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+    }
+
+}
