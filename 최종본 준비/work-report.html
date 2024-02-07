@@ -278,63 +278,82 @@
             text-align: center;
         }
 
+        .work-report-title {
+            font-size: 25px;
+        }
+
         .work-report-content {
-            width: 80%;
+            width: 100%;
             display: inline-block;
             background-color: #eee;
         }
 
         .work-report-list-zip {
-            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            width: 80%;
+            margin: auto;
+            margin-bottom: 5%;
         }
 
         .work-report-list {
-            width: 90%;
+            width: 100%;
             display: inline-block;
         }
 
         .work-ann {
             width: 100%;
-            margin-top: 5%;
         }
 
         .work-ann h4 {
             text-align: left;
-            margin-left: 7%;
+            font-size: 18px;
+            padding-left: 20px;
         }
 
         .line-select-box {
-            width: 30%;
-            height: 35px;
-            margin-left: 27.5%;
+            width: 15%;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #bebdbd;
         }
 
         .work-report-order {
             width: 100%;
-            padding: 5%;
+            text-align: left;
+            padding-left: 3%;
+
         }
 
         .report-select-box {
-            width: 30%;
-            margin-left: -45%;
-            height: 35px;
+            border-radius: 5px;
+            width: 16%;
+            padding: 5px;
+            border: 1px solid #bebdbd;
         }
 
         .report-count {
-            width: 40%;
-            height: 30px;
-            margin-left: 10%;
-            margin-right: -30%;
+            width: 10%;
+            padding: 5px;
+            border: 1px solid #bebdbd;
+            text-align: right;
+            border-radius: 20px;
         }
 
         .report-sign {
-            margin-left: -15%;
+            border: 1px solid #bebdbd;
+            border-radius: 5px;
+            padding: 0;
+            width: 93%;
             resize: none;
         }
 
         .report-send {
             text-align: right;
-            margin-right: 13%;
+            /* margin-right: 13%; */
             margin-bottom: 2%;
         }
 
@@ -355,7 +374,7 @@
         }
 
         .report-cancle-button {
-            margin: 0 10px;
+            margin: 0 4% 0 1%;
             background-color: red;
             margin-top: 10px;
             width: 80px;
@@ -509,7 +528,12 @@
             cursor: pointer;
         }
 
-
+        label {
+            display: inline-block;
+            margin: 5px;
+            font-size: 15px;
+            color: #333;
+        }
 
         /* aside, section 끝*/
 
@@ -618,22 +642,23 @@
                                     <div class="work-ann">
                                         <h4>
                                             완제품 보고
-                                            <select name="finished-line" id="finished-line-select-box"
-                                                class="line-select-box">
-                                                <option value="1" selected>1번라인</option>
-                                                <option value="2">2번라인</option>
-                                                <option value="3">3번라인</option>
-                                            </select>
                                         </h4>
                                     </div>
                                     <div class="work-report-order">
+                                        <select name="finished-line" id="finished-line-select-box"
+                                            class="line-select-box">
+                                            <option value="1" selected>1번라인</option>
+                                            <option value="2">2번라인</option>
+                                            <option value="3">3번라인</option>
+                                        </select>
                                         <select name="finished-report" id="finished-select-box"
                                             class="report-select-box">
                                             <option value="entry" selected>엔트리</option>
                                             <option value="main">메인</option>
                                             <option value="performance">퍼포먼스</option>
                                         </select>
-                                        <input type="text" id="finished-report-count" class="report-count">
+                                        <label for="finished-report-count">수량:</label>
+                                        <input type="number" id="finished-report-count" class="report-count" min="0">
                                     </div>
                                 </div>
                                 <div class="work-report-list">
@@ -665,22 +690,24 @@
                                     <div class="work-ann">
                                         <h4>
                                             불량품 보고
-                                            <select name="defective-line" id="defective-line-select-box"
-                                                class="line-select-box">
-                                                <option value="1" selected>1번라인</option>
-                                                <option value="2">2번라인</option>
-                                                <option value="3">3번라인</option>
-                                            </select>
+
                                         </h4>
                                     </div>
                                     <div class="work-report-order">
+                                        <select name="defective-line" id="defective-line-select-box"
+                                            class="line-select-box">
+                                            <option value="1" selected>1번라인</option>
+                                            <option value="2">2번라인</option>
+                                            <option value="3">3번라인</option>
+                                        </select>
                                         <select name="defective-report" id="defective-select-box"
                                             class="report-select-box">
                                             <option value="entry" selected>엔트리</option>
                                             <option value="main">메인</option>
                                             <option value="performance">퍼포먼스</option>
                                         </select>
-                                        <input type="text" id="defective-report-count" class="report-count">
+                                        <label for="finished-report-count">수량:</label>
+                                        <input type="number" id="defective-report-count" class="report-count" min="0">
                                     </div>
                                 </div>
                                 <div class="work-report-list">
@@ -705,6 +732,16 @@
                                     </button>
                                 </div>
 
+                            </div>
+
+                            <div id="negative-number-warning-popup" class="report-popup">
+                                <div class="report-popup-content">
+                                    <span id="closeWarningModalBtn" class="popup-close">&times;</span>
+                                    <h2>Warning</h2>
+                                    <div class="report-detail">
+                                        <p>음수 설정 불가.</p>
+                                    </div>
+                                </div>
                             </div>
 
                         </div>
