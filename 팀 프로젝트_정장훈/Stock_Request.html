@@ -184,10 +184,10 @@
             border-bottom: 1px solid #ccc;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
             display: flex;
+            justify-content: space-evenly;
         }
 
         .menu-bar-content {
-            margin-left: 40px;
             width: 20%;
             display: inline-block;
             box-sizing: border-box;
@@ -452,11 +452,41 @@
             /* 오른쪽 테두리 스타일 지정 */
         }
 
+        .cell_SR:nth-child(1) {
+            width: 40%;
+        }
+
+        .cell_SR:nth-child(2) {
+            width: 50%;
+            display: flex;
+            justify-content: space-around;
+
+        }
+
+        .cell_SR:nth-child(3) {
+            width: 10%;
+        }
+
+        .row_SR {
+            background-color: #888888;
+        }
+
         .cell_SR:last-child {
             border-right: none;
             /* 마지막 셀에서 오른쪽 테두리 제거 */
         }
 
+        /* .cell_SR:nth-child(1) {
+            width: 40%;
+        }
+
+        .cell_SR:nth-child(2) {
+            width: 50%;
+        }
+
+        .cell_SR:nth-child(3) {
+            width: 10%;
+        } */
 
         .cell_SR input {
             border: none;
@@ -498,6 +528,7 @@
         }
 
         .request_result {
+            display: none;
             position: fixed;
             top: 50%;
             left: 50%;
@@ -531,6 +562,7 @@
 
         .add_img {
             position: fixed;
+            overflow-y: auto;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -657,6 +689,21 @@
 
 
         /* 버튼 스타일 */
+        .but_plus,
+        .but_minus {
+            width: 25px;
+            cursor: pointer;
+
+        }
+
+        .count {
+            width: 100px;
+        }
+
+        .item_name {
+            width: 100px;
+        }
+
         .add_Stock,
         .drop {
             /* margin-top: 10px; */
@@ -667,6 +714,15 @@
             color: #fff;
             border: 0;
             background: #3498DB;
+        }
+
+        .pic {
+            /* border : 1px solid red; */
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: flex-end;
+            margin-right: 10px;
+            height: 50%;
         }
 
         .pic1,
@@ -791,6 +847,239 @@
             background-color: #555;
             transition: 0.2s;
         }
+
+
+
+
+        /* 미디어테그 */
+        @media screen and (max-width: 430px) {
+
+            .wrap {
+                width: 100%;
+            }
+
+            #workerTitle {
+                display: none;
+            }
+
+            header {
+                width: 100%;
+                background: #000;
+                color: #fff;
+                text-align: center;
+                padding: 5px;
+                box-sizing: border-box;
+                border-radius: 0px;
+            }
+
+            header ul li a {
+                font-size: 15px;
+                text-decoration: none;
+                color: #fff;
+                transition: color 0.3s ease;
+            }
+
+            nav {
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                /* header 높이에 맞게 조정 */
+                left: 0;
+                right: 0;
+                background: #dde;
+                overflow: hidden;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+                transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear;
+                transform: translateX(0%);
+                visibility: hidden;
+                z-index: 100;
+                /* opacity: 0; */
+            }
+
+            nav.active {
+                min-height: 800px;
+                max-height: none;
+                width: 200px;
+                visibility: visible;
+                opacity: 1;
+                transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear;
+                transform: translateX(0%);
+            }
+
+            /* 왼쪽에서 오른쪽으로 나오는 애니메이션을 추가합니다. */
+            nav {
+                transform: translateX(-100%);
+                transition: transform 0.5s ease;
+            }
+
+            nav.active {
+                transform: translateX(0%);
+                transition: transform 0.5s ease;
+            }
+
+            nav.closing {
+                transform: translateX(-100%);
+                transition: transform 0.5s ease;
+            }
+
+            nav .menu-bar {
+                width: 100%;
+                height: 100%;
+                border-top: 0px;
+                border-right: 1px solid #ccc;
+                display: flex;
+                flex-direction: column;
+                justify-content: start;
+            }
+
+            .menu-bar-content {
+                width: 100%;
+                margin-left: 0px;
+            }
+
+            .menu-bar-content ul li {
+                padding: 10px;
+            }
+
+            aside {
+                display: none;
+            }
+
+            section {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+
+            /* 위는 미디어 공통 */
+            /* 아래가 미디어 내 부분 */
+            .Stock_Request_History {
+                width: 200px;
+            }
+
+            /* .table_SPH {}
+
+            .table_SPH {}
+            
+            .row_SPH {}
+
+            .cell_SPH {} */
+
+            .Stock_Request {
+                width: 390px;
+            }
+
+            .cell_SR:nth-child(1) {
+                width: 30%;
+            }
+
+            .cell_SR:nth-child(2) {
+                display: flex;
+                width: 55%;
+            }
+
+            .row_SR1 .cell_SR:nth-child(3) {
+                /* border: 1px solid red; */
+                width: 9.3%;
+            }
+
+            .delete1 {
+                width: 40px;
+                height: 40px;
+            }
+
+            .add {
+                margin-right: 30px;
+                /* add를 오른쪽에 위치시킵니다. */
+            }
+
+            .add_img {
+                width: 90%;
+                height: 80%;
+                /* border: 1px solid blue; */
+                /* display:flex; */
+            }
+
+            .Stock_page {
+                height: 80px;
+                /* border: 1px solid red; */
+            }
+
+            .item {
+                width: 100%;
+                height: 120px;
+                display: flex;
+                justify-content: space-around;
+                /* border: 1px solid red; */
+                margin-bottom: 10px;
+            }
+
+            .sample_img {
+                width: 100px;
+                height: 100px;
+                margin-top: 10px;
+            }
+
+            .cpu1,
+            .cpu2,
+            .cpu3 {
+                font-size: 10px;
+                ;
+            }
+
+            .infor_box {
+                /* border: 1px solid red; */
+                width: 50%;
+            }
+
+            .itemList {
+                height: 70%;
+            }
+
+            .item_name {
+                /* border: 1px solid red; */
+                margin-top: 10px;
+            }
+
+
+            .request_result {
+                /* display: flex; */
+                width: 80%;
+                /* height: 40%; */
+            }
+
+            .result_box {
+                width: 100%;
+                height: 80%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+            }
+
+            .workerPic {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+            }
+
+            .but_pm {
+                display: none;
+            }
+
+            .but_ad {
+                /* border: 1px solid green; */
+                width: 50px;
+
+            }
+
+            /* .new_RR {
+
+            }*/
+
+
+        }
     </style>
 
 </head>
@@ -812,7 +1101,7 @@
                     src="https://cdn.discordapp.com/attachments/1185161279804026893/1200675420551520370/workerP.jpg?ex=65c70b1f&is=65b4961f&hm=c49f91b245305c4bb33c58e626bc4960b4f601257e433425a8d7cc0da454126e&"
                     class="workerPic">
             </div>
-            <span id="workerName"><a href="#">이도연 대리님</a></span>
+            <span id="workerName"><span class="workerGrade">작업자<br></span>이도연 대리님</span>
         </div>
     </div>
 
@@ -823,6 +1112,7 @@
                     <li><a href="#" class="hover" title="작업지시서">작업</a></li>
                     <li><a href="#" class="hover" title="품질검사">설비</a></li>
                     <li><a href="#" class="hover" title="건의사항">재고관리</a></li>
+                    <li><a href="#" class="hover" title="직원관리">직원관리</a></li>
                     <li><a href="#" class="hover" title="직원 게시판">게시판</a></li>
                 </ul>
             </header>
@@ -852,6 +1142,13 @@
                             <li><a href="Stock_Request.html">재고 신청</a></li>
                             <li><a href="Finished_product_management.html">완제품 관리</a></li>
                             <li><a href="Report_of_defective_inventory.html">재고 불량 신고</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-bar-content">
+                        <ul>
+                            <li><a href="#">직원목록</a></li>
+                            <li><a href="#">근무기록</a></li>
+                            <li><a href="#">휴가신청</a></li>
                         </ul>
                     </div>
                     <div class="menu-bar-content">
@@ -928,28 +1225,27 @@
                             <div class="table_SR">
                                 <div class="row_SR">
 
-                                    <div class="cell_SR" style="background-color: #888888; width : 40%;">재고명</div>
-                                    <div class="cell_SR" style="background-color: #888888; width : 50%">수량</div>
-                                    <div class="cell_SR" style="background-color: #888888; width : 10%;"></div>
+                                    <div class="cell_SR">재고명</div>
+                                    <div class="cell_SR">수량</div>
+                                    <div class="cell_SR"></div>
 
                                 </div>
 
                                 <div class="new_div">
                                     <div class="row_SR1">
-                                        <div class="cell_SR" style="width : 40%"><input type="text"
-                                                style="width : 100px" class="item_name" value="" readonly>
+                                        <div class="cell_SR"><input type="text" class="item_name" value="" readonly>
                                         </div>
-                                        <div class="cell_SR" style="width : 50%"><input type="number"
-                                                style="width : 100px;" class="count" value="0">
-                                            <input type="button" style="width : 25px; cursor: pointer;" value="+"
-                                                onclick="plus(this)">
-                                            <input type="button" style="width : 25px; cursor: pointer;" value="-"
-                                                onclick="minus(this)">
-                                            <button type="button" class="add_Stock">선택</button>
-                                            <button type="button" class="drop">지움</button>
+                                        <div class="cell_SR"><input type="number" class="count" value="0">
+                                            <div class="but_pm">
+                                                <input type="button" class="but_plus" value="+" onclick="plus(this)">
+                                                <input type="button" class="but_minus" value="-" onclick="minus(this)">
+                                            </div>
+                                            <div class="but_ad">
+                                                <button type="button" class="add_Stock">선택</button>
+                                                <button type="button" class="drop">지움</button>
+                                            </div>
                                         </div>
-                                        <div class="cell_SR" style="width : 10%;"><button type="button"
-                                                class="delete1">삭제</button></div>
+                                        <div class="cell_SR"><button type="button" class="delete1">삭제</button></div>
                                         <!-- <div class="cell_SR" style="width : 10%;"></div> -->
                                     </div>
                                 </div>
@@ -990,10 +1286,10 @@
                         <br>
                         <div class="itemList">
                             <div class="item">
-                                <div> <img class="sample_img"
+                                <div class = "box"> <img class="sample_img"
                                         src="https://media.discordapp.net/attachments/1186454147558551552/1201687978230173706/image.png?ex=65caba24&is=65b84524&hm=bd86b0025fb9ddc7b872d912c5a5b8ae55dd00d9e73964fbefffcfa4f54f77d7&=&format=webp&quality=lossless&width=468&height=468">
                                 </div>
-                                <div>
+                                <div class="infor_box">
                                     <div> <input type="text" class="cpu1" value="CPU 1" readonly> </div>
 
                                     <div class="cpu1_index" style="text-align: center;"> <br> 퍼포먼스 <br></div>
@@ -1004,7 +1300,7 @@
                                 <div> <img class="sample_img"
                                         src="https://media.discordapp.net/attachments/1186454147558551552/1201687978230173706/image.png?ex=65caba24&is=65b84524&hm=bd86b0025fb9ddc7b872d912c5a5b8ae55dd00d9e73964fbefffcfa4f54f77d7&=&format=webp&quality=lossless&width=468&height=468">
                                 </div>
-                                <div>
+                                <div class="infor_box">
                                     <div> <input type="text" class="cpu2" value="CPU 2" readonly> </div>
 
                                     <div class="cpu2_index" style="text-align: center;"> <br> 메인 스트림 <br></div>
@@ -1015,7 +1311,7 @@
                                 <div> <img class="sample_img"
                                         src="https://media.discordapp.net/attachments/1186454147558551552/1201687978230173706/image.png?ex=65caba24&is=65b84524&hm=bd86b0025fb9ddc7b872d912c5a5b8ae55dd00d9e73964fbefffcfa4f54f77d7&=&format=webp&quality=lossless&width=468&height=468">
                                 </div>
-                                <div>
+                                <div class="infor_box">
                                     <div class="cpu3_index"> <input type="text" class="cpu3" value="CPU 3" readonly>
                                     </div>
 
@@ -1023,39 +1319,7 @@
                                     <div class="pic"> <button type="button" class="pic3" style="width : 50px;">선택</div>
                                 </div>
                             </div>
-                            <div class="item">
-                                <div> <img class="sample_img"
-                                        src="https://media.discordapp.net/attachments/1186454147558551552/1201687978230173706/image.png?ex=65caba24&is=65b84524&hm=bd86b0025fb9ddc7b872d912c5a5b8ae55dd00d9e73964fbefffcfa4f54f77d7&=&format=webp&quality=lossless&width=468&height=468">
-                                </div>
-                                <div>
-                                    <div> <input type="text" class="cpu1" value="CPU 1" readonly> </div>
 
-                                    <div class="cpu1_index" style="text-align: center;"> <br> 퍼포먼스 <br></div>
-                                    <div class="pic"> <button type="button" class="pic1" style="width : 50px;">선택</div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div> <img class="sample_img"
-                                        src="https://media.discordapp.net/attachments/1186454147558551552/1201687978230173706/image.png?ex=65caba24&is=65b84524&hm=bd86b0025fb9ddc7b872d912c5a5b8ae55dd00d9e73964fbefffcfa4f54f77d7&=&format=webp&quality=lossless&width=468&height=468">
-                                </div>
-                                <div>
-                                    <div> <input type="text" class="cpu1" value="CPU 1" readonly> </div>
-
-                                    <div class="cpu1_index" style="text-align: center;"> <br> 퍼포먼스 <br></div>
-                                    <div class="pic"> <button type="button" class="pic1" style="width : 50px;">선택</div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div> <img class="sample_img"
-                                        src="https://media.discordapp.net/attachments/1186454147558551552/1201687978230173706/image.png?ex=65caba24&is=65b84524&hm=bd86b0025fb9ddc7b872d912c5a5b8ae55dd00d9e73964fbefffcfa4f54f77d7&=&format=webp&quality=lossless&width=468&height=468">
-                                </div>
-                                <div>
-                                    <div> <input type="text" class="cpu1" value="CPU 1" readonly> </div>
-
-                                    <div class="cpu1_index" style="text-align: center;"> <br> 퍼포먼스 <br></div>
-                                    <div class="pic"> <button type="button" class="pic1" style="width : 50px;">선택</div>
-                                </div>
-                            </div>
                         </div>
                         <div class="choice"> 선택 품목 <input type="text" style="width : 100px;" class="choice_text"
                                 value="" readonly></div>
@@ -1071,12 +1335,14 @@
 
                     <!-- 팝업2 -->
                     <div class="modal-overlay" id="modal-overlay" style="display: none;"></div>
-                    <div class="request_result" id="request_result" style="display: none;">
+                    <div class="request_result" id="request_result">
                         <h1 style="text-align: center;">주문 요청 리스트</h1>
-                        <div class="new_RR"></div>
-                        <div class="button_RR">
-                            <button type="button" class="order_rr">주문하기</button>
-                            <button type="button" class="cancel_rr">취소하기</button>
+                        <div class="result_box">
+                            <div class="new_RR"></div>
+                            <div class="button_RR">
+                                <button type="button" class="order_rr">주문하기</button>
+                                <button type="button" class="cancel_rr">취소하기</button>
+                            </div>
                         </div>
                     </div>
 
@@ -1235,22 +1501,25 @@
                 newRow.innerHTML = `
                         <div class="table_SR">
                             <div class="row_SR1">
-                                    <div class="cell_SR" style="width : 260px;"><input type="text"  style = "width : 100px;" class="item_name"
-                                            value="" readonly>
-
-                                    </div>
-                                    <div class="cell_SR" style="width : 325px;"><input type="number" class = "count" style = "width : 100px;" value="0">
-                                        <input type="button" style = "width : 25px; cursor: pointer;" value="+" onclick="plus(this)">
-                                        <input type="button" style = "width : 25px; cursor: pointer;" value="-" onclick="minus(this)">
-                                        <button type="button" class="add_Stock">선택</button>
-                                        <button type="button" class="drop">지움</button>
-                                    </div>
-                                    <div class="cell_SR" style="width : 65px;"><button type="button"
-                                            class="delete1">삭제</button></div>
-                                </div>
-                            </div>    
+                                        <div class="cell_SR"><input type="text" class="item_name" value="" readonly>
+                                        </div>
+                                        <div class="cell_SR"><input type="number" class="count" value="0">
+                                            <div class="but_pm">
+                                                <input type="button" class="but_plus" value="+" onclick="plus(this)">
+                                                <input type="button" class="but_minus" value="-" onclick="minus(this)">
+                                            </div>
+                                            <div class="but_ad">
+                                                <button type="button" class="add_Stock">선택</button>
+                                                <button type="button" class="drop">지움</button>
+                                            </div>
+                                        </div>
+                                        <div class="cell_SR"><button type="button" class="delete1">삭제</button></div>
+                            </div>   
                         </div>    
         `;
+
+
+
                 document.querySelector('.new_div').appendChild(newRow);
 
 
@@ -1289,7 +1558,7 @@
                     modalOverlay.style.display = 'none';
                     let choiceValue = choice_text.value;
 
-                    let item_name = lastbtn.parentNode.parentNode.querySelector('.item_name');
+                    let item_name = lastbtn.parentNode.parentNode.parentNode.querySelector('.item_name');
                     item_name.value = choiceValue;
                     choice_text.value = "";
 
@@ -1378,6 +1647,26 @@
         const nav = document.querySelector('nav');
         const wrap = document.querySelector('.wrap');
 
+
+
+        // 미디어테그, 네비게이션바 조작
+        const section = document.querySelector('section');
+
+        hover.forEach(link => {
+            link.addEventListener("click", function (event) {
+                event.preventDefault();
+                if (nav.classList.contains('active') && window.matchMedia("(max-width: 430px)").matches) {
+                    nav.style.height = `${section.offsetHeight}px`
+                }
+            });
+        });
+
+        // 미디어테그 끝
+
+
+
+
+
         // if() {
         // document.querySelector("#mainTitle1").style.display = "block";
         // } else {
@@ -1414,6 +1703,41 @@
         function hideMenuBar() {
             nav.classList.remove('active');
         }
+
+
+        hover.forEach(link => {
+            link.addEventListener("click", function (event) {
+                let myPage = document.querySelector("#myPage");
+                // let myPageName = document.querySelector("#workerName");
+                // let myPageLogo = document.querySelector("#myPageLogo");
+                let menuBar = document.querySelector(".menu-bar");
+                let mainPage = document.querySelector(".wrap");
+                let companyLogo = document.querySelector("#workerLogo");
+
+                let ulLi = document.querySelectorAll(".menu-bar-content ul li");
+
+                // 네비4
+                for (let i = 0; i < ulLi.length; i++) {
+                    ulLi[i].style.padding = '10px';
+                    ulLi[i].style.margin = '0px';
+                }
+
+                // 네비5
+                for (let i = 0; i < ulLi.length; i++) {
+                    ulLi[i].style.padding = '0px';
+                    ulLi[i].style.margin = '10px';
+                }
+
+                event.preventDefault();
+                if (nav.classList.contains('active') && window.matchMedia("(max-width: 430px)").matches) {
+                    nav.style.height = `${section.offsetHeight}px`
+
+                    menuBar.prepend(myPage);
+                }
+            });
+        });
+
+
 
     </script>
 </body>

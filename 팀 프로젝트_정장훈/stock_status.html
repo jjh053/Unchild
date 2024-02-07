@@ -50,8 +50,18 @@
             display: none;
         }
 
+        #mainTitle1 a {
+            text-decoration: none;
+            color: #333;
+        }
+
         #mainTitle2 {
             display: none;
+        }
+
+        #mainTitle2 a {
+            text-decoration: none;
+            color: #333;
         }
 
         #myPage {
@@ -182,8 +192,6 @@
             height: 220px;
             border-top: 0px;
             border-right: 1px solid #ccc;
-            border-bottom: 1px solid #ccc;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
             display: flex;
         }
 
@@ -277,8 +285,6 @@
             transition: color 0.2s ease;
         }
 
-
-
         /* 섹션 창을 조작하기바람 */
         section {
             /* border: 1px solid red; */
@@ -292,8 +298,6 @@
             min-height: 800px;
             position: relative;
         }
-
-        article {}
 
         article .workList {
             width: 100%;
@@ -330,12 +334,15 @@
 
 
         /* 전체 div */
-
+        article {
+            width: 100%;
+        }
 
         .stock_status_page {
             display: flex;
             flex-direction: column;
             align-items: center;
+            width: 100%;
             /* border: 1px solid blue; */
             /* height: 800px; */
             /* margin-top: 20px; */
@@ -343,26 +350,24 @@
 
         }
 
+        .searchArea {
+            width: 96%;
+            display: flex;
+            justify-content: end;
+        }
+
         /*  품목검색 */
         .searchbox {
-            /* position: relative;
-            left: 830px;
-            top: 150px; */
+            width: 40%;
             border: 1px solid rgb(165, 165, 165);
             height: 30px;
-            /* width: 400px; */
             display: flex;
-            /* justify-content: space-between; */
-            justify-content: flex-end;
+            justify-content: space-between;
             align-items: center;
-            padding: 5px;
-            margin-left: auto;
+            padding: 5px 0;
         }
 
         .glasses {
-            /* padding: 1px; */
-            /* border : 1px solid black !important;  */
-
             height: 30px;
             margin-top: 5px;
             margin-left: 10px;
@@ -372,13 +377,11 @@
 
         .search {
             /* border : 1px solid black !important;  */
-            width: 65px;
+            width: 80px;
             height: 30px;
             padding: 3px;
-            margin-right: 15px;
-            margin-left: 10px;
+            margin-left: 5px;
             line-height: 30px;
-            ;
         }
 
         .submit {
@@ -395,41 +398,21 @@
         }
 
         .search_text {
-            border: 1px solid black !important;
-            width: 250px !important;
-            background-color: #fff !important;
-            height: 20px !important;
+            width: 100%;
+            border: 1px solid black;
+            background-color: #fff;
+            height: 20px;
             /* margin : auto !important; */
         }
 
-        /*  */
-
         /* 품목들 */
-
-        .items {
-            /* position: relative;
-            top: 190px;
-            left: 452px; */
-            /* width: 705px; */
-            /* height: 498px; */
-            /* border : 1px solid black; */
-            /* display: flex; */
-            /* justify-content: center; */
-            /* align-items: center; */
-            /* height: 100vh; */
-            /* margin: 0; */
-        }
-
         .table {
             display: flex;
             flex-direction: column;
-            /* border-collapse: collapse; */
-            /* width: 700px; */
         }
 
         .row {
             display: flex;
-            /* border-bottom: 2px solid #ddd; */
         }
 
         .table1 {
@@ -482,45 +465,47 @@
         } */
 
         /*  */
-        input[type="text"] {
+        table input[type="text"] {
             border: none;
             text-align: center;
             background-color: #eee;
-            width: 128px;
             height: 20px;
             padding: 3px;
             /* margin:auto; */
 
         }
 
+        .table2 input {
+            width: 90%;
+        }
+
         td {
-            /* margin : auto; */
             border: 1px solid #ddd;
-            /* height: 20px; */
             text-align: center;
             line-height: 30px;
-            /* width: 100%; */
             height: 30px;
-            /* padding : 5px; */
         }
+
+        td input {
+            margin-left: 5%;
+        }
+
+
 
         /* 페이징 */
 
         #pagination {
             display: flex;
             justify-content: center;
-            width: 700px;
+            align-items: center;
+            width: 90%;
             /* border: 1px solid red; */
-            margin-top: 20px;
-            text-align: center;
         }
 
         .pagination button {
             background-color: #333;
             color: #fff;
             border: none;
-            padding: 5px 10px;
-            margin: 0 5px;
             cursor: pointer;
         }
 
@@ -531,18 +516,17 @@
 
         }
 
- 
+
 
         /* 이전, 다음버튼 */
-        #prevPage, #nextPage{
-            border : 1px solid red;
-            margin-top: 10px;
+        #prevPage,
+        #nextPage {
             background: #333;
             color: #fff;
             border: 0;
             border-radius: 10px;
             width: 50px;
-            height : 30px;
+            height: 30px;
             /* height: 50px; */
             cursor: pointer;
         }
@@ -554,7 +538,7 @@
 
         #page-numbers li a {
             color: #fff;
-            background-color: #3498DB;
+            background-color: #555;
             margin-top: 10px;
             padding: 5px 8px;
             border-radius: 10px;
@@ -565,7 +549,7 @@
         }
 
         #page-numbers li a:hover {
-            background-color: rgb(0, 47, 255);
+            background-color: black;
             transition: 0.2s;
         }
 
@@ -719,6 +703,209 @@
             justify-content: center;
             align-items: center;
         }
+
+
+        /* 미디어테그 */
+        @media screen and (max-width: 430px) {
+
+            .wrap {
+                width: 100%;
+            }
+
+            #workerTitle {
+                display: none;
+            }
+
+            header {
+                width: 100%;
+                background: #000;
+                color: #fff;
+                text-align: center;
+                padding: 5px;
+                box-sizing: border-box;
+                border-radius: 0px;
+            }
+
+            header ul li a {
+                font-size: 15px;
+                text-decoration: none;
+                color: #fff;
+                transition: color 0.3s ease;
+            }
+
+            nav {
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                /* header 높이에 맞게 조정 */
+                left: 0;
+                right: 0;
+                background: #dde;
+                overflow: hidden;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+                transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear;
+                transform: translateX(0%);
+                visibility: hidden;
+                z-index: 100;
+                /* opacity: 0; */
+            }
+
+            nav.active {
+                min-height: 800px;
+                max-height: none;
+                width: 200px;
+                visibility: visible;
+                opacity: 1;
+                transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear;
+                transform: translateX(0%);
+            }
+
+            /* 왼쪽에서 오른쪽으로 나오는 애니메이션을 추가합니다. */
+            nav {
+                transform: translateX(-100%);
+                transition: transform 0.5s ease;
+            }
+
+            nav.active {
+                transform: translateX(0%);
+                transition: transform 0.5s ease;
+            }
+
+            nav.closing {
+                transform: translateX(-100%);
+                transition: transform 0.5s ease;
+            }
+
+            nav .menu-bar {
+                width: 100%;
+                height: 100%;
+                border-top: 0px;
+                border-right: 1px solid #ccc;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .menu-bar-content {
+                width: 100%;
+                margin-left: 0px;
+            }
+
+            .menu-bar-content ul li {
+                padding: 10px;
+            }
+
+            aside {
+                display: none;
+            }
+
+            section {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+
+
+            .items {
+                box-sizing: border-box;
+                width: 400px;
+            }
+
+
+            .row_f {
+                box-sizing: border-box;
+                font-size: 10px;
+                display: flex;
+                width: 95%;
+            }
+
+            .row {
+                box-sizing: border-box;
+                display: flex;
+                width: 380px;
+                border-bottom: 2px solid #ddd;
+            }
+
+            .cell_f {
+                width: none;
+                /* flex: 1; */
+                padding: 8px;
+                text-align: center;
+                border-right: 1px solid #ddd;
+                /* 오른쪽 테두리 스타일 지정 */
+            }
+
+            .table1 td,
+            .table2 td {
+                border: 1px solid #ccc;
+                width: none;
+                text-align: left;
+            }
+
+
+
+            .table2_box {
+                /* border: 1px solid red; */
+                height: 500px;
+                width: 94%;
+
+            }
+
+            .f_box {
+                display: flex;
+                width: 100%;
+                justify-content: space-evenly;
+                /* border: 1px solid blue; */
+            }
+
+            .table2 input {
+                width: 90%;
+                font-size: 11px;
+            }
+
+            td input {
+                margin-left: 1%;
+            }
+
+            .table2 {
+                display: flex;
+                width: 100%;
+                justify-content: space-evenly;
+            }
+
+            .searchArea {
+                justify-content: center;
+            }
+
+            .searchbox {
+                font-size: 15px;
+                width: 80%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 5px;
+                margin-left: 0;
+            }
+
+            .infor_box {
+                position: absolute;
+                /* border: 1px solid red; */
+                width: 60%;
+                height: 50%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                top: 25%;
+                left: 20%;
+                background-color: rgb(214, 214, 214);
+                z-index: 1001;
+            }
+
+        }
+
+        /* 미디어테그 끝 */
     </style>
 
 </head>
@@ -732,8 +919,8 @@
                     class="logo"></image>
             </a>
         </div>
-        <h1 id="mainTitle1">작업자 페이지</h1>
-        <h1 id="mainTitle2">관리자 페이지</h1>
+        <h1 id="mainTitle1"><a href="main.html">작업자 페이지</a></h1>
+        <h1 id="mainTitle2"><a href="main.html">관리자 페이지</a></h1>
         <div id="myPage">
             <div id="myPageLogo">
                 <image
@@ -758,20 +945,17 @@
                 <div class="menu-bar">
                     <div class="menu-bar-content">
                         <ul>
-                            <li><a href="#">작업 지침서</a></li>
-                            <li><a href="#">안전 지침서</a></li>
-                            <li><a href="#">품질검사</a></li>
-                            <li><a href="#">일일 현황</a></li>
+                            <li><a href="work-order.html">작업 지침서</a></li>
+                            <li><a href="work-safety.html">안전 지침서</a></li>
+                            <li><a href="work-quality.html">품질검사</a></li>
+                            <li><a href="work-report.html">작업보고</a></li>
                         </ul>
                     </div>
                     <div class="menu-bar-content">
                         <ul>
-                            <li><a href="#">설비 모니터링</a></li>
-                            <ul id="menu-bar-content-sub">
-                                <li><a href="#">레이아웃</a></li>
-                                <li><a href="#">공정</a></li>
-                            </ul>
-                            <li><a href="#">설비 설정</a></li>
+                            <li><a href="facilityMonitoring.html">설비 모니터링</a></li>
+                            <li><a href="process.html">공정도</a></li>
+                            <li><a href="facilitiespage.html">설비 설정</a></li>
                         </ul>
                     </div>
                     <div class="menu-bar-content">
@@ -784,8 +968,8 @@
                     </div>
                     <div class="menu-bar-content">
                         <ul>
-                            <li><a href="#">자유게시판</a></li>
-                            <li><a href="#">건의사항</a></li>
+                            <li><a href="boardTable.html">자유게시판</a></li>
+                            <li><a href="suggestTable.html">건의사항</a></li>
                             <li><a href="#">Q&A</a></li>
                         </ul>
                     </div>
@@ -819,17 +1003,18 @@
                     <div class="stock_status_page">
                         <!-- 재고현황 등 검색텍스트 -->
                         <div class="stock_status">재고현황</div>
-                        <div class="searchbox">
-                            <div class="search">품목검색</div>
-                            <div> <input type="text" class="search_text" value=""></div>
-                            <div> <img class="glasses"
-                                    src="https://media.discordapp.net/attachments/1186454147558551552/1201320591920218232/2866321.png?ex=65c963fc&is=65b6eefc&hm=f58ed04bf70d9aa052a073134c27106ecce4726dd07fb3124e0ba9b81fddcadd&=&format=webp&quality=lossless&width=468&height=468">
+                        <div class="searchArea">
+                            <div class="searchbox">
+                                <div class="search">품목검색</div>
+                                <div> <input type="text" class="search_text" value=""></div>
+                                <div> <img class="glasses"
+                                        src="https://media.discordapp.net/attachments/1186454147558551552/1201320591920218232/2866321.png?ex=65c963fc&is=65b6eefc&hm=f58ed04bf70d9aa052a073134c27106ecce4726dd07fb3124e0ba9b81fddcadd&=&format=webp&quality=lossless&width=468&height=468">
+                                </div>
                             </div>
                         </div>
                         <!--  -->
                         <br>
                         <!-- 품목들 -->
-                        <span id="currentPageNumber"></span>
                         <div class="items">
                             <!-- <div class="f_box"> -->
                             <div class="row_f">
@@ -934,6 +1119,7 @@
                             </div>
                         </div>
 
+                        <span id="currentPageNumber"></span>
                         <div id="pagination">
                             <button id="prevPage">이전</button>
                             <ul id="page-numbers"></ul>
@@ -1515,6 +1701,20 @@
         const menuBar = document.querySelector('.menu-bar');
         const nav = document.querySelector('nav');
         const wrap = document.querySelector('.wrap');
+               
+        // 미디어테그, 네비게이션바 조작
+        const section = document.querySelector('section');
+
+        hover.forEach(link => {
+            link.addEventListener("click", function (event) {
+                event.preventDefault();
+                if (nav.classList.contains('active') && window.matchMedia("(max-width: 430px)").matches) {
+                    nav.style.height = `${section.offsetHeight}px`
+                }
+            });
+        });
+
+        // 미디어테그
 
         // if() {
         // document.querySelector("#mainTitle1").style.display = "block";
@@ -1544,6 +1744,10 @@
         menuBar.addEventListener("mouseleave", function () {
             hideMenuBar();
         });
+
+        section.addEventListener("click", function () {
+            hideMenuBar();
+        })
 
         function showMenuBar() {
             nav.classList.add('active');

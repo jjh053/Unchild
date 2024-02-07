@@ -50,18 +50,8 @@
             display: none;
         }
 
-        #mainTitle1 a {
-            text-decoration: none;
-            color: #333;
-        }
-
         #mainTitle2 {
             display: none;
-        }
-
-        #mainTitle2 a {
-            text-decoration: none;
-            color: #333;
         }
 
         #myPage {
@@ -436,26 +426,33 @@
 
 
         .item_name {
-            margin-top: 40px;
+            margin-top: 55px;
+            width: 100px;
+            font-size: 20px;
         }
 
         .count {
-            margin-top: 40px;
+            margin-top: 55px;
+            width: 100px;
 
+        }
+
+        .plus,
+        .minus {
+            border: 1px solid red;
         }
 
         .text_rr {
             width: 147px;
             height: auto;
             word-wrap: break-word;
-            /* border: 1px solid red; */
             font-size: 10px;
         }
 
         .text_RR {
             /* border: 1px solid blue; */
             width: 147px;
-            height: 95px;
+            height: 100%;
 
             padding: 1px;
 
@@ -465,9 +462,27 @@
 
         }
 
+        .image_but {
+            /* border: 1px solid red; */
+            display: flex;
+            width: 100%;
+            /* flex-direction: row;
+            justify-content: space-evenly; */
+
+            /* border : 1px solid blue; */
+
+            display: flex;
+            justify-content: space-evenly
+        }
+
         .image_area {
             display: flex;
-            width: 170px;
+            /* border: 1px solid red; */
+            width: 100%;
+        }
+
+        .but_box {
+            width: 100%;
         }
 
         .image_box {
@@ -487,9 +502,9 @@
 
         .image_box1 {
             /* border: 1px solid green; */
-            width: 125px;
+            width: 100%;
             height: 100px;
-
+            /* border: 1px solid red; */
             /* overflow: hidden; */
             /* background-image: url('https://media.discordapp.net/attachments/1186454147558551552/1201687978230173706/image.png?ex=65caba24&is=65b84524&hm=bd86b0025fb9ddc7b872d912c5a5b8ae55dd00d9e73964fbefffcfa4f54f77d7&=&format=webp&quality=lossless&width=468&height=468'); */
             background-size: contain;
@@ -498,15 +513,6 @@
             /* 이미지 반복 없음 */
             background-position: center;
             /* 이미지를 가운데 정렬 */
-        }
-
-        .image_but {
-            /* border : 1px solid blue; */
-
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-end;
         }
 
         .add {
@@ -557,7 +563,9 @@
         }
 
         .request_result {
+            display: none;
             position: fixed;
+            overflow-y: auto;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -572,6 +580,7 @@
 
         .result {
             /* border: 1px solid red; */
+            overflow-y: auto;
             width: 300px;
             height: 70px;
             margin: auto;
@@ -835,8 +844,8 @@
             color: #fff;
             border: 0;
             border-radius: 10px;
-            width: 40px;
-            height: 20px;
+            width: 50px;
+            height: 50px;
             cursor: pointer;
             margin-top: 40px;
         }
@@ -844,6 +853,360 @@
         .delete1 :hover {
             background-color: #555;
             transition: 0.2s;
+        }
+
+
+        /* 미디어 태그 후 수정 */
+        .row_RR:nth-child(1) {
+            background-color: #888888;
+        }
+
+        .table_RR {
+            width: 100%;
+
+        }
+
+        .cell_RR:nth-child(1) {
+            flex: 1;
+            /* border: 1px solid red; */
+            width: 15%;
+        }
+
+        .cell_RR:nth-child(2) {
+            flex: 1;
+            /* border: 1px solid red; */
+            width: 15%;
+        }
+
+        .cell_RR:nth-child(3) {
+            flex: 1;
+            /* border: 1px solid red; */
+            width: 20%;
+        }
+
+        .cell_RR:nth-child(4) {
+            flex: 1;
+            /* border: 1px solid red; */
+            width: 20%;
+            /* display: flex;
+                align-items: center; */
+        }
+
+        .cell_RR:nth-child(5) {
+            flex: 0.7;
+            /* border: 1px solid red; */
+            width: 20%;
+        }
+
+        /* 여기까지 수정 */
+
+
+
+
+
+        /* 미디어테그 */
+        @media screen and (max-width: 430px) {
+
+            .wrap {
+                width: 100%;
+            }
+
+            #workerTitle {
+                display: none;
+            }
+
+            header {
+                width: 100%;
+                background: #000;
+                color: #fff;
+                text-align: center;
+                padding: 5px;
+                box-sizing: border-box;
+                border-radius: 0px;
+            }
+
+            header ul li a {
+                font-size: 15px;
+                text-decoration: none;
+                color: #fff;
+                transition: color 0.3s ease;
+            }
+
+            nav {
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                /* header 높이에 맞게 조정 */
+                left: 0;
+                right: 0;
+                background: #dde;
+                overflow: hidden;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+                transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear;
+                transform: translateX(0%);
+                visibility: hidden;
+                z-index: 100;
+                /* opacity: 0; */
+            }
+
+            nav.active {
+                min-height: 800px;
+                max-height: none;
+                width: 200px;
+                visibility: visible;
+                opacity: 1;
+                transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear;
+                transform: translateX(0%);
+            }
+
+            /* 왼쪽에서 오른쪽으로 나오는 애니메이션을 추가합니다. */
+            nav {
+                transform: translateX(-100%);
+                transition: transform 0.5s ease;
+            }
+
+            nav.active {
+                transform: translateX(0%);
+                transition: transform 0.5s ease;
+            }
+
+            nav.closing {
+                transform: translateX(-100%);
+                transition: transform 0.5s ease;
+            }
+
+            nav .menu-bar {
+                width: 100%;
+                height: 100%;
+                border-top: 0px;
+                border-right: 1px solid #ccc;
+                display: flex;
+                flex-direction: column;
+                justify-content: start;
+            }
+
+            .menu-bar-content {
+                width: 100%;
+                margin-left: 0px;
+            }
+
+            .menu-bar-content ul li {
+                padding: 10px;
+            }
+
+            aside {
+                display: none;
+            }
+
+            section {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+
+            /* 위는 미디어 공통 */
+            /* 아래가 미디어 내 부분 */
+
+            .Refund_page {
+                width: 420px;
+            }
+
+            .Refund_Application_Record {
+                width: 95%;
+            }
+
+            .Refund_Request {
+                width: 100%;
+                /* border: 1px solid red; */
+            }
+
+            .row_RR:nth-child(1) {
+                background-color: #888888;
+            }
+
+            .table_RR {
+                width: 100%;
+
+            }
+
+            .cell_RR:nth-child(1) {
+                flex: 1;
+                /* border: 1px solid red; */
+                width: 15%;
+            }
+
+            .cell_RR:nth-child(2) {
+                flex: 1;
+                /* border: 1px solid red; */
+                width: 15%;
+            }
+
+            .cell_RR:nth-child(3) {
+                flex: 1;
+                /* border: 1px solid red; */
+                width: 20%;
+            }
+
+            .cell_RR:nth-child(4) {
+                flex: 1;
+                /* border: 1px solid red; */
+                width: 20%;
+                /* display: flex;
+                align-items: center; */
+            }
+
+            .cell_RR:nth-child(5) {
+                flex: 0.7;
+                /* border: 1px solid red; */
+                width: 20%;
+            }
+
+            .item_name {
+                width: 60px;
+            }
+
+            .count {
+                width: 50px;
+            }
+
+            .plus,
+            .minus {
+                display: none;
+            }
+
+            .image_area {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+            }
+
+            .text_RR {
+                width: 100%;
+            }
+
+            .image_box1 {
+
+                /* border: 1px solid red; */
+                width: 100%;
+                height: 75%;
+            }
+
+            .image_but {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                width: 100%;
+                /* border: 1px solid red; */
+            }
+
+            .but_box {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+                height: 100px;
+            }
+
+            .add_Stock_bar {
+                width: 50px;
+            }
+
+            .add {
+                display: flex;
+                margin: auto;
+                margin-top: 50px;
+                flex-direction: row-reverse;
+                /* border: 1px solid red; */
+                width: 90%;
+
+            }
+
+            /* 팝업 미디어 */
+            .add_img {
+                width: 95%;
+                /* display: block; */
+                overflow-y: auto;
+                /* border: 1px solid green; */
+
+            }
+
+            .item {
+                width: 90%;
+            }
+
+            .pic {
+                display: flex;
+                /* border: 1px solid red; */
+                width: 80%
+            }
+
+
+            .cpu1_index {
+                /* border: 1px solid red; */
+
+                /* width : 300px; */
+            }
+
+            .box {
+                /* border: 1px solid red; */
+
+            }
+
+            .sample_img {
+                /* border: 1px solid red; */
+                width: 100px;
+                height: 100px;
+            }
+
+            .cpu1 {
+                /* border: 1px solid red; */
+
+            }
+
+            .pic {
+                /* border: 1px solid red; */
+                width: 100%;
+
+            }
+
+            .itemList {
+                margin-left: 10px;
+                /* border: 1px solid red; */
+                display: flex;
+                justify-content: center;
+            }
+
+            .ta_cpu1,
+            .ta_cpu2,
+            .ta_cpu3 {
+                width: 90%;
+            }
+
+            .text_area {
+                display: flex;
+                justify-content: center;
+                height: 70px;
+                margin-bottom: 10px;
+
+            }
+
+            .image_box {
+                display: flex;
+                align-items: center;
+                /* border: 1px solid red; */
+                height: 100%;
+            }
+
+            .request_result {
+                /* display: block; */
+                position: fixed;
+                width: 100%;
+                height: 50%;
+                overflow-y: auto;
+            }
+
         }
     </style>
 </head>
@@ -857,8 +1220,8 @@
                     class="logo"></image>
             </a>
         </div>
-        <h1 id="mainTitle1"><a href="main.html">작업자 페이지</a></h1>
-        <h1 id="mainTitle2"><a href="main.html">관리자 페이지</a></h1>
+        <h1 id="mainTitle1">작업자 페이지</h1>
+        <h1 id="mainTitle2">관리자 페이지</h1>
         <div id="myPage">
             <div id="myPageLogo">
                 <image
@@ -876,6 +1239,7 @@
                     <li><a href="#" class="hover" title="작업지시서">작업</a></li>
                     <li><a href="#" class="hover" title="품질검사">설비</a></li>
                     <li><a href="#" class="hover" title="건의사항">재고관리</a></li>
+                    <li><a href="#" class="hover" title="직원관리">직원관리</a></li>
                     <li><a href="#" class="hover" title="직원 게시판">게시판</a></li>
                 </ul>
             </header>
@@ -883,17 +1247,20 @@
                 <div class="menu-bar">
                     <div class="menu-bar-content">
                         <ul>
-                            <li><a href="work-order.html">작업 지침서</a></li>
-                            <li><a href="work-safety.html">안전 지침서</a></li>
-                            <li><a href="work-quality.html">품질검사</a></li>
-                            <li><a href="work-report.html">작업보고</a></li>
+                            <li><a href="#">작업 지침서</a></li>
+                            <li><a href="#">안전 지침서</a></li>
+                            <li><a href="#">품질검사</a></li>
+                            <li><a href="#">일일 현황</a></li>
                         </ul>
                     </div>
                     <div class="menu-bar-content">
                         <ul>
-                            <li><a href="facilityMonitoring.html">설비 모니터링</a></li>
-                            <li><a href="process.html">공정도</a></li>
-                            <li><a href="facilitiespage.html">설비 설정</a></li>
+                            <li><a href="#">설비 모니터링</a></li>
+                            <ul id="menu-bar-content-sub">
+                                <li><a href="#">레이아웃</a></li>
+                                <li><a href="#">공정</a></li>
+                            </ul>
+                            <li><a href="#">설비 설정</a></li>
                         </ul>
                     </div>
                     <div class="menu-bar-content">
@@ -906,8 +1273,15 @@
                     </div>
                     <div class="menu-bar-content">
                         <ul>
-                            <li><a href="boardTable.html">자유게시판</a></li>
-                            <li><a href="suggestTable.html">건의사항</a></li>
+                            <li><a href="#">직원목록</a></li>
+                            <li><a href="#">근무기록</a></li>
+                            <li><a href="#">휴가신청</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-bar-content">
+                        <ul>
+                            <li><a href="#">자유게시판</a></li>
+                            <li><a href="#">건의사항</a></li>
                             <li><a href="#">Q&A</a></li>
                         </ul>
                     </div>
@@ -978,44 +1352,43 @@
                             <div class="table_RR">
                                 <div class="row_RR">
 
-                                    <div class="cell_RR" style="background-color: #888888; width : 20%;">불량재고명</div>
-                                    <div class="cell_RR" style="background-color: #888888; width : 30%">불량수량</div>
-                                    <div class="cell_RR" style="background-color: #888888; width : 20%">불량내용</div>
-                                    <div class="cell_RR" style="background-color: #888888; width : 23%;">사진첨부</div>
-                                    <div class="cell_RR" style="background-color: #888888; width : 7%;"></div>
+                                    <div class="cell_RR">불량재고명</div>
+                                    <div class="cell_RR">불량수량</div>
+                                    <div class="cell_RR">불량내용</div>
+                                    <div class="cell_RR">사진첨부</div>
+                                    <div class="cell_RR"></div>
 
                                 </div>
 
                                 <div class="new_div">
                                     <div class="row_RR1">
-                                        <div class="cell_RR" style="width : 20%"><input type="text"
-                                                style="width : 100px" class="item_name" value="" readonly>
+                                        <div class="cell_RR"><input type="text" class="item_name" value="" readonly>
                                         </div>
-                                        <div class="cell_RR" style="width : 30%"><input type="number"
-                                                style="width : 100px;" class="count" value="0">
-                                            <input type="button" style="width : 25px; cursor: pointer;" value="+"
-                                                onclick="plus(this)">
-                                            <input type="button" style="width : 25px; cursor: pointer;" value="-"
-                                                onclick="minus(this)">
+                                        <div class="cell_RR"><input type="number" class="count" value="0">
 
+                                            <!-- <input type="button" class="plus" value="+" style="cursor: pointer;" onclick="plus(this)">
+                                            <input type="button" class="minus" value="-"style="cursor: pointer;" onclick="minus(this)"> -->
+
+                                            <!-- style="width : 25px; cursor: pointer;" -->
                                         </div>
-                                        <div class="cell_RR" style="width : 20%;">
+                                        <div class="cell_RR">
                                             <div class="text_RR">
                                                 <div class="text_rr"></div>
                                             </div>
                                         </div>
 
-                                        <div class="cell_RR" style="width : 23%;">
+                                        <div class="cell_RR">
                                             <div class="image_area">
-                                                <div class="image_box1"></div>
-                                                <div class="image_but">
-                                                    <button type="button" class="add_Stock">선택</button>
-                                                    <button type="button" class="drop">지움</button>
+                                                <div class="but_box">
+                                                    <div class="image_box1"></div>
+                                                    <div class="image_but">
+                                                        <button type="button" class="add_Stock">선택</button>
+                                                        <button type="button" class="drop">지움</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="cell_RR" style="width : 7%;"><button type="button"
-                                                class="delete1">삭제</button></div>
+                                        <div class="cell_RR"><button type="button" class="delete1">삭제</button></div>
                                     </div>
                                 </div>
                             </div>
@@ -1048,7 +1421,7 @@
                         <br>
                         <div class="itemList">
                             <div class="item">
-                                <div> <img class="sample_img"
+                                <div class="image_box"> <img class="sample_img"
                                         src="https://media.discordapp.net/attachments/1186454147558551552/1201687978230173706/image.png?ex=65caba24&is=65b84524&hm=bd86b0025fb9ddc7b872d912c5a5b8ae55dd00d9e73964fbefffcfa4f54f77d7&=&format=webp&quality=lossless&width=468&height=468">
                                 </div>
                                 <div>
@@ -1060,7 +1433,7 @@
                                 </div>
                             </div>
                             <div class="item">
-                                <div> <img class="sample_img"
+                                <div class="image_box"> <img class="sample_img"
                                         src="https://media.discordapp.net/attachments/1186454147558551552/1201687978230173706/image.png?ex=65caba24&is=65b84524&hm=bd86b0025fb9ddc7b872d912c5a5b8ae55dd00d9e73964fbefffcfa4f54f77d7&=&format=webp&quality=lossless&width=468&height=468">
                                 </div>
                                 <div>
@@ -1072,7 +1445,7 @@
                                 </div>
                             </div>
                             <div class="item">
-                                <div> <img class="sample_img"
+                                <div class="image_box"> <img class="sample_img"
                                         src="https://media.discordapp.net/attachments/1186454147558551552/1201687978230173706/image.png?ex=65caba24&is=65b84524&hm=bd86b0025fb9ddc7b872d912c5a5b8ae55dd00d9e73964fbefffcfa4f54f77d7&=&format=webp&quality=lossless&width=468&height=468">
                                 </div>
                                 <div>
@@ -1132,7 +1505,7 @@
 
                     <!-- 팝업2 -->
                     <div class="modal-overlay" id="modal-overlay" style="display: none;"></div>
-                    <div class="request_result" id="request_result" style="display: none;">
+                    <div class="request_result" id="request_result">
                         <h1 style="text-align: center;">환불 요청 리스트</h1>
                         <div class="new_RR"></div>
                         <div class="button_RR">
@@ -1261,31 +1634,28 @@
                 newRow.className = 'Stock_Request';
                 newRow.innerHTML = `
         <div class="row_RR1">
-        <div class="cell_RR" style="width : 20%"><input type="text"
-                style="width : 100px" class="item_name" value="" readonly>
+        <div class="cell_RR"><input type="text" class="item_name" value="" readonly>
         </div>
-        <div class="cell_RR" style="width : 30%"><input type="number"
-                style="width : 100px;" class="count" value="0">
-            <input type="button" style="width : 25px; cursor: pointer;" value="+"
-                onclick="plus(this)">
-            <input type="button" style="width : 25px; cursor: pointer;" value="-"
-                onclick="minus(this)">
+        <div class="cell_RR"><input type="number" class="count" value="0">
+            <input type="button" cursor: pointer;" class = "plus" value="+" onclick="plus(this)">
+            <input type="button" cursor: pointer;" class = "minus" value="-" onclick="minus(this)">
 
         </div>
-        <div class="cell_RR" style="width : 20%;">
+        <div class="cell_RR">
         <div class = "text_RR"><div class="text_rr"></div></div>
         </div>
-        <div class="cell_RR" style="width : 23%;">
-            <div class= "image_area">
-                <div class = "image_box1"></div>
-                <div class="image_but">
-                <button type="button" class="add_Stock">선택</button>
-                <button type="button" class="drop">지움</button>
-                </div>
-            </div>
-        </div>
-        <div class="cell_RR" style="width : 7%;"><button type="button"
-                class="delete1">삭제</button></div>
+        <div class="cell_RR">
+                                            <div class="image_area">
+                                                <div class="but_box">
+                                                    <div class="image_box1"></div>
+                                                    <div class="image_but">
+                                                        <button type="button" class="add_Stock">선택</button>
+                                                        <button type="button" class="drop">지움</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+        <div class="cell_RR" ><button type="button" class="delete1">삭제</button></div>
     </div>
 `;
                 document.querySelector('.new_div').appendChild(newRow);
@@ -1306,7 +1676,7 @@
                     modalOverlay.style.display = 'none';
                     let choiceValue = choice_text.value;
 
-                    let item_name = lastbtn.parentNode.parentNode.parentNode.parentNode.querySelector('.item_name');
+                    let item_name = lastbtn.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.querySelector('.item_name');
                     item_name.value = choiceValue;
                     choice_text.value = "";
 
@@ -1327,7 +1697,7 @@
                     let sampleImgSrc1 = document.querySelector('.sample_img').src;
 
                     // image_box 요소의 배경 이미지로 설정
-                    let imageBox1 = lastbtn.parentNode.parentNode.parentNode.parentNode.querySelector('.image_box1');
+                    let imageBox1 = lastbtn.parentNode.parentNode.parentNode.parentNode.parentNode.querySelector('.image_box1');
                     imageBox1.style.backgroundImage = `url('${sampleImgSrc1}')`;
                     imageBox1.style.backgroundSize = 'contain';
                     imageBox1.style.backgroundRepeat = 'no-repeat';
@@ -1462,10 +1832,25 @@
 
         // + - 여기까지
 
+
         const hover = document.querySelectorAll('a.hover');
         const menuBar = document.querySelector('.menu-bar');
         const nav = document.querySelector('nav');
         const wrap = document.querySelector('.wrap');
+
+        // 미디어테그, 네비게이션바 조작
+        const section = document.querySelector('section');
+
+        hover.forEach(link => {
+            link.addEventListener("click", function (event) {
+                event.preventDefault();
+                if (nav.classList.contains('active') && window.matchMedia("(max-width: 430px)").matches) {
+                    nav.style.height = `${section.offsetHeight}px`
+                }
+            });
+        });
+
+        // 미디어테그
 
         // if() {
         // document.querySelector("#mainTitle1").style.display = "block";
@@ -1496,6 +1881,10 @@
             hideMenuBar();
         });
 
+        section.addEventListener("click", function () {
+            hideMenuBar();
+        })
+
         function showMenuBar() {
             nav.classList.add('active');
         }
@@ -1503,6 +1892,7 @@
         function hideMenuBar() {
             nav.classList.remove('active');
         }
+
 
     </script>
 </body>

@@ -704,6 +704,8 @@
             align-items: center;
         }
 
+
+        /* 미디어테그 */
         @media screen and (max-width: 430px) {
 
             .wrap {
@@ -902,6 +904,8 @@
             }
 
         }
+
+        /* 미디어테그 끝 */
     </style>
 
 </head>
@@ -1697,6 +1701,8 @@
         const menuBar = document.querySelector('.menu-bar');
         const nav = document.querySelector('nav');
         const wrap = document.querySelector('.wrap');
+               
+        // 미디어테그, 네비게이션바 조작
         const section = document.querySelector('section');
 
         hover.forEach(link => {
@@ -1707,6 +1713,8 @@
                 }
             });
         });
+
+        // 미디어테그
 
         // if() {
         // document.querySelector("#mainTitle1").style.display = "block";
