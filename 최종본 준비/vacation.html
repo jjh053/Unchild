@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monitoring Page</title>
+    <title>Vacation Page</title>
     <style>
         @font-face {
             font-family: "SOYOMapleBoldTTF";
@@ -67,13 +67,13 @@
             margin-right: 3%;
         }
 
-        #workerName a {
+        #workerName {
             text-decoration: none;
             color: #333;
-
+            cursor: pointer;
         }
 
-        #workerName a:hover {
+        #workerName:hover {
             text-decoration: none;
             color: #888;
             transition: color 0.2s ease;
@@ -185,12 +185,13 @@
             border-bottom: 1px solid #ccc;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
             display: flex;
+            justify-content: space-evenly
         }
 
         .menu-bar-content {
-            /* margin-left: 40px; */
             width: 20%;
             display: inline-block;
+
             box-sizing: border-box;
         }
 
@@ -262,140 +263,8 @@
             z-index: 50;
             text-align: center;
             min-height: 800px;
-        }
-
-        .monitor {
-            background-color: #eee;
-            color: #000;
-            padding: 10px;
-            text-align: center;
-        }
-
-        #total-defect-rate-section {
-            display: inline-block;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            width: 92%;
-            background-color: #fff;
-            color: #000;
-            padding: 10px 0;
-            text-align: center;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .total-defect-rate-display {
-            font-size: 18px;
-            font-weight: bold;
-            margin: 0 auto;
-            padding: 5px;
-            width: calc(100% - 40px);
-        }
-
-        #monitoring {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            padding: 20px;
-        }
-
-        .process {
-            text-align: center;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 20px;
-            width: 127px;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .operations {
-            font-family: 맑은 고딕;
-            font-weight: bold;
-            margin-top: 10px;
-            background-color: #eef;
-            padding: 5px;
-            font-size: 14px;
-            border-radius: 5px;
-            text-align: center;
-        }
-
-        .process h4 {
-            margin-top: 0;
-        }
-
-        .status {
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        .status::before {
-            content: '🔴';
-            margin-right: 5px;
-        }
-
-        #cpu-status::before,
-        #gpu-status::before,
-        #case-status::before {
-            content: '🟢';
-        }
-
-        #graph-title {
-            text-align: center;
-            margin: 20px 0;
-        }
-
-
-        .graph-container {
-            padding-top: 30px;
             position: relative;
-            margin: 20px auto;
-            width: 80%;
-            height: 300px;
-            background-color: #f9f9f9;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-around;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-
-        .graph-container::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 0;
-            background-image: repeating-linear-gradient(to bottom,
-                    transparent,
-                    transparent 98%,
-                    #ddd 98%,
-                    #ddd 100%);
-            background-size: 100% 20%;
-        }
-
-        .bar {
-            width: 20%;
-            height: 0%;
-            background-color: #3498DB;
-            color: 555;
-            text-align: center;
-            /* border-top-right-radius: 5px;
-            border-top-left-radius: 5px; */
-            transition: height 0.3s ease-in-out;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            padding: 5px;
-            z-index: 2;
-        }
-
-
-
-        /* aside, section 끝*/
 
         footer {
             width: 100%;
@@ -406,8 +275,71 @@
             line-height: 70px;
         }
 
-        .workerGrade {
+        #vacationTable,
+        #vacationContent {
+            border: 1px solid #555;
+            border-collapse: collapse;
+            margin: auto;
+            width: 90%;
+        }
+
+        #vacationTable th,
+        td,
+        #vacationContent th,
+        td {
+            border: 1px solid #555;
+            padding: 5px;
+        }
+
+        .vacation {
+            width: 90%;
+            height: 40%;
+            border-radius: 10px;
+            margin: 40px auto;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: #fff;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        #applyBtn {
+            background-color: #3498DB;
+            width: 80px;
+            height: 40px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+        }
+
+        #applyBtn:hover {
+            background-color: rgb(0, 47, 255);
+            transition: 0.3s ease;
+        }
+
+        #deleteBtn {
+            background-color: red;
+            margin-top: 10px;
+            width: 80px;
+            height: 40px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+        }
+
+        #deleteBtn:hover {
+            background-color: rgb(163, 6, 6);
+            transition: 0.3s ease;
+        }
+
+        #adminNav,
+        #adminTitle {
             display: none;
+        }
+
+        .vacation h2 {
+            font-size: 30px;
         }
 
         #mainTitle1 {
@@ -428,8 +360,18 @@
             color: #333;
         }
 
+
+
+
         /* 모바일 페이지 대응 테스트 */
         @media screen and (max-width: 430px) {
+
+            .workerPic {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+
+            }
 
             /* 전체 페이지 */
             .wrap {
@@ -531,56 +473,38 @@
                 width: 100%;
             }
 
-            #monitoring {
-                gap: 5px;
-                padding: 5px;
+            #applyBtn {
+                background-color: #3498DB;
+                width: 60px;
+                height: 30px;
+                border-radius: 5px;
+                cursor: pointer;
+                color: #fff;
+                border: 0;
+                font-size: 10px;
             }
 
-            #total-defect-rate-section {
-                width: 406px;
+            #deleteBtn {
+                background-color: red;
+                font-size: 10px;
+                margin-top: 10px;
+                width: 60px;
+                height: 30px;
+                border-radius: 5px;
+                cursor: pointer;
+                color: #fff;
+                border: 0;
             }
 
-            .total-defect-rate-display {
-                font-size: 18px;
-                padding: 2.5px;
+            #vacationTable,
+            #vacationContent {
+                font-size: 10px;
             }
 
-            .process {
-                width: 160px;
-                height: 190px;
-                padding: 20px;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
+            .vacation h2 {
+                font-size: 20px;
             }
 
-            .status {
-                font-size: 12px;
-            }
-
-            .operations {
-                font-size: 12px;
-                width: 160px;
-            }
-
-            .graph-container {
-                height: 150px;
-            }
-
-            .bar {
-                width: 18%;
-                font-size: 11px;
-            }
-
-            .workerGrade {
-                display: inline;
-            }
-
-            .workerPic {
-                width: 80px;
-                height: 80px;
-                border-radius: 50%;
-            }
         }
     </style>
 
@@ -664,67 +588,75 @@
         </div>
         <div class="aside-section-container">
             <aside>
-                <!-- aside 영역내에 메뉴 추가 가능함 -->
                 <ul>
                     <li>
-                        <a href="FacilityMonitoring.html">설비 모니터링</a>
+                        <a href="#">직원목록</a>
                     </li>
                     <li>
-                        <a href="process.html">공정도</a>
-
+                        <a href="#">근무기록</a>
                     </li>
                     <li>
-                        <a href="facilitiespage.html">설비설정</a>
+                        <a href="vacation.html">휴가신청</a>
                     </li>
                 </ul>
             </aside>
             <section>
-                <div class="monitor">
-                    <h1>설비 모니터링</h1>
+                <div class="vacation">
+                    <h2>휴가 신청 리스트</h2>
+                    <table id="vacationTable">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" id="allChkBox"></th>
+                                <th width="20%">사원이름</th>
+                                <th width="15%">분류</th>
+                                <th width="40%">기간</th>
+                                <th width="20%">사유</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="checkbox" class="chk"></td>
+                                <td>이성현</td>
+                                <td>연차</td>
+                                <td>24.02.13 ~ 24.02.16</td>
+                                <td>여행</td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="chk"></td>
+                                <td>김태원</td>
+                                <td>월차</td>
+                                <td>24.02.19 ~ 24.02.21</td>
+                                <td>개인사정</td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="chk"></td>
+                                <td>서효림</td>
+                                <td>기타</td>
+                                <td>24.02.13 ~ 24.02.23</td>
+                                <td>병가</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div>
+                        <button type="button" id="applyBtn">선택승인</button>
+                        <button type="button" id="deleteBtn">선택반려</button>
+                    </div>
                 </div>
-                <div id="total-defect-rate-section">
-                    <div id="total-defect-rate" class="total-defect-rate-display">총 불량률: 0%</div>
-                </div>
-                <div id="monitoring">
-                    <div class="process">
-                        <h4>1번 라인</h4>
-                        <div id="cpu-status" class="status">Pending</div>
-                        <div id="cpu-defect-rate" class="operations">불량률: 0%</div>
-                        <div id="cpu-defect-count" class="operations">불량: 0</div>
-                        <div id="cpu-good-count" class="operations">통과: 0</div>
-                        <div id="cpu-operations" class="operations">사이클 횟수: 0</div>
-                    </div>
-                    <div class="process">
-                        <h4>2번 라인</h4>
-                        <div id="gpu-status" class="status">Pending</div>
-                        <div id="gpu-defect-rate" class="operations">불량률: 0%</div>
-                        <div id="gpu-defect-count" class="operations">불량: 0</div>
-                        <div id="gpu-good-count" class="operations">통과: 0</div>
-                        <div id="gpu-operations" class="operations">사이클 횟수: 0</div>
-                    </div>
-                    <div class="process">
-                        <h4>3번 라인</h4>
-                        <div id="case-status" class="status">Pending</div>
-                        <div id="case-defect-rate" class="operations">불량률: 0%</div>
-                        <div id="case-defect-count" class="operations">불량: 0</div>
-                        <div id="case-good-count" class="operations">통과: 0</div>
-                        <div id="case-operations" class="operations">사이클 횟수: 0</div>
-                    </div>
-                    <div class="process">
-                        <h4>4번 라인</h4>
-                        <div class="status">Standby</div>
-                        <div class="operations">불량률: 0%</div>
-                        <div class="operations">불량: 0</div>
-                        <div class="operations">통과: 0</div>
-                        <div class="operations">사이클 횟수: 0</div>
-                    </div>
-                </div>
-                <h3 id="graph-title">불량률 그래프</h3>
-                <div id="defect-rate-graph" class="graph-container">
-                    <div id="cpu-bar" class="bar">1번 라인 : 0.00%</div>
-                    <div id="gpu-bar" class="bar">2번 라인 : 0.00%</div>
-                    <div id="case-bar" class="bar">3번 라인 : 0.00%</div>
-                    <div class="bar">4번 라인 : 0.00%</div>
+                <div class="vacation">
+                    <h2>휴가 내역</h2>
+                    <table id="vacationContent">
+                        <thead>
+                            <tr>
+                                <th width="20%">사원이름</th>
+                                <th width="15%">분류</th>
+                                <th width="45%">기간</th>
+                                <th width="20%">사유</th>
+                            </tr>
+                        </thead>
+                        <tbody id="addTr">
+
+                        </tbody>
+                    </table>
                 </div>
             </section>
         </div>
@@ -780,8 +712,6 @@
             hideMenuBar();
         })
 
-
-
         function showMenuBar() {
             nav.classList.add('active');
         }
@@ -790,127 +720,63 @@
             nav.classList.remove('active');
         }
 
-        // 모니터링 인터페이스 스크립트 페이지
-        document.addEventListener('DOMContentLoaded', function () {
-            const cpuStatus = document.getElementById('cpu-status');
-            const cpuOperations = document.getElementById('cpu-operations');
-            const gpuStatus = document.getElementById('gpu-status');
-            const gpuOperations = document.getElementById('gpu-operations');
-            const caseStatus = document.getElementById('case-status');
-            const caseOperations = document.getElementById('case-operations');
-            const cpuDefectRateElement = document.getElementById('cpu-defect-rate');
-            const gpuDefectRateElement = document.getElementById('gpu-defect-rate');
-            const caseDefectRateElement = document.getElementById('case-defect-rate');
-            const cpuDefectCountElement = document.getElementById('cpu-defect-count');
-            const gpuDefectCountElement = document.getElementById('gpu-defect-count');
-            const caseDefectCountElement = document.getElementById('case-defect-count');
-            const cpuGoodCountElement = document.getElementById('cpu-good-count');
-            const gpuGoodCountElement = document.getElementById('gpu-good-count');
-            const caseGoodCountElement = document.getElementById('case-good-count');
-            const totalDefectRateElement = document.getElementById('total-defect-rate');
-
-            let cpuOperationsCount = 0;
-            let gpuOperationsCount = 0;
-            let caseOperationsCount = 0;
-            let cpuDefectCount = 0;
-            let gpuDefectCount = 0;
-            let caseDefectCount = 0;
-            let iteration = 0;
-            const maxIterations = 50;
-
-            function simulateDefects(defectRate) {
-                return Math.random() < defectRate ? 1 : 0;
-            }
-
-            function calculateDefectRate(operationsCount, defectCount) {
-                if (operationsCount === 0) return "0.00";
-                const rate = (defectCount / operationsCount) * 100;
-                return rate.toFixed(2);
-            }
-
-            function calculateTotalDefectRate() {
-                const totalOperations = cpuOperationsCount + gpuOperationsCount + caseOperationsCount;
-                const totalDefects = cpuDefectCount + gpuDefectCount + caseDefectCount;
-                if (totalOperations === 0) return "0.00";
-                const rate = (totalDefects / totalOperations) * 100;
-                return rate.toFixed(2);
-            }
-
-            function updateCountsAndRates() {
-                // CPU
-                cpuOperations.textContent = `사이클 횟수: ${cpuOperationsCount}`;
-                cpuDefectCountElement.textContent = `불량: ${cpuDefectCount}`;
-                cpuGoodCountElement.textContent = `통과: ${Math.max(0, cpuOperationsCount - cpuDefectCount)}`;
-                cpuDefectRateElement.textContent = `불량률: ${calculateDefectRate(cpuOperationsCount, cpuDefectCount)}%`;
-
-                // GPU
-                gpuOperations.textContent = `사이클 횟수: ${gpuOperationsCount}`;
-                gpuDefectCountElement.textContent = `불량: ${gpuDefectCount}`;
-                gpuGoodCountElement.textContent = `통과: ${Math.max(0, gpuOperationsCount - gpuDefectCount)}`;
-                gpuDefectRateElement.textContent = `불량률: ${calculateDefectRate(gpuOperationsCount, gpuDefectCount)}%`;
-
-                // Case
-                caseOperations.textContent = `사이클 횟수: ${caseOperationsCount}`;
-                caseDefectCountElement.textContent = `불량: ${caseDefectCount}`;
-                caseGoodCountElement.textContent = `통과: ${Math.max(0, caseOperationsCount - caseDefectCount)}`;
-                caseDefectRateElement.textContent = `불량률: ${calculateDefectRate(caseOperationsCount, caseDefectCount)}%`;
-
-                // total
-                totalDefectRateElement.textContent = `총 불량률: ${calculateTotalDefectRate()}%`;
-
-                const cpuDefectRate = calculateDefectRate(cpuOperationsCount, cpuDefectCount);
-                const gpuDefectRate = calculateDefectRate(gpuOperationsCount, gpuDefectCount);
-                const caseDefectRate = calculateDefectRate(caseOperationsCount, caseDefectCount);
-
-                document.getElementById('cpu-bar').style.height = `${cpuDefectRate}%`;
-                document.getElementById('gpu-bar').style.height = `${gpuDefectRate}%`;
-                document.getElementById('case-bar').style.height = `${caseDefectRate}%`;
-
-                document.getElementById('cpu-bar').textContent = `1번라인 : ${cpuDefectRate}%`;
-                document.getElementById('gpu-bar').textContent = `2번라인 : ${gpuDefectRate}%`;
-                document.getElementById('case-bar').textContent = `3번라인 : ${caseDefectRate}%`;
-
-            }
-
-            function runProcess() {
-                if (iteration < maxIterations) {
-                    cpuStatus.textContent = 'Running';
-                    cpuStatus.style.color = 'red';
-                    gpuStatus.textContent = 'Running';
-                    gpuStatus.style.color = 'red';
-                    caseStatus.textContent = 'Running';
-                    caseStatus.style.color = 'red';
-
-                    setTimeout(() => {
-                        cpuStatus.textContent = 'Completed';
-                        cpuStatus.style.color = 'green';
-                        gpuStatus.textContent = 'Completed';
-                        gpuStatus.style.color = 'green';
-                        caseStatus.textContent = 'Completed';
-                        caseStatus.style.color = 'green';
-                        cpuOperationsCount++;
-                        cpuDefectCount += simulateDefects(0.01);  // 1번 라인 불량률 1%
-                        gpuOperationsCount++;
-                        gpuDefectCount += simulateDefects(0.03);  // 2번 라인 불량률 3%
-                        caseOperationsCount++;
-                        caseDefectCount += simulateDefects(0.05);  // 3번 라인 불량률 5%
-                        updateCountsAndRates();
-
-                        setTimeout(() => {
-                            iteration++;
-                            runProcess();
-                        }, 3000);
-                    }, 3000);
-                }
-            }
-
-            runProcess();
-        });
-
         document.querySelector("#workerName").addEventListener("click", () => {
             window.open("myPage.html", '_blank', 'width = 630, height = 470, top=100, left=100');
         });
 
+        // 체크박스 관련
+        document.querySelector("#deleteBtn").addEventListener("click", function () {
+            let list_checked = document.querySelectorAll(".chk:checked");
+            for (let i = 0; i < list_checked.length; i++) {
+                list_checked[i].parentNode.parentNode.remove();
+            }
+        })
+
+        document.querySelector("#applyBtn").addEventListener("click", function () {
+            let people = document.querySelector("#addTr");
+            let list_checked = document.querySelectorAll(".chk:checked");
+            for (let i = 0; i < list_checked.length; i++) {
+                let rowToAdd = document.createElement('tr');
+                let cells = list_checked[i].parentNode.parentNode.querySelectorAll('td');
+                for (let j = 1; j < cells.length; j++) {
+                    let newCell = document.createElement('td');
+                    newCell.innerHTML = cells[j].innerHTML;
+                    rowToAdd.appendChild(newCell);
+                }
+                people.appendChild(rowToAdd);
+                list_checked[i].parentNode.parentNode.remove();
+            }
+        });
+
+
+        document.querySelector("#allChkBox").addEventListener("click", function (event) {
+            let list_check = document.querySelectorAll(".chk");
+            if (event.target.checked) {
+                for (let i = 0; i < list_check.length; i++) {
+                    list_check[i].checked = true;
+                }
+            } else {
+
+                for (let i = 0; i < list_check.length; i++) {
+                    list_check[i].checked = false;
+                }
+            }
+        });
+
+        document.querySelector(".chk").addEventListener("click", function (event) {
+            if (!event.target.checked) {
+                document.querySelector("#allChkBox").checked = false;
+            } else {
+                let allCount = document.querySelectorAll(".chk").length;
+                let checkedCount = document.querySelectorAll(".chk:checked").length;
+
+                if (allCount == checkedCount) {
+                    document.querySelector("#allChkBox").checked = true;
+                } else {
+                    document.querySelector("#allChkBox").checked = false;
+                }
+            }
+        });
 
         hover.forEach(link => {
             link.addEventListener("click", function (event) {
@@ -931,11 +797,13 @@
                     // 네비4
                     // for (let i = 0; i < ulLi.length; i++) {
                     //     ulLi[i].style.padding = '10px';
+                    //     ulLi[i].style.margin = '0px';
                     // }
 
                     // 네비5
                     for (let i = 0; i < ulLi.length; i++) {
                         ulLi[i].style.padding = '7px';
+
                     }
                     menuBar.prepend(myPage);
                 }
@@ -946,7 +814,7 @@
         document.querySelector("#adminNav").style.display = 'block';
         document.querySelector(".workerGrade").innerHTML = '작업자<br>';
         // document.querySelector(".workerGrade").innerHTML = '관리자<br>';
-
+        
         // document.querySelector("#adminTitle").style.display = 'none';
         // document.querySelector("#adminNav").style.display = 'none';
 

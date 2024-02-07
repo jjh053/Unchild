@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project 1</title>
+    <title>Suggest Page</title>
     <style>
         @font-face {
             font-family: "SOYOMapleBoldTTF";
@@ -50,18 +50,8 @@
             display: none;
         }
 
-        #mainTitle1 a {
-            text-decoration: none;
-            color: #333;
-        }
-
         #mainTitle2 {
             display: none;
-        }
-
-        #mainTitle2 a {
-            text-decoration: none;
-            color: #333;
         }
 
         #myPage {
@@ -195,10 +185,10 @@
             border-bottom: 1px solid #ccc;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
             display: flex;
+            justify-content: space-evenly;
         }
 
         .menu-bar-content {
-            margin-left: 40px;
             width: 20%;
             display: inline-block;
             box-sizing: border-box;
@@ -493,6 +483,166 @@
             color: #fff;
             border: 0;
         }
+
+        section div h2 {
+            font-size: 30px;
+        }
+
+        .workerGrade {
+            display: none;
+        }
+
+        #mainTitle1 {
+            display: none;
+        }
+
+        #mainTitle1 a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        #mainTitle2 {
+            display: none;
+        }
+
+        #mainTitle2 a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        /* 모바일 페이지 대응 테스트 */
+        @media screen and (max-width: 430px) {
+
+            /* 전체 페이지 */
+            .wrap {
+                width: 100%;
+            }
+
+            /* 헤더 */
+            header {
+                width: 100%;
+                background: #000;
+                color: #fff;
+                text-align: center;
+                padding: 5px;
+                box-sizing: border-box;
+                border-radius: 0px;
+            }
+
+            header ul li a {
+                font-size: 15px;
+                text-decoration: none;
+                color: #fff;
+                transition: color 0.3s ease;
+            }
+
+            #workerTitle {
+                display: none;
+            }
+
+            nav {
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                /* header 높이에 맞게 조정 */
+                left: 0;
+                right: 0;
+                background: #eee;
+                max-height: 881px;
+                overflow: hidden;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+                transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear;
+                transform: translateX(0%);
+                visibility: hidden;
+                z-index: 100;
+                /* opacity: 0; */
+            }
+
+            nav.active {
+                height: 881px;
+                max-height: 881px;
+                width: 200px;
+                visibility: visible;
+                opacity: 1;
+                transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear;
+                transform: translateX(0%);
+            }
+
+            /* 왼쪽에서 오른쪽으로 나오는 애니메이션을 추가합니다. */
+            nav {
+                transform: translateX(-100%);
+                transition: transform 0.5s ease;
+            }
+
+            nav.active {
+                transform: translateX(0%);
+                transition: transform 0.5s ease;
+            }
+
+            nav.closing {
+                transform: translateX(-100%);
+                transition: transform 0.5s ease;
+            }
+
+            nav .menu-bar {
+                width: 100%;
+                height: 100%;
+                border-top: 0px;
+                border-right: 1px solid #ccc;
+                border-bottom: 1px solid #ccc;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+                display: flex;
+                flex-direction: column;
+            }
+
+            .menu-bar-content {
+                width: 100%;
+                margin-left: 0px;
+            }
+
+            .menu-bar-content ul li {
+                padding: 10px;
+            }
+
+            aside {
+                display: none;
+            }
+
+            /* 섹션 목록 */
+            section {
+                width: 100%;
+            }
+
+            section div h2 {
+                font-size: 20px;
+            }
+
+            #suggestContent {
+                width: 330px;
+            }
+
+            .directBtn {
+                width: 30px;
+                height: 30px;
+                font-size: 10px;
+            }
+
+            .numberBtn {
+                width: 30px;
+                height: 30px;
+                font-size: 10px;
+            }
+
+            .workerGrade {
+                display: inline;
+            }
+
+            .workerPic {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+            }
+        }
     </style>
 
 </head>
@@ -514,7 +664,7 @@
                     src="https://cdn.discordapp.com/attachments/1185161279804026893/1200675420551520370/workerP.jpg?ex=65c70b1f&is=65b4961f&hm=c49f91b245305c4bb33c58e626bc4960b4f601257e433425a8d7cc0da454126e&"
                     class="workerPic">
             </div>
-            <span id="workerName">대리 이도연</span>
+            <span id="workerName"><span class="workerGrade">작업자<br></span>이도연 대리님</span>
         </div>
     </div>
 
@@ -525,6 +675,7 @@
                     <li><a href="#" class="hover" title="작업지시서">작업</a></li>
                     <li><a href="facilityMonitoring.html" class="hover" title="품질검사">설비</a></li>
                     <li><a href="#" class="hover" title="건의사항">재고관리</a></li>
+                    <li id="adminTitle"><a href="#" class="hover" title="직원관리">직원관리</a></li>
                     <li><a href="#" class="hover" title="직원 게시판">게시판</a></li>
                 </ul>
             </header>
@@ -532,10 +683,10 @@
                 <div class="menu-bar">
                     <div class="menu-bar-content">
                         <ul>
-                            <li><a href="work-order.html">작업 지침서</a></li>
-                            <li><a href="work-safety.html">안전 지침서</a></li>
-                            <li><a href="work-quality.html">품질검사</a></li>
-                            <li><a href="work-report.html">작업보고</a></li>
+                            <li><a href="#">작업 지침서</a></li>
+                            <li><a href="#">안전 지침서</a></li>
+                            <li><a href="#">품질검사</a></li>
+                            <li><a href="#">일일 현황</a></li>
                         </ul>
                     </div>
                     <div class="menu-bar-content">
@@ -549,17 +700,24 @@
                     </div>
                     <div class="menu-bar-content">
                         <ul>
-                            <li><a href="stock_status.html">재고 현황</a></li>
-                            <li><a href="Stock_Request.html">재고 신청</a></li>
-                            <li><a href="Finished_product_management.html">완제품 관리</a></li>
-                            <li><a href="Report_of_defective_inventory.html">재고 불량 신고</a></li>
+                            <li><a href="#">재고 현황</a></li>
+                            <li><a href="#">재고 신청</a></li>
+                            <li><a href="#">완제품 관리</a></li>
+                            <li><a href="#">재고 불량 신고</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-bar-content" id="adminNav">
+                        <ul>
+                            <li><a href="#">직원목록</a></li>
+                            <li><a href="#">근무기록</a></li>
+                            <li><a href="#">휴가신청</a></li>
                         </ul>
                     </div>
                     <div class="menu-bar-content">
                         <ul>
                             <li><a href="boardTable.html">자유게시판</a></li>
                             <li><a href="suggestTable.html">건의사항</a></li>
-                            <li><a href="#">Q&A</a></li>
+                            <li><a href="QA.html">Q&A</a></li>
                         </ul>
                     </div>
                 </div>
@@ -575,13 +733,13 @@
                         <a href="suggestTable.html">건의사항</a>
                     </li>
                     <li>
-                        <a href="#">Q&A</a>
+                        <a href="QA.html">Q&A</a>
                     </li>
                 </ul>
             </aside>
             <section>
                 <div style="text-align: center; margin-top: 30px;">
-                    <h2 style="font-size: 30px;">건의사항</h2>
+                    <h2>건의사항</h2>
                 </div>
                 <div class="search-container">
                     <input type="text" class="search_text" placeholder="Search...">
@@ -692,7 +850,7 @@
         menuBar.addEventListener("mouseenter", function () {
             isHovered = true;
         });
-
+        tableBody
         menuBar.addEventListener("mouseleave", function () {
             hideMenuBar();
         });
@@ -714,26 +872,24 @@
             window.open("myPage.html", '_blank', 'width = 630, height = 470, top=100, left=100');
         });
 
-        // 검색
-        // 엔터나 클릭을 해야 검색
-        document.addEventListener('DOMContentLoaded', function () {
+        function search() {
             const searchInput = document.querySelector('.search_text');
             const searchImage = document.querySelector('.glasses');
             const tableRows = document.querySelectorAll('#tableBody tr');
 
             function filterRows() {
                 const searchTerm = searchInput.value.toLowerCase();
-                console.log('검색내용 : ', searchTerm);
 
-                tableRows.forEach(row => {
-                    const cellValue = row.querySelector('.tableTdTitle').textContent.toLowerCase();
+                for (let i = 0; i < tableRows.length; i++) {
+                    const row = tableRows[i];
+                    const cellValue = row.querySelector('.tdTitle').textContent.toLowerCase();
 
                     if (cellValue.includes(searchTerm)) {
                         row.style.display = '';
                     } else {
                         row.style.display = 'none';
                     }
-                });
+                }
             }
 
             // 검색 이미지를 클릭했을 때 검색 실행
@@ -745,7 +901,9 @@
                     filterRows();
                 }
             });
-        });
+        }
+
+
 
 
         document.querySelector("#suggestName").value = document.querySelector("#workerName").textContent;
@@ -764,7 +922,7 @@
             let userContent = document.querySelector("#suggestContent").value;
 
             let trCount = document.querySelectorAll("#tableBody tr").length;
-            console.log(trCount);
+            // console.log(trCount);
             let todayTime = new Date();
             let nowYear = todayTime.getFullYear() % 100;
             let nowMonth = ('0' + (todayTime.getMonth() + 1)).slice(-2);
@@ -787,6 +945,7 @@
 
             let newRow = tableBody.querySelector("tr"); // 새로 생성된 첫 번째 행 선택
             newEventRow(newRow);
+            search();
         });
 
         function newEventRow(row) {
@@ -832,17 +991,66 @@
             });
         }
 
-        // 관리자
-        // document.querySelector(".search-container").style.display = 'block';
-        // document.querySelector("#suggestBox").style.display = 'none';
-        // document.querySelector("#totalTable").style.display = "table";
-        // document.querySelector(".buttonZip").style.display = 'flex';
+        hover.forEach(link => {
+            link.addEventListener("click", function (event) {
+                let myPage = document.querySelector("#myPage");
+                // let myPageName = document.querySelector("#workerName");
+                // let myPageLogo = document.querySelector("#myPageLogo");
+                let menuBar = document.querySelector(".menu-bar");
+                let mainPage = document.querySelector(".wrap");
+                let companyLogo = document.querySelector("#workerLogo");
 
+                let ulLi = document.querySelectorAll(".menu-bar-content ul li");
+
+
+                event.preventDefault();
+                if (nav.classList.contains('active') && window.matchMedia("(max-width: 430px)").matches) {
+                    nav.style.height = `${section.offsetHeight}px`
+
+                    // 네비4
+                    // for (let i = 0; i < ulLi.length; i++) {
+                    //     ulLi[i].style.padding = '10px';
+                    //     ulLi[i].style.margin = '0px';
+                    // }
+
+                    // 네비5
+                    for (let i = 0; i < ulLi.length; i++) {
+                        ulLi[i].style.padding = '7px';
+
+                    }
+                    menuBar.prepend(myPage);
+                }
+            });
+        });
+
+
+
+        // 마이페이지
+        document.querySelector("#workerName").addEventListener("click", () => {
+            window.open("myPage.html", '_blank', 'width = 630, height = 470, top=100, left=100');
+        });
+
+        // 관리자
+        document.querySelector("#adminTitle").style.display = 'block';
+        document.querySelector("#adminNav").style.display = 'block';
+        document.querySelector(".search-container").style.display = 'block';
+        document.querySelector("#adminTitle").style.display = 'block';
+        document.querySelector("#adminNav").style.display = 'block';
+        document.querySelector("#suggestBox").style.display = 'none';
+        document.querySelector("#totalTable").style.display = "table";
+        document.querySelector(".buttonZip").style.display = 'flex';
+        // document.querySelector(".workerGrade").innerHTML = '관리자<br>';
+        
         // 작업자
-        document.querySelector(".search-container").style.display = 'none';
-        document.querySelector("#suggestBox").style.display = 'block';
-        document.querySelector("#totalTable").style.display = "none";
-        document.querySelector(".buttonZip").style.display = 'none';
+        document.querySelector(".workerGrade").innerHTML = '작업자<br>';
+        // document.querySelector("#adminTitle").style.display = 'none';
+        // document.querySelector("#adminNav").style.display = 'none';
+        // document.querySelector(".search-container").style.display = 'none';
+        // document.querySelector("#suggestBox").style.display = 'block';
+        // document.querySelector("#totalTable").style.display = "none";
+        // document.querySelector("#adminTitle").style.display = 'none';
+        // document.querySelector("#adminNav").style.display = 'none';
+        // document.querySelector(".buttonZip").style.display = 'none';
 
 
 

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Facilities Page</title>
+    <link rel="stylesheet" href="facilitiespage.css">
 
 </head>
 <style>
@@ -21,23 +22,95 @@
         align-items: center;
         font-family: "SOYOMapleBoldTTF";
         margin: 0 auto;
+        /* font-family: Arial, sans-serif; */
         background: #fff;
         color: #333;
         background-color: #ccc;
     }
 
+    /* title */
+    #workerTitle {
+        display: flex;
+        width: 1000px;
+        justify-content: space-between;
+        padding: 5px;
+
+    }
+
+    #workerLogo {
+        width: 200px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+    }
+
+    #workerTitle h1 {
+        width: 200px;
+        color: #000;
+    }
+
+    #mainTitle1 {
+        display: none;
+    }
+
+    #mainTitle2 {
+        display: none;
+    }
+
+    #myPage {
+        width: 200px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+    }
+
+    #myPageLogo {
+        width: 80px;
+        height: 80px;
+        margin-right: 3%;
+    }
+
+    #workerName a {
+        text-decoration: none;
+        color: #333;
+
+    }
+
+    #workerName a:hover {
+        text-decoration: none;
+        color: #888;
+        transition: color 0.2s ease;
+    }
+
+    #workerTitle .workerPic {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+    }
+
+    #workerTitle .logo {
+        width: 200px;
+        height: 70px;
+    }
+
+    /* title end */
+
     .wrap {
         width: 1000px;
+        /* height: 100vh; */
         display: flex;
         flex-direction: column;
         margin: auto;
     }
 
+    /* header와 nav의 집합 */
     .header-nav-container {
         position: relative;
         width: 100%;
+        /* wrap과 동일한 너비 */
     }
 
+    /* header 코드 */
     header {
         width: 100%;
         background: #000;
@@ -78,6 +151,8 @@
         color: #aaa;
     }
 
+    /* header 코드 끝 */
+
     nav {
         width: 100%;
         position: absolute;
@@ -89,9 +164,10 @@
         max-height: 0;
         overflow: hidden;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-        transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear;
+        /* transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear; */
         visibility: hidden;
         z-index: 100;
+        /* opacity: 0; */
     }
 
     /* nav 숨김요소 */
@@ -103,45 +179,23 @@
         transition: max-height 0.5s ease, visibility 0s, opacity 0.5s linear;
     }
 
-    .aside-section-container {
-        box-sizing: border-box;
-        width: 100%;
-        display: flex;
-    }
-
-    /* 좌측 메뉴바 */
-    aside {
-        min-height: 800px;
-        width: 20%;
-        background: #5f5f5f;
-        display: flex;
-        flex-direction: column;
-    }
-
-    /* 섹션 창을 조작하기바람 */
-    section {
-        box-sizing: border-box;
-        width: 80%;
-        min-height: 800px;
-        background: #eee;
-        z-index: 50;
-        position: relative;
-        min-height: 815px;
-    }
-
+    /* nav 안의 menu-bar요소 */
     .menu-bar {
         width: 100%;
         height: 220px;
         border-top: 0px;
         border-right: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
         display: flex;
+        justify-content: space-evenly;
     }
 
     .menu-bar-content {
-        margin-left: 40px;
         width: 20%;
         display: inline-block;
         box-sizing: border-box;
+        margin-left: 0;
     }
 
     .menu-bar-content ul li {
@@ -158,74 +212,6 @@
         transition: color 0.2s ease;
     }
 
-
-
-    #workerLogo {
-        width: 200px;
-        height: 80px;
-        display: flex;
-        align-items: center;
-        /* border: 1px solid red; */
-    }
-
-    #workerTitle {
-        /* border: 1px solid red; */
-        display: flex;
-        width: 1000px;
-        /* display: flex; */
-        /* border: 1px solid red; */
-        justify-content: space-between;
-        align-items: center;
-        padding: 5px;
-
-    }
-
-    #workerTitle h1 {
-        width: 200px;
-        color: #000;
-        /* border: 1px solid red; */
-    }
-
-    #myPage {
-        width: 200px;
-        height: 80px;
-        /* border: 1px solid red; */
-        display: flex;
-        align-items: center;
-    }
-
-    #myPageLogo {
-        width: 80px;
-        height: 80px;
-        /* border: 1px solid red; */
-        margin-right: 3%;
-    }
-
-
-    #workerName a {
-        text-decoration: none;
-        color: #333;
-        font-size: 16px;
-
-    }
-
-    #workerName a:hover {
-        text-decoration: none;
-        color: #888;
-        transition: color 0.2s ease;
-    }
-
-    .workerPic {
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-    }
-
-    .logo {
-        width: 200px;
-        height: 70px;
-    }
-
     #menu-bar-content-sub {
         list-style: circle;
         font-size: 14px;
@@ -236,22 +222,19 @@
         padding: 5px;
     }
 
-    #mainTitle1 {
-        display: none;
+    /* menu-bar요소 끝 */
+
+    /* aside, section */
+    .aside-section-container {
+        width: 100%;
+        display: flex;
     }
 
-    #mainTitle1 a {
-        text-decoration: none;
-        color: #333;
-    }
-    
-    #mainTitle2 {
-        display: none;
-    }
-
-    #mainTitle2 a {
-        text-decoration: none;
-        color: #333;
+    /* 좌측 메뉴바 */
+    aside {
+        width: 20%;
+        background: #5f5f5f;
+        min-height: 800px;
     }
 
     aside ul li {
@@ -580,9 +563,84 @@
         text-align: center;
         height: 7%;
         line-height: 70px;
+
+    }
+
+    .workerGrade {
+        display: none;
+    }
+
+    #mainTitle1 {
+        display: none;
+    }
+
+    #mainTitle1 a {
+        text-decoration: none;
+        color: #333;
+    }
+
+    #mainTitle2 {
+        display: none;
+    }
+
+    #mainTitle2 a {
+        text-decoration: none;
+        color: #333;
+    }
+
+    @media screen and (max-width: 770px) {
+
+        form {
+            width: 100%;
+        }
+
+        #workerTitle {
+            width: 100%;
+        }
+
+        .wrap {
+            width: 100%;
+        }
+
+        section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        section .lego-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            width: 570px;
+            border-top: 1px solid #444;
+            border-bottom: 1px solid #444;
+            margin-bottom: 10px;
+            margin-top: 20px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            box-sizing: border-box;
+        }
+
+        .optionpage-button {
+            margin: 0;
+        }
+
+        #add-option-btn {
+            background-color: #3498DB;
+            color: #fff;
+            border: 0;
+            border-radius: 10px;
+            width: 70px;
+            height: 30px;
+            cursor: pointer;
+            margin-left: 500px;
+        }
     }
 
     @media screen and (max-width: 430px) {
+
 
         form {
             width: 100%;
@@ -621,7 +679,7 @@
             /* header 높이에 맞게 조정 */
             left: 0;
             right: 0;
-            background: #dde;
+            background: #eee;
             overflow: hidden;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
             transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear;
@@ -632,7 +690,7 @@
         }
 
         nav.active {
-            min-height: 815px;
+            min-height: 800px;
             max-height: none;
             width: 200px;
             visibility: visible;
@@ -645,6 +703,7 @@
         nav {
             transform: translateX(-100%);
             transition: transform 0.5s ease;
+
         }
 
         nav.active {
@@ -664,6 +723,8 @@
             border-right: 1px solid #ccc;
             display: flex;
             flex-direction: column;
+            justify-content: start;
+
         }
 
         .menu-bar-content {
@@ -674,6 +735,7 @@
         .menu-bar-content ul li {
             padding: 10px;
         }
+
 
         aside {
             display: none;
@@ -753,10 +815,8 @@
         /* 옵션변경 페이지 */
         #optionpage-option-select-page {
             display: none;
-            flex-direction: column;
             background: #eee;
             width: 100%;
-            box-sizing: border-box;
             height: 100%;
             text-align: center;
             /* border: 1px solid red; */
@@ -814,6 +874,10 @@
             margin: 0;
         }
 
+        .workerGrade {
+            display: inline;
+        }
+
     }
 </style>
 
@@ -833,7 +897,7 @@
                     <img src="https://cdn.discordapp.com/attachments/1185161279804026893/1200675420551520370/workerP.jpg?ex=65c70b1f&is=65b4961f&hm=c49f91b245305c4bb33c58e626bc4960b4f601257e433425a8d7cc0da454126e&"
                         class="workerPic">
                 </div>
-                <span id="workerName"><a href="#">이도연 대리님</a></span>
+                <span id="workerName"><span class="workerGrade">작업자<br></span>이도연 대리님</span>
             </div>
         </div>
 
@@ -841,10 +905,11 @@
             <div class="header-nav-container">
                 <header>
                     <ul>
-                        <li><a href="#" class="hover" title="작업지시서">작업</a></li>
+                        <li><a href="work-order.html" class="hover" title="작업지시서">작업</a></li>
                         <li><a href="facilityMonitoring.html" class="hover" title="품질검사">설비</a></li>
-                        <li><a href="#" class="hover" title="건의사항">재고관리</a></li>
-                        <li><a href="#" class="hover" title="직원 게시판">게시판</a></li>
+                        <li><a href="stock_status.html" class="hover" title="건의사항">재고관리</a></li>
+                        <li id="adminTitle"><a href="Employee_managemen.html" class="hover" title="직원관리">직원관리</a></li>
+                        <li><a href="boardTable.html" class="hover" title="직원 게시판">게시판</a></li>
                     </ul>
                 </header>
                 <nav>
@@ -860,7 +925,9 @@
                         <div class="menu-bar-content">
                             <ul>
                                 <li><a href="facilityMonitoring.html">설비 모니터링</a></li>
+
                                 <li><a href="process.html">공정도</a></li>
+
                                 <li><a href="facilitiespage.html">설비 설정</a></li>
                             </ul>
                         </div>
@@ -872,11 +939,18 @@
                                 <li><a href="Report_of_defective_inventory.html">재고 불량 신고</a></li>
                             </ul>
                         </div>
+                        <div class="menu-bar-content" id="adminNav">
+                            <ul>
+                                <li><a href="Employee_managemen.html">직원목록</a></li>
+                                <li><a href="work-record.html">근무기록</a></li>
+                                <li><a href="vacation.html">휴가신청</a></li>
+                            </ul>
+                        </div>
                         <div class="menu-bar-content">
                             <ul>
                                 <li><a href="boardTable.html">자유게시판</a></li>
                                 <li><a href="suggestTable.html">건의사항</a></li>
-                                <li><a href="#">Q&A</a></li>
+                                <li><a href="QA.html">Q&A</a></li>
                             </ul>
                         </div>
                     </div>
@@ -886,10 +960,11 @@
                 <aside>
                     <ul>
                         <li>
-                            <a href="facilityMonitoring.html">설비 모니터링</a>
+                            <a href="FacilityMonitoring.html">설비 모니터링</a>
+                        </li>
                         <li>
                             <a href="process.html">공정도</a>
-                        </li>
+
                         </li>
                         <li>
                             <a href="facilitiespage.html">설비설정</a>
@@ -1170,7 +1245,7 @@
                 }
             }
 
-            document.querySelector("#optionpage-option-select-page").style.display = "flex";
+            document.querySelector("#optionpage-option-select-page").style.display = "block";
         }
 
 
@@ -1337,6 +1412,51 @@
                 }
             });
         });
+
+        // 마이페이지
+        document.querySelector("#workerName").addEventListener("click", () => {
+            window.open("myPage.html", '_blank', 'width = 630, height = 470, top=100, left=100');
+        });
+
+        hover.forEach(link => {
+            link.addEventListener("click", function (event) {
+                let myPage = document.querySelector("#myPage");
+                // let myPageName = document.querySelector("#workerName");
+                // let myPageLogo = document.querySelector("#myPageLogo");
+                let menuBar = document.querySelector(".menu-bar");
+                let mainPage = document.querySelector(".wrap");
+                let companyLogo = document.querySelector("#workerLogo");
+
+                let ulLi = document.querySelectorAll(".menu-bar-content ul li");
+
+
+                event.preventDefault();
+                if (nav.classList.contains('active') && window.matchMedia("(max-width: 430px)").matches) {
+                    nav.style.height = `${section.offsetHeight}px`
+
+                    // //네비4
+                    // for (let i = 0; i < ulLi.length; i++) {
+                    //     // ulLi[i].style.padding = '10px';
+                    //     ulLi[i].style.margin = '0px';
+                    // }
+
+                    // 네비5
+                    for (let i = 0; i < ulLi.length; i++) {
+                        ulLi[i].style.padding = '7px';
+
+                    }
+                    menuBar.prepend(myPage);
+                }
+            });
+        });
+
+        document.querySelector("#adminTitle").style.display = 'block';
+        document.querySelector("#adminNav").style.display = 'block';
+        document.querySelector(".workerGrade").innerHTML = '작업자<br>';
+        // document.querySelector(".workerGrade").innerHTML = '관리자<br>';
+
+        // document.querySelector("#adminTitle").style.display = 'none';
+        // document.querySelector("#adminNav").style.display = 'none';
 
     </script>
 </body>
