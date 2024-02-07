@@ -10,39 +10,39 @@
     body {
         box-sizing: border-box;
         text-align: center;
-        position: relative;
         margin: 0;
         padding: 0;
         /* background-color: #ccc; */
     }
 
     header {
-        width: 1000px;
+
+        width: 100%;
+        background-color: #ccc;
         margin: 0 auto;
         text-align: center;
         border: 0px solid red;
     }
 
-    header .logo {
-        margin-top: 100px;
-        display: inline-block;
-    }
-
     nav {
-        display: inline-block;
         margin: 50px auto;
-        width: 500px;
-        border: 1px solid #ccc;
-        height: 300px;
+        width: 30%;
+        border: 1px solid #ddd;
+        height: 260px;
         border-radius: 5px;
-        position: relative;
-        box-shadow: 0 2px 6px 0 rgba(68, 68, 68, .08);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+
     }
 
     nav .input {
-        width: 400px;
-        height: 100px;
-        margin: 70px 0px;
+        padding: 10px;
+        width: 95%;
+        height: 40%;
+        margin: 2% 0px;
         display: inline-block;
         border-radius: 5px;
         box-sizing: border-box;
@@ -51,8 +51,8 @@
 
     nav .input .input1 {
         border: 1px solid #ccc;
-        width: 98%;
-        height: 48%;
+        width: 95%;
+        height: 43%;
         border-radius: 5px 5px 0 0;
         box-sizing: border-box;
         padding-left: 16px;
@@ -62,8 +62,8 @@
     nav .input .input2 {
         border: 1px solid #ccc;
         border-top: 0px;
-        width: 98%;
-        height: 48%;
+        width: 95%;
+        height: 43%;
         border-radius: 0 0 5px 5px;
         box-sizing: border-box;
         padding-left: 16px;
@@ -72,49 +72,49 @@
 
     nav .input .input1:focus {
         border-radius: 5px 5px 0 0;
-        border-color: #394080;
+        border-color: #333;
         outline: none;
     }
 
     nav .input .input2:focus {
         border-radius: 0 0 5px 5px;
-        border: 1px solid #394080;
+        border: 1px solid #333;
         outline: none;
     }
 
     .auto {
-        position: absolute;
-        margin: 170px 58px;
+        width: 94%;
+        height: 30%;
+        margin: 1% auto;
+        display: flex;
+        align-items: center;
         font-size: 14px;
         color: #555;
     }
 
     .btn1 {
-        width: 400px;
+        width: 86%;
         height: 50px;
         box-sizing: border-box;
         color: #fff;
-        background: rgb(2, 0, 36);
-        background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 40%, rgba(0, 212, 255, 1) 100%);
-        border: 0px solid darkgreen;
+        background: #000;
+        border: 0px solid #ddd;
         border-radius: 6px;
         font-size: 20px;
-        position: absolute;
-        margin: 230px -400px;
     }
 
     input[type="checkbox"] {
         display: none;
     }
 
-    input[type="checkbox"]+label::before {
+    input[type="checkbox"]+label {
         content: '✔';
-        color: #394080;
+        color: #000;
         font-size: 12px;
         display: inline-block;
         width: 15px;
         height: 15px;
-        border: 1px solid #394080;
+        border: 1px solid #000;
         position: relative;
         border-radius: 100%;
     }
@@ -123,107 +123,91 @@
         content: '✔';
         color: #fff;
         font-size: 12px;
-        width: 17px;
-        height: 17px;
+        width: 15px;
+        height: 15px;
+        border: 1px solid black;
         position: absolute;
-        left: 0;
-        top: 10%;
+        left: -5%;
+        top: -7%;
         border-radius: 100%;
-        background-color: #394080;
-    }
-
-    .sv {
-        width: 500px;
-        display: inline-block;
-        position: absolute;
-        margin: 360px -500px;
-        text-align: center;
-        box-sizing: border-box;
-
-
-    }
-
-    .sv ul {
-        padding: 0;
-        margin: 0;
-        display: flex;
-        box-sizing: border-box;
-        justify-content: center;
-        align-items: center;
-        font-size: 14px;
-        color: #888686;
-
-    }
-
-    .sv ul li {
-        display: inline-block;
-        list-style: none;
-        margin: 0 10px;
-    }
-
-    a {
-        text-decoration: none;
-        color: #888686;
+        background-color: #000;
     }
 
     #error {
-        position: absolute;
+        width: 83%;
+        min-height: 20px;
+        margin: 0 auto;
         color: red;
         font-size: 12px;
-        margin: 35px 10px;
+        text-align: left;
+    }
+
+    @media screen and (max-width: 430px) {
+        nav{
+            width: 80%;
+        }
     }
 </style>
-<script>
-    function fn_action() {
-        if (document.frm.userid.value == "") {
-            document.getElementById("error").innerHTML
-                = "아이디를 입력 해주세요.";
-            document.frm.userid.focus();
-            return false;
-        }
 
-        if (document.frm.pass.value == "") {
-            document.getElementById("error").innerHTML
-                = "암호를 입력 해주세요.";
-            document.frm.pass.focus();
-            return false;
-        }
-
-        else {
-            alert("로그인 되었습니다");
-            location.href = "http://naver.com"
-        }
-
-    }
-
-
-</script>
 
 <body>
     <form name="frm">
         <header>
             <div class="logo">
-                <h1>로그인 페이지 입니다</h1>
+                <image
+                    src="https://cdn.discordapp.com/attachments/1185161279804026893/1200675420325036082/Jlogo.png?ex=65c70b1f&is=65b4961f&hm=ae28f53e9280fe71cffc1fc2ca74aec892875f13143ef4e109da28023c5b414b&"
+                    class="logo">
             </div>
         </header>
         <nav>
-            <div class="auto">
-                <input type="checkbox" name="auto_login" id="check1"><label for="check1"></label> 로그인 상태 유지
-            </div>
             <div class="input">
                 <input type="text" name="userid" class="input1" autofocus placeholder="아이디"><br>
                 <input type="password" name="pass" class="input2" placeholder="비밀번호">
-                <div id="error"></div>
+                <div class="auto">
+                    <input type="checkbox" name="auto_login" id="check1"><label for="check1"></label> 로그인 상태 유지
+                </div>
             </div>
+            <div id="error"></div>
             <button type="submit" name="login" onclick="fn_action();return false;"
                 class="btn1"><strong>로그인</strong></button>
         </nav>
-        <div class="sv">
-            <ul>
-                <li><a href="#">비밀번호 찾기</a></li>|<li><a href="#">아이디 찾기</a></li>|<li><a href="#">회원가입</a></li>
-            </ul>
-        </div>
     </form>
+    <script>
+        const ADMIN_ID = "admin";
+        const ADMIN_PASSWORD = "Admin1234";
+        const EMPLOYEE_ID = "worker_1";
+        const EMPLOYEE_PASSWORD = "Epoloyee1234";
+
+        function fn_action() {
+            var userId = document.frm.userid.value;
+            var password = document.frm.pass.value;
+
+            if (userId == "") {
+                document.getElementById("error").innerHTML = "아이디를 입력 해주세요.";
+                document.frm.userid.focus();
+                return false;
+            }
+
+            if (password == "") {
+                document.getElementById("error").innerHTML = "암호를 입력 해주세요.";
+                document.frm.pass.focus();
+                return false;
+            }
+
+            if ((userId === ADMIN_ID && password === ADMIN_PASSWORD) || (userId === EMPLOYEE_ID && password === EMPLOYEE_PASSWORD)) {
+                alert("로그인 되었습니다");
+                if (userId === ADMIN_ID) {
+                    location.href = "main.html";
+                } else {
+                    location.href = "main.html";
+                }
+            } else {
+                document.getElementById("error").innerHTML = "잘못된 아이디 또는 암호입니다.";
+                document.frm.userid.focus();
+                return false;
+            }
+        }
+    </script>
 </body>
 
 </html>
