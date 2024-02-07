@@ -1363,7 +1363,9 @@ article {
     }
 
     .delete_button {
-        font-size: 10px;
+        width: 70px;
+        line-height: 1.7;
+        font-size: 12px;
     }
 
     .Employee_atomic_infor_select input,
