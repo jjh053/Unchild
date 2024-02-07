@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Management System</title>
+    <script src="workQuality.js"></script>
     <style>
         @font-face {
             font-family: "SOYOMapleBoldTTF";
@@ -239,6 +240,7 @@
         /* 좌측 메뉴바 */
         aside {
             width: 20%;
+            min-height: 800px;
             background: #5f5f5f;
         }
 
@@ -261,7 +263,7 @@
             display: flex;
             justify-content: center;
             width: 80%;
-            overflow: auto;
+            min-height: 800px;
             background: #eee;
             z-index: 50;
             align-items: center;
@@ -290,8 +292,6 @@
 
 
         #work-checker {
-            border: 1px solid #ddd;
-            background-color: #eee;
             margin-left: 20px;
             /* box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); */
             border-radius: 8px;
@@ -326,7 +326,7 @@
             transition: 0.2s;
         }
 
-        .work-check-list:nth-child(-n+4) ul {
+        .work-check-list {
             margin: 0 auto;
             width: 80%;
             border: 1px solid #ddd;
@@ -336,8 +336,12 @@
             padding: 15px;
         }
 
-
-
+        .work-check-list-content {
+            text-align: left;
+            position: relative;
+            margin-left: 8%;
+            margin-bottom: 2%;
+        }
 
         #complete-button-div {
             text-align: center;
@@ -419,8 +423,13 @@
             position: relative;
         }
 
-        .work-check-list h4 {
+        .work-check-list h3 {
             text-align: center;
+        }
+
+        .work-check-list-content span {
+            text-align: left;
+            margin-left: 0%;
         }
 
         .delete-checkbox-div {
@@ -432,18 +441,9 @@
 
         .error-checkbox-div {
             position: absolute;
-            top: 0;
-            right: 0;
-        }
-
-        .work-check-list ul {
-            text-align: left;
-        }
-
-        .work-check-list ul li {
-            margin-top: 4%;
-            margin-left: 0;
-            position: relative;
+            top: 0%;
+            left: -8%;
+            display: block;
         }
 
         .list-delete-button {
@@ -699,107 +699,125 @@
                             </div>
 
                             <div id="work-quality">
-                                <div id="work-list1" class="work-check-list">
-                                    <h4>
+                                <div class="work-check-list">
+                                    <h3>
                                         케이스 외관 확인사항
                                         <div class="delete-checkbox-div">
                                             <input type="checkbox" class="delete-checkbox">
                                         </div>
-                                    </h4>
-                                    <ul>
-                                        <li>
-                                            <span>-도장상태</span>
+                                    </h3>
+                                    <div class="work-check-list-content">
+                                        <span>
+                                            -도장상태
                                             <div class="error-checkbox-div">
                                                 <input type="checkbox" class="error-checkbox">
                                             </div>
-                                        </li>
-                                        <li>
-                                            <span>-금형상태</span>
+                                        </span>
+                                    </div>
+                                    <div class="work-check-list-content">
+                                        <span>
+                                            -금형상태
                                             <div class="error-checkbox-div">
                                                 <input type="checkbox" class="error-checkbox">
                                             </div>
-                                        </li>
-                                        <li>
-                                            <span>-찍힘</span>
+                                        </span>
+                                    </div>
+                                    <div class="work-check-list-content">
+                                        <span>
+                                            -찍힘
+                                            <div class="error-checkbox-div">
+                                                <input type="checkbox" class="error-checkbox">
+                                            </div>      
+                                        </span>  
+                                    </div>  
+                                    <div class="work-check-list-content">                      
+                                        <span>
+                                            -볼트체결
                                             <div class="error-checkbox-div">
                                                 <input type="checkbox" class="error-checkbox">
                                             </div>
-                                        </li>
-                                        <li>
-                                            <span>-볼트체결</span>
-                                            <div class="error-checkbox-div">
-                                                <input type="checkbox" class="error-checkbox">
-                                            </div>
-                                        </li>
-                                    </ul>
+                                        </span>
+                                    </div>   
                                 </div>
-                                <div id="work-list2" class="work-check-list">
-                                    <h4>
+                                <div class="work-check-list">
+                                    <h3>
                                         전원부 확인사항
                                         <div class="delete-checkbox-div">
                                             <input type="checkbox" class="delete-checkbox">
                                         </div>
-                                    </h4>
-                                    <ul>
-                                        <li>
-                                            <span>-LED 붉은색 부팅시 오류</span>
+                                    </h3>    
+                                    <div class="work-check-list-content">
+                                        <span>
+                                            -LED 붉은색 부팅시 오류
                                             <div class="error-checkbox-div">
                                                 <input type="checkbox" class="error-checkbox">
                                             </div>
-                                        </li>
-                                        <li>
-                                            <span>-팬 회전 여부</span>
+                                        </span>    
+                                    </div>   
+                                    <div class="work-check-list-content">                      
+                                        <span>
+                                            -팬 회전 여부
                                             <div class="error-checkbox-div">
                                                 <input type="checkbox" class="error-checkbox">
                                             </div>
-                                        </li>
-                                        <li>
-                                            <span>-팬 등 소음여부</span>
+                                        </span>   
+                                    </div>   
+                                    <div class="work-check-list-content">                            
+                                        <span>
+                                            -팬 등 소음여부
                                             <div class="error-checkbox-div">
                                                 <input type="checkbox" class="error-checkbox">
                                             </div>
-                                        </li>
-                                    </ul>
+                                        </span>
+                                    </div>                                  
                                 </div>
-                                <div id="work-list3" class="work-check-list">
-                                    <h4>
+                                <div class="work-check-list">
+                                    <h3>
                                         윈도우 설치 및 구동확인
                                         <div class="delete-checkbox-div">
                                             <input type="checkbox" class="delete-checkbox">
                                         </div>
-                                    </h4>
-                                    <ul>
-                                        <li>
-                                            <span>-윈도우 작동</span>
+                                    </h3> 
+                                    <div class="work-check-list-content">
+                                        <span>
+                                            -윈도우 작동
                                             <div class="error-checkbox-div">
                                                 <input type="checkbox" class="error-checkbox">
                                             </div>
-                                        </li>
-                                        <li>
-                                            <span>-시스템 사양 및 일련번호</span>
+                                        </span>   
+                                    </div>                                  
+                                    <div class="work-check-list-content">
+                                        <span>
+                                            -시스템 사양 및 일련번호
                                             <div class="error-checkbox-div">
                                                 <input type="checkbox" class="error-checkbox">
                                             </div>
-                                        </li>
-                                        <li>
-                                            <span>-시스템 정보</span>
+                                        </span>  
+                                    </div>                                    
+                                    <div class="work-check-list-content">
+                                        <span>
+                                            -시스템 정보
                                             <div class="error-checkbox-div">
                                                 <input type="checkbox" class="error-checkbox">
                                             </div>
-                                        </li>
-                                        <li>
-                                            <span>-창의 제품 일련번호</span>
+                                        </span>   
+                                    </div>                                    
+                                    <div class="work-check-list-content">
+                                        <span>
+                                            -창의 제품 일련번호
                                             <div class="error-checkbox-div">
                                                 <input type="checkbox" class="error-checkbox">
                                             </div>
-                                        </li>
-                                        <li>
-                                            <span>-작업관리자 진입 후 성능탭의 부품명</span>
+                                        </span>                                       
+                                    </div>                                    
+                                    <div class="work-check-list-content">
+                                        <span>
+                                            -작업관리자 진입 후 성능탭의 부품명
                                             <div class="error-checkbox-div">
                                                 <input type="checkbox" class="error-checkbox">
                                             </div>
-                                        </li>
-                                    </ul>
+                                        </span>   
+                                    </div>                          
                                 </div>
                             </div>
 
@@ -901,286 +919,6 @@
         <footer>ⓒ2024 J.company System</footer>
     </div>
 
-    <script>
-
-        document.querySelector("#mainTitle2").style.display = "block";
-
-        const hover = document.querySelectorAll('a.hover');
-        const menuBar = document.querySelector('.menu-bar');
-        const nav = document.querySelector('nav');
-        const wrap = document.querySelector('.wrap');
-
-        let id = "admin";
-
-        document.querySelector("#complete-button")
-            .addEventListener("click", function () {
-                id = "admin";
-                user_check(id);
-            });
-        document.querySelector("#user")
-            .addEventListener("click", function () {
-                id = "user";
-                user_check(id);
-            });
-
-
-        function user_check(id) {
-
-            if (id == "user") {
-                document.querySelector("#mainTitle1").style.display = "block";
-                document.querySelector("#mainTitle2").style.display = "none";
-                document.querySelector("#article-work-main").style.display = "block";
-                document.querySelector("#complete-button-div").style.display = "block";
-                document.querySelector("#work-checker").style.display = "block";
-                document.querySelector("#add-button-div").style.display = "none";
-
-                let delete_checkbox_div = document.getElementsByClassName("delete-checkbox-div");
-
-                for (let i = 0; i < delete_checkbox_div.length; i++) {
-                    delete_checkbox_div[i].style.display = "none";
-                }
-
-                let error_checkbox_div = document.getElementsByClassName("error-checkbox-div");
-
-                for (let i = 0; i < error_checkbox_div.length; i++) {
-                    error_checkbox_div[i].style.display = "block";
-                }
-
-            } else if (id == "admin") {
-                document.querySelector("#mainTitle1").style.display = "none";
-                document.querySelector("#mainTitle2").style.display = "block";
-                document.querySelector("#article-work-main").style.display = "block";
-                document.querySelector("#add-button-div").style.display = "block";
-                document.querySelector("#work-checker").style.display = "none";
-                document.querySelector("#complete-button-div").style.display = "none";
-
-                let delete_checkbox_div = document.getElementsByClassName("delete-checkbox-div");
-
-                for (let i = 0; i < delete_checkbox_div.length; i++) {
-                    delete_checkbox_div[i].style.display = "block";
-                }
-
-                let error_checkbox_div = document.getElementsByClassName("error-checkbox-div");
-
-                for (let i = 0; i < error_checkbox_div.length; i++) {
-                    error_checkbox_div[i].style.display = "none";
-                }
-
-            }
-
-        };
-
-
-
-
-
-        let isHovered = false;
-
-        hover.forEach(button => {
-            button.addEventListener('mouseover', () => {
-                showMenuBar();
-                isHovered = true;
-            });
-        });
-
-        wrap.addEventListener("mouseleave", function () {
-            if (!isHovered) {
-                hideMenuBar();
-            }
-        });
-
-        menuBar.addEventListener("mouseenter", function () {
-            isHovered = true;
-        });
-
-        menuBar.addEventListener("mouseleave", function () {
-            hideMenuBar();
-        });
-
-        function showMenuBar() {
-            nav.classList.add('active');
-        }
-
-        function hideMenuBar() {
-            nav.classList.remove('active');
-        }
-
-        // 품질검사 지침서 팝업
-        // 팝업 div 랑 버튼가져오기
-        const work_popup = document.getElementById("work-popup");
-        const work_button = document.getElementById("work-checker-button");
-        const close_btn = document.getElementById("close-popup-btn");
-
-        // 팝업 div 열기
-        work_button.addEventListener("click", function () {
-            work_popup.style.display = "block";
-            // 다른영역 클릭 비활성화
-            work_popup.style.pointerEvents = "auto";
-        });
-
-        // 팝업 div 닫기 => 닫기버튼누를시
-        close_btn.addEventListener("click", function () {
-            work_popup.style.display = "none";
-            // 다른영역 클릭 활성화
-            work_popup.style.pointerEvents = "none";
-        });
-
-        // 팝업 div 닫기버튼 비활성화
-        work_popup.addEventListener("click", function (event) {
-            event.stopPropagation();
-        });
-
-        // 팝업 div 닫기버튼 활성화
-        window.addEventListener("click", function (event) {
-            if (event.target == modal) {
-                work_popup.style.display = "none";
-                // 다른영역 클릭 활성화
-                work_popup.style.pointerEvents = "none";
-            }
-        });
-
-
-
-
-
-
-
-        // 품질불량 체크사항 삭제하기 --기본사항
-        const list_delete = document.getElementById("list-delete");
-
-
-        list_delete.addEventListener("click", function () {
-
-            const delete_checked = document.querySelectorAll(".delete-checkbox:checked");
-
-            for (let i = 0; i < delete_checked.length; i++) {
-
-
-                delete_checked[i].closest(".work-check-list").style.display = "none";
-            }
-
-        });
-
-
-
-
-
-
-
-        // 품질불량 체크사항 추가하기 팝업
-        const add_popup = document.getElementById("quality-add-popup");
-        const list_add_button = document.getElementById("list-add-button");
-        const add_apply_button = document.getElementById("add-apply-button");
-        const cancel_apply_button = document.getElementById("cancel-apply-button");
-
-        // 팝업 div 열기
-        list_add_button.addEventListener("click", function () {
-            add_popup.style.display = "block";
-
-            // 다른영역 클릭 비활성화
-            add_popup.style.pointerEvents = "auto";
-        });
-
-        // 팝업 div 닫기 => 적용,취소버튼누를시
-        add_apply_button.addEventListener("click", function () {
-            add_popup.style.display = "none";
-            // 다른영역 클릭 활성화
-            add_popup.style.pointerEvents = "none";
-        });
-
-        // 팝업 div 닫기버튼 비활성화
-        add_popup.addEventListener("click", function (event) {
-            event.stopPropagation();
-        });
-
-        // 팝업 div 닫기버튼 활성화
-        window.addEventListener("click", function (event) {
-
-            if (event.target == modal) {
-                add_popup.style.display = "none";
-                // 다른영역 클릭 활성화
-                add_popup.style.pointerEvents = "none";
-            }
-        });
-
-
-
-        // 품질불량 체크사항 추가사항 적용하기
-        let add_count = 4;
-
-        document.querySelector("#add-apply-button")
-            .addEventListener("click", function () {
-
-                const add_title = document.querySelector("#add-title");
-                const add_detail = document.querySelector("#add-detail");
-                const work_quality = document.querySelector("#work-quality");
-
-
-
-
-                // work-quality div 안에 원래 값 + 새로 추가할 div 를 넣어줌
-                work_quality.innerHTML = work_quality.innerHTML + `<div id="work-list${add_count}" class="work-check-list">
-                                                                <h4>
-                                                                    ${add_title.value}
-                                                                    <div class="delete-checkbox-div">
-                                                                        <input type="checkbox" class="delete-checkbox">
-                                                                    </div>
-                                                                </h4>
-                                                                <ul id="add-ul${add_count}">                                                                    
-                                                                </ul>
-                                                            </div>`
-
-
-                let delete_checkbox_div = document.getElementsByClassName("delete-checkbox-div");
-
-                for (let i = 0; i < delete_checkbox_div.length; i++) {
-                    delete_checkbox_div[i].style.display = "block";
-                }
-
-
-
-
-
-
-                // 내용을 "-" 기준으로 배열에 담음
-                let detail = add_detail.value.split("\n");
-                console.log(detail);
-
-                // 가져온 내용을 담은 배열을 뽑은뒤 출력하는 반복문
-                let add_ul = document.querySelector(`#add-ul${add_count}`);
-
-                for (let i = 0; i < detail.length; i++) {
-
-
-                    add_ul.innerHTML = add_ul.innerHTML + `<li>
-                                                        <span>-${detail[i]}</span>
-                                                        <div class="error-checkbox-div">
-                                                            <input type="checkbox" class="error-checkbox">
-                                                        </div>
-                                                    </li>`
-
-
-                    let error_checkbox_div = document.getElementsByClassName("error-checkbox-div");
-
-                    for (let i = 0; i < error_checkbox_div.length; i++) {
-                        error_checkbox_div[i].style.display = "none";
-                    }
-
-
-
-                };
-
-                add_title.value = "";
-                add_detail.value = "";
-
-                add_count++;
-
-            });
-
-
-
-
-    </script>
 </body>
 
 </html>
