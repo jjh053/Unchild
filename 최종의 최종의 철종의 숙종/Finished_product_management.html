@@ -378,6 +378,10 @@
                         </div>
 
                     </div>
+                    <div class="submit">
+                        <button type="button" class="admin"> 관리자 </button>
+                        <button type="button" class="worker"> 작업자 </button>
+                    </div>
                     <br>
         </div>
 
@@ -392,6 +396,21 @@
         // 완제품관리 JS
 
 
+        document.querySelector(".admin").addEventListener("click", function () {
+            document.querySelector("#adminTitle").style.display = "block"
+            document.querySelector("#adminNav").style.display = "block"
+            document.querySelector(".workerGrade").innerHTML = "관리자<br>";
+            document.querySelector("#mainTitle2").style.display = "block"
+            document.querySelector("#mainTitle1").style.display = "none"
+        })
+        document.querySelector(".worker").addEventListener("click", function () {
+            document.querySelector("#adminTitle").style.display = "none"
+            document.querySelector("#adminNav").style.display = "none"
+            document.querySelector(".workerGrade").innerHTML = "작업자<br>";
+            document.querySelector("#mainTitle2").style.display = "none"
+            document.querySelector("#mainTitle1").style.display = "block"
+            
+        })
 
 
 
@@ -440,7 +459,7 @@
                 nav.style.height = '';
             }
         });
-        
+
         const section = document.querySelector('section');
         section.addEventListener("click", function () {
             hideMenuBar();
@@ -522,8 +541,8 @@
 
         document.querySelector("#adminTitle").style.display = 'block';
         document.querySelector("#adminNav").style.display = 'block';
-        document.querySelector(".workerGrade").innerHTML = '작업자<br>';
-        // document.querySelector(".workerGrade").innerHTML = '관리자<br>';
+        // document.querySelector(".workerGrade").innerHTML = '작업자<br>';
+        document.querySelector(".workerGrade").innerHTML = '관리자<br>';
 
         // document.querySelector("#adminTitle").style.display = 'none';
         // document.querySelector("#adminNav").style.display = 'none';

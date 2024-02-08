@@ -341,6 +341,7 @@
         }
 
         .Refund_Application1 {
+            display: block;
             font-size: 30px;
             line-height: 100px;
         }
@@ -926,6 +927,32 @@
             width: 20%;
         }
 
+        .admin,
+        .worker {
+            background-color: #3498DB;
+            margin-top: 10px;
+            width: 80px;
+            height: 40px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+        }
+
+        .admin:hover,
+        .worker:hover {
+            background-color: rgb(0, 47, 255);
+            transition: 0.2s;
+        }
+
+        .submit {
+            width: 100%;
+            /* border: 1px solid red; */
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+        }
+
         /* 여기까지 수정 */
 
 
@@ -1197,7 +1224,7 @@
             }
 
 
-            
+
 
             .sample_img {
                 /* border: 1px solid red; */
@@ -1205,7 +1232,7 @@
                 height: 100px;
             }
 
-          
+
 
             .pic {
                 /* border: 1px solid red; */
@@ -1260,6 +1287,36 @@
                 border-radius: 50%;
             }
 
+            .submit {
+                display: flex;
+                align-items: flex-end;
+                justify-content: space-around;
+                width: 100%;
+                /* border : 1px solid red; */
+            }
+
+            .admin,
+            .worker {
+                background-color: #3498DB;
+                margin-top: 10px;
+                width: 80px;
+                height: 40px;
+                border-radius: 5px;
+                cursor: pointer;
+                color: #fff;
+                border: 0;
+            }
+
+            .order {
+                width: 110px;
+            }
+
+            .admin:hover,
+            .worker:hover {
+                background-color: rgb(0, 47, 255);
+                transition: 0.2s;
+            }
+
         }
     </style>
 </head>
@@ -1298,11 +1355,11 @@
                     <h1 id="headerTitle" style="display: none;"><a href="main.html">J.company</a></h1>
                 </div>
                 <ul>
-                    <li><a href="#" class="hover" title="작업지시서">작업</a></li>
-                    <li><a href="#" class="hover" title="품질검사">설비</a></li>
-                    <li><a href="#" class="hover" title="건의사항">재고관리</a></li>
-                    <li><a href="#" class="hover" title="직원관리">직원관리</a></li>
-                    <li><a href="#" class="hover" title="직원 게시판">게시판</a></li>
+                    <li><a href="work-order.html" class="hover" title="작업지시서">작업</a></li>
+                    <li><a href="facilityMonitoring.html" class="hover" title="품질검사">설비</a></li>
+                    <li><a href="stock_status.html" class="hover" title="건의사항">재고관리</a></li>
+                    <li id="adminTitle"><a href="Employee_managemen.html" class="hover" title="직원관리">직원관리</a></li>
+                    <li><a href="boardTable.html" class="hover" title="직원 게시판">게시판</a></li>
                 </ul>
             </header>
             <nav>
@@ -1407,7 +1464,7 @@
                         <br>
                         <br>
                         <!-- 재고신청 -->
-                        <div class="Refund_Application12">재고신청</div>
+                        <div class="Refund_Application12">업체환불신청</div>
                         <br>
                         <div class="Refund_Request">
                             <div class="table_RR">
@@ -1463,6 +1520,8 @@
                         <div>
                             <div class="submit">
                                 <button type="button" class="order">업체 환불 요청</button>
+                                <button type="button" class="admin"> 관리자 </button>
+                                <button type="button" class="worker"> 작업자 </button>
                             </div>
                         </div>
                     </div>
@@ -1584,6 +1643,38 @@
     </div>
 
     <script>
+
+        document.querySelector(".admin").addEventListener("click", function () {
+            // if (document.querySelector(".Refund_Application1").style.display == "block") {
+            document.querySelector(".Refund_Application1").style.display = "block";
+            // document.querySelector(".admin").style.display = "none";
+            // document.querySelector(".worker").style.display = "block";
+            document.querySelector(".table_RAR").style.display = "inline-block";
+            document.querySelector(".Refund_Application12").innerHTML = "업체환불신청";
+            document.querySelector(".order").innerHTML = "업체 환불 요청";
+            document.querySelector(".workerGrade").innerHTML = "관리자<br>";
+            document.querySelector("#adminTitle").style.display = "block"
+            document.querySelector("#adminNav").style.display = "block"
+            document.querySelector("#mainTitle2").style.display = "block"
+            document.querySelector("#mainTitle1").style.display = "none"
+            
+            // } 
+        })
+        // else {
+        document.querySelector(".worker").addEventListener("click", function () {
+            document.querySelector(".Refund_Application1").style.display = "none";
+            document.querySelector(".table_RAR").style.display = "none";
+            // document.querySelector(".worker").style.display = "none";
+            // document.querySelector(".admin").style.display = "block";
+            document.querySelector(".Refund_Application12").innerHTML = "환불신청";
+            document.querySelector(".order").innerHTML = "관리자에게 전송";
+            document.querySelector(".workerGrade").innerHTML = "작업자<br>";
+            document.querySelector("#adminTitle").style.display = "none"
+            document.querySelector("#adminNav").style.display = "none"
+            document.querySelector("#mainTitle2").style.display = "none"
+            document.querySelector("#mainTitle1").style.display = "block"
+            // }
+        })
 
         window.onload = function () {
             let add_Stock = document.querySelector(".add_Stock");
@@ -2008,10 +2099,10 @@
             });
         });
 
-        document.querySelector("#adminTitle").style.display = 'block';
+        // document.querySelector("#adminTitle").style.display = 'block';
         document.querySelector("#adminNav").style.display = 'block';
-        document.querySelector(".workerGrade").innerHTML = '작업자<br>';
-        // document.querySelector(".workerGrade").innerHTML = '관리자<br>';
+        // document.querySelector(".workerGrade").innerHTML = '작업자<br>';
+        document.querySelector(".workerGrade").innerHTML = '관리자<br>';
 
         // document.querySelector("#adminTitle").style.display = 'none';
         // document.querySelector("#adminNav").style.display = 'none';

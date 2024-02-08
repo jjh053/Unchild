@@ -4,6 +4,23 @@
 // 팝업 3에 대한 클릭이벤트
 
 
+
+// document.querySelector(".admin").addEventListener("click", function () {
+//     document.querySelector("#adminTitle").style.display="block"
+//     document.querySelector("#adminNav").style.display="block"
+//     document.querySelector("#mainTitle2").style.display = "block"
+//     document.querySelector("#mainTitle1").style.display = "none"
+// })
+// document.querySelector(".worker").addEventListener("click", function () {
+//     document.querySelector("#adminTitle").style.display="none"
+//     document.querySelector("#adminNav").style.display="none"
+//     document.querySelector("#mainTitle2").style.display = "none"
+//     document.querySelector("#mainTitle1").style.display = "block"
+// })
+
+
+
+
 let lastbtn = 0;
 
 document.querySelector(".cancel3").addEventListener("click", function () {
@@ -535,10 +552,10 @@ hover.forEach(link => {
     });
 });
 
-document.querySelector("#adminTitle").style.display = 'block';
-document.querySelector("#adminNav").style.display = 'block';
-document.querySelector(".workerGrade").innerHTML = '작업자<br>';
-// document.querySelector(".workerGrade").innerHTML = '관리자<br>';
+// document.querySelector("#adminTitle").style.display = 'block';
+// document.querySelector("#adminNav").style.display = 'block';
+// document.querySelector(".workerGrade").innerHTML = '작업자<br>';
+document.querySelector(".workerGrade").innerHTML = '관리자<br>';
 
 // document.querySelector("#adminTitle").style.display = 'none';
 // document.querySelector("#adminNav").style.display = 'none';

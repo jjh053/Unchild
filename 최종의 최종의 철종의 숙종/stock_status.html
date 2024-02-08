@@ -707,6 +707,38 @@
             /* height: 50%; */
         }
 
+
+        .admin,
+        .worker {
+            background-color: #3498DB;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            width: 80px;
+            height: 40px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+
+        }
+
+        .admin:hover,
+        .worker:hover {
+            background-color: rgb(0, 47, 255);
+            transition: 0.2s;
+        }
+
+        .submit {
+            width: 100%;
+            /* border: 1px solid red; */
+
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-evenly;
+        }
+
+
+
         /* Modal 모달 */
 
         .modal-overlay {
@@ -721,6 +753,9 @@
             justify-content: center;
             align-items: center;
         }
+
+
+
 
         @media screen and (max-width: 430px) {
 
@@ -955,6 +990,7 @@
 
 </head>
 
+
 <body>
     <div id="workerTitle">
         <div id="workerLogo">
@@ -972,7 +1008,7 @@
                     src="https://cdn.discordapp.com/attachments/1185161279804026893/1200675420551520370/workerP.jpg?ex=65c70b1f&is=65b4961f&hm=c49f91b245305c4bb33c58e626bc4960b4f601257e433425a8d7cc0da454126e&"
                     class="workerPic">
             </div>
-            <span id="workerName"><a href="#">이도연 대리님</a></span>
+            <span id="workerName"><span class="workerGrade">작업자<br></span>이도연 대리님</span>
         </div>
     </div>
 
@@ -989,10 +1025,11 @@
                     <h1 id="headerTitle" style="display: none;"><a href="main.html">J.company</a></h1>
                 </div>
                 <ul>
-                    <li><a href="#" class="hover" title="작업지시서">작업</a></li>
-                    <li><a href="#" class="hover" title="품질검사">설비</a></li>
-                    <li><a href="#" class="hover" title="건의사항">재고관리</a></li>
-                    <li><a href="#" class="hover" title="직원 게시판">게시판</a></li>
+                    <li><a href="work-order.html" class="hover" title="작업지시서">작업</a></li>
+                    <li><a href="facilityMonitoring.html" class="hover" title="품질검사">설비</a></li>
+                    <li><a href="stock_status.html" class="hover" title="건의사항">재고관리</a></li>
+                    <li id="adminTitle"><a href="Employee_managemen.html" class="hover" title="직원관리">직원관리</a></li>
+                    <li><a href="boardTable.html" class="hover" title="직원 게시판">게시판</a></li>
                 </ul>
             </header>
             <nav>
@@ -1008,7 +1045,9 @@
                     <div class="menu-bar-content">
                         <ul>
                             <li><a href="facilityMonitoring.html">설비 모니터링</a></li>
+
                             <li><a href="process.html">공정도</a></li>
+
                             <li><a href="facilitiespage.html">설비 설정</a></li>
                         </ul>
                     </div>
@@ -1020,11 +1059,18 @@
                             <li><a href="Report_of_defective_inventory.html">재고 불량 신고</a></li>
                         </ul>
                     </div>
+                    <div class="menu-bar-content" id="adminNav">
+                        <ul>
+                            <li><a href="Employee_managemen.html">직원목록</a></li>
+                            <li><a href="work-record.html">근무기록</a></li>
+                            <li><a href="vacation.html">휴가신청</a></li>
+                        </ul>
+                    </div>
                     <div class="menu-bar-content">
                         <ul>
                             <li><a href="boardTable.html">자유게시판</a></li>
                             <li><a href="suggestTable.html">건의사항</a></li>
-                            <li><a href="#">Q&A</a></li>
+                            <li><a href="QA.html">Q&A</a></li>
                         </ul>
                     </div>
                 </div>
@@ -1179,7 +1225,10 @@
                             <ul id="page-numbers"></ul>
                             <button id="nextPage">다음</button>
                         </div>
-
+                        <div class="submit">
+                            <button type="button" class="admin"> 관리자 </button>
+                            <button type="button" class="worker"> 작업자 </button>
+                        </div>
                     </div>
                     <!--  -->
 
@@ -1384,6 +1433,24 @@
     </div>
 
     <script>
+
+// 작업자 관리자
+        document.querySelector(".admin").addEventListener("click", function () {
+            document.querySelector("#adminTitle").style.display = "block"
+            document.querySelector("#adminNav").style.display = "block"
+            document.querySelector("#mainTitle2").style.display = "block"
+            document.querySelector("#mainTitle1").style.display = "none"
+            document.querySelector(".workerGrade").innerHTML = "관리자<br>";
+            
+        })
+        document.querySelector(".worker").addEventListener("click", function () {
+            document.querySelector("#adminTitle").style.display = "none"
+            document.querySelector("#adminNav").style.display = "none"
+            document.querySelector("#mainTitle2").style.display = "none"
+            document.querySelector("#mainTitle1").style.display = "block"
+            document.querySelector(".workerGrade").innerHTML = "작업자<br>";
+        })
+
 
         // 품목 클릭시 이미지 팝업
 
@@ -1777,7 +1844,7 @@
                 nav.style.height = '';
             }
         });
-        
+
         const section = document.querySelector('section');
 
         hover.forEach(link => {
@@ -1869,8 +1936,8 @@
 
         document.querySelector("#adminTitle").style.display = 'block';
         document.querySelector("#adminNav").style.display = 'block';
-        document.querySelector(".workerGrade").innerHTML = '작업자<br>';
-        // document.querySelector(".workerGrade").innerHTML = '관리자<br>';
+        // document.querySelector(".workerGrade").innerHTML = '작업자<br>';
+        document.querySelector(".workerGrade").innerHTML = '관리자<br>';
 
         // document.querySelector("#adminTitle").style.display = 'none';
         // document.querySelector("#adminNav").style.display = 'none';
