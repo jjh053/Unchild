@@ -10,6 +10,8 @@ window.addEventListener("load", function () {
     const hamburgerMenu = document.querySelector('.hamburger-menu');
     const myPage = document.querySelector('#myPage');
 
+    const workerGrade = document.querySelector(".workerGrade");
+
     hamburgerMenu.addEventListener('click', function () {
         nav.classList.toggle('active');
 
@@ -18,6 +20,7 @@ window.addEventListener("load", function () {
             myPage.style.display = 'flex';
             myPage.style.padding = '5px 0';
             myPage.style.backgroundColor = '#dde';
+            workerGrade.style.display = "inline";
 
             let sectionHeight = section.offsetHeight;
             nav.style.height = `${sectionHeight}px`;
@@ -25,6 +28,7 @@ window.addEventListener("load", function () {
             workerTitle.appendChild(myPage);
             myPage.style.display = '';
             nav.style.height = '';
+            workerGrade.style.display = "none";
         }
     });
     
@@ -51,45 +55,59 @@ window.addEventListener("load", function () {
 
     function user_check(id) {
 
+        const menubarContent = document.querySelector(".menu-bar-content");
+
         if (id == "user") {
             document.querySelector("#mainTitle1").style.display = "block";
             document.querySelector("#mainTitle2").style.display = "none";
-            document.querySelector("#article-work-main").style.display = "block";
             document.querySelector("#complete-button-div").style.display = "block";
             document.querySelector("#work-checker").style.display = "block";
             document.querySelector("#add-button-div").style.display = "none";
+            document.querySelector("#adminTitle").style.display = 'none';
+            document.querySelector("#adminNav").style.display = 'none';
+            document.querySelector(".workerGrade").innerHTML = '작업자<br>';
 
             let delete_checkbox_div = document.getElementsByClassName("delete-checkbox-div");
 
             for (let i = 0; i < delete_checkbox_div.length; i++) {
                 delete_checkbox_div[i].style.display = "none";
-            }
+            };
 
             let error_checkbox_div = document.getElementsByClassName("error-checkbox-div");
 
             for (let i = 0; i < error_checkbox_div.length; i++) {
                 error_checkbox_div[i].style.display = "block";
-            }
+            };
+
+            for (let i = 0; i < menubarContent.length; i++) {
+                menubarContent[i].style.marginLeft = "40px";
+            };
 
         } else if (id == "admin") {
             document.querySelector("#mainTitle1").style.display = "none";
             document.querySelector("#mainTitle2").style.display = "block";
-            document.querySelector("#article-work-main").style.display = "block";
             document.querySelector("#add-button-div").style.display = "block";
             document.querySelector("#work-checker").style.display = "none";
             document.querySelector("#complete-button-div").style.display = "none";
+            document.querySelector("#adminTitle").style.display = 'block';
+            document.querySelector("#adminNav").style.display = 'block';
+            document.querySelector(".workerGrade").innerHTML = '관리자<br>';
 
             let delete_checkbox_div = document.getElementsByClassName("delete-checkbox-div");
 
             for (let i = 0; i < delete_checkbox_div.length; i++) {
                 delete_checkbox_div[i].style.display = "block";
-            }
+            };
 
             let error_checkbox_div = document.getElementsByClassName("error-checkbox-div");
 
             for (let i = 0; i < error_checkbox_div.length; i++) {
                 error_checkbox_div[i].style.display = "none";
-            }
+            };
+
+            for (let i = 0; i < menubarContent.length; i++) {
+                menubarContent[i].style.marginLeft = "0";
+            };
 
         }
 
@@ -322,10 +340,7 @@ window.addEventListener("load", function () {
         });
     });
 
-    document.querySelector("#adminTitle").style.display = 'block';
-    document.querySelector("#adminNav").style.display = 'block';
-    document.querySelector(".workerGrade").innerHTML = '작업자<br>';
-    // document.querySelector(".workerGrade").innerHTML = '관리자<br>';
+    
 
     // document.querySelector("#adminTitle").style.display = 'none';
     // document.querySelector("#adminNav").style.display = 'none';

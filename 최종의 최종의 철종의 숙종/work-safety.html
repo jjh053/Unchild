@@ -119,6 +119,10 @@
             height: 70px;
         }
 
+        .workerGrade {
+            display: none;
+        }
+
         /* title end */
 
         .wrap {
@@ -214,10 +218,15 @@
             border-bottom: 1px solid #ccc;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
             display: flex;
+            justify-content: space-evenly;
+        }
+
+        .menu-bar-margin {
+            margin-left: 40px !important;
         }
 
         .menu-bar-content {
-            margin-left: 40px;
+            /* margin-left: 40px; */
             width: 20%;
             display: inline-block;
             box-sizing: border-box;
@@ -282,7 +291,7 @@
             justify-content: center;
             width: 80%;
             /* overflow: auto; */
-            min-height: 800px;
+            min-height: 900px;
             ;
             background: #eee;
             z-index: 50;
@@ -989,7 +998,12 @@
                     src="https://image.spreadshirtmedia.net/image-server/v1/compositions/T996A1PA2179PT10X17Y18D172654919W7098H6789/views/1,width=550,height=550,appearanceId=1,backgroundColor=FFFFFF,noPt=true/pixel-art-fox-fox-podstawki.jpg"
                     class="workerPic">
             </div>
-            <span id="workerName"><span class="workerGrade">작업자<br></span>이도연 대리님</span>
+            <span id="workerName">
+                <span class="workerGrade">
+                    관리자<br>
+                </span>
+                이도연 대리님
+            </span>
         </div>
     </div>
 

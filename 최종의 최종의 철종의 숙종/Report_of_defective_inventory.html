@@ -628,6 +628,7 @@
 
         .add_img {
             position: fixed;
+            overflow-y: auto;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -701,6 +702,7 @@
             height: 180px;
             display: flex;
             justify-content: center;
+            align-items: center;
         }
 
         .choice {
@@ -725,7 +727,7 @@
 
         .sample_img {
             /* border: 1px solid red; */
-            width: 200px;
+            /* width: 200px; */
             height: 100%;
         }
 
@@ -954,7 +956,13 @@
         }
 
         /* 여기까지 수정 */
-
+        .ta_cpu1,
+        .ta_cpu2,
+        .ta_cpu3 {
+            width: 250px;
+            margin-left: 20px;
+            height : 90px;
+        }
 
 
 
@@ -1657,7 +1665,7 @@
             document.querySelector("#adminNav").style.display = "block"
             document.querySelector("#mainTitle2").style.display = "block"
             document.querySelector("#mainTitle1").style.display = "none"
-            
+
             // } 
         })
         // else {
