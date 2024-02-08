@@ -557,7 +557,7 @@
         width: 200px;
     }
 
-    #detail-select-btn {
+    #detail-select-btn, #toggle {
         background-color: #3498DB;
         margin-top: 10px;
         width: 60px;
@@ -568,7 +568,7 @@
         border: 0;
     }
 
-    #detail-select-btn:hover {
+    #detail-select-btn:hover, #toggle:hover {
         background-color: rgb(0, 47, 255);
         transition: 0.2s;
     }
@@ -611,6 +611,11 @@
     #mainTitle2 a {
         text-decoration: none;
         color: #333;
+    }
+
+    #toggleDiv {
+        margin-top: 420px;
+        margin-left: 730px;
     }
 
 
@@ -880,6 +885,11 @@
             display: inline;
         }
 
+        #toggleDiv {
+            margin-top: 300px;
+            margin-left: 350px;
+        }
+
     }
 </style>
 
@@ -899,7 +909,7 @@
                     <img src="https://cdn.discordapp.com/attachments/1185161279804026893/1200675420551520370/workerP.jpg?ex=65c70b1f&is=65b4961f&hm=c49f91b245305c4bb33c58e626bc4960b4f601257e433425a8d7cc0da454126e&"
                         class="workerPic">
                 </div>
-                <span id="workerName"><span class="workerGrade">작업자<br></span>이도연 대리님</span>
+                <span id="workerName"><span class="workerGrade">관리자<br></span>이도연 대리님</span>
             </div>
         </div>
 
@@ -1098,6 +1108,9 @@
                                 <button type="button" class="nono-btn">취소</button>
                             </div>
                         </div>
+                    </div>
+                    <div id="toggleDiv">
+                        <button type="button" id="toggle">토글</button>
                     </div>
 
                 </section>
@@ -1484,13 +1497,26 @@
             });
         });
 
-        document.querySelector("#adminTitle").style.display = 'block';
-        document.querySelector("#adminNav").style.display = 'block';
-        document.querySelector(".workerGrade").innerHTML = '작업자<br>';
-        // document.querySelector(".workerGrade").innerHTML = '관리자<br>';
+        document.querySelector("#mainTitle2").style.display = "block";
+        function toggle() {
+            if (document.querySelector("#adminTitle").style.display != 'block') {
+                document.querySelector("#adminTitle").style.display = 'block';
+                document.querySelector("#adminNav").style.display = 'block';
+                // document.querySelector("#noticeWriteBtn").style.display = 'inline';
+                document.querySelector(".workerGrade").innerHTML = '관리자<br>';
+                document.querySelector("#mainTitle1").style.display = "none";
+                document.querySelector("#mainTitle2").style.display = "block";
+            } else {
+                // document.querySelector("#noticeWriteBtn").style.display = 'none';
+                document.querySelector("#adminTitle").style.display = 'none';
+                document.querySelector("#adminNav").style.display = 'none';
+                document.querySelector(".workerGrade").innerHTML = '작업자<br>';
+                document.querySelector("#mainTitle1").style.display = "block";
+                document.querySelector("#mainTitle2").style.display = "none";
+            }
+        }
 
-        // document.querySelector("#adminTitle").style.display = 'none';
-        // document.querySelector("#adminNav").style.display = 'none';
+        document.querySelector("#toggle").addEventListener('click', toggle);
 
     </script>
 </body>

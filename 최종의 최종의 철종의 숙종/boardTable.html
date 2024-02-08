@@ -341,7 +341,7 @@
         #writeBtn,
         #clearWrite,
         #applyBtn,
-        #noticeClearWrite {
+        #noticeClearWrite, #toggle {
             background-color: #3498DB;
             width: 80px;
             height: 40px;
@@ -353,7 +353,7 @@
 
         #writeBtn:hover,
         #clearWrite:hover,
-        #applyBtn:hover #noticeClearWrite:hover {
+        #applyBtn:hover, #noticeClearWrite:hover, #toggle:hover {
             background-color: rgb(0, 47, 255);
             transition: 0.2s;
         }
@@ -583,6 +583,11 @@
             color: #333;
         }
 
+        #toggleDiv {
+            margin-top: 470px;
+            margin-left: 700px;
+        }
+
 
         @media screen and (max-width: 430px) {
 
@@ -798,6 +803,11 @@
                 display: inline;
             }
 
+            #toggleDiv {
+                margin-top: 480px;
+                margin-left: 300px;
+            }
+
         }
     </style>
 
@@ -822,7 +832,7 @@
                     height: 80px;
                     border-radius: 50%;">
             </div>
-            <span id="workerName"><span class="workerGrade">작업자<br></span>이도연 대리님</span>
+            <span id="workerName"><span class="workerGrade">관리자<br></span>이도연 대리님</span>
         </div>
     </div>
 
@@ -1020,6 +1030,9 @@
                         </div>
                     </div>
                 </div>
+                <div id="toggleDiv">
+                    <button type="button" id="toggle">토글</button>
+                </div>
             </section>
         </div>
         <footer>ⓒ2024 J.company System</footer>
@@ -1030,7 +1043,7 @@
         const menuBar = document.querySelector('.menu-bar');
         const nav = document.querySelector('nav');
         const wrap = document.querySelector('.wrap');
-        
+
         // 모바일 스크립트 코드
         const hamburgerMenu = document.querySelector('.hamburger-menu');
         const myPage = document.querySelector('#myPage');
@@ -1319,13 +1332,28 @@
             });
         });
 
-        document.querySelector("#adminTitle").style.display = 'block';
-        document.querySelector("#adminNav").style.display = 'block';
-        document.querySelector(".workerGrade").innerHTML = '작업자<br>';
-        // document.querySelector(".workerGrade").innerHTML = '관리자<br>';
+        document.querySelector("#mainTitle2").style.display = "block";
+        function toggle() {
+            if (document.querySelector("#adminTitle").style.display != 'block') {
 
-        // document.querySelector("#adminTitle").style.display = 'none';
-        // document.querySelector("#adminNav").style.display = 'none';
+                document.querySelector("#adminTitle").style.display = 'block';
+                document.querySelector("#adminNav").style.display = 'block';
+                document.querySelector("#noticeWriteBtn").style.display = 'inline';
+                document.querySelector(".workerGrade").innerHTML = '관리자<br>';
+                document.querySelector("#mainTitle1").style.display = "none";
+                document.querySelector("#mainTitle2").style.display = "block";
+            } else {
+                document.querySelector("#noticeWriteBtn").style.display = 'none';
+                document.querySelector("#adminTitle").style.display = 'none';
+                document.querySelector("#adminNav").style.display = 'none';
+                document.querySelector(".workerGrade").innerHTML = '작업자<br>';
+                document.querySelector("#mainTitle1").style.display = "block";
+                document.querySelector("#mainTitle2").style.display = "none";
+            }
+        }
+
+        document.querySelector("#toggle").addEventListener('click', toggle);
+
 
     </script>
 </body>

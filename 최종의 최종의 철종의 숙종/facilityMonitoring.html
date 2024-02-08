@@ -446,8 +446,30 @@
             color: #333;
         }
 
+        #toggle {
+            background-color: #3498DB;
+            width: 80px;
+            height: 40px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+        }
+
+        #toggle:hover {
+            background-color: rgb(0, 47, 255);
+            transition: 0.2s;
+        }
+
+        #toggleDiv {
+            margin-left: 700px;
+        }
+
         /* 모바일 페이지 대응 테스트 */
         @media screen and (max-width: 430px) {
+            #toggleDiv {
+                margin-left: 330px;
+            }
 
             /* 전체 페이지 */
             .wrap {
@@ -521,8 +543,8 @@
             }
 
             nav.active {
-                height: 881px;
-                max-height: 881px;
+                /* height: 881px; */
+                max-height: none;
                 width: 200px;
                 visibility: visible;
                 opacity: 1;
@@ -648,7 +670,7 @@
                     src="https://cdn.discordapp.com/attachments/1185161279804026893/1200675420551520370/workerP.jpg?ex=65c70b1f&is=65b4961f&hm=c49f91b245305c4bb33c58e626bc4960b4f601257e433425a8d7cc0da454126e&"
                     class="workerPic">
             </div>
-            <span id="workerName"><span class="workerGrade">작업자<br></span>이도연 대리님</span>
+            <span id="workerName"><span class="workerGrade">관리자<br></span>이도연 대리님</span>
         </div>
     </div>
 
@@ -779,6 +801,9 @@
                     <div id="gpu-bar" class="bar">2번 라인 : 0.00%</div>
                     <div id="case-bar" class="bar">3번 라인 : 0.00%</div>
                     <div class="bar">4번 라인 : 0.00%</div>
+                </div>
+                <div id="toggleDiv">
+                    <button type="button" id="toggle">토글</button>
                 </div>
             </section>
         </div>
@@ -1005,11 +1030,6 @@
                 if (nav.classList.contains('active') && window.matchMedia("(max-width: 430px)").matches) {
                     nav.style.height = `${section.offsetHeight}px`
 
-                    // 네비4
-                    // for (let i = 0; i < ulLi.length; i++) {
-                    //     ulLi[i].style.padding = '10px';
-                    // }
-
                     // 네비5
                     for (let i = 0; i < ulLi.length; i++) {
                         ulLi[i].style.padding = '7px';
@@ -1019,13 +1039,26 @@
             });
         });
 
-        document.querySelector("#adminTitle").style.display = 'block';
-        document.querySelector("#adminNav").style.display = 'block';
-        document.querySelector(".workerGrade").innerHTML = '작업자<br>';
-        // document.querySelector(".workerGrade").innerHTML = '관리자<br>';
+        document.querySelector("#mainTitle2").style.display = "block";
+        function toggle() {
+            if (document.querySelector("#adminTitle").style.display != 'block') {
+                document.querySelector("#adminTitle").style.display = 'block';
+                document.querySelector("#adminNav").style.display = 'block';
+                // document.querySelector("#noticeWriteBtn").style.display = 'inline';
+                document.querySelector(".workerGrade").innerHTML = '관리자<br>';
+                document.querySelector("#mainTitle1").style.display = "none";
+                document.querySelector("#mainTitle2").style.display = "block";
+            } else {
+                // document.querySelector("#noticeWriteBtn").style.display = 'none';
+                document.querySelector("#adminTitle").style.display = 'none';
+                document.querySelector("#adminNav").style.display = 'none';
+                document.querySelector(".workerGrade").innerHTML = '작업자<br>';
+                document.querySelector("#mainTitle1").style.display = "block";
+                document.querySelector("#mainTitle2").style.display = "none";
+            }
+        }
 
-        // document.querySelector("#adminTitle").style.display = 'none';
-        // document.querySelector("#adminNav").style.display = 'none';
+        document.querySelector("#toggle").addEventListener('click', toggle);
 
     </script>
 </body>
