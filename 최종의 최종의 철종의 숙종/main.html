@@ -129,6 +129,24 @@
             border-top-right-radius: 10px;
         }
 
+        /* 햄버거 메뉴 아이콘 */
+        .hamburger-menu {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 25px;
+            height: 20px;
+        }
+
+        .hamburger-menu span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: #fff;
+            transition: all 0.2s ease;
+        }
+
         header h1 {
             font-size: 30px;
             margin: 0;
@@ -193,10 +211,11 @@
             border-top: 0px;
             border-right: 1px solid #ccc;
             display: flex;
+            justify-content: space-evenly;
         }
 
         .menu-bar-content {
-            margin-left: 40px;
+            /* margin-left: 40px; */
             width: 20%;
             display: inline-block;
             box-sizing: border-box;
@@ -528,6 +547,41 @@
         }
 
 
+
+        /* 휴가 랜다 */
+        .vacation-dashboard {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+        }
+
+        .vacation-card {
+            width: 32%;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .vacation-card-header {
+            border-radius: 8px 8px 0 0;
+            background-color: #333;
+            color: #ffffff;
+            padding: 10px 15px;
+        }
+
+        .vacation-card-header h2 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .vacation-card-content {
+            font-size: 15px;
+            padding: 0;
+        }
+
+
+
+
         /* aside, section 끝*/
 
         footer {
@@ -564,11 +618,37 @@
                 border-radius: 0px;
             }
 
-            header ul li a {
-                font-size: 15px;
+            /* 미디어 쿼리 헤더 영역 수정 코드 */
+            header ul {
+                display: none;
+            }
+
+            .header-content {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                position: relative;
+            }
+
+            #headerTitle {
+                display: block !important;
+                text-align: center;
+                color: #fff;
+                width: 100%;
+                font-size: 20px;
+            }
+
+            #headerTitle a {
                 text-decoration: none;
                 color: #fff;
-                transition: color 0.3s ease;
+            }
+
+            .hamburger-menu {
+                position: absolute;
+                left: 0;
+                top: 0;
+                display: flex;
             }
 
             nav {
@@ -621,6 +701,7 @@
                 border-right: 1px solid #ccc;
                 display: flex;
                 flex-direction: column;
+                justify-content: flex-start;
             }
 
             .menu-bar-content {
@@ -666,7 +747,7 @@
                 font-size: 15px;
             }
 
-            .card-content{
+            .card-content {
                 font-size: 12px;
             }
 
@@ -739,11 +820,11 @@
                 width: 100%;
             }
 
-            .table{
+            .table {
                 margin-top: 10px;
             }
 
-            h3{
+            h3 {
                 font-size: 15px;
             }
 
@@ -757,6 +838,24 @@
             }
 
             .table2 {
+                font-size: 12px;
+            }
+
+            .workerPic {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+            }
+
+            .vacation-card-header h2 {
+                font-size: 15px;
+            }
+
+            .vacation-card {
+                width: 31%;
+            }
+
+            .vacation-card-content {
                 font-size: 12px;
             }
         }
@@ -781,18 +880,28 @@
                     src="https://cdn.discordapp.com/attachments/1185161279804026893/1200675420551520370/workerP.jpg?ex=65c70b1f&is=65b4961f&hm=c49f91b245305c4bb33c58e626bc4960b4f601257e433425a8d7cc0da454126e&"
                     class="workerPic">
             </div>
-            <span id="workerName"><a href="#">이도연 대리님</a></span>
+            <span id="workerName"><span class="workerGrade">작업자<br></span>이도연 대리님</span>
         </div>
     </div>
 
     <div class="wrap">
         <div class="header-nav-container">
             <header>
+                <!-- 모바일 헤더 코드 -->
+                <div class="header-content">
+                    <div class="hamburger-menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <h1 id="headerTitle" style="display: none;"><a href="main.html">J.company</a></h1>
+                </div>
                 <ul>
-                    <li><a href="#" class="hover" title="작업지시서">작업</a></li>
-                    <li><a href="#" class="hover" title="품질검사">설비</a></li>
-                    <li><a href="#" class="hover" title="건의사항">재고관리</a></li>
-                    <li><a href="#" class="hover" title="직원 게시판">게시판</a></li>
+                    <li><a href="work-order.html" class="hover" title="작업지시서">작업</a></li>
+                    <li><a href="facilityMonitoring.html" class="hover" title="품질검사">설비</a></li>
+                    <li><a href="stock_status.html" class="hover" title="건의사항">재고관리</a></li>
+                    <li id="adminTitle"><a href="Employee_managemen.html" class="hover" title="직원관리">직원관리</a></li>
+                    <li><a href="boardTable.html" class="hover" title="직원 게시판">게시판</a></li>
                 </ul>
             </header>
             <nav>
@@ -808,7 +917,9 @@
                     <div class="menu-bar-content">
                         <ul>
                             <li><a href="facilityMonitoring.html">설비 모니터링</a></li>
+
                             <li><a href="process.html">공정도</a></li>
+
                             <li><a href="facilitiespage.html">설비 설정</a></li>
                         </ul>
                     </div>
@@ -820,11 +931,18 @@
                             <li><a href="Report_of_defective_inventory.html">재고 불량 신고</a></li>
                         </ul>
                     </div>
+                    <div class="menu-bar-content" id="adminNav">
+                        <ul>
+                            <li><a href="Employee_managemen.html">직원목록</a></li>
+                            <li><a href="work-record.html">근무기록</a></li>
+                            <li><a href="vacation.html">휴가신청</a></li>
+                        </ul>
+                    </div>
                     <div class="menu-bar-content">
                         <ul>
                             <li><a href="boardTable.html">자유게시판</a></li>
                             <li><a href="suggestTable.html">건의사항</a></li>
-                            <li><a href="#">Q&A</a></li>
+                            <li><a href="QA.html">Q&A</a></li>
                         </ul>
                     </div>
                 </div>
@@ -952,12 +1070,45 @@
                         </div>
                     </div>
                     <div class="card">
-                        <div class="card-header">
-                            작업지시
-                        </div>
-                        <div class="card-content">
-                            이도연 빨리 잡아오셈 선착순으로 뽀찌드림
-                        </div>
+                        <a href="vacation.html" style="color: inherit; text-decoration: none;">
+                            <div class="card-header">
+                                휴가 내역
+                            </div>
+                            <div class="card-content">
+                                <div class="vacation-dashboard">
+                                    <div class="vacation-card">
+                                        <div class="vacation-card-header">
+                                            <h2>차장</h2>
+                                        </div>
+                                        <div class="vacation-card-content">
+                                            <p><strong>휴가 시작일:</strong><br> 2024-01-31</p>
+                                            <p><strong>휴가 종료일:</strong><br> 2024-02-02</p>
+                                            <p><strong>휴가 유형:</strong> 연차</p>
+                                        </div>
+                                    </div>
+                                    <div class="vacation-card">
+                                        <div class="vacation-card-header">
+                                            <h2>팀장</h2>
+                                        </div>
+                                        <div class="vacation-card-content">
+                                            <p><strong>휴가 시작일:</strong><br> 2024-02-06</p>
+                                            <p><strong>휴가 종료일:</strong><br> 2024-02-07</p>
+                                            <p><strong>휴가 유형:</strong> 연차</p>
+                                        </div>
+                                    </div>
+                                    <div class="vacation-card">
+                                        <div class="vacation-card-header">
+                                            <h2>직원3</h2>
+                                        </div>
+                                        <div class="vacation-card-content">
+                                            <p><strong>휴가 시작일:</strong><br> 2024-02-20</p>
+                                            <p><strong>휴가 종료일:</strong><br> 2024-02-21</p>
+                                            <p><strong>휴가 유형:</strong> 연차</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
                     </div>
 
                     <div class="line-cards">
@@ -1053,6 +1204,29 @@
         const menuBar = document.querySelector('.menu-bar');
         const nav = document.querySelector('nav');
         const wrap = document.querySelector('.wrap');
+
+        // 모바일 스크립트 코드
+        const hamburgerMenu = document.querySelector('.hamburger-menu');
+        const myPage = document.querySelector('#myPage');
+
+        hamburgerMenu.addEventListener('click', function () {
+            nav.classList.toggle('active');
+
+            if (nav.classList.contains('active')) {
+                nav.prepend(myPage);
+                myPage.style.display = 'flex';
+                myPage.style.padding = '5px 0';
+                myPage.style.backgroundColor = '#dde';
+
+                let sectionHeight = section.offsetHeight;
+                nav.style.height = `${sectionHeight}px`;
+            } else {
+                workerTitle.appendChild(myPage);
+                myPage.style.display = '';
+                nav.style.height = '';
+            }
+        });
+
         const section = document.querySelector('section');
 
         hover.forEach(link => {
@@ -1105,6 +1279,47 @@
         function hideMenuBar() {
             nav.classList.remove('active');
         }
+
+
+        hover.forEach(link => {
+            link.addEventListener("click", function (event) {
+                let myPage = document.querySelector("#myPage");
+                // let myPageName = document.querySelector("#workerName");
+                // let myPageLogo = document.querySelector("#myPageLogo");
+                let menuBar = document.querySelector(".menu-bar");
+                let mainPage = document.querySelector(".wrap");
+                let companyLogo = document.querySelector("#workerLogo");
+
+                let ulLi = document.querySelectorAll(".menu-bar-content ul li");
+
+
+                event.preventDefault();
+                if (nav.classList.contains('active') && window.matchMedia("(max-width: 430px)").matches) {
+                    nav.style.height = `${section.offsetHeight}px`
+
+                    // 네비4
+                    // for (let i = 0; i < ulLi.length; i++) {
+                    //     ulLi[i].style.padding = '10px';
+                    //     ulLi[i].style.margin = '0px';
+                    // }
+
+                    // 네비5
+                    for (let i = 0; i < ulLi.length; i++) {
+                        ulLi[i].style.padding = '7px';
+
+                    }
+                    menuBar.prepend(myPage);
+                }
+            });
+        });
+
+        document.querySelector("#adminTitle").style.display = 'block';
+        document.querySelector("#adminNav").style.display = 'block';
+        document.querySelector(".workerGrade").innerHTML = '작업자<br>';
+        // document.querySelector(".workerGrade").innerHTML = '관리자<br>';
+
+        // document.querySelector("#adminTitle").style.display = 'none';
+        // document.querySelector("#adminNav").style.display = 'none';
 
         document.addEventListener('DOMContentLoaded', function () {
             // Initialize Chart.js Chart

@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work Record Page</title>
+    <style>
+        @font-face {
+            font-family: "SOYOMapleBoldTTF";
+            src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/SOYOMapleBoldTTF.woff2") format("woff2");
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: "SOYOMapleBoldTTF";
+            margin: 0 auto;
+            /* font-family: Arial, sans-serif; */
+            background: #fff;
+            color: #333;
+            background-color: #ccc;
+        }
+
+        /* 햄버거 메뉴 아이콘 */
+        .hamburger-menu {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 25px;
+            height: 20px;
+        }
+
+        .hamburger-menu span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: #fff;
+            transition: all 0.2s ease;
+        }
+
+        /* title */
+        #workerTitle {
+            display: flex;
+            width: 1000px;
+            justify-content: space-between;
+            padding: 5px;
+
+        }
+
+        #workerLogo {
+            width: 200px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        #workerTitle h1 {
+            width: 200px;
+            color: #000;
+        }
+
+        #mainTitle1 {
+            display: none;
+        }
+
+        #mainTitle2 {
+            display: block;
+        }
+
+        #myPage {
+            width: 200px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        #myPageLogo {
+            width: 80px;
+            height: 80px;
+            margin-right: 3%;
+        }
+
+        #workerName a {
+            text-decoration: none;
+            color: #333;
+
+        }
+
+        #workerName a:hover {
+            text-decoration: none;
+            color: #888;
+            transition: color 0.2s ease;
+        }
+
+        #workerTitle .workerPic {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+        }
+
+        #workerTitle .logo {
+            width: 200px;
+            height: 70px;
+        }
+
+        /* title end */
+
+        .wrap {
+            width: 1000px;
+            /* height: 100vh; */
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+        }
+
+        /* header와 nav의 집합 */
+        .header-nav-container {
+            position: relative;
+            width: 100%;
+            /* wrap과 동일한 너비 */
+        }
+
+        /* header 코드 */
+        header {
+            width: 100%;
+            background: #000;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        header h1 {
+            font-size: 30px;
+            margin: 0;
+        }
+
+        header ul {
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+            list-style: none;
+            align-items: center;
+        }
+
+        header ul li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+
+        header ul li a {
+            font-size: 18px;
+            text-decoration: none;
+            color: #fff;
+            transition: color 0.3s ease;
+        }
+
+        header ul li a:hover {
+            color: #aaa;
+        }
+
+        /* header 코드 끝 */
+
+        nav {
+            width: 100%;
+            position: absolute;
+            top: 100%;
+            /* header 높이에 맞게 조정 */
+            left: 0;
+            right: 0;
+            background: #eee;
+            max-height: 0;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear;
+            visibility: hidden;
+            z-index: 100;
+            /* opacity: 0; */
+        }
+
+        /* nav 숨김요소 */
+        nav.active {
+            max-height: 500px;
+            /* 활성화될 때 최대 높이 설정 */
+            visibility: visible;
+            opacity: 1;
+            transition: max-height 0.5s ease, visibility 0s, opacity 0.5s linear;
+        }
+
+        /* nav 안의 menu-bar요소 */
+        .menu-bar {
+            width: 100%;
+            height: 220px;
+            border-top: 0px;
+            border-right: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .menu-bar-content {
+            width: 20%;
+            display: inline-block;
+            box-sizing: border-box;
+        }
+
+        .menu-bar-content ul li {
+            padding: 10px;
+        }
+
+        .menu-bar-content ul li a {
+            text-decoration: none;
+            color: #444;
+        }
+
+        .menu-bar-content ul li a:hover {
+            color: #aaa;
+            transition: color 0.2s ease;
+        }
+
+        #menu-bar-content-sub {
+            list-style: circle;
+            font-size: 14px;
+            padding-left: 20px;
+        }
+
+        #menu-bar-content-sub li {
+            padding: 5px;
+        }
+
+        /* menu-bar요소 끝 */
+
+        /* aside, section */
+        .aside-section-container {
+            width: 100%;
+            display: flex;
+            /* height: 100%; */
+        }
+
+        /* 좌측 메뉴바 */
+        aside {
+            width: 20%;
+            background: #5f5f5f;
+        }
+
+        .aside-section-container ul li {
+            margin-top: 25%;
+            list-style: none;
+        }
+
+        .aside-section-container ul li a:hover {
+            color: black;
+        }
+
+        .aside-section-container ul li a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        /* 섹션 창을 조작하기바람 */
+        section {
+            display: flex;
+            min-height: 800px;
+            justify-content: center;
+            width: 80%;
+            /* overflow: auto; */
+            background: #eee;
+            z-index: 50;
+            align-items: center;
+        }
+
+        .article-container {
+            width: 100%;
+        }
+
+        .work-recode-main {
+            width: 100%;
+            text-align: center;
+        }
+
+        .work-report-content {
+            width: 100%;
+            display: inline-block;
+            background-color: #eee;
+        }
+
+        .work-report-time {
+            width: 90%;
+            margin-bottom: 5%;
+            margin-left: 5%;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .work-report-info {
+            width: 40%;
+            background-color: #dadada;
+        }
+
+        .work-report-img {
+            width: 100%;
+            margin-top: 5%;
+        }
+
+        .work-report-img img {
+            width: 150px;
+            height: 200px;
+        }
+
+        .work-report-tell {
+            width: 100%;
+            display: inline-block;
+            background-color: #d3d3d3;
+        }
+
+        .work-report-tell span {
+            font-size: 12px;
+        }
+
+        .report-time-info {
+            width: 50%;
+            display: flex;
+            flex-wrap: wrap;
+            background-color: #dadada;
+        }
+
+        .report-day {
+            width: 100%;
+            height: 20%;
+            text-align: left;
+            margin-top: 5%;
+            margin-left: 5%;
+            margin-bottom: 0;
+            font-size: 15px;
+        }
+
+        .total-work {
+            width: 40%;
+            height: 30%;
+            margin-top: -5%;
+            margin-left: 5%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .special-work {
+            width: 40%;
+            height: 30%;
+            margin-top: 0%;
+            margin-left: 5%;
+            font-size: 12px;
+        }
+
+        .add-inform {
+            width: 100%;
+            height: 10%;
+            margin-top: 5%;
+            margin-bottom: -7%;
+            font-size: 15px;
+        }
+
+
+
+        /* aside, section 끝*/
+
+        footer {
+            width: 100%;
+            background: #000;
+            color: #fff;
+            text-align: center;
+            height: 7%;
+            line-height: 70px;
+        }
+
+        @media screen and (max-width: 430px) {
+
+            /* 전체 페이지 */
+            .wrap {
+                width: 100%;
+            }
+
+            section div h2 {
+                font-size: 20px;
+            }
+
+            /* 헤더 */
+            header {
+                width: 100%;
+                background: #000;
+                color: #fff;
+                text-align: center;
+                padding: 5px;
+                box-sizing: border-box;
+                border-radius: 0px;
+            }
+
+            /* 미디어 쿼리 헤더 영역 수정 코드 */
+            header ul {
+                display: none;
+            }
+
+            .header-content {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                position: relative;
+            }
+
+            #headerTitle {
+                display: block !important;
+                text-align: center;
+                color: #fff;
+                width: 100%;
+                font-size: 20px;
+            }
+
+            #headerTitle a {
+                text-decoration: none;
+                color: #fff;
+            }
+
+            .hamburger-menu {
+                position: absolute;
+                left: 0;
+                top: 0;
+                display: flex;
+            }
+
+            #workerTitle {
+                display: none;
+            }
+
+            nav {
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                /* header 높이에 맞게 조정 */
+                left: 0;
+                right: 0;
+                background: #eee;
+                max-height: 881px;
+                overflow: hidden;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+                transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear;
+                transform: translateX(0%);
+                visibility: hidden;
+                z-index: 100;
+                /* opacity: 0; */
+            }
+
+            nav.active {
+                /* height: 881px; */
+                max-height: none;
+                width: 200px;
+                visibility: visible;
+                opacity: 1;
+                transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear;
+                transform: translateX(0%);
+            }
+
+            /* 왼쪽에서 오른쪽으로 나오는 애니메이션을 추가합니다. */
+            nav {
+                transform: translateX(-100%);
+                transition: transform 0.5s ease;
+            }
+
+            nav.active {
+                transform: translateX(0%);
+                transition: transform 0.5s ease;
+            }
+
+            nav.closing {
+                transform: translateX(-100%);
+                transition: transform 0.5s ease;
+            }
+
+            nav .menu-bar {
+                width: 100%;
+                height: 100%;
+                border-top: 0px;
+                border-right: 1px solid #ccc;
+                border-bottom: 1px solid #ccc;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                background-color: #dde;
+            }
+
+            .menu-bar-content {
+                width: 100%;
+                margin-left: 0px;
+            }
+
+            .menu-bar-content ul li {
+                padding: 10px;
+            }
+
+            aside {
+                display: none;
+            }
+
+            /* 섹션 목록 */
+            section {
+                width: 100%;
+            }
+
+            section div h2 {
+                font-size: 20px;
+            }
+
+            #suggestContent {
+                width: 330px;
+            }
+
+            .directBtn {
+                width: 30px;
+                height: 30px;
+                font-size: 10px;
+            }
+
+            .numberBtn {
+                width: 30px;
+                height: 30px;
+                font-size: 10px;
+            }
+
+            table {
+                font-size: 12px;
+            }
+
+            .tableTdTitle {
+                max-width: 150px;
+                padding: 5px;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+
+            #noticeWriteBtn,
+            #resetWrite,
+            #deleteBtn,
+            #noticeResetWrite {
+                width: 60px;
+                height: 30px;
+                font-size: 10px;
+            }
+
+            #writeBtn,
+            #clearWrite,
+            #applyBtn,
+            #noticeClearWrite {
+                width: 60px;
+                height: 30px;
+                font-size: 10px;
+            }
+
+            #directBtnZip {
+                margin-top: 10px;
+            }
+
+            #noticeTextBox,
+            #textBox {
+                width: 330px;
+                font-size: 12px !important;
+            }
+
+            #noticeWriteTitle,
+            #writeTitle {
+                font-size: 12px !important;
+
+            }
+
+            .modal-content {
+                width: 80%;
+            }
+
+            #textContentBox,
+            #readTitle,
+            #writer {
+                font-size: 12px !important;
+            }
+
+            .workerGrade {
+                display: inline;
+            }
+
+            .workerPic {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="workerTitle">
+        <div id="workerLogo">
+            <a href="#">
+                <image
+                    src="https://cdn.discordapp.com/attachments/1185161279804026893/1200675420325036082/Jlogo.png?ex=65c70b1f&is=65b4961f&hm=ae28f53e9280fe71cffc1fc2ca74aec892875f13143ef4e109da28023c5b414b&"
+                    class="logo"></image>
+            </a>
+        </div>
+        <h1 id="mainTitle1">작업자 페이지</h1>
+        <h1 id="mainTitle2">관리자 페이지</h1>
+        <div id="myPage">
+            <div id="myPageLogo">
+                <image
+                    src="https://image.spreadshirtmedia.net/image-server/v1/compositions/T996A1PA2179PT10X17Y18D172654919W7098H6789/views/1,width=550,height=550,appearanceId=1,backgroundColor=FFFFFF,noPt=true/pixel-art-fox-fox-podstawki.jpg"
+                    class="workerPic">
+            </div>
+            <span id="workerName"><span class="workerGrade">작업자<br></span>이도연 대리님</span>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <div class="header-nav-container">
+            <header>
+                <!-- 모바일 헤더 코드 -->
+                <div class="header-content">
+                    <div class="hamburger-menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <h1 id="headerTitle" style="display: none;"><a href="main.html">J.company</a></h1>
+                </div>
+                <ul>
+                    <li><a href="work-order.html" class="hover" title="작업지시서">작업</a></li>
+                    <li><a href="facilityMonitoring.html" class="hover" title="품질검사">설비</a></li>
+                    <li><a href="stock_status.html" class="hover" title="건의사항">재고관리</a></li>
+                    <li id="adminTitle"><a href="Employee_managemen.html" class="hover" title="직원관리">직원관리</a></li>
+                    <li><a href="boardTable.html" class="hover" title="직원 게시판">게시판</a></li>
+                </ul>
+            </header>
+            <nav>
+                <div class="menu-bar">
+                    <div class="menu-bar-content">
+                        <ul>
+                            <li><a href="work-order.html">작업 지침서</a></li>
+                            <li><a href="work-safety.html">안전 지침서</a></li>
+                            <li><a href="work-quality.html">품질검사</a></li>
+                            <li><a href="work-report.html">작업보고</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-bar-content">
+                        <ul>
+                            <li><a href="facilityMonitoring.html">설비 모니터링</a></li>
+
+                            <li><a href="process.html">공정도</a></li>
+
+                            <li><a href="facilitiespage.html">설비 설정</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-bar-content">
+                        <ul>
+                            <li><a href="stock_status.html">재고 현황</a></li>
+                            <li><a href="Stock_Request.html">재고 신청</a></li>
+                            <li><a href="Finished_product_management.html">완제품 관리</a></li>
+                            <li><a href="Report_of_defective_inventory.html">재고 불량 신고</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-bar-content" id="adminNav">
+                        <ul>
+                            <li><a href="Employee_managemen.html">직원목록</a></li>
+                            <li><a href="work-record.html">근무기록</a></li>
+                            <li><a href="vacation.html">휴가신청</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-bar-content">
+                        <ul>
+                            <li><a href="boardTable.html">자유게시판</a></li>
+                            <li><a href="suggestTable.html">건의사항</a></li>
+                            <li><a href="QA.html">Q&A</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="aside-section-container">
+            <aside>
+                <ul>
+                    <li><a href="#">직원목록</a></li>
+                    <li><a href="#">근무기록</a></li>
+                    <li><a href="#">휴가신청</a></li>
+                </ul>
+            </aside>
+            <section>
+                <article class="article-container">
+                    <div class="work-recode-main">
+
+                        <div class="work-report-title">
+                            <div>
+                                <h3>근무기록표</h3>
+                            </div>
+                        </div>
+
+                        <div class="work-report-content">
+                            <div class="work-report-time">
+                                <div class="work-report-info">
+                                    <div class="work-report-img">
+                                        <img
+                                            src="https://cdn.discordapp.com/attachments/1186454147558551552/1204581039868084285/KakaoTalk_20240129_145354467.png?ex=65d54083&is=65c2cb83&hm=6afadc8657ea19624501ba952265b4362a35be35008b212da665db8720b441e3&">
+                                    </div>
+                                    <div class="work-report-tell">
+                                        <p>팀장 정장훈</p>
+                                        <span>이메일 : wkd@naver.com</span><br>
+                                        <span>연락처 : 010-2933-8001</span>
+                                    </div>
+                                </div>
+                                <div class="report-time-info">
+                                    <div class="report-day">
+                                        <span>24.01.22 ~ 24.01.26</span>
+                                    </div>
+                                    <div class="total-work">
+                                        <span>총 근무 30h 03m</span>
+                                    </div>
+                                    <div class="special-work">
+                                        <span>연장 01h 03m</span><br>
+                                        <span>특근 00h 00m</span>
+                                    </div>
+                                    <div class="add-inform">
+                                        <span>지각 00</span>
+                                        <span>결근 00</span>
+                                        <span class="enter">연장 02</span>
+                                        <span>특근 00</span>
+                                        <span>연차 0/20</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="work-report-time">
+                                <div class="work-report-info">
+                                    <div class="work-report-img">
+                                        <img
+                                            src="https://media.discordapp.net/attachments/1186454147558551552/1203947811654074430/b525b7fb529992f7.jpg?ex=65d2f2c6&is=65c07dc6&hm=594005fd10466b45392d6cf947c27056299b71a36d50920d9283fb6d24ec207d&=&format=webp&width=468&height=468">
+                                    </div>
+                                    <div class="work-report-tell">
+                                        <p>대리 이성현</p>
+                                        <span>이메일 : leesh@gmail.com</span><br>
+                                        <span>연락처 : 010-5553-7887</span>
+                                    </div>
+                                </div>
+                                <div class="report-time-info">
+                                    <div class="report-day">
+                                        <span>24.01.22 ~ 24.01.26</span>
+                                    </div>
+                                    <div class="total-work">
+                                        <span>총 근무 30h 03m</span>
+                                    </div>
+                                    <div class="special-work">
+                                        <span>연장 01h 03m</span><br>
+                                        <span>특근 00h 00m</span>
+                                    </div>
+                                    <div class="add-inform">
+                                        <span>지각 00</span>
+                                        <span>결근 00</span>
+                                        <span class="enter">연장 02</span>
+                                        <span>특근 00</span>
+                                        <span>연차 0/20</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="work-report-time">
+                                <div class="work-report-info">
+                                    <div class="work-report-img">
+                                        <img
+                                            src="https://media.discordapp.net/attachments/1186454147558551552/1203955694747918366/image.png?ex=65d2fa1e&is=65c0851e&hm=a2244822ee56e5b93b762d27fe9dc7c1c9345811664e59b8634d5e59d6802081&=&format=webp&quality=lossless&width=554&height=468">
+                                    </div>
+                                    <div class="work-report-tell">
+                                        <p>차장 김태원</p>
+                                        <span>이메일 : choi@naver.com</span><br>
+                                        <span>연락처 : 010-0000-0000</span>
+                                    </div>
+                                </div>
+                                <div class="report-time-info">
+                                    <div class="report-day">
+                                        <span>24.01.22 ~ 24.01.26</span>
+                                    </div>
+                                    <div class="total-work">
+                                        <span>총 근무 30h 03m</span>
+                                    </div>
+                                    <div class="special-work">
+                                        <span>연장 01h 03m</span><br>
+                                        <span>특근 00h 00m</span>
+                                    </div>
+                                    <div class="add-inform">
+                                        <span>지각 00</span>
+                                        <span>결근 00</span>
+                                        <span class="enter">연장 02</span>
+                                        <span>특근 00</span>
+                                        <span>연차 0/20</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="work-report-time">
+                                <div class="work-report-info">
+                                    <div class="work-report-img">
+                                        <img
+                                            src="https://cdn.discordapp.com/attachments/1186454147558551552/1203947754850885724/image.png?ex=65d2f2b9&is=65c07db9&hm=0e904a6c94e2546c974233c6d1289c7bf138e3ec1787a0534435d1c32e0d1663&">
+                                    </div>
+                                    <div class="work-report-tell">
+                                        <p>대리 이도연</p>
+                                        <span>이메일 : choi@naver.com</span><br>
+                                        <span>연락처 : 010-0000-0000</span>
+                                    </div>
+                                </div>
+                                <div class="report-time-info">
+                                    <div class="report-day">
+                                        <span>24.01.22 ~ 24.01.26</span>
+                                    </div>
+                                    <div class="total-work">
+                                        <span>총 근무 30h 03m</span>
+                                    </div>
+                                    <div class="special-work">
+                                        <span>연장 01h 03m</span><br>
+                                        <span>특근 00h 00m</span>
+                                    </div>
+                                    <div class="add-inform">
+                                        <span>지각 00</span>
+                                        <span>결근 00</span>
+                                        <span class="enter">연장 02</span>
+                                        <span>특근 00</span>
+                                        <span>연차 0/20</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="work-report-time">
+                                <div class="work-report-info">
+                                    <div class="work-report-img">
+                                        <img
+                                            src="https://cdn.discordapp.com/attachments/1186454147558551552/1204215611329089567/image.png?ex=65d3ec2e&is=65c1772e&hm=78b0f94ea376abd4607ea1bd638ab205e80cf2fbf734f22a67c0dce3722013f1&">
+                                    </div>
+                                    <div class="work-report-tell">
+                                        <p>부장 서효림</p>
+                                        <span>이메일 : shr3@naver.com</span><br>
+                                        <span>연락처 : 010-2933-8001</span>
+                                    </div>
+                                </div>
+                                <div class="report-time-info">
+                                    <div class="report-day">
+                                        <span>24.01.22 ~ 24.01.26</span>
+                                    </div>
+                                    <div class="total-work">
+                                        <span>총 근무 30h 03m</span>
+                                    </div>
+                                    <div class="special-work">
+                                        <span>연장 01h 03m</span><br>
+                                        <span>특근 00h 00m</span>
+                                    </div>
+                                    <div class="add-inform">
+                                        <span>지각 00</span>
+                                        <span>결근 00</span>
+                                        <span class="enter">연장 02</span>
+                                        <span>특근 00</span>
+                                        <span>연차 0/20</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </article>
+            </section>
+        </div>
+        <footer>ⓒ2024 J.company System</footer>
+    </div>
+    <script>
+        const hover = document.querySelectorAll('a.hover');
+        const menuBar = document.querySelector('.menu-bar');
+        const nav = document.querySelector('nav');
+        const wrap = document.querySelector('.wrap');
+        
+        // 모바일 스크립트 코드
+        const hamburgerMenu = document.querySelector('.hamburger-menu');
+        const myPage = document.querySelector('#myPage');
+
+        hamburgerMenu.addEventListener('click', function () {
+            nav.classList.toggle('active');
+
+            if (nav.classList.contains('active')) {
+                nav.prepend(myPage);
+                myPage.style.display = 'flex';
+                myPage.style.padding = '5px 0';
+                myPage.style.backgroundColor = '#dde';
+
+                let sectionHeight = section.offsetHeight;
+                nav.style.height = `${sectionHeight}px`;
+            } else {
+                workerTitle.appendChild(myPage);
+                myPage.style.display = '';
+                nav.style.height = '';
+            }
+        });
+
+        const section = document.querySelector('section');
+        section.addEventListener("click", function () {
+            hideMenuBar();
+        })
+
+        let isHovered = false;
+
+        hover.forEach(button => {
+            button.addEventListener('mouseover', () => {
+                showMenuBar();
+                isHovered = true;
+            });
+        });
+
+        wrap.addEventListener("mouseleave", function () {
+            if (!isHovered) {
+                hideMenuBar();
+            }
+        });
+
+        menuBar.addEventListener("mouseenter", function () {
+            isHovered = true;
+        });
+
+        menuBar.addEventListener("mouseleave", function () {
+            hideMenuBar();
+        });
+
+        function showMenuBar() {
+            nav.classList.add('active');
+        }
+
+        function hideMenuBar() {
+            nav.classList.remove('active');
+        }
+
+        hover.forEach(link => {
+            link.addEventListener("click", function (event) {
+                let myPage = document.querySelector("#myPage");
+                // let myPageName = document.querySelector("#workerName");
+                // let myPageLogo = document.querySelector("#myPageLogo");
+                let menuBar = document.querySelector(".menu-bar");
+                let mainPage = document.querySelector(".wrap");
+                let companyLogo = document.querySelector("#workerLogo");
+
+                let ulLi = document.querySelectorAll(".menu-bar-content ul li");
+
+
+                event.preventDefault();
+                if (nav.classList.contains('active') && window.matchMedia("(max-width: 430px)").matches) {
+                    nav.style.height = `${section.offsetHeight}px`
+
+                    // 네비4
+                    // for (let i = 0; i < ulLi.length; i++) {
+                    //     ulLi[i].style.padding = '10px';
+                    //     ulLi[i].style.margin = '0px';
+                    // }
+
+                    // 네비5
+                    for (let i = 0; i < ulLi.length; i++) {
+                        ulLi[i].style.padding = '7px';
+
+                    }
+                    menuBar.prepend(myPage);
+                }
+            });
+        });
+
+        document.querySelector("#adminTitle").style.display = 'block';
+        document.querySelector("#adminNav").style.display = 'block';
+        document.querySelector(".workerGrade").innerHTML = '작업자<br>';
+        // document.querySelector(".workerGrade").innerHTML = '관리자<br>';
+
+        // document.querySelector("#adminTitle").style.display = 'none';
+        // document.querySelector("#adminNav").style.display = 'none';
+    </script>
+</body>
+
+</html>

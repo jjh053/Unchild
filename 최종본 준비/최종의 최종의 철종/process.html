@@ -1,0 +1,1712 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process Page</title>
+    <style>
+        @font-face {
+            font-family: "SOYOMapleBoldTTF";
+            src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/SOYOMapleBoldTTF.woff2") format("woff2");
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: "SOYOMapleBoldTTF";
+            margin: 0 auto;
+            /* font-family: Arial, sans-serif; */
+            background: #fff;
+            color: #333;
+            background-color: #ccc;
+        }
+
+        .wrap {
+            width: 1000px;
+            /* height: 150vh; */
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+        }
+
+        .header-nav-container {
+            position: relative;
+            width: 100%;
+            /* wrap과 동일한 너비 */
+        }
+
+        header {
+            width: 100%;
+            background: #000;
+            /* background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 40%, rgba(0, 212, 255, 1) 100%); */
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        header h1 {
+            font-size: 30px;
+            margin: 0;
+        }
+
+        header ul {
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+            list-style: none;
+            align-items: center;
+        }
+
+        header ul li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+
+        header ul li a {
+            font-size: 18px;
+            text-decoration: none;
+            color: #fff;
+            transition: color 0.3s ease;
+        }
+
+        header ul li a:hover {
+            color: #aaa;
+        }
+
+        nav {
+            width: 100%;
+            position: absolute;
+            top: 100%;
+            /* header 높이에 맞게 조정 */
+            left: 0;
+            right: 0;
+            background: #eee;
+            max-height: 0;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear;
+            visibility: hidden;
+            z-index: 100;
+            /* opacity: 0; */
+        }
+
+        /* nav 숨김요소 */
+        nav.active {
+            max-height: 500px;
+            /* 활성화될 때 최대 높이 설정 */
+            visibility: visible;
+            opacity: 1;
+            transition: max-height 0.5s ease, visibility 0s, opacity 0.5s linear;
+        }
+
+        .aside-section-container {
+            width: 100%;
+            display: flex;
+        }
+
+        /* 좌측 메뉴바 */
+        aside {
+            min-height: 800px;
+            /* height: 80%; */
+            width: 20%;
+            background: #5f5f5f;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* 섹션 창을 조작하기바람 */
+        section {
+            position: relative;
+            width: 80%;
+            min-height: 800px;
+            background: #eee;
+            z-index: 50;
+        }
+
+        .menu-bar {
+            width: 100%;
+            height: 220px;
+            border-top: 0px;
+            border-right: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .menu-bar-content {
+            /* margin-left: 40px; */
+            width: 20%;
+            display: inline-block;
+            box-sizing: border-box;
+        }
+
+        .menu-bar-content ul li {
+            padding: 10px;
+        }
+
+        .menu-bar-content ul li a {
+            text-decoration: none;
+            color: #444;
+        }
+
+        .menu-bar-content ul li a:hover {
+            color: #aaa;
+            transition: color 0.2s ease;
+        }
+
+        footer {
+            width: 100%;
+            background: #000;
+            color: #fff;
+            text-align: center;
+            height: 7%;
+            line-height: 70px;
+        }
+
+        #workerLogo {
+            width: 200px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            /* border: 1px solid red; */
+        }
+
+        #workerTitle {
+            /* border: 1px solid red; */
+            display: flex;
+            width: 1000px;
+            /* display: flex; */
+            /* border: 1px solid red; */
+            justify-content: space-between;
+            padding: 5px;
+
+        }
+
+        #workerTitle h1 {
+            width: 200px;
+            color: #000;
+            /* border: 1px solid red; */
+        }
+
+        #myPage {
+            width: 200px;
+            height: 80px;
+            /* border: 1px solid red; */
+            display: flex;
+            align-items: center;
+        }
+
+        #myPageLogo {
+            width: 80px;
+            height: 80px;
+            /* border: 1px solid red; */
+            margin-right: 3%;
+        }
+
+
+        #workerName a {
+            text-decoration: none;
+            color: #333;
+
+        }
+
+        #workerName a:hover {
+            text-decoration: none;
+            color: #888;
+            transition: color 0.2s ease;
+        }
+
+        .workerPic {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+        }
+
+        .logo {
+            width: 200px;
+            height: 70px;
+        }
+
+        #menu-bar-content-sub {
+            list-style: circle;
+            font-size: 14px;
+            padding-left: 20px;
+        }
+
+        #menu-bar-content-sub li {
+            padding: 5px;
+        }
+
+        #mainTitle1 {
+            display: none;
+        }
+
+        #mainTitle2 {
+            display: none;
+        }
+
+        aside ul li {
+            list-style: none;
+            padding-top: 20px;
+            padding-bottom: 40px;
+        }
+
+        aside ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        aside ul li ul li {
+            padding-top: 20px;
+            padding-bottom: 0px;
+
+        }
+
+        aside ul li a:hover {
+            color: #888;
+            transition: color 0.2s ease;
+        }
+
+        #options-container {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        section .lego-option {
+            display: inline-block;
+            margin-right: 50px;
+            width: 700px;
+            border-top: 1px solid #444;
+            border-bottom: 1px solid #444;
+            margin-bottom: 10px;
+            vertical-align: middle;
+            margin-top: 20px;
+            margin-left: 50px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        section .lego-option div {
+            padding-left: 20px;
+            padding-right: 20px;
+            vertical-align: middle;
+            display: inline-block;
+            /* border: 1px solid red; */
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .lego-option input {
+            font-family: "SOYOMapleBoldTTF";
+            margin: 5px 0px;
+            height: 20px;
+        }
+
+        .lego-option select {
+            font-family: "SOYOMapleBoldTTF";
+            width: 100px;
+            height: 30px;
+        }
+
+        #add-option-btn {
+            background-color: #3498DB;
+            color: #fff;
+            border: 0;
+            border-radius: 10px;
+            width: 100px;
+            height: 50px;
+            cursor: pointer;
+            margin-left: 650px;
+        }
+
+        #add-option-btn:hover {
+            background-color: rgb(0, 47, 255);
+            transition: 0.2s;
+        }
+
+        .lego-option button {
+            background: #333;
+            color: #fff;
+            border: 0;
+            border-radius: 10px;
+            width: 70px;
+            height: 50px;
+            cursor: pointer;
+        }
+
+        .lego-option button:hover {
+            background-color: #555;
+            transition: 0.2s;
+        }
+
+        #optionpage-option-select-page div .optionpage-lego-option {
+            font-family: "SOYOMapleBoldTTF";
+            width: 100px;
+            height: 17px;
+            margin-bottom: 5px;
+            padding: 5px;
+        }
+
+        .optionpage-lego-option-select1 {
+            font-family: "SOYOMapleBoldTTF";
+            width: 200px;
+            height: 30px;
+            padding: 5px;
+        }
+
+        .optionpage-lego-option-select2 {
+            font-family: "SOYOMapleBoldTTF";
+            width: 200px;
+            height: 30px;
+            padding: 5px;
+        }
+
+        .optionpage-lego-option-select3 {
+            font-family: "SOYOMapleBoldTTF";
+            width: 200px;
+            height: 30px;
+            padding: 5px;
+        }
+
+        .optionpage-delete-btn {
+            margin-top: 10px;
+            width: 80px;
+            height: 40px;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #5e5e5e;
+            color: #fff;
+            border: 0;
+        }
+
+        .optionpage-application-btn {
+            background-color: #3498DB;
+            margin-top: 10px;
+            width: 80px;
+            height: 40px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+        }
+
+        .optionpage-application-btn:hover {
+            background-color: rgb(0, 47, 255);
+            transition: 0.2s;
+        }
+
+        #optionpage-option-select-page {
+            display: none;
+            background: #eee;
+            position: absolute;
+            width: 778px;
+            height: 78%;
+            text-align: center;
+            /* border: 1px solid red; */
+            padding: 10px;
+            top: 185px;
+            left: 309px;
+        }
+
+        .optionpage-spacebar-btn {
+            display: inline-block;
+            width: 80px;
+        }
+
+        #openModalBtn {
+            display: block;
+            background-color: #888;
+            color: #fff;
+            border: 0;
+            border-radius: 10px;
+            width: 100px;
+            height: 50px;
+            cursor: pointer;
+            margin: 0 auto;
+        }
+
+        #openModalBtn:hover {
+            background-color: #555;
+            transition: 0.2s;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            width: 30%;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 10px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .optionpage-delete-btn:hover {
+            transition: 0.2s;
+            background-color: #333;
+        }
+
+        .modal-content h3 {
+            text-align: center;
+        }
+
+        .modal-content .okay-btn {
+            background-color: #3498DB;
+            margin-top: 10px;
+            width: 80px;
+            height: 40px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+
+        }
+
+        .modal-content .nono-btn {
+            margin: 0 10px;
+            background-color: red;
+            margin-top: 10px;
+            width: 80px;
+            height: 40px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+        }
+
+        .option-check-botton-zip {
+            text-align: center;
+        }
+
+        #section-nav {
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .tree-graph-line-title1,
+        .tree-graph-line-title2,
+        .tree-graph-line-title3,
+        .tree-graph-line-title4 {
+            border: 1px solid #444;
+            border-radius: 10px;
+            width: 150px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            cursor: pointer;
+            background-color: #eee;
+        }
+
+        .tree-graph-line-title1 {
+            background-color: #aaa;
+        }
+
+        .tree-graph-line-title1:hover,
+        .tree-graph-line-title2:hover,
+        .tree-graph-line-title3:hover,
+        .tree-graph-line-title4:hover {
+            background-color: #aaa;
+            transition: 0.2s;
+        }
+
+        .tree-line1 {
+            margin-top: 100px;
+            margin-left: 140px;
+            border-top: 20px solid #888;
+            border-right: 20px solid #888;
+            border-bottom: 20px solid #888;
+            border-top-right-radius: 50px;
+            border-bottom-right-radius: 50px;
+            width: 600px;
+            height: 200px;
+        }
+
+        .tree-line2 {
+            margin-top: -20px;
+            margin-left: 50px;
+            border-top: 20px solid #888;
+            border-bottom: 20px solid #888;
+            border-left: 20px solid #888;
+            border-top-left-radius: 50px;
+            border-bottom-left-radius: 50px;
+            width: 600px;
+            height: 200px;
+        }
+
+        .tree-graph-circle1 {
+            position: absolute;
+            top: 197px;
+            left: 100px;
+            width: 130px;
+            height: 130px;
+            background-color: rgb(86, 86, 202);
+            border-radius: 50%;
+            color: #fff;
+            line-height: 130px;
+            text-align: center;
+        }
+
+        .tree-graph-circle2 {
+            position: absolute;
+            top: 197px;
+            left: 330px;
+            width: 130px;
+            height: 130px;
+            background-color: rgb(86, 86, 202);
+            border-radius: 50%;
+            color: #fff;
+            line-height: 130px;
+            text-align: center;
+        }
+
+        .tree-graph-circle3 {
+            position: absolute;
+            top: 197px;
+            left: 560px;
+            width: 130px;
+            height: 130px;
+            background-color: rgb(86, 86, 202);
+            border-radius: 50%;
+            color: #fff;
+            line-height: 130px;
+            text-align: center;
+        }
+
+
+        .tree-graph-circle4 {
+            position: absolute;
+            top: 420px;
+            left: 560px;
+            width: 130px;
+            height: 130px;
+            background-color: rgb(86, 86, 202);
+            border-radius: 50%;
+            color: #fff;
+            line-height: 130px;
+            text-align: center;
+        }
+
+        .tree-graph-circle5 {
+            position: absolute;
+            top: 420px;
+            left: 330px;
+            width: 130px;
+            height: 130px;
+            background-color: rgb(86, 86, 202);
+            border-radius: 50%;
+            color: #fff;
+            line-height: 130px;
+            text-align: center;
+        }
+
+        .tree-graph-circle6 {
+            position: absolute;
+            top: 420px;
+            left: 100px;
+            width: 130px;
+            height: 130px;
+            background-color: rgb(86, 86, 202);
+            border-radius: 50%;
+            color: #fff;
+            line-height: 130px;
+            text-align: center;
+        }
+
+        .tree-graph-circle7 {
+            position: absolute;
+            top: 640px;
+            left: 100px;
+            width: 130px;
+            height: 130px;
+            background-color: rgb(86, 86, 202);
+            border-radius: 50%;
+            color: #fff;
+            line-height: 130px;
+            text-align: center;
+        }
+
+        .tree-graph-circle8 {
+            position: absolute;
+            top: 640px;
+            left: 330px;
+            width: 130px;
+            height: 130px;
+            background-color: rgb(86, 86, 202);
+            border-radius: 50%;
+            color: #fff;
+            line-height: 130px;
+            text-align: center;
+        }
+
+        .tree-graph-circle9 {
+            position: absolute;
+            top: 640px;
+            left: 560px;
+            width: 130px;
+            height: 130px;
+            background-color: rgb(86, 86, 202);
+            border-radius: 50%;
+            color: #fff;
+            line-height: 130px;
+            text-align: center;
+        }
+
+        .tree-graph-bar1 {
+            position: absolute;
+            top: 355px;
+            left: 735px;
+            background-color: #fff;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+        }
+
+
+        .tree-graph-bar2 {
+            position: absolute;
+            top: 577px;
+            left: 45px;
+            background-color: #fff;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+        }
+
+        .tree-graph-bar3 {
+            position: absolute;
+            top: 248px;
+            left: 267px;
+            background-color: #fff;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            transform: rotate(-90deg);
+        }
+
+
+        .tree-graph-bar4 {
+            position: absolute;
+            top: 248px;
+            left: 497px;
+            background-color: #fff;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            transform: rotate(-90deg);
+        }
+
+
+        .tree-graph-bar5 {
+            position: absolute;
+            top: 468px;
+            left: 267px;
+            background-color: #fff;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            transform: rotate(90deg);
+        }
+
+
+        .tree-graph-bar6 {
+            position: absolute;
+            top: 468px;
+            left: 497px;
+            background-color: #fff;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            transform: rotate(90deg);
+        }
+
+
+        .tree-graph-bar7 {
+            position: absolute;
+            top: 688px;
+            left: 267px;
+            background-color: #fff;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            transform: rotate(-90deg);
+        }
+
+
+
+        .tree-graph-bar8 {
+            position: absolute;
+            top: 688px;
+            left: 497px;
+            background-color: #fff;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            transform: rotate(-90deg);
+        }
+
+
+        .process-chart-time-table {
+            text-align: center;
+            border-collapse: collapse;
+            margin: 0 auto;
+            margin-top: 100px;
+            margin-bottom: 50px;
+            width: 600px;
+            height: 151px;
+        }
+
+        .process-chart-time-table th {
+            border: 0;
+            border: 1px solid #555;
+            width: 33%;
+            height: 40px;
+            background: #ddd;
+        }
+
+        .process-chart-time-table td {
+            border: 1px solid #555;
+            padding: 15px;
+        }
+
+        .process-chart2 {
+            display: none;
+        }
+
+        .process-chart {
+            display: block;
+        }
+
+        .workerGrade {
+            display: none;
+        }
+
+        #mainTitle1 {
+            display: none;
+        }
+
+        #mainTitle1 a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        #mainTitle2 {
+            display: none;
+        }
+
+        #mainTitle2 a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        @media screen and (max-width: 430px) {
+
+
+            .workerGrade {
+                display: inline;
+            }
+
+            form {
+                width: 100%;
+            }
+
+            /* 전체 페이지 */
+            .wrap {
+                width: 100%;
+            }
+
+            /* 헤더 */
+            header {
+                width: 100%;
+                background: #000;
+                color: #fff;
+                text-align: center;
+                padding: 5px;
+                box-sizing: border-box;
+                border-radius: 0px;
+            }
+
+            header ul li a {
+                font-size: 15px;
+                text-decoration: none;
+                color: #fff;
+                transition: color 0.3s ease;
+            }
+
+            #workerTitle {
+                display: none;
+            }
+
+            nav {
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                /* header 높이에 맞게 조정 */
+                left: 0;
+                right: 0;
+                background: #eee;
+                max-height: 881px;
+                overflow: hidden;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+                transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear;
+                transform: translateX(0%);
+                visibility: hidden;
+                z-index: 100;
+                /* opacity: 0; */
+            }
+
+            nav.active {
+                height: 881px;
+                max-height: 881px;
+                width: 200px;
+                visibility: visible;
+                opacity: 1;
+                transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear;
+                transform: translateX(0%);
+            }
+
+            /* 왼쪽에서 오른쪽으로 나오는 애니메이션을 추가합니다. */
+            nav {
+                transform: translateX(-100%);
+                transition: transform 0.5s ease;
+            }
+
+            nav.active {
+                transform: translateX(0%);
+                transition: transform 0.5s ease;
+            }
+
+            nav.closing {
+                transform: translateX(-100%);
+                transition: transform 0.5s ease;
+            }
+
+            nav .menu-bar {
+                width: 100%;
+                height: 100%;
+                border-top: 0px;
+                border-right: 1px solid #ccc;
+                border-bottom: 1px solid #ccc;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+                display: flex;
+                flex-direction: column;
+                background-color: #dde;
+            }
+
+            .menu-bar-content {
+                width: 100%;
+                margin-left: 0px;
+            }
+
+            .menu-bar-content ul li {
+                padding: 10px;
+            }
+
+            aside {
+                display: none;
+            }
+
+            /* 섹션 목록 */
+            section {
+                width: 100%;
+            }
+
+            .tree-graph-line-title1,
+            .tree-graph-line-title2,
+            .tree-graph-line-title3,
+            .tree-graph-line-title4 {
+                border: 1px solid #444;
+                border-radius: 10px;
+                font-size: 50%;
+                width: 23.2%;
+                height: 6%;
+                line-height: 50px;
+                text-align: center;
+                cursor: pointer;
+                background-color: #eee;
+            }
+
+            .tree-graph-line-title1 {
+                background-color: #aaa;
+            }
+
+            .tree-graph-line-title1:hover,
+            .tree-graph-line-title2:hover,
+            .tree-graph-line-title3:hover,
+            .tree-graph-line-title4:hover {
+                background-color: #aaa;
+                transition: 0.2s;
+            }
+
+            .tree-line1 {
+                margin-top: 10%;
+                margin-left: 9.3%;
+                border-top: 10px solid #888;
+                border-right: 10px solid #888;
+                border-bottom: 10px solid #888;
+                border-top-right-radius: 20px;
+                border-bottom-right-radius: 20px;
+                width: 81.4%;
+                height: 130px;
+            }
+
+            .tree-line2 {
+                margin-top: -2.3%;
+                margin-left: 4.65%;
+                border-top: 10px solid #888;
+                border-bottom: 10px solid #888;
+                border-left: 10px solid #888;
+                border-top-left-radius: 20px;
+                border-bottom-left-radius: 20px;
+                width: 81.4%;
+                height: 130px;
+            }
+
+            .tree-graph-circle1 {
+                position: absolute;
+                top: 20%;
+                left: 8.1%;
+                width: 18.6%;
+                height: 10%;
+                background-color: rgb(86, 86, 202);
+                border-radius: 50%;
+                color: #fff;
+                font-size: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .tree-graph-circle2 {
+                position: absolute;
+                top: 20%;
+                left: 39.5%;
+                width: 18.6%;
+                height: 10%;
+                background-color: rgb(86, 86, 202);
+                border-radius: 50%;
+                font-size: 50%;
+                color: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .tree-graph-circle3 {
+                position: absolute;
+                top: 20%;
+                left: 71%;
+                width: 18.6%;
+                height: 10%;
+                background-color: rgb(86, 86, 202);
+                border-radius: 50%;
+                font-size: 50%;
+                color: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+
+            .tree-graph-circle4 {
+                position: absolute;
+                top: 37.6%;
+                left: 71%;
+                width: 18.6%;
+                height: 10%;
+                background-color: rgb(86, 86, 202);
+                border-radius: 50%;
+                color: #fff;
+                font-size: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .tree-graph-circle5 {
+                position: absolute;
+                top: 37.6%;
+                left: 39.5%;
+                width: 18.6%;
+                height: 10%;
+                background-color: rgb(86, 86, 202);
+                border-radius: 50%;
+                color: #fff;
+                font-size: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .tree-graph-circle6 {
+                position: absolute;
+                top: 37.6%;
+                left: 8%;
+                width: 18.6%;
+                height: 10%;
+                background-color: rgb(86, 86, 202);
+                border-radius: 50%;
+                color: #fff;
+                font-size: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .tree-graph-circle7 {
+                position: absolute;
+                top: 55%;
+                left: 8%;
+                width: 18.6%;
+                height: 10%;
+                background-color: rgb(86, 86, 202);
+                border-radius: 50%;
+                font-size: 50%;
+                color: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .tree-graph-circle8 {
+                position: absolute;
+                top: 55%;
+                left: 39.6%;
+                width: 18.6%;
+                height: 10%;
+                background-color: rgb(86, 86, 202);
+                border-radius: 50%;
+                color: #fff;
+                font-size: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .tree-graph-circle9 {
+                position: absolute;
+                top: 55%;
+                left: 71%;
+                width: 18.6%;
+                height: 10%;
+                background-color: rgb(86, 86, 202);
+                border-radius: 50%;
+                color: #fff;
+                font-size: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .tree-graph-bar1 {
+                position: absolute;
+                top: 32%;
+                left: 88.5%;
+                background-color: #fff;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                text-align: center;
+            }
+
+
+
+            .tree-graph-bar2 {
+                position: absolute;
+                top: 50%;
+                left: 2.3%;
+                background-color: #fff;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                text-align: center;
+            }
+
+            .tree-graph-bar3 {
+                position: absolute;
+                top: 23.1%;
+                left: 29.7%;
+                background-color: #fff;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                text-align: center;
+                transform: rotate(-90deg);
+            }
+
+
+            .tree-graph-bar4 {
+                position: absolute;
+                top: 23.1%;
+                left: 61.1%;
+                background-color: #fff;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                text-align: center;
+                transform: rotate(-90deg);
+            }
+
+
+            .tree-graph-bar5 {
+                position: absolute;
+                top: 40.7%;
+                left: 61.1%;
+                background-color: #fff;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                text-align: center;
+                transform: rotate(90deg);
+            }
+
+
+            .tree-graph-bar6 {
+                position: absolute;
+                top: 40.7%;
+                left: 29.7%;
+                background-color: #fff;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                text-align: center;
+                transform: rotate(90deg);
+            }
+
+
+            .tree-graph-bar7 {
+                position: absolute;
+                top: 58.4%;
+                left: 29.7%;
+                background-color: #fff;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                text-align: center;
+                transform: rotate(-90deg);
+            }
+
+
+
+            .tree-graph-bar8 {
+                position: absolute;
+                top: 58.4%;
+                left: 61.1%;
+                background-color: #fff;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                text-align: center;
+                transform: rotate(-90deg);
+            }
+
+            .process-chart-time-table {
+                text-align: center;
+                border-collapse: collapse;
+                margin: 0 auto;
+                margin-top: 100px;
+                margin-bottom: 50px;
+                font-size: 11px;
+                width: 88%;
+                height: 151px;
+            }
+
+            .process-chart-time-table th {
+                border: 0;
+                border: 1px solid #555;
+                width: 33%;
+                height: 40px;
+                background: #ddd;
+            }
+
+            .process-chart-time-table td {
+                border: 1px solid #555;
+                padding: 15px;
+            }
+
+        }
+    </style>
+
+</head>
+
+<body>
+    <form name="frm">
+        <div id="workerTitle">
+            <div id="workerLogo">
+                <a href="#">
+                    <image
+                        src="https://cdn.discordapp.com/attachments/1185161279804026893/1200675420325036082/Jlogo.png?ex=65c70b1f&is=65b4961f&hm=ae28f53e9280fe71cffc1fc2ca74aec892875f13143ef4e109da28023c5b414b&"
+                        class="logo"></image>
+                </a>
+            </div>
+            <h1 id="mainTitle1"><a href="main.html">작업자 페이지</a></h1>
+            <h1 id="mainTitle2"><a href="main.html">관리자 페이지</a></h1>
+            <div id="myPage">
+                <div id="myPageLogo">
+                    <image
+                        src="https://cdn.discordapp.com/attachments/1185161279804026893/1200675420551520370/workerP.jpg?ex=65c70b1f&is=65b4961f&hm=c49f91b245305c4bb33c58e626bc4960b4f601257e433425a8d7cc0da454126e&"
+                        class="workerPic">
+                </div>
+                <span id="workerName"><span class="workerGrade">작업자<br></span>이도연 대리님</span>
+            </div>
+        </div>
+
+        <div class="wrap">
+            <div class="header-nav-container">
+                <header>
+                    <ul>
+                        <li><a href="work-order.html" class="hover" title="작업지시서">작업</a></li>
+                        <li><a href="facilityMonitoring.html" class="hover" title="품질검사">설비</a></li>
+                        <li><a href="stock_status.html" class="hover" title="건의사항">재고관리</a></li>
+                        <li id="adminTitle"><a href="Employee_managemen.html" class="hover" title="직원관리">직원관리</a></li>
+                        <li><a href="boardTable.html" class="hover" title="직원 게시판">게시판</a></li>
+                    </ul>
+                </header>
+                <nav>
+                    <div class="menu-bar">
+                        <div class="menu-bar-content">
+                            <ul>
+                                <li><a href="work-order.html">작업 지침서</a></li>
+                                <li><a href="work-safety.html">안전 지침서</a></li>
+                                <li><a href="work-quality.html">품질검사</a></li>
+                                <li><a href="work-report.html">작업보고</a></li>
+                            </ul>
+                        </div>
+                        <div class="menu-bar-content">
+                            <ul>
+                                <li><a href="facilityMonitoring.html">설비 모니터링</a></li>
+
+                                <li><a href="process.html">공정도</a></li>
+
+                                <li><a href="facilitiespage.html">설비 설정</a></li>
+                            </ul>
+                        </div>
+                        <div class="menu-bar-content">
+                            <ul>
+                                <li><a href="stock_status.html">재고 현황</a></li>
+                                <li><a href="Stock_Request.html">재고 신청</a></li>
+                                <li><a href="Finished_product_management.html">완제품 관리</a></li>
+                                <li><a href="Report_of_defective_inventory.html">재고 불량 신고</a></li>
+                            </ul>
+                        </div>
+                        <div class="menu-bar-content" id="adminNav">
+                            <ul>
+                                <li><a href="Employee_managemen.html">직원목록</a></li>
+                                <li><a href="work-record.html">근무기록</a></li>
+                                <li><a href="vacation.html">휴가신청</a></li>
+                            </ul>
+                        </div>
+                        <div class="menu-bar-content">
+                            <ul>
+                                <li><a href="boardTable.html">자유게시판</a></li>
+                                <li><a href="suggestTable.html">건의사항</a></li>
+                                <li><a href="QA.html">Q&A</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="aside-section-container">
+                <aside>
+                    <ul>
+                        <li>
+                            <a href="FacilityMonitoring.html">설비 모니터링</a>
+                        </li>
+                        <li>
+                            <a href="process.html">공정도</a>
+
+                        </li>
+                        <li>
+                            <a href="facilitiespage.html">설비설정</a>
+                        </li>
+                    </ul>
+                </aside>
+                <section>
+                    <h1 style="text-align: center; font-size: 30px; margin-top: 40px">공정도</h1>
+                    <div class="process-chart">
+                        <div id="section-nav">
+                            <div class="tree-graph-line-title1">1번라인 공정도</div>
+                            <div class="tree-graph-line-title2">2번라인 공정도</div>
+                            <div class="tree-graph-line-title3">3번라인 공정도</div>
+                            <div class="tree-graph-line-title4">4번라인 공정도</div>
+                        </div>
+                        <div class="tree-line1">
+                        </div>
+                        <div class="tree-line2">
+                        </div>
+
+                        <div class="tree-graph-circle1">설계 확인</div>
+                        <div class="tree-graph-circle2">자재 확인</div>
+                        <div class="tree-graph-circle3">그래픽카드 조립</div>
+
+                        <div class="tree-graph-circle4">저장장치 조립</div>
+                        <div class="tree-graph-circle5">메모리 조립</div>
+                        <div class="tree-graph-circle6">조립 검사</div>
+
+                        <div class="tree-graph-circle7">품질 검사</div>
+                        <div class="tree-graph-circle8">포장</div>
+                        <div class="tree-graph-circle9">출하</div>
+
+                        <div class="tree-graph-bar1">
+                            <image width="30" height="30"
+                                src="https://cdn.discordapp.com/attachments/1185161279804026893/1201801919757029427/pngwing.com_1.png?ex=65cb2442&is=65b8af42&hm=587c52877b6d903462980dbd8103a16072852811f563d2fdfcdf8da3cb0dceec&">
+                            </image>
+                        </div>
+                        <div class="tree-graph-bar2">
+                            <image width="30" height="30"
+                                src="https://cdn.discordapp.com/attachments/1185161279804026893/1201801919757029427/pngwing.com_1.png?ex=65cb2442&is=65b8af42&hm=587c52877b6d903462980dbd8103a16072852811f563d2fdfcdf8da3cb0dceec&">
+                            </image>
+                        </div>
+
+                        <div class="tree-graph-bar3">
+                            <image width="30" height="30"
+                                src="https://cdn.discordapp.com/attachments/1185161279804026893/1201801919757029427/pngwing.com_1.png?ex=65cb2442&is=65b8af42&hm=587c52877b6d903462980dbd8103a16072852811f563d2fdfcdf8da3cb0dceec&">
+                            </image>
+                        </div>
+                        <div class="tree-graph-bar4">
+                            <image width="30" height="30"
+                                src="https://cdn.discordapp.com/attachments/1185161279804026893/1201801919757029427/pngwing.com_1.png?ex=65cb2442&is=65b8af42&hm=587c52877b6d903462980dbd8103a16072852811f563d2fdfcdf8da3cb0dceec&">
+                            </image>
+                        </div>
+                        <div class="tree-graph-bar5">
+                            <image width="30" height="30"
+                                src="https://cdn.discordapp.com/attachments/1185161279804026893/1201801919757029427/pngwing.com_1.png?ex=65cb2442&is=65b8af42&hm=587c52877b6d903462980dbd8103a16072852811f563d2fdfcdf8da3cb0dceec&">
+                            </image>
+                        </div>
+                        <div class="tree-graph-bar6">
+                            <image width="30" height="30"
+                                src="https://cdn.discordapp.com/attachments/1185161279804026893/1201801919757029427/pngwing.com_1.png?ex=65cb2442&is=65b8af42&hm=587c52877b6d903462980dbd8103a16072852811f563d2fdfcdf8da3cb0dceec&">
+                            </image>
+                        </div>
+                        <div class="tree-graph-bar7">
+                            <image width="30" height="30"
+                                src="https://cdn.discordapp.com/attachments/1185161279804026893/1201801919757029427/pngwing.com_1.png?ex=65cb2442&is=65b8af42&hm=587c52877b6d903462980dbd8103a16072852811f563d2fdfcdf8da3cb0dceec&">
+                            </image>
+                        </div>
+                        <div class="tree-graph-bar8">
+                            <image width="30" height="30"
+                                src="https://cdn.discordapp.com/attachments/1185161279804026893/1201801919757029427/pngwing.com_1.png?ex=65cb2442&is=65b8af42&hm=587c52877b6d903462980dbd8103a16072852811f563d2fdfcdf8da3cb0dceec&">
+                            </image>
+                        </div>
+
+                        <table class="process-chart-time-table">
+                            <thead>
+                                <tr>
+                                    <th>일시</th>
+                                    <th>완성된 컴퓨터 수</th>
+                                    <th>진행상황</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2024-02-02<br><br>
+                                        시작시간 : 09 : 00<br> <!-- 설비설정을 누른 시간 -->
+                                        현재시간 : 14 : 06
+                                    </td>
+                                    <td class="completeComputer">0</td>
+                                    <td class="completeComputer-progress">
+                                        설계 확인중
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- 2번라인 공정도
+                    <div class="process-chart2">
+                        <div id="section-nav">
+                            <div class="tree-graph-line-title1">1번라인 공정도</div>
+                            <div class="tree-graph-line-title2">2번라인 공정도</div>
+                            <div class="tree-graph-line-title3">3번라인 공정도</div>
+                            <div class="tree-graph-line-title4">4번라인 공정도</div>
+                        </div>
+                        <div class="tree-line1">
+                        </div>
+                        <div class="tree-line2">
+                        </div>
+
+                        <div class="tree-graph-circle1">설계 확인</div>
+                        <div class="tree-graph-circle2">자재 확인</div>
+                        <div class="tree-graph-circle3">그래픽카드 조립</div>
+
+                        <div class="tree-graph-circle4">저장장치 조립</div>
+                        <div class="tree-graph-circle5">메모리 조립</div>
+                        <div class="tree-graph-circle6">조립 검사</div>
+
+                        <div class="tree-graph-circle7">품질 검사</div>
+                        <div class="tree-graph-circle8">포장</div>
+                        <div class="tree-graph-circle9">출하</div>
+
+                        <div class="tree-graph-bar1">
+                            <image width="30" height="30"
+                                src="https://cdn.discordapp.com/attachments/1185161279804026893/1201801919757029427/pngwing.com_1.png?ex=65cb2442&is=65b8af42&hm=587c52877b6d903462980dbd8103a16072852811f563d2fdfcdf8da3cb0dceec&">
+                            </image>
+                        </div>
+                        <div class="tree-graph-bar2">
+                            <image width="30" height="30"
+                                src="https://cdn.discordapp.com/attachments/1185161279804026893/1201801919757029427/pngwing.com_1.png?ex=65cb2442&is=65b8af42&hm=587c52877b6d903462980dbd8103a16072852811f563d2fdfcdf8da3cb0dceec&">
+                            </image>
+                        </div>
+
+                        <div class="tree-graph-bar3">
+                            <image width="30" height="30"
+                                src="https://cdn.discordapp.com/attachments/1185161279804026893/1201801919757029427/pngwing.com_1.png?ex=65cb2442&is=65b8af42&hm=587c52877b6d903462980dbd8103a16072852811f563d2fdfcdf8da3cb0dceec&">
+                            </image>
+                        </div>
+                        <div class="tree-graph-bar4">
+                            <image width="30" height="30"
+                                src="https://cdn.discordapp.com/attachments/1185161279804026893/1201801919757029427/pngwing.com_1.png?ex=65cb2442&is=65b8af42&hm=587c52877b6d903462980dbd8103a16072852811f563d2fdfcdf8da3cb0dceec&">
+                            </image>
+                        </div>
+                        <div class="tree-graph-bar5">
+                            <image width="30" height="30"
+                                src="https://cdn.discordapp.com/attachments/1185161279804026893/1201801919757029427/pngwing.com_1.png?ex=65cb2442&is=65b8af42&hm=587c52877b6d903462980dbd8103a16072852811f563d2fdfcdf8da3cb0dceec&">
+                            </image>
+                        </div>
+                        <div class="tree-graph-bar6">
+                            <image width="30" height="30"
+                                src="https://cdn.discordapp.com/attachments/1185161279804026893/1201801919757029427/pngwing.com_1.png?ex=65cb2442&is=65b8af42&hm=587c52877b6d903462980dbd8103a16072852811f563d2fdfcdf8da3cb0dceec&">
+                            </image>
+                        </div>
+                        <div class="tree-graph-bar7">
+                            <image width="30" height="30"
+                                src="https://cdn.discordapp.com/attachments/1185161279804026893/1201801919757029427/pngwing.com_1.png?ex=65cb2442&is=65b8af42&hm=587c52877b6d903462980dbd8103a16072852811f563d2fdfcdf8da3cb0dceec&">
+                            </image>
+                        </div>
+                        <div class="tree-graph-bar8">
+                            <image width="30" height="30"
+                                src="https://cdn.discordapp.com/attachments/1185161279804026893/1201801919757029427/pngwing.com_1.png?ex=65cb2442&is=65b8af42&hm=587c52877b6d903462980dbd8103a16072852811f563d2fdfcdf8da3cb0dceec&">
+                            </image>
+                        </div>
+
+                        <table class="process-chart-time-table">
+                            <thead>
+                                <tr>
+                                    <th>일시</th>
+                                    <th>완성된 컴퓨터 수</th>
+                                    <th>진행상황</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2024-02-02<br><br>
+                                        시작시간 : 09 : 00<br>
+                                        현재시간 : 14 : 05
+                                    </td>
+                                    <td class="completeComputer">0</td>
+                                    <td class="completeComputer-progress">
+                                        설계 확인중
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table> -->
+                    <!-- </div> -->
+                </section>
+            </div>
+            <footer>ⓒ2024 J.company System</footer>
+        </div>
+    </form>
+    <script>
+        const hover = document.querySelectorAll('a.hover');
+        const menuBar = document.querySelector('.menu-bar');
+        const nav = document.querySelector('nav');
+        const wrap = document.querySelector('.wrap');
+        const section = document.querySelector('section');
+        let currentOptionBeingEdited = null;
+
+        hover.forEach(link => {
+            link.addEventListener("click", function (event) {
+                event.preventDefault();
+                if (nav.classList.contains('active') && window.matchMedia("(max-width: 430px)").matches) {
+                    nav.style.height = `${section.offsetHeight}px`
+                }
+            });
+        });
+
+        document.querySelector("#mainTitle2").style.display = "block";
+
+        let isHovered = false;
+
+        hover.forEach(button => {
+            button.addEventListener('mouseover', () => {
+                showMenuBar();
+                isHovered = true;
+            });
+        });
+
+        wrap.addEventListener("mouseleave", function () {
+            if (!isHovered) {
+                hideMenuBar();
+            }
+        });
+
+        menuBar.addEventListener("mouseenter", function () {
+            isHovered = true;
+        });
+
+        menuBar.addEventListener("mouseleave", function () {
+            hideMenuBar();
+        });
+
+        section.addEventListener("click", function () {
+            hideMenuBar();
+        })
+
+        function showMenuBar() {
+            nav.classList.add('active');
+        }
+
+        function hideMenuBar() {
+            nav.classList.remove('active');
+        }
+
+        let currentCircle = 1;
+        let ExistingCircle;
+
+        let currentComputer = 0;
+        let wordArray = ["설계 확인", "자재 확인", "그래픽카드 조립", "저장장치 조립", "메모리 조립", "조립 검사", "품질 검사", "포장", "출하"];
+        setInterval(() => {
+            if (ExistingCircle) {
+                const previous = document.querySelector(`.tree-graph-circle${ExistingCircle}`);
+                previous.style.backgroundColor = 'rgb(86, 86, 202)';
+            }
+
+            const current = document.querySelector(`.tree-graph-circle${currentCircle}`);
+
+            let currentBackgroundColor = current.style.backgroundColor;
+
+            if (currentBackgroundColor === 'skyblue') {
+                current.style.backgroundColor = 'rgb(86, 86, 202)';
+            } else {
+                current.style.backgroundColor = 'skyblue';
+            }
+
+            ExistingCircle = currentCircle;
+            currentCircle = (currentCircle % 9) + 1;
+
+            let completeComputerProgress = document.querySelector(".completeComputer-progress");
+            completeComputerProgress.innerHTML = `${wordArray[currentComputer]}중`;
+            currentComputer++;
+            if (currentComputer == 9) {
+                currentComputer = 0;
+            }
+        }, 5000);
+
+        let completComNum = 0;
+        let completeComputer = document.querySelector(".completeComputer");
+        setInterval(() => {
+            completComNum++;
+            console.log("completComNum : " + completComNum);
+            completeComputer.innerHTML = completComNum;
+        }, 45000);
+
+
+        document.querySelector('.tree-graph-line-title1').addEventListener("click", () => {
+            document.querySelector('.tree-graph-line-title1').style.backgroundColor = "#aaa";
+            document.querySelector('.tree-graph-line-title2').style.backgroundColor = "#eee";
+            document.querySelector('.tree-graph-line-title3').style.backgroundColor = "#eee";
+            document.querySelector('.tree-graph-line-title4').style.backgroundColor = "#eee";
+        });
+        document.querySelector('.tree-graph-line-title2').addEventListener("click", () => {
+            document.querySelector('.tree-graph-line-title1').style.backgroundColor = "#eee";
+            document.querySelector('.tree-graph-line-title2').style.backgroundColor = "#aaa";
+            document.querySelector('.tree-graph-line-title3').style.backgroundColor = "#eee";
+            document.querySelector('.tree-graph-line-title4').style.backgroundColor = "#eee";
+        });
+        document.querySelector('.tree-graph-line-title3').addEventListener("click", () => {
+            document.querySelector('.tree-graph-line-title1').style.backgroundColor = "#eee";
+            document.querySelector('.tree-graph-line-title2').style.backgroundColor = "#eee";
+            document.querySelector('.tree-graph-line-title3').style.backgroundColor = "#aaa";
+            document.querySelector('.tree-graph-line-title4').style.backgroundColor = "#eee";
+        });
+        document.querySelector('.tree-graph-line-title4').addEventListener("click", () => {
+            document.querySelector('.tree-graph-line-title1').style.backgroundColor = "#eee";
+            document.querySelector('.tree-graph-line-title2').style.backgroundColor = "#eee";
+            document.querySelector('.tree-graph-line-title3').style.backgroundColor = "#eee";
+            document.querySelector('.tree-graph-line-title4').style.backgroundColor = "#aaa";
+        });
+
+        hover.forEach(link => {
+            link.addEventListener("click", function (event) {
+                let myPage = document.querySelector("#myPage");
+                let menuBar = document.querySelector(".menu-bar");
+                let mainPage = document.querySelector(".wrap");
+                let companyLogo = document.querySelector("#workerLogo");
+
+                let ulLi = document.querySelectorAll(".menu-bar-content ul li");
+
+
+                event.preventDefault();
+                if (nav.classList.contains('active') && window.matchMedia("(max-width: 430px)").matches) {
+                    nav.style.height = `${section.offsetHeight}px`
+
+                    // 작업자
+                    // for (let i = 0; i < ulLi.length; i++) {
+                    //     ulLi[i].style.padding = '10px';
+                    //     ulLi[i].style.margin = '0px';
+                    // }
+
+                    // 관리자
+                    for (let i = 0; i < ulLi.length; i++) {
+                        ulLi[i].style.padding = '7px';
+                        // ulLi[i].style.margin = '0px';
+
+                    }
+                    menuBar.prepend(myPage);
+                }
+            });
+        });
+        // 작업자
+        // document.querySelector("#adminTitle").style.display = 'none';
+        // document.querySelector("#adminNav").style.display = 'none';
+        document.querySelector(".workerGrade").innerHTML = '작업자<br>';
+        
+        // 관리자
+        // document.querySelector(".workerGrade").innerHTML = '관리자<br>';
+        document.querySelector("#adminTitle").style.display = 'block';
+        document.querySelector("#adminNav").style.display = 'block';
+
+
+        // 마이페이지
+        document.querySelector("#workerName").addEventListener("click", () => {
+            window.open("myPage.html", '_blank', 'width = 630, height = 470, top=100, left=100');
+        });
+
+    </script>
+</body>
+
+</html>
