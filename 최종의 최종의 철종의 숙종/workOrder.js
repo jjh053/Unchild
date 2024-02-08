@@ -29,6 +29,8 @@ function menuHover() {
     const nav = document.querySelector('nav');
     const wrap = document.querySelector('.wrap');
 
+    const workerGrade = document.querySelector(".workerGrade");
+
     // 모바일 스크립트 코드
     const hamburgerMenu = document.querySelector('.hamburger-menu');
     const myPage = document.querySelector('#myPage');
@@ -41,6 +43,7 @@ function menuHover() {
             myPage.style.display = 'flex';
             myPage.style.padding = '5px 0';
             myPage.style.backgroundColor = '#dde';
+            workerGrade.style.display = "inline";
 
             let sectionHeight = section.offsetHeight;
             nav.style.height = `${sectionHeight}px`;
@@ -48,6 +51,7 @@ function menuHover() {
             workerTitle.appendChild(myPage);
             myPage.style.display = '';
             nav.style.height = '';
+            workerGrade.style.display = "none";
         }
     });
 
@@ -129,10 +133,7 @@ function menuHover() {
         });
     });
 
-    document.querySelector("#adminTitle").style.display = 'block';
-    document.querySelector("#adminNav").style.display = 'block';
-    document.querySelector(".workerGrade").innerHTML = '작업자<br>';
-    // document.querySelector(".workerGrade").innerHTML = '관리자<br>';
+    
 
     // document.querySelector("#adminTitle").style.display = 'none';
     // document.querySelector("#adminNav").style.display = 'none';
@@ -141,25 +142,43 @@ function menuHover() {
 function userCheck(id) {
 
     const delete_checkbox = document.querySelectorAll(".delete-checkbox");
+    const menubarContent = document.querySelector(".menu-bar-content");
 
     if (id == "user") {
         document.querySelector("#mainTitle2").style.display = "none";
         document.querySelector("#mainTitle1").style.display = "block";
         document.querySelector(".button-div").style.display = "none";
         document.querySelector(".user-button-div").style.display = "block";
+        document.querySelector("#adminTitle").style.display = 'none';
+        document.querySelector("#adminNav").style.display = 'none';
+        document.querySelector(".workerGrade").innerHTML = '작업자<br>';
+       
+
+        for (let i = 0; i < menubarContent.length; i++) {
+            menubarContent[i].style.marginLeft = "40px";
+        };
 
         for (let i = 0; i < delete_checkbox.length; i++) {
             delete_checkbox[i].style.display = "none";
-        }
+        };
+
     } else if (id == "admin") {
         document.querySelector("#mainTitle2").style.display = "block";
         document.querySelector("#mainTitle1").style.display = "none";
         document.querySelector(".button-div").style.display = "block";
         document.querySelector(".user-button-div").style.display = "none";
+        document.querySelector("#adminTitle").style.display = 'block';
+        document.querySelector("#adminNav").style.display = 'block';
+        document.querySelector(".workerGrade").innerHTML = '관리자<br>';
+        
+        for (let i = 0; i < menubarContent.length; i++) {
+            menubarContent[i].style.marginLeft = "0";
+        };
 
         for (let i = 0; i < delete_checkbox.length; i++) {
             delete_checkbox[i].style.display = "block";
-        }
+        };
+
     }
 
 }
@@ -359,15 +378,17 @@ function imgAtt() {
         }
     });
 
+    // 파일 또는 URL을 전달받아 이미지 미리보기를 화면에 표시
+
     function displayImagePreview(fileOrUrl) {
         if (typeof fileOrUrl === 'string' || fileOrUrl instanceof String) {
-            // It's a URL, display image directly
+            // URL 이미지를 표시
             img_preview.innerHTML = '';
             const imgPreview = document.createElement('img');
             imgPreview.src = fileOrUrl;
             img_preview.appendChild(imgPreview);
         } else {
-            // It's a File object, read and display
+            // 파일을 읽어와서 이미지를 표시
             const reader = new FileReader();
             reader.readAsDataURL(fileOrUrl);
             reader.onload = function (event) {

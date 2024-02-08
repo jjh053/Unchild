@@ -32,6 +32,7 @@ function menuHover() {
     // 모바일 스크립트 코드
     const hamburgerMenu = document.querySelector('.hamburger-menu');
     const myPage = document.querySelector('#myPage');
+    const work_safety_list = document.querySelector(".work-safety-list");
 
     hamburgerMenu.addEventListener('click', function () {
         nav.classList.toggle('active');
@@ -42,12 +43,27 @@ function menuHover() {
             myPage.style.padding = '5px 0';
             myPage.style.backgroundColor = '#dde';
 
+            document.querySelector("#user")
+                    .addEventListener("click", function() {
+                        for(let i = 0; i < work_safety_list.length; i++) {
+
+                            work_safety_list.style.marginLeft = "10%";
+                        }
+                    });
+
+
             let sectionHeight = section.offsetHeight;
             nav.style.height = `${sectionHeight}px`;
         } else {
             workerTitle.appendChild(myPage);
             myPage.style.display = '';
             nav.style.height = '';
+
+            document.querySelector("#admin-change-button")
+                    .addEventListener("click", function() {
+                        
+                        work_safety_list.style.marginLeft = "0";
+                    });
         }
     });
 
@@ -128,10 +144,7 @@ function menuHover() {
         });
     });
 
-    document.querySelector("#adminTitle").style.display = 'block';
-    document.querySelector("#adminNav").style.display = 'block';
-    document.querySelector(".workerGrade").innerHTML = '작업자<br>';
-    // document.querySelector(".workerGrade").innerHTML = '관리자<br>';
+
 
     // document.querySelector("#adminTitle").style.display = 'none';
     // document.querySelector("#adminNav").style.display = 'none';
@@ -141,6 +154,7 @@ function menuHover() {
 function userCheck(id) {
 
     const delete_safety_checkbox = document.querySelectorAll(".delete-safety-checkbox");
+    const menubarContent = document.querySelector(".menu-bar-content");
 
     if (id == "user") {
         document.querySelector("#mainTitle2").style.display = "none";
@@ -149,6 +163,13 @@ function userCheck(id) {
         document.querySelector(".safety-user-button-div").style.display = "block";
         document.querySelector(".work-safety-list-zip").style.width = "100%";
         document.querySelector(".work-safety-list-zip").style.marginLeft = "0%";
+        document.querySelector("#adminTitle").style.display = 'none';
+        document.querySelector("#adminNav").style.display = 'none';
+        document.querySelector(".workerGrade").innerHTML = '작업자<br>';
+
+        for (let i = 0; i < menubarContent.length; i++) {
+            menubarContent.classList.add("menu-bar-margin");
+        };
 
         for (let i = 0; i < delete_safety_checkbox.length; i++) {
             delete_safety_checkbox[i].style.display = "none";
@@ -160,6 +181,13 @@ function userCheck(id) {
         document.querySelector(".safety-user-button-div").style.display = "none";
         document.querySelector(".work-safety-list-zip").style.width = "80%";
         document.querySelector(".work-safety-list-zip").style.marginLeft = "10%";
+        document.querySelector("#adminTitle").style.display = 'block';
+        document.querySelector("#adminNav").style.display = 'block';
+        document.querySelector(".workerGrade").innerHTML = '관리자<br>';
+
+        for (let i = 0; i < menubarContent.length; i++) {
+            menubarContent.classList.remove("menu-bar-margin");
+        };
 
         for (let i = 0; i < delete_safety_checkbox.length; i++) {
             delete_safety_checkbox[i].style.display = "block";

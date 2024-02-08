@@ -117,10 +117,7 @@ window.addEventListener("load", function () {
         });
     });
 
-    document.querySelector("#adminTitle").style.display = 'block';
-    document.querySelector("#adminNav").style.display = 'block';
-    document.querySelector(".workerGrade").innerHTML = '작업자<br>';
-    // document.querySelector(".workerGrade").innerHTML = '관리자<br>';
+    
 
     // document.querySelector("#adminTitle").style.display = 'none';
     // document.querySelector("#adminNav").style.display = 'none';
@@ -130,16 +127,39 @@ window.addEventListener("load", function () {
 
 function userCheck(id) {
 
+    const menubarContent = document.querySelector(".menu-bar-content");
+
     if (id == "user") {
+
         document.querySelector("#mainTitle2").style.display = "none";
         document.querySelector("#mainTitle1").style.display = "block";
         document.querySelector(".work-report-content").style.display = "inline-block";
         document.querySelector("#quality-history").style.display = "none";
+        document.querySelector("#adminTitle").style.display = 'none';
+        document.querySelector("#adminNav").style.display = 'none';
+        document.querySelector(".workerGrade").innerHTML = '작업자<br>';
+
+        
+        for (let i = 0; i < menubarContent.length; i++) {
+            menubarContent.classList.add("menu-bar-margin");
+        };
+
     } else if (id == "admin") {
+
         document.querySelector("#mainTitle2").style.display = "block";
         document.querySelector("#mainTitle1").style.display = "none";
         document.querySelector(".work-report-content").style.display = "none";
         document.querySelector("#quality-history").style.display = "block";
+        document.querySelector("#adminTitle").style.display = 'block';
+        document.querySelector("#adminNav").style.display = 'block';
+        document.querySelector(".workerGrade").innerHTML = '관리자<br>';
+
+        
+
+        for (let i = 0; i < menubarContent.length; i++) {
+            menubarContent.classList.remove("menu-bar-margin");
+        };
+
     }
 
 };

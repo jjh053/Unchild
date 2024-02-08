@@ -72,7 +72,7 @@
         }
 
         #mainTitle1 {
-            display: block;
+            display: none;
         }
 
         #mainTitle1 a {
@@ -81,7 +81,7 @@
         }
 
         #mainTitle2 {
-            display: none;
+            display: block;
         }
 
         #mainTitle2 a {
@@ -123,6 +123,10 @@
         #workerTitle .logo {
             width: 200px;
             height: 70px;
+        }
+
+        .workerGrade {
+            display: none;
         }
 
         /* title end */
@@ -220,10 +224,15 @@
             border-bottom: 1px solid #ccc;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
             display: flex;
+            justify-content: space-evenly;
+        }
+
+        .menu-bar-margin {
+            margin-left: 40px !important;
         }
 
         .menu-bar-content {
-            margin-left: 40px;
+            /* margin-left: 40px !important; */
             width: 20%;
             display: inline-block;
             box-sizing: border-box;
@@ -308,7 +317,7 @@
 
         .work-report-content {
             width: 100%;
-            display: inline-block;
+            display: none;
             background-color: #eee;
         }
 
@@ -419,7 +428,7 @@
         /* 품질검사 보고 현황 */
 
         #quality-history {
-            display: none;
+            display: block;
         }
 
         .quality-report {
@@ -765,7 +774,12 @@
                     src="https://image.spreadshirtmedia.net/image-server/v1/compositions/T996A1PA2179PT10X17Y18D172654919W7098H6789/views/1,width=550,height=550,appearanceId=1,backgroundColor=FFFFFF,noPt=true/pixel-art-fox-fox-podstawki.jpg"
                     class="workerPic">
             </div>
-            <span id="workerName"><span class="workerGrade">작업자<br></span>이도연 대리님</span>
+            <span id="workerName">
+                <span class="workerGrade">
+                    관리자<br>
+                </span>
+                    이도연 대리님
+                </span>
         </div>
     </div>
 
@@ -785,6 +799,7 @@
                     <li><a href="#" class="hover" title="작업지시서">작업</a></li>
                     <li><a href="#" class="hover" title="품질검사">설비</a></li>
                     <li><a href="#" class="hover" title="건의사항">재고관리</a></li>
+                    <li id="adminTitle"><a href="#" class="hover" title="직원관리">직원관리</a></li>
                     <li><a href="#" class="hover" title="직원 게시판">게시판</a></li>
                 </ul>
             </header>
@@ -811,6 +826,13 @@
                             <li><a href="Stock_Request.html">재고 신청</a></li>
                             <li><a href="Finished_product_management.html">완제품 관리</a></li>
                             <li><a href="Report_of_defective_inventory.html">재고 불량 신고</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-bar-content" id="adminNav">
+                        <ul>
+                            <li><a href="Employee_managemen.html">직원목록</a></li>
+                            <li><a href="work-record.html">근무기록</a></li>
+                            <li><a href="vacation.html">휴가신청</a></li>
                         </ul>
                     </div>
                     <div class="menu-bar-content">
@@ -1310,7 +1332,7 @@
                             </div>
 
                             <div class="back-button-div">
-                                <button type="button" id="back-button" class="back-button">뒤로가기</button>
+                                <button type="button" id="back-button" class="back-button">유저</button>
                             </div>
 
                         </div>

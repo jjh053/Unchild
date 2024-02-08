@@ -119,6 +119,10 @@
             height: 70px;
         }
 
+        .workerGrade {
+            display: none;
+        }
+
         /* title end */
 
         .wrap {
@@ -213,10 +217,11 @@
             border-right: 1px solid #ccc;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
             display: flex;
+            justify-content: space-evenly;
         }
 
         .menu-bar-content {
-            margin-left: 40px;
+            /* margin-left: 40px; */
             width: 20%;
             display: inline-block;
             box-sizing: border-box;
@@ -281,7 +286,7 @@
             display: flex;
             justify-content: center;
             width: 80%;
-            min-height: 800px;
+            min-height: 900px;
             background: #eee;
             z-index: 50;
             align-items: center;
@@ -315,6 +320,7 @@
             border-radius: 8px;
             width: 60%;
             text-align: center;
+            display: none;
         }
 
         #work-checker-img {
@@ -365,7 +371,7 @@
             text-align: center;
             margin-top: 5%;
             margin-bottom: 5%;
-            /* display: none; */
+            display: none;
         }
 
         #complete-button {
@@ -441,6 +447,15 @@
             position: relative;
         }
 
+        .work-check-list:first-child {
+            margin-bottom: 20px;
+        }
+
+        .work-check-list:nth-child(2) {
+            margin-bottom: 20px;
+        }
+
+
         .work-check-list h3 {
             text-align: center;
         }
@@ -484,7 +499,7 @@
         #add-button-div {
             margin-top: 5%;
             margin-bottom: 5%;
-            display: none;
+            display: block;
         }
 
         .add-button {
@@ -861,7 +876,12 @@
                     src="https://image.spreadshirtmedia.net/image-server/v1/compositions/T996A1PA2179PT10X17Y18D172654919W7098H6789/views/1,width=550,height=550,appearanceId=1,backgroundColor=FFFFFF,noPt=true/pixel-art-fox-fox-podstawki.jpg"
                     class="workerPic">
             </div>
-            <span id="workerName"><span class="workerGrade">작업자<br></span>이도연 대리님</span>
+            <span id="workerName">
+                <span class="workerGrade">
+                    관리자<br>
+                </span>
+                이도연 대리님
+            </span>
         </div>
     </div>
 
@@ -987,7 +1007,7 @@
                                     </div>
                                     <div class="work-check-list-content">
                                         <span>
-                                            -찍힘
+                                            -상단부 I/O 포트
                                             <div class="error-checkbox-div">
                                                 <input type="checkbox" class="error-checkbox">
                                             </div>
@@ -995,7 +1015,7 @@
                                     </div>
                                     <div class="work-check-list-content">
                                         <span>
-                                            -볼트체결
+                                            -후면부 백패널
                                             <div class="error-checkbox-div">
                                                 <input type="checkbox" class="error-checkbox">
                                             </div>
@@ -1011,7 +1031,7 @@
                                     </h3>
                                     <div class="work-check-list-content">
                                         <span>
-                                            -LED 붉은색 부팅시 오류
+                                            -LED 인디케이터
                                             <div class="error-checkbox-div">
                                                 <input type="checkbox" class="error-checkbox">
                                             </div>
@@ -1036,14 +1056,14 @@
                                 </div>
                                 <div class="work-check-list">
                                     <h3>
-                                        윈도우 설치 및 구동확인
+                                        전원 및 바이오스
                                         <div class="delete-checkbox-div">
                                             <input type="checkbox" class="delete-checkbox">
                                         </div>
                                     </h3>
                                     <div class="work-check-list-content">
                                         <span>
-                                            -윈도우 작동
+                                            -정상 부팅 확인
                                             <div class="error-checkbox-div">
                                                 <input type="checkbox" class="error-checkbox">
                                             </div>
@@ -1051,7 +1071,7 @@
                                     </div>
                                     <div class="work-check-list-content">
                                         <span>
-                                            -시스템 사양 및 일련번호
+                                            -바이오스 출력 확인
                                             <div class="error-checkbox-div">
                                                 <input type="checkbox" class="error-checkbox">
                                             </div>
@@ -1059,7 +1079,7 @@
                                     </div>
                                     <div class="work-check-list-content">
                                         <span>
-                                            -시스템 정보
+                                            -일련번호 확인
                                             <div class="error-checkbox-div">
                                                 <input type="checkbox" class="error-checkbox">
                                             </div>
@@ -1067,15 +1087,7 @@
                                     </div>
                                     <div class="work-check-list-content">
                                         <span>
-                                            -창의 제품 일련번호
-                                            <div class="error-checkbox-div">
-                                                <input type="checkbox" class="error-checkbox">
-                                            </div>
-                                        </span>
-                                    </div>
-                                    <div class="work-check-list-content">
-                                        <span>
-                                            -작업관리자 진입 후 성능탭의 부품명
+                                            -사양 확인
                                             <div class="error-checkbox-div">
                                                 <input type="checkbox" class="error-checkbox">
                                             </div>
@@ -1104,49 +1116,34 @@
                             <div class="quality-list">
                                 <div class="quality-order">
                                     <p>
-                                        품질검사
+                                        품질 검사 지침<br>
                                         <br>
-                                        각각의 체크사항에서 사진을 제시해서 시각적으로 작업자가 쉽게 파악하도록 유도한다
+                                        조립 및 고정 검사<br>
+                                        <br>
+                                        각 부품이 조립 지침에 따라 제대로 설치됐는지 확인.<br>
+                                        볼트 체결및 내부부품(CPU, GPU, 메모리, SSD)
                                         <br><br>
-                                        1. 외관체크
-                                        <br><br>
-                                        케이스 외관 확인 사항
+                                        외관 검사<br>
                                         <br>
-                                        양품 사진 첨부 위 아래 좌 우 정도
+                                        도장 상태:<br>
+                                        도장 상태 양호도<br><br>
+                                        몰드 상태:<br>
+                                        몰드에 찌그러짐이나 구부러짐 없는지 확인.<br><br>
+                                        상단 I/O 포트:<br>
+                                        상단 포트(전원 버튼, USB-A, USB-C, 헤드셋, 마이크, LED 인디케이터)<br>
+                                        각 포트의 이름과 위치, 포트 구성<br><br>
+                                        후면 패널:<br>
+                                        뒤쪽 포트(6개 USB-A 슬롯, 이더넷 포트, 오디오 터미널, USB-C, HDMI, DP)<br>
+                                        그래픽 카드의 디스플레이 입력 단자(HDMI 2.1, 3 DP, Thunderbolt 4)<br><br>
+                                        전원 및 BIOS 작동 검사<br>
                                         <br>
-                                        체크사항
+                                        전원 버튼 테스트:<br>
+                                        전원 버튼 눌러 부팅 테스트 실행.<br>
+                                        LED 인디케이터와 부팅 사운드 체크.<br>
+                                        블루 LED: 정상, 레드 LED: 오류<br>
                                         <br>
-                                        도장상태
-                                        <br>
-                                        도장 까짐이 있는지 확인해준다 기본 도장은 블랙과 화이트 두가지
-                                        <br>
-                                        금형상태
-                                        <br>
-                                        눌리거나 휜곳이 있는지 확인
-                                        <br>
-                                        찍힘
-                                        <br>
-                                        볼트체결
-                                        <br><br><br>
-                                        2.전원부
-                                        <br><br>
-                                        전원부 예시 사진)led 파란색 점등 정상부팅 붉은색 부팅 오류
-                                        <br>
-                                        팬 회전 여부
-                                        <br>
-                                        팬등의 소음
-                                        <br><br><br>
-                                        3.윈도우 설치및 구동(윈도우 설치법 첨부)
-                                        <br><br>
-                                        체크사항
-                                        <br><br>
-                                        윈도우즈
-                                        <br>
-                                        시스템 사양 및 일련번호
-                                        <br>
-                                        시스템 정보창의 제품 일련번호
-                                        <br>
-                                        작업관리자 진입후 성능탭의 부품 각각의 부품명
+                                        팬회전 여부및 팬소음 정도<br>
+                                        BIOS 일련번호 조회<br>
                                     </p>
                                 </div>
                                 <div class="workImg">
