@@ -25,6 +25,30 @@
             background-color: #ccc;
         }
 
+        .titleAndToggle {
+            box-sizing: border-box;
+            align-items: center;
+            width: 26%;
+            justify-content: space-between;
+        }
+
+        #toggle {
+            background-color: #3498DB;
+            width: 80px;
+            height: 40px;
+            border-radius: 5px;
+            font-size: 20px;
+            font-family: "SOYOMapleBoldTTF";
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+        }
+
+        #toggle:hover {
+            background-color: rgb(0, 47, 255);
+            transition: 0.2s;
+        }
+
         /* title */
         #workerTitle {
             display: flex;
@@ -604,6 +628,12 @@
                 width: 100%;
             }
 
+            #toggle {
+                width: 50px;
+                height: 30px;
+                font-size: 16px;
+            }
+
             #workerTitle {
                 display: none;
             }
@@ -642,6 +672,14 @@
             #headerTitle a {
                 text-decoration: none;
                 color: #fff;
+            }
+
+            .titleAndToggle {
+                box-sizing: border-box;
+                align-items: center;
+                width: 40%;
+                font-size: 19px;
+                justify-content: space-between;
             }
 
             .hamburger-menu {
@@ -864,6 +902,7 @@
 </head>
 
 <body onload="showClock()">
+
     <div id="workerTitle">
         <div id="workerLogo">
             <a href="#">
@@ -954,7 +993,12 @@
             </aside>
             <section>
                 <div class="dashboard-header">
-                    메인 페이지
+                    <div class="titleAndToggle" style="display: flex;">
+                        메인 페이지
+                        <div id="toggleDiv">
+                            <button type="button" id="toggle">토글</button>
+                        </div>
+                    </div>
                     <div id="divClock" class="clock">
                     </div>
                 </div>
@@ -1070,7 +1114,7 @@
                         </div>
                     </div>
                     <div class="card">
-                        <a href="vacation.html" style="color: inherit; text-decoration: none;">
+                        <a href="vacation.html" id="vacationLink" style="color: inherit; text-decoration: none;">
                             <div class="card-header">
                                 휴가 내역
                             </div>
@@ -1322,7 +1366,20 @@
         // document.querySelector("#adminNav").style.display = 'none';
 
         document.addEventListener('DOMContentLoaded', function () {
-            // Initialize Chart.js Chart
+
+            setDefaultState();
+
+            function setDefaultState() {
+                const vacationLink = document.getElementById('vacationLink');
+                document.querySelector("#adminTitle").style.display = 'none';
+                document.querySelector("#adminNav").style.display = 'none';
+                document.querySelector(".workerGrade").innerHTML = '작업자<br>';
+                document.querySelector("#mainTitle1").style.display = "block";
+                document.querySelector("#mainTitle2").style.display = "none";
+                vacationLink.style.pointerEvents = "none";
+                vacationLink.style.opacity = "0.5";
+            }
+
             const ctx = document.getElementById('productionChart').getContext('2d');
             const productionChart = new Chart(ctx, {
                 type: 'line',
@@ -1439,6 +1496,38 @@
             }
 
             runProcess();
+        });
+
+        function toggle() {
+            const vacationLink = document.getElementById('vacationLink');
+
+            if (document.querySelector("#adminTitle").style.display != 'block') {
+                document.querySelector("#adminTitle").style.display = 'block';
+                document.querySelector("#adminNav").style.display = 'block';
+                // document.querySelector("#noticeWriteBtn").style.display = 'inline';
+                document.querySelector(".workerGrade").innerHTML = '관리자<br>';
+                document.querySelector("#mainTitle1").style.display = "none";
+                document.querySelector("#mainTitle2").style.display = "block";
+                vacationLink.style.pointerEvents = "auto";
+                vacationLink.style.opacity = "1";
+            } else {
+                // document.querySelector("#noticeWriteBtn").style.display = 'none';
+                document.querySelector("#adminTitle").style.display = 'none';
+                document.querySelector("#adminNav").style.display = 'none';
+                document.querySelector(".workerGrade").innerHTML = '작업자<br>';
+                document.querySelector("#mainTitle1").style.display = "block";
+                document.querySelector("#mainTitle2").style.display = "none";
+                vacationLink.style.pointerEvents = "none";
+                vacationLink.style.opacity = "0.5";
+            }
+        }
+
+        document.querySelector("#toggle").addEventListener('click', toggle);
+
+
+        // 마이페이지
+        document.querySelector("#workerName").addEventListener("click", () => {
+            window.open("myPage.html", '_blank', 'width = 630, height = 470, top=100, left=100');
         });
 
     </script>
