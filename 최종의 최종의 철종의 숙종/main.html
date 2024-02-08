@@ -628,7 +628,7 @@
                 width: 100%;
             }
 
-            #toggle{
+            #toggle {
                 width: 50px;
                 height: 30px;
                 font-size: 16px;
@@ -1114,7 +1114,7 @@
                         </div>
                     </div>
                     <div class="card">
-                        <a href="vacation.html" style="color: inherit; text-decoration: none;">
+                        <a href="vacation.html" id="vacationLink" style="color: inherit; text-decoration: none;">
                             <div class="card-header">
                                 휴가 내역
                             </div>
@@ -1366,7 +1366,20 @@
         // document.querySelector("#adminNav").style.display = 'none';
 
         document.addEventListener('DOMContentLoaded', function () {
-            // Initialize Chart.js Chart
+
+            setDefaultState();
+
+            function setDefaultState() {
+                const vacationLink = document.getElementById('vacationLink');
+                document.querySelector("#adminTitle").style.display = 'none';
+                document.querySelector("#adminNav").style.display = 'none';
+                document.querySelector(".workerGrade").innerHTML = '작업자<br>';
+                document.querySelector("#mainTitle1").style.display = "block";
+                document.querySelector("#mainTitle2").style.display = "none";
+                vacationLink.style.pointerEvents = "none";
+                vacationLink.style.opacity = "0.5";
+            }
+
             const ctx = document.getElementById('productionChart').getContext('2d');
             const productionChart = new Chart(ctx, {
                 type: 'line',
@@ -1486,6 +1499,8 @@
         });
 
         function toggle() {
+            const vacationLink = document.getElementById('vacationLink');
+
             if (document.querySelector("#adminTitle").style.display != 'block') {
                 document.querySelector("#adminTitle").style.display = 'block';
                 document.querySelector("#adminNav").style.display = 'block';
@@ -1493,6 +1508,8 @@
                 document.querySelector(".workerGrade").innerHTML = '관리자<br>';
                 document.querySelector("#mainTitle1").style.display = "none";
                 document.querySelector("#mainTitle2").style.display = "block";
+                vacationLink.style.pointerEvents = "auto";
+                vacationLink.style.opacity = "1";
             } else {
                 // document.querySelector("#noticeWriteBtn").style.display = 'none';
                 document.querySelector("#adminTitle").style.display = 'none';
@@ -1500,6 +1517,8 @@
                 document.querySelector(".workerGrade").innerHTML = '작업자<br>';
                 document.querySelector("#mainTitle1").style.display = "block";
                 document.querySelector("#mainTitle2").style.display = "none";
+                vacationLink.style.pointerEvents = "none";
+                vacationLink.style.opacity = "0.5";
             }
         }
 
