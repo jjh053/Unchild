@@ -25,24 +25,6 @@
             background-color: #ccc;
         }
 
-        /* 햄버거 메뉴 아이콘 */
-        .hamburger-menu {
-            display: none;
-            cursor: pointer;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 25px;
-            height: 20px;
-        }
-
-        .hamburger-menu span {
-            display: block;
-            height: 3px;
-            width: 100%;
-            background-color: #fff;
-            transition: all 0.2s ease;
-        }
-
         /* title */
         #workerTitle {
             display: flex;
@@ -68,19 +50,27 @@
             display: none;
         }
 
-        #mainTitle1 a {
-            text-decoration: none;
-            color: #333;
-        }
-
         #mainTitle2 {
             display: none;
         }
 
-        #mainTitle2 a {
-            text-decoration: none;
-            color: #333;
-        }
+        #mainTitle1 {
+        display: none;
+    }
+
+    #mainTitle1 a {
+        text-decoration: none;
+        color: #333;
+    }
+    
+    #mainTitle2 {
+        display: none;
+    }
+
+    #mainTitle2 a {
+        text-decoration: none;
+        color: #333;
+    }
 
         #myPage {
             width: 200px;
@@ -99,6 +89,9 @@
             text-decoration: none;
             color: #333;
 
+        }
+        a{
+            text-decoration: none;
         }
 
         #workerName a:hover {
@@ -209,11 +202,13 @@
             height: 220px;
             border-top: 0px;
             border-right: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
             display: flex;
+            justify-content: space-evenly;
         }
 
         .menu-bar-content {
-            margin-left: 40px;
             width: 20%;
             display: inline-block;
             box-sizing: border-box;
@@ -457,24 +452,6 @@
             /* 아래 테두리 스타일 지정 */
         }
 
-        .row_SR:first-child {
-            background-color: #888888;
-        }
-
-        .cell_SR:first-child {
-            width: 27%;
-            display: flex;
-            justify-content: center;
-        }
-
-        .cell_SR:nth-child(2) {
-            width: 49%;
-        }
-
-        .cell_SR:nth-child(3) {
-            width: 20%;
-        }
-
         .row_SR:first-child,
         .row_sr1:first-child {
             border-top: 2px solid #ddd;
@@ -496,11 +473,41 @@
             /* 오른쪽 테두리 스타일 지정 */
         }
 
+        .cell_SR:nth-child(1) {
+            width: 40%;
+        }
+
+        .cell_SR:nth-child(2) {
+            width: 50%;
+            display: flex;
+            justify-content: space-around;
+
+        }
+
+        .cell_SR:nth-child(3) {
+            width: 10%;
+        }
+
+        .row_SR {
+            background-color: #888888;
+        }
+
         .cell_SR:last-child {
             border-right: none;
             /* 마지막 셀에서 오른쪽 테두리 제거 */
         }
 
+        /* .cell_SR:nth-child(1) {
+            width: 40%;
+        }
+
+        .cell_SR:nth-child(2) {
+            width: 50%;
+        }
+
+        .cell_SR:nth-child(3) {
+            width: 10%;
+        } */
 
         .cell_SR input {
             border: none;
@@ -542,6 +549,7 @@
         }
 
         .request_result {
+            display: none;
             position: fixed;
             top: 50%;
             left: 50%;
@@ -575,6 +583,7 @@
 
         .add_img {
             position: fixed;
+            overflow-y: auto;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -701,6 +710,21 @@
 
 
         /* 버튼 스타일 */
+        .but_plus,
+        .but_minus {
+            width: 25px;
+            cursor: pointer;
+
+        }
+
+        .count {
+            width: 100px;
+        }
+
+        .item_name {
+            width: 100px;
+        }
+
         .add_Stock,
         .drop {
             /* margin-top: 10px; */
@@ -711,6 +735,15 @@
             color: #fff;
             border: 0;
             background: #3498DB;
+        }
+
+        .pic {
+            /* border : 1px solid red; */
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: flex-end;
+            margin-right: 10px;
+            height: 50%;
         }
 
         .pic1,
@@ -837,7 +870,6 @@
         }
 
 
-
         .admin,
         .worker {
             background-color: #3498DB;
@@ -865,6 +897,9 @@
         }
 
 
+
+
+        /* 미디어테그 */
         @media screen and (max-width: 430px) {
 
             .wrap {
@@ -885,37 +920,11 @@
                 border-radius: 0px;
             }
 
-            /* 미디어 쿼리 헤더 영역 수정 코드 */
-            header ul {
-                display: none;
-            }
-
-            .header-content {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 100%;
-                position: relative;
-            }
-
-            #headerTitle {
-                display: block !important;
-                text-align: center;
-                color: #fff;
-                width: 100%;
-                font-size: 20px;
-            }
-
-            #headerTitle a {
+            header ul li a {
+                font-size: 15px;
                 text-decoration: none;
                 color: #fff;
-            }
-
-            .hamburger-menu {
-                position: absolute;
-                left: 0;
-                top: 0;
-                display: flex;
+                transition: color 0.3s ease;
             }
 
             nav {
@@ -968,6 +977,7 @@
                 border-right: 1px solid #ccc;
                 display: flex;
                 flex-direction: column;
+                justify-content: start;
             }
 
             .menu-bar-content {
@@ -990,49 +1000,110 @@
                 align-items: center;
             }
 
-            article {
-                width: 100%;
-            }
 
+            /* 위는 미디어 공통 */
+            /* 아래가 미디어 내 부분 */
             .Stock_Request_History {
-                width: 90%;
-                display: flex;
-                justify-content: center;
-
+                width: 200px;
             }
+
+            /* .table_SPH {}
+
+            .table_SPH {}
+            
+            .row_SPH {}
+
+            .cell_SPH {} */
 
             .Stock_Request {
-                width: 370px;
-                display: flex;
-                justify-content: center;
+                width: 390px;
+            }
 
+            .cell_SR:nth-child(1) {
+                width: 30%;
+            }
+
+            .cell_SR:nth-child(2) {
+                display: flex;
+                width: 55%;
+            }
+
+            .row_SR1 .cell_SR:nth-child(3) {
+                /* border: 1px solid red; */
+                width: 9.3%;
+            }
+
+            .delete1 {
+                width: 40px;
+                height: 40px;
             }
 
             .add {
-                width: 95%;
-                display: flex;
-                justify-content: end;
+                margin-right: 30px;
+                /* add를 오른쪽에 위치시킵니다. */
             }
 
-            .table_SR {
+            .add_img {
+                width: 90%;
+                height: 80%;
+                /* border: 1px solid blue; */
+                /* display:flex; */
+            }
+
+            .Stock_page {
+                height: 80px;
+                /* border: 1px solid red; */
+            }
+
+            .item {
                 width: 100%;
+                height: 120px;
+                display: flex;
+                justify-content: space-around;
+                /* border: 1px solid red; */
+                margin-bottom: 10px;
+            }
+
+            .sample_img {
+                width: 100px;
+                height: 100px;
+                margin-top: 10px;
+            }
+
+            .cpu1,
+            .cpu2,
+            .cpu3 {
+                font-size: 10px;
+                ;
+            }
+
+            .infor_box {
+                /* border: 1px solid red; */
+                width: 50%;
+            }
+
+            .itemList {
+                height: 70%;
             }
 
             .item_name {
-                min-width: 80px;
-                width: 80px;
+                /* border: 1px solid red; */
+                margin-top: 10px;
             }
 
-            .count {
-                width: 20%;
+
+            .request_result {
+                /* display: flex; */
+                width: 80%;
+                /* height: 40%; */
             }
 
-            .add_Stock,
-            .drop {
-                /* margin-top: 10px; */
-                width: 35px;
-                font-size: 10px;
-                height: 20px;
+            .result_box {
+                width: 100%;
+                height: 80%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
             }
 
             .workerPic {
@@ -1041,36 +1112,19 @@
                 border-radius: 50%;
             }
 
-            .submit {
-                display: flex;
-                align-items: flex-end;
-                justify-content: space-around;
-                width: 100%;
-                /* border : 1px solid red; */
+            .but_pm {
+                display: none;
             }
 
-            .admin,
-            .worker {
-                background-color: #3498DB;
-                margin-top: 10px;
-                width: 80px;
-                height: 40px;
-                border-radius: 5px;
-                cursor: pointer;
-                color: #fff;
-                border: 0;
+            .but_ad {
+                /* border: 1px solid green; */
+                width: 50px;
+
             }
 
-            .order {
-                width: 110px;
-            }
+            /* .new_RR {
 
-            .admin:hover,
-            .worker:hover {
-                background-color: rgb(0, 47, 255);
-                transition: 0.2s;
-            }
-
+            }*/
 
 
         }
@@ -1088,7 +1142,7 @@
             </a>
         </div>
         <h1 id="mainTitle1"><a href="main.html">작업자 페이지</a></h1>
-        <h1 id="mainTitle2"><a href="main.html">관리자 페이지</a></h1>
+        <h1 id="mainTitle2"><a href="main.html" dis>관리자 페이지</a></h1>
         <div id="myPage">
             <div id="myPageLogo">
                 <image
@@ -1236,8 +1290,8 @@
                                         <div class="cell_SR"><input type="text" class="item_name" value="" readonly>
                                         </div>
                                         <div class="cell_SR"><input type="number" class="count" value="0">
-                                            <input type="button" value="+" onclick="plus(this)">
-                                            <input type="button" value="-" onclick="minus(this)">
+                                            <!-- <input type="button" value="+" onclick="plus(this)">
+                                            <input type="button" value="-" onclick="minus(this)"> -->
                                             <button type="button" class="add_Stock">선택</button>
                                             <button type="button" class="drop">지움</button>
                                         </div>
@@ -1317,39 +1371,7 @@
                                     <div class="pic"> <button type="button" class="pic3" style="width : 50px;">선택</div>
                                 </div>
                             </div>
-                            <div class="item">
-                                <div> <img class="sample_img"
-                                        src="https://media.discordapp.net/attachments/1186454147558551552/1201687978230173706/image.png?ex=65caba24&is=65b84524&hm=bd86b0025fb9ddc7b872d912c5a5b8ae55dd00d9e73964fbefffcfa4f54f77d7&=&format=webp&quality=lossless&width=468&height=468">
-                                </div>
-                                <div>
-                                    <div> <input type="text" class="cpu1" value="CPU 1" readonly> </div>
 
-                                    <div class="cpu1_index" style="text-align: center;"> <br> 퍼포먼스 <br></div>
-                                    <div class="pic"> <button type="button" class="pic1" style="width : 50px;">선택</div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div> <img class="sample_img"
-                                        src="https://media.discordapp.net/attachments/1186454147558551552/1201687978230173706/image.png?ex=65caba24&is=65b84524&hm=bd86b0025fb9ddc7b872d912c5a5b8ae55dd00d9e73964fbefffcfa4f54f77d7&=&format=webp&quality=lossless&width=468&height=468">
-                                </div>
-                                <div>
-                                    <div> <input type="text" class="cpu1" value="CPU 1" readonly> </div>
-
-                                    <div class="cpu1_index" style="text-align: center;"> <br> 퍼포먼스 <br></div>
-                                    <div class="pic"> <button type="button" class="pic1" style="width : 50px;">선택</div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div> <img class="sample_img"
-                                        src="https://media.discordapp.net/attachments/1186454147558551552/1201687978230173706/image.png?ex=65caba24&is=65b84524&hm=bd86b0025fb9ddc7b872d912c5a5b8ae55dd00d9e73964fbefffcfa4f54f77d7&=&format=webp&quality=lossless&width=468&height=468">
-                                </div>
-                                <div>
-                                    <div> <input type="text" class="cpu1" value="CPU 1" readonly> </div>
-
-                                    <div class="cpu1_index" style="text-align: center;"> <br> 퍼포먼스 <br></div>
-                                    <div class="pic"> <button type="button" class="pic1" style="width : 50px;">선택</div>
-                                </div>
-                            </div>
                         </div>
                         <div class="choice"> 선택 품목 <input type="text" style="width : 100px;" class="choice_text"
                                 value="" readonly></div>
@@ -1559,8 +1581,7 @@
 
                                     </div>
                                     <div class="cell_SR"><input type="number" class = "count" value="0">
-                                        <input type="button" value="+" onclick="plus(this)">
-                                        <input type="button" value="-" onclick="minus(this)">
+
                                         <button type="button" class="add_Stock">선택</button>
                                         <button type="button" class="drop">지움</button>
                                     </div>
