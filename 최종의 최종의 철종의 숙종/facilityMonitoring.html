@@ -849,12 +849,6 @@
             });
         });
 
-        // if() {
-        // document.querySelector("#mainTitle1").style.display = "block";
-        // } else {
-        document.querySelector("#mainTitle2").style.display = "block";
-        // }
-
         let isHovered = false;
 
         hover.forEach(button => {
@@ -1009,28 +1003,27 @@
             runProcess();
         });
 
+        // 마이페이지
         document.querySelector("#workerName").addEventListener("click", () => {
             window.open("myPage.html", '_blank', 'width = 630, height = 470, top=100, left=100');
         });
 
-
+        // 각 링크에 이벤트 부여
         hover.forEach(link => {
             link.addEventListener("click", function (event) {
                 let myPage = document.querySelector("#myPage");
-                // let myPageName = document.querySelector("#workerName");
-                // let myPageLogo = document.querySelector("#myPageLogo");
                 let menuBar = document.querySelector(".menu-bar");
                 let mainPage = document.querySelector(".wrap");
                 let companyLogo = document.querySelector("#workerLogo");
 
                 let ulLi = document.querySelectorAll(".menu-bar-content ul li");
 
-
                 event.preventDefault();
+
+                // 모바일 화면일 때
                 if (nav.classList.contains('active') && window.matchMedia("(max-width: 430px)").matches) {
                     nav.style.height = `${section.offsetHeight}px`
 
-                    // 네비5
                     for (let i = 0; i < ulLi.length; i++) {
                         ulLi[i].style.padding = '7px';
                     }
@@ -1039,17 +1032,18 @@
             });
         });
 
+        // 관리자 디폴트
         document.querySelector("#mainTitle2").style.display = "block";
+
+        // 토글버튼 ( 관리자 / 작업자 ) - 나중에 로그인 할 때로 바꿀예정
         function toggle() {
             if (document.querySelector("#adminTitle").style.display != 'block') {
                 document.querySelector("#adminTitle").style.display = 'block';
                 document.querySelector("#adminNav").style.display = 'block';
-                // document.querySelector("#noticeWriteBtn").style.display = 'inline';
                 document.querySelector(".workerGrade").innerHTML = '관리자<br>';
                 document.querySelector("#mainTitle1").style.display = "none";
                 document.querySelector("#mainTitle2").style.display = "block";
             } else {
-                // document.querySelector("#noticeWriteBtn").style.display = 'none';
                 document.querySelector("#adminTitle").style.display = 'none';
                 document.querySelector("#adminNav").style.display = 'none';
                 document.querySelector(".workerGrade").innerHTML = '작업자<br>';
@@ -1057,7 +1051,6 @@
                 document.querySelector("#mainTitle2").style.display = "none";
             }
         }
-
         document.querySelector("#toggle").addEventListener('click', toggle);
 
     </script>
