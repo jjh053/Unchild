@@ -433,6 +433,7 @@
             display: flex;
         }
 
+
         .table1 {
             background-color: #888888;
         }
@@ -500,8 +501,8 @@
         td {
             border: 1px solid #ddd;
             text-align: center;
-            line-height: 30px;
-            height: 30px;
+            line-height: 40px;
+            height: 35px;
         }
 
         td input {
@@ -583,7 +584,7 @@
         .table1 td,
         .table2 td {
             border: 1px solid #ddd;
-            width: 160px;
+            /* width: 165px; */
             text-align: left;
         }
 
@@ -594,12 +595,12 @@
 
         }
 
-        .f_box {
+        /* .f_box {
             display: flex;
             width: 790px;
             justify-content: space-evenly;
-            /* border: 1px solid blue; */
-        }
+            border: 1px solid blue;
+        } */
 
         .table2 {
             display: flex;
@@ -620,6 +621,19 @@
             background-color: #333;
             color: #fff;
         } */
+
+
+        .row_box {
+            width: 100%;
+            /* border: 1px solid red; */
+        }
+
+        .row td {
+            /* border: 1px solid red; */
+
+            height: 45px;
+            width: 16.67%;
+        }
 
         /* 팝업 */
 
@@ -731,12 +745,586 @@
         .submit {
             width: 100%;
             /* border: 1px solid red; */
-
             display: flex;
             align-items: flex-end;
             justify-content: space-evenly;
         }
 
+        /* 팝업 2 */
+
+        .add_items_infor {
+            display: none;
+            position: absolute;
+            /* border: 1px solid red; */
+            width: 60%;
+            height: 70%;
+            /* display: flex; */
+            /* flex-direction: column; */
+            /* align-items: center; */
+            /* justify-content: center; */
+            top: 15%;
+            left: 20%;
+            background-color: rgb(214, 214, 214);
+            z-index: 1001;
+        }
+
+
+
+
+
+        .add_items_infor_box {
+            /* border: 1px solid red; */
+            display: flex;
+            flex-direction: column;
+            /* justify-content: center; */
+            align-items: center;
+            justify-content: space-evenly;
+            width: 100%;
+            height: 100%;
+        }
+
+        .items_infor {
+            font-size: 30px;
+            /* border: 1px solid red; */
+        }
+
+        .items_img_box {
+            height: 30%;
+            width: 70%;
+            /* border: 1px solid red; */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .items_img {
+            height: 80%;
+            width: 40%;
+            border: 1px solid black;
+        }
+
+        .items_img_choice {
+            width: 20%;
+            height: 15%;
+            /* border: 1px solid red; */
+            background-color: #3498DB;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            /* width: 80px; */
+            /* height: 40px; */
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+
+        }
+
+
+        .items_name_box,
+        .items_index_box,
+        .good_items_loc,
+        .good_items_count_box,
+        .bad_items_loc,
+        .bad_items_count_box {
+            /* border: 1px solid black; */
+            width: 90%;
+            display: flex;
+            justify-content: space-around;
+
+
+        }
+
+        .items_area_box {
+            display: flex;
+            justify-content: space-around;
+            /* border: 1px solid blue; */
+            width: 90%;
+            height: 25%;
+        }
+
+        .items_name1,
+        .items_index1,
+        .gil1,
+        .gic1,
+        .bil1,
+        .bic1 {
+            width: 30%;
+            text-align: center;
+            /* border: 1px solid green; */
+        }
+
+        .items_area1 {
+            text-align: center;
+            /* border: 1px solid green; */
+            width: 30%;
+            height: 20%;
+        }
+
+        .items_name2,
+        .items_index2,
+        .items_area2,
+        .gil2,
+        .gic2,
+        .bil2,
+        .bic2 {
+            /* border: 1px solid red; */
+            width: 60%;
+
+        }
+
+        .items_area2 {
+            /* border: 1px solid red; */
+            /* width: 60%; */
+        }
+
+        .items_name2 input,
+        .items_index2 input,
+        .gil2 input,
+        .gic2 input,
+        .bil2 input,
+        .bic2 input {
+            font-size: 20px;
+            width: 98%;
+            text-align: center;
+            /* border: 1px solid red; */
+        }
+
+        .add_items_area {
+            width: 98%;
+            height: 90%;
+            resize: none;
+        }
+
+        .add_buttons {
+            /* border: 1px solid red; */
+            width: 90%;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .add_commit {
+            background-color: #3498DB;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            width: 20%;
+            height: 55%;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+            text-align: center;
+            line-height: 35px;
+        }
+
+        .add_commit:hover {
+            background-color: rgb(0, 47, 255);
+            transition: 0.2s;
+        }
+
+        .add_cancel {
+            background-color: red;
+            line-height: 35px;
+            /* width: 40px; */
+            margin-top: 10px;
+            margin-bottom: 10px;
+            width: 20%;
+            height: 55%;
+            /* font-size: 10px; */
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+            /* line-height: 20px; */
+            /* height : 100%; */
+            /* border : 1px solid red; */
+        }
+
+        .add_cancel:hover {
+            background-color: rgb(163, 6, 6);
+            transition: 0.2s;
+        }
+
+        /* 팝업 3 */
+
+
+
+        .infor_item_box {
+            display: none;
+            position: absolute;
+            width: 40%;
+            height: 50%;
+            top: 25%;
+            left: 30%;
+            background-color: rgb(214, 214, 214);
+            z-index: 1001;
+        }
+
+
+        .infor_item {
+            /* border: 1px solid red; */
+            display: flex;
+            flex-direction: column;
+            /* justify-content: center; */
+            align-items: center;
+            justify-content: space-evenly;
+            width: 100%;
+            height: 100%;
+        }
+
+        .infor_item_explan {
+            font-size: 30px;
+        }
+
+
+        .add_item_c {
+            width: 98%;
+            text-align: center;
+        }
+
+        .infor_item_img {
+            /* border: 1px solid red; */
+            height: 30%;
+            width: 40%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /*         
+        .infor_item_img img {
+            border: 1px solid red;
+            width: 200px;
+        } */
+
+        .infor_item_name {
+            /* border: 1px solid red; */
+            width: 50%;
+            text-align: center;
+            height: 5%;
+
+
+        }
+
+        .infor_item_ta {
+            /* border: 1px solid red; */
+
+        }
+
+        .infor_com {
+            background-color: #3498DB;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            width: 20%;
+            height: 55%;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+            text-align: center;
+            line-height: 35px;
+        }
+
+        .infor_com:hover {
+            background-color: rgb(0, 47, 255);
+            transition: 0.2s;
+        }
+
+        /* 수정버튼 팝업 4 */
+
+        .record_items_infor_a {
+            display: none;
+            position: absolute;
+            /* border: 1px solid red; */
+            width: 60%;
+            height: 70%;
+            /* display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; */
+            top: 15%;
+            left: 20%;
+            background-color: rgb(214, 214, 214);
+            z-index: 1001;
+        }
+
+
+
+
+
+        .record_items_infor_box {
+            /* border: 1px solid red; */
+            display: flex;
+            flex-direction: column;
+            /* justify-content: center; */
+            align-items: center;
+            justify-content: space-evenly;
+            width: 100%;
+            height: 100%;
+        }
+
+        .record_items_infor {
+            font-size: 30px;
+            /* border: 1px solid red; */
+        }
+
+        .record_items_img_box {
+            height: 30%;
+            width: 70%;
+            /* border: 1px solid red; */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .record_items_img {
+            height: 80%;
+            width: 40%;
+            border: 1px solid black;
+        }
+
+        .record_items_img_choice {
+            width: 20%;
+            height: 15%;
+            /* border: 1px solid red; */
+            background-color: #3498DB;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            /* width: 80px; */
+            /* height: 40px; */
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+
+        }
+
+
+        .record_items_name_box,
+        .record_items_index_box,
+        .record_good_items_loc,
+        .record_good_items_count_box,
+        .record_bad_items_loc,
+        .record_bad_items_count_box {
+            /* border: 1px solid black; */
+            width: 90%;
+            display: flex;
+            justify-content: space-around;
+
+
+        }
+
+        .record_items_area_box {
+            display: flex;
+            justify-content: space-around;
+            /* border: 1px solid blue; */
+            width: 90%;
+            height: 25%;
+        }
+
+        .record_items_name1,
+        .record_items_index1,
+        .record_gil1,
+        .record_gic1,
+        .record_bil1,
+        .record_bic1 {
+            width: 30%;
+            text-align: center;
+            /* border: 1px solid green; */
+        }
+
+        .record_items_area1 {
+            text-align: center;
+            /* border: 1px solid green; */
+            width: 30%;
+            height: 20%;
+        }
+
+        .record_items_name2,
+        .record_items_index2,
+        .record_items_area2,
+        .record_gil2,
+        .record_gic2,
+        .record_bil2,
+        .record_bic2 {
+            /* border: 1px solid red; */
+            width: 60%;
+
+        }
+
+        .record_items_area2 {
+            /* border: 1px solid red; */
+            /* width: 60%; */
+        }
+
+        .record_items_name2 input,
+        .record_items_index2 input,
+        .record_gil2 input,
+        .record_gic2 input,
+        .record_bil2 input,
+        .record_bic2 input {
+            font-size: 20px;
+            width: 98%;
+            text-align: center;
+            /* border: 1px solid red; */
+        }
+
+        .record_items_area {
+            width: 98%;
+            height: 90%;
+            resize: none;
+        }
+
+        .record_buttons {
+            /* border: 1px solid red; */
+            width: 90%;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .record_commit {
+            background-color: #3498DB;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            width: 20%;
+            height: 55%;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+            text-align: center;
+            line-height: 35px;
+        }
+
+        .record_commit:hover {
+            background-color: rgb(0, 47, 255);
+            transition: 0.2s;
+        }
+
+        .record_cancel {
+            background-color: red;
+            line-height: 35px;
+            /* width: 40px; */
+            margin-top: 10px;
+            margin-bottom: 10px;
+            width: 20%;
+            height: 55%;
+            /* font-size: 10px; */
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+            /* line-height: 20px; */
+            /* height : 100%; */
+            /* border : 1px solid red; */
+        }
+
+        .record_cancel:hover {
+            background-color: rgb(163, 6, 6);
+            transition: 0.2s;
+        }
+
+
+
+
+        /* 팝업 4 여기까지 */
+
+
+
+        /* 삭제 버튼 */
+        .delete_box {
+            text-align: center;
+            /* border : 1px solid red; */
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .delete {
+            width: 35%;
+            background-color: red;
+            /* width: 40px; */
+            height: 50%;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+            line-height: 25px;
+            /* height : 100%; */
+            /* border : 1px solid red; */
+
+        }
+
+
+        .delete:hover {
+            background-color: rgb(163, 6, 6);
+            transition: 0.2s;
+        }
+
+
+
+        .record {
+            background-color: #3498DB;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            width: 35%;
+            height: 50%;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+            /* text-align: center; */
+            line-height: 25px;
+        }
+
+        .record:hover {
+            background-color: rgb(0, 47, 255);
+            transition: 0.2s;
+        }
+
+
+        .tr :nth-child(6) {
+            /* border : 1px solid red; */
+            /* width : 100px; */
+            /* margin-top: 1000px; */
+        }
+
+
+        .add_items_box {
+            /* border : 1px solid red; */
+            width: 95%;
+            display: flex;
+            flex-direction: row-reverse;
+            padding: 10px;
+        }
+
+        .add_items {
+            /* border : 1px solid red; */
+            width: 10%;
+            text-align: center;
+            background-color: #3498DB;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            /* width: 80px; */
+            height: 30px;
+            line-height: 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+        }
+
+        .add_items:hover {
+            background-color: rgb(0, 47, 255);
+            transition: 0.2s;
+        }
 
 
         /* Modal 모달 */
@@ -882,13 +1470,10 @@
                 align-items: center;
             }
 
-
-
             .items {
                 box-sizing: border-box;
                 width: 400px;
             }
-
 
             .row_f {
                 box-sizing: border-box;
@@ -919,8 +1504,6 @@
                 width: none;
                 text-align: left;
             }
-
-
 
             .table2_box {
                 /* border: 1px solid red; */
@@ -984,6 +1567,118 @@
                 width: 80px;
                 height: 80px;
                 border-radius: 50%;
+            }
+
+            .delete_box {
+                /* border: 1px solid red; */
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .record {
+                width: 60%;
+                height: 40%;
+                background-color: #3498DB;
+                font-size: 10px;
+                border-radius: 5px;
+                text-align: center;
+                cursor: pointer;
+                color: #fff;
+                border: 0;
+                margin-top: 0px;
+                margin-bottom: 0px;
+                line-height: 20px;
+            }
+
+            .record:hover {
+                background-color: rgb(0, 47, 255);
+                transition: 0.2s;
+            }
+
+            .delete {
+                width: 60%;
+                height: 40%;
+                background-color: red;
+                font-size: 10px;
+                border-radius: 5px;
+                text-align: center;
+                cursor: pointer;
+                color: #fff;
+                border: 0;
+                line-height: 20px;
+            }
+
+            .delete:hover {
+                background-color: rgb(163, 6, 6);
+                transition: 0.2s;
+            }
+
+            .add_items_box {
+                /* border: 1px solid red; */
+                display: flex;
+                width: 90%;
+            }
+
+            .add_items {
+                font-size: 12px;
+                width: 20%;
+            }
+
+            .stock_status_page {
+                /* border: 1px solid red; */
+                width: 390px;
+            }
+
+            .row td {
+                /* border: 1px solid red; */
+                height: 45px;
+                width: 16.67%;
+            }
+
+            .row_f {
+                /* border: 1px solid red; */
+                width: 93.5%;
+            }
+
+            .row {
+                width: 100%
+            }
+
+            .row_box {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+
+            }
+
+            /* 팝업 */
+            .add_items_infor,
+            .record_items_infor_a {
+                position: absolute;
+                /* border: 1px solid red; */
+                /* width: 60%; */
+                /* height: 70%; */
+                /* display: flex; */
+                /* flex-direction: column; */
+                /* align-items: center; */
+                /* justify-content: center; */
+                top: 5%;
+                left: 4%;
+                background-color: rgb(214, 214, 214);
+                z-index: 1001;
+                width: 85%;
+            }
+
+            .add_items_infor_box,
+            .record_items_infor_box {
+                width: 100%;
+            }
+
+            .items_img_choice,
+            .record_items_img_choice {
+                width: 30%;
+                line-height: 25px;
             }
         }
     </style>
@@ -1113,7 +1808,9 @@
                             </div>
                         </div>
                         <!--  -->
-                        <br>
+                        <div class="add_items_box">
+                            <div class="add_items"> 품목 추가 </div>
+                        </div>
                         <!-- 품목들 -->
                         <div class="items">
                             <!-- <div class="f_box"> -->
@@ -1123,97 +1820,180 @@
                                 <div class="cell_f">양품재고위치</div>
                                 <div class="cell_f">불량수량</div>
                                 <div class="cell_f">불량재고위치</div>
+                                <div class="cell_f"></div>
                             </div>
                             <!-- </div> -->
                             <div class="table2_box">
                                 <table class="table2">
                                     <!-- <div class="data"> -->
+                                    <tbody class="row_box">
+                                        <tr class="row">
+                                            <td><input type="text" value="CPU1" class="cpu1" READONLY></td>
+                                            <td><input type="text" value="100" READONLY></td>
+                                            <td><input type="text" value="A-01" READONLY></td>
+                                            <td><input type="text" value="2" READONLY></td>
+                                            <td><input type="text" value="A-11" READONLY></td>
+                                            <td>
+                                                <div class="delete_box">
+                                                    <div class="record">수정</div>
+                                                    <div class="delete">삭제 </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <!-- <tr class="row">
+                                            <td><input type="text" value="CPU2" class="cpu2" READONLY></td>
+                                            <td><input type="text" value="100" READONLY></td>
+                                            <td><input type="text" value="A-02" READONLY></td>
+                                            <td><input type="text" value="10" READONLY></td>
+                                            <td><input type="text" value="A-12" READONLY></td>
+                                            <td>
+                                                <div class="delete_box">
+                                                    <div class="record">수정</div>
+                                                    <div class="delete">삭제 </div>
+                                                </div>
+                                            </td>
 
-                                    <tr class="row">
-                                        <td><input type="text" value="CPU1" class="cpu1" READONLY></td>
-                                        <td><input type="text" value="100" READONLY></td>
-                                        <td><input type="text" value="A-01" READONLY></td>
-                                        <td><input type="text" value="2" READONLY></td>
-                                        <td><input type="text" value="A-11" READONLY></td>
-                                    </tr>
-                                    <tr class="row">
-                                        <td><input type="text" value="CPU2" class="cpu2" READONLY></td>
-                                        <td><input type="text" value="100" READONLY></td>
-                                        <td><input type="text" value="A-02" READONLY></td>
-                                        <td><input type="text" value="10" READONLY></td>
-                                        <td><input type="text" value="A-12" READONLY></td>
-                                    </tr>
-                                    <tr class="row">
-                                        <td><input type="text" value="CPU3" class="cpu3" READONLY></td>
-                                        <td><input type="text" value="20" READONLY></td>
-                                        <td><input type="text" value="A-03" READONLY></td>
-                                        <td><input type="text" value="10" READONLY></td>
-                                        <td><input type="text" value="B-13" READONLY></td>
-                                    </tr>
-                                    <tr class="row">
-                                        <td><input type="text" value="메인보드1" class="main1" READONLY></td>
-                                        <td><input type="text" value="25" READONLY></td>
-                                        <td><input type="text" value="B-01" READONLY></td>
-                                        <td><input type="text" value="0" READONLY></td>
-                                        <td><input type="text" value="B-11" READONLY></td>
-                                    </tr>
-                                    <tr class="row">
-                                        <td><input type="text" value="메인보드2" class="main2" READONLY></td>
-                                        <td><input type="text" value="190" READONLY></td>
-                                        <td><input type="text" value="B-02" READONLY></td>
-                                        <td><input type="text" value="2" READONLY></td>
-                                        <td><input type="text" value="B-12" READONLY></td>
-                                    </tr>
-                                    <tr class="row">
-                                        <td><input type="text" value="메인보드3" class="main3" READONLY></td>
-                                        <td><input type="text" value="70" READONLY></td>
-                                        <td><input type="text" value="B-03" READONLY></td>
-                                        <td><input type="text" value="0" READONLY></td>
-                                        <td><input type="text" value="B-13" READONLY></td>
-                                    </tr>
-                                    <tr class="row">
-                                        <td><input type="text" value="그래픽카드1" class="gpu1" READONLY></td>
-                                        <td><input type="text" value="100" READONLY></td>
-                                        <td><input type="text" value="C-01" READONLY></td>
-                                        <td><input type="text" value="2" READONLY></td>
-                                        <td><input type="text" value="C-11" READONLY></td>
-                                    </tr>
-                                    <tr class="row">
-                                        <td><input type="text" value="그래픽카드2" class="gpu2" READONLY></td>
-                                        <td><input type="text" value="100" READONLY></td>
-                                        <td><input type="text" value="C-02" READONLY></td>
-                                        <td><input type="text" value="10" READONLY></td>
-                                        <td><input type="text" value="C-12" READONLY></td>
-                                    </tr>
-                                    <tr class="row">
-                                        <td><input type="text" value="그래픽카드3" class="gpu3" READONLY></td>
-                                        <td><input type="text" value="20" READONLY></td>
-                                        <td><input type="text" value="C-03" READONLY></td>
-                                        <td><input type="text" value="10" READONLY></td>
-                                        <td><input type="text" value="C-13" READONLY></td>
-                                    </tr>
-                                    <tr class="row">
-                                        <td><input type="text" value="SSD1" class="ssd1" READONLY></td>
-                                        <td><input type="text" value="100" READONLY></td>
-                                        <td><input type="text" value="D-01" READONLY></td>
-                                        <td><input type="text" value="2" READONLY></td>
-                                        <td><input type="text" value="D-11" READONLY></td>
-                                    </tr>
-                                    <tr class="row">
-                                        <td><input type="text" value="SSD2" class="ssd2" READONLY></td>
-                                        <td><input type="text" value="100" READONLY></td>
-                                        <td><input type="text" value="E-02" READONLY></td>
-                                        <td><input type="text" value="10" READONLY></td>
-                                        <td><input type="text" value="E-12" READONLY></td>
-                                    </tr>
-                                    <tr class="row">
-                                        <td><input type="text" value="SSD3" class="ssd3" READONLY></td>
-                                        <td><input type="text" value="20" READONLY></td>
-                                        <td><input type="text" value="E-03" READONLY></td>
-                                        <td><input type="text" value="10" READONLY></td>
-                                        <td><input type="text" value="E-13" READONLY></td>
-                                    </tr>
+                                        </tr>
+                                        <tr class="row">
+                                            <td><input type="text" value="CPU3" class="cpu3" READONLY></td>
+                                            <td><input type="text" value="20" READONLY></td>
+                                            <td><input type="text" value="A-03" READONLY></td>
+                                            <td><input type="text" value="10" READONLY></td>
+                                            <td><input type="text" value="B-13" READONLY></td>
+                                            <td>
+                                                <div class="delete_box">
+                                                    <div class="record">수정</div>
+                                                    <div class="delete">삭제 </div>
+                                                </div>
+                                            </td>
 
+                                        </tr>
+                                        <tr class="row">
+                                            <td><input type="text" value="메인보드1" class="main1" READONLY></td>
+                                            <td><input type="text" value="25" READONLY></td>
+                                            <td><input type="text" value="B-01" READONLY></td>
+                                            <td><input type="text" value="0" READONLY></td>
+                                            <td><input type="text" value="B-11" READONLY></td>
+                                            <td>
+                                                <div class="delete_box">
+                                                    <div class="record">수정</div>
+                                                    <div class="delete">삭제 </div>
+                                                </div>
+                                            </td>
+
+                                        </tr>
+                                        <tr class="row">
+                                            <td><input type="text" value="메인보드2" class="main2" READONLY></td>
+                                            <td><input type="text" value="190" READONLY></td>
+                                            <td><input type="text" value="B-02" READONLY></td>
+                                            <td><input type="text" value="2" READONLY></td>
+                                            <td><input type="text" value="B-12" READONLY></td>
+                                            <td>
+                                                <div class="delete_box">
+                                                    <div class="record">수정</div>
+                                                    <div class="delete">삭제 </div>
+                                                </div>
+                                            </td>
+
+                                        </tr>
+                                        <tr class="row">
+                                            <td><input type="text" value="메인보드3" class="main3" READONLY></td>
+                                            <td><input type="text" value="70" READONLY></td>
+                                            <td><input type="text" value="B-03" READONLY></td>
+                                            <td><input type="text" value="0" READONLY></td>
+                                            <td><input type="text" value="B-13" READONLY></td>
+                                            <td>
+                                                <div class="delete_box">
+                                                    <div class="record">수정</div>
+                                                    <div class="delete">삭제 </div>
+                                                </div>
+                                            </td>
+
+                                        </tr>
+                                        <tr class="row">
+                                            <td><input type="text" value="그래픽카드1" class="gpu1" READONLY></td>
+                                            <td><input type="text" value="100" READONLY></td>
+                                            <td><input type="text" value="C-01" READONLY></td>
+                                            <td><input type="text" value="2" READONLY></td>
+                                            <td><input type="text" value="C-11" READONLY></td>
+                                            <td>
+                                                <div class="delete_box">
+                                                    <div class="record">수정</div>
+                                                    <div class="delete">삭제 </div>
+                                                </div>
+                                            </td>
+
+                                        </tr>
+                                        <tr class="row">
+                                            <td><input type="text" value="그래픽카드2" class="gpu2" READONLY></td>
+                                            <td><input type="text" value="100" READONLY></td>
+                                            <td><input type="text" value="C-02" READONLY></td>
+                                            <td><input type="text" value="10" READONLY></td>
+                                            <td><input type="text" value="C-12" READONLY></td>
+                                            <td>
+                                                <div class="delete_box">
+                                                    <div class="record">수정</div>
+                                                    <div class="delete">삭제 </div>
+                                                </div>
+                                            </td>
+
+                                        </tr>
+                                        <tr class="row">
+                                            <td><input type="text" value="그래픽카드3" class="gpu3" READONLY></td>
+                                            <td><input type="text" value="20" READONLY></td>
+                                            <td><input type="text" value="C-03" READONLY></td>
+                                            <td><input type="text" value="10" READONLY></td>
+                                            <td><input type="text" value="C-13" READONLY></td>
+                                            <td>
+                                                <div class="delete_box">
+                                                    <div class="record">수정</div>
+                                                    <div class="delete">삭제 </div>
+                                                </div>
+                                            </td>
+
+                                        </tr>
+                                        <tr class="row">
+                                            <td><input type="text" value="SSD1" class="ssd1" READONLY></td>
+                                            <td><input type="text" value="100" READONLY></td>
+                                            <td><input type="text" value="D-01" READONLY></td>
+                                            <td><input type="text" value="2" READONLY></td>
+                                            <td><input type="text" value="D-11" READONLY></td>
+                                            <td>
+                                                <div class="delete_box">
+                                                    <div class="record">수정</div>
+                                                    <div class="delete">삭제 </div>
+                                                </div>
+                                            </td>
+
+                                        </tr>
+                                        <tr class="row">
+                                            <td><input type="text" value="SSD2" class="ssd2" READONLY></td>
+                                            <td><input type="text" value="100" READONLY></td>
+                                            <td><input type="text" value="E-02" READONLY></td>
+                                            <td><input type="text" value="10" READONLY></td>
+                                            <td><input type="text" value="E-12" READONLY></td>
+                                            <td>
+                                                <div class="delete_box">
+                                                    <div class="record">수정</div>
+                                                    <div class="delete">삭제 </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="row">
+                                            <td><input type="text" value="SSD3" class="ssd3" READONLY></td>
+                                            <td><input type="text" value="20" READONLY></td>
+                                            <td><input type="text" value="E-03" READONLY></td>
+                                            <td><input type="text" value="10" READONLY></td>
+                                            <td><input type="text" value="E-13" READONLY></td>
+                                            <td>
+                                                <div class="delete_box">
+                                                    <div class="record">수정</div>
+                                                    <div class="delete">삭제 </div>
+                                                </div>
+                                            </td>
+
+                                        </tr> -->
+                                    </tbody>
                                     <!-- </div> -->
                                 </table>
                             </div>
@@ -1422,9 +2202,113 @@
                         </div>
                     </div>
 
-
-
                     <!--  -->
+
+                    <!-- 품목추가 팝업 -->
+                    <!-- <div class="modal-overlay" id="modal-overlay" style="display: none;"></div> -->
+                    <div class="add_items_infor">
+                        <div class="add_items_infor_box">
+                            <div class="items_infor">추가 물품 설명</div>
+                            <div class="items_img_box">
+                                <div class="items_img"> <img class="items_imglink" src="#"> </div>
+                                <div class="items_img_choice"> 사진선택 </div>
+                            </div>
+                            <div class="items_name_box">
+                                <div class="items_name1"> 물품 이름 </div>
+                                <div class="items_name2"> <input type="text" class="add_items_name"> </div>
+                            </div>
+                            <div class="items_index_box">
+                                <div class="items_index1"> 물품 설명1 </div>
+                                <div class="items_index2"> <input type="text" class="add_items_index"> </div>
+                            </div>
+                            <div class="items_area_box">
+                                <div class="items_area1"> 물품 설명2 </div>
+                                <div class="items_area2"><textarea class="add_items_area"></textarea></div>
+                            </div>
+                            <div class="good_items_loc">
+                                <div class="gil1"> 양품재고위치 </div>
+                                <div class="gil2"> <input type="text" class="gil3"> </div>
+                            </div>
+                            <div class="good_items_count_box">
+                                <div class="gic1"> 양품 수량 </div>
+                                <div class="gic2"> <input type="number" class="gic3"> </div>
+                            </div>
+                            <div class="bad_items_loc">
+                                <div class="bil1"> 불량재고위치 </div>
+                                <div class="bil2"> <input type="text" class="bil3"> </div>
+                            </div>
+                            <div class="bad_items_count_box">
+                                <div class="bic1"> 불량 수량 </div>
+                                <div class="bic2"> <input type="number" class="bic3"> </div>
+                            </div>
+                            <div class="add_buttons">
+                                <div class="add_commit"> 추가 </div>
+                                <div class="add_cancel"> 취소 </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- 추가된 품목 이름 클릭 팝업 -->
+                    <!-- <div class="modal-overlay" id="modal-overlay" style="display: none;"></div> -->
+                    <div class="infor_item_box">
+                        <div class="infor_item">
+                            <div class="infor_item_explan">품목 설명</div>
+                            <div class="infor_item_img"> <img src="#">
+                            </div>
+                            <div class="infor_item_name"> </div>
+                            <div class="infor_item_index" style="text-align: center;"> </div>
+                            <div class="infor_item_textarea"><textarea class="infor_item_ta"></textarea></div>
+                            <div class="infor_commit"> <button type="button" class="infor_com" style="width : 50px;">확인
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- 품목 수정 팝업 -->
+                    <div class="record_items_infor_a">
+                        <div class="record_items_infor_box">
+                            <div class="record_items_infor">물품 설명 수정</div>
+                            <div class="record_items_img_box">
+                                <div class="record_items_img"> <img class="record_items_imglink" src="#"> </div>
+                                <div class="record_items_img_choice"> 사진선택 </div>
+                            </div>
+                            <div class="record_items_name_box">
+                                <div class="record_items_name1"> 물품 이름 </div>
+                                <div class="record_items_name2"> <input type="text" class="record_items_name"> </div>
+                            </div>
+                            <div class="record_items_index_box">
+                                <div class="record_items_index1"> 물품 설명1 </div>
+                                <div class="record_items_index2"> <input type="text" class="record_items_index"> </div>
+                            </div>
+                            <div class="record_items_area_box">
+                                <div class="record_items_area1"> 물품 설명2 </div>
+                                <div class="record_items_area2"><textarea class="record_items_area"></textarea></div>
+                            </div>
+                            <div class="record_good_items_loc">
+                                <div class="record_gil1"> 양품재고위치 </div>
+                                <div class="record_gil2"> <input type="text" class="record_gil3"> </div>
+                            </div>
+                            <div class="record_good_items_count_box">
+                                <div class="record_gic1"> 양품 수량 </div>
+                                <div class="record_gic2"> <input type="number" class="record_gic3"> </div>
+                            </div>
+                            <div class="record_bad_items_loc">
+                                <div class="record_bil1"> 불량재고위치 </div>
+                                <div class="record_bil2"> <input type="text" class="record_bil3"> </div>
+                            </div>
+                            <div class="record_bad_items_count_box">
+                                <div class="record_bic1"> 불량 수량 </div>
+                                <div class="record_bic2"> <input type="number" class="record_bic3"> </div>
+                            </div>
+                            <div class="record_buttons">
+                                <div class="record_commit"> 수정 </div>
+                                <div class="record_cancel"> 취소 </div>
+                            </div>
+                        </div>
+                    </div>
+
+
 
                 </article>
             </section>
@@ -1434,14 +2318,13 @@
 
     <script>
 
-// 작업자 관리자
+        // 작업자 관리자버튼 클릭시 이벤트
         document.querySelector(".admin").addEventListener("click", function () {
             document.querySelector("#adminTitle").style.display = "block"
             document.querySelector("#adminNav").style.display = "block"
             document.querySelector("#mainTitle2").style.display = "block"
             document.querySelector("#mainTitle1").style.display = "none"
             document.querySelector(".workerGrade").innerHTML = "관리자<br>";
-            
         })
         document.querySelector(".worker").addEventListener("click", function () {
             document.querySelector("#adminTitle").style.display = "none"
@@ -1451,204 +2334,394 @@
             document.querySelector(".workerGrade").innerHTML = "작업자<br>";
         })
 
+        // 삭제버튼 클릭 이벤트
+        document.querySelectorAll(".delete").forEach(function (event) {
+            event.addEventListener("click", function (e) {
+                let row = e.target.closest(".row");
+                row.remove();
+            })
+        })
+
+        // 물품 추가 클릭 이벤트
+        document.querySelector(".add_items").addEventListener('click', function () {
+            let modal_overlay = document.querySelector(".modal-overlay");
+            modal_overlay.style.display = "flex";
+            let infor = document.querySelector(".add_items_infor");
+            infor.style.display = "block";
+        });
+
+        // 물품 추가 취소 클릭이벤트
+        document.querySelector(".add_cancel").addEventListener('click', function () {
+            let modal_overlay = document.querySelector(".modal-overlay");
+            modal_overlay.style.display = "none";
+            let infor = document.querySelector(".add_items_infor");
+            infor.style.display = "none";
+
+            let add_items_name = document.querySelector(".add_items_name");
+            add_items_name.value = "";
+            let add_items_index = document.querySelector(".add_items_index");
+            add_items_index.value = "";
+            let add_items_area = document.querySelector(".add_items_area");
+            add_items_area.value = "";
+            let gil3 = document.querySelector(".gil3");
+            gil3.value = "";
+            let gic3 = document.querySelector(".gic3");
+            gic3.value = "";
+            let bil3 = document.querySelector(".bil3");
+            bil3.value = "";
+            let bic3 = document.querySelector(".bic3");
+            bic3.value = "";
+        });
+
+        lastbtn = 0;
+        document.querySelector(".add_commit").addEventListener("click", function () {
+            let add_items_name = document.querySelector(".add_items_name");
+            let add_items_index = document.querySelector(".add_items_index");
+            let add_items_area = document.querySelector(".add_items_area");
+            let gil3 = document.querySelector(".gil3");
+            let gic3 = document.querySelector(".gic3");
+            let bil3 = document.querySelector(".bil3");
+            let bic3 = document.querySelector(".bic3");
+            let items_imglink = document.querySelector(".items_imglink");
+
+            let newRow = document.createElement('tr');
+            newRow.className = 'row';
+            newRow.innerHTML = `
+                <td data-name="${add_items_name.value}" data-index="${add_items_index.value}" data-area = "${add_items_area.value}" 
+                data-gil="${gil3.value}" data-gic="${gic3.value}" data-bil="${bil3.value}" data-bic="${bic3.value}" data-link="${items_imglink.src}">
+                <input type="text" value="${add_items_name.value}" class="add_item_c" READONLY></td>
+                <td><input type="text" value="${gic3.value}" class = "gic3_c" READONLY></td>
+                <td><input type="text" value="${gil3.value}" class = "gil3_l" READONLY></td>
+                <td><input type="text" value="${bic3.value}" class = "bic3_c" READONLY></td>
+                <td><input type="text" value="${bil3.value}" class = "bil3_l" READONLY></td>
+                <td>
+                    <div class="delete_box">
+                        <div class = "record">수정</div>
+                        <div class="delete">삭제 </div>
+                        </div>
+                        </td>
+                        `;
+
+            document.querySelector('.row_box').appendChild(newRow);
+            // add_commit클릭과 동시에 적은 내용 삭제
+            let modal_overlay = document.querySelector(".modal-overlay");
+            modal_overlay.style.display = "none";
+            let infor = document.querySelector(".add_items_infor");
+            infor.style.display = "none";
+            add_items_name.value = "";
+            add_items_index.value = "";
+            add_items_area.value = "";
+            gil3.value = "";
+            gic3.value = "";
+            bil3.value = "";
+            bic3.value = "";
+
+            // 새로 만들어진 테이블에서 품목이름 클릭시 팝업
+            newRow.querySelector(".add_item_c").addEventListener("click", function (e) {
+                // 팝업 자체는 새로 만들어진 것이 아니어서 document
+                document.querySelector(".infor_item_box").style.display = "block";
+                let modal_overlay = document.querySelector(".modal-overlay");
+                modal_overlay.style.display = "flex";
+                // 안에 적힐 내용물은 새로 만들어진 테이블에서 가져옴
+                let deta_name = e.target.parentNode.getAttribute("deta-name");
+                let data_index = e.target.parentNode.getAttribute("data-index");
+                let data_area = e.target.parentNode.getAttribute("data-area");
+                document.querySelector(".infor_item_name").innerHTML = deta_name;
+                document.querySelector(".infor_item_index").innerHTML = data_index;
+                document.querySelector(".infor_item_ta").innerHTML = data_area;
+                // console.log(deta_name);
+            });
+
+
+
+            newRow.querySelector(".record").addEventListener("click", function (event) {
+                document.querySelector(".record_items_infor_a").style.display = "block";
+                let modal_overlay = document.querySelector(".modal-overlay");
+                modal_overlay.style.display = "flex";
+                lastbtn = this;
+                let data_name = event.target.closest('.row').querySelector('td').getAttribute('data-name');
+                let data_index = event.target.closest('.row').querySelector('td').getAttribute('data-index');
+                let data_area = event.target.closest('.row').querySelector('td').getAttribute('data-area');
+                let data_gil = event.target.closest('.row').querySelector('td').getAttribute('data-gil');
+                let data_gic = event.target.closest('.row').querySelector('td').getAttribute('data-gic');
+                let data_bil = event.target.closest('.row').querySelector('td').getAttribute('data-bil');
+                let data_bic = event.target.closest('.row').querySelector('td').getAttribute('data-bic');
+                // let data_link = event.target.closest('.row').querySelector('td').getAttribute('data-link');
+                console.log(data_name);
+                document.querySelector(".record_items_name").value = data_name;
+                document.querySelector(".record_items_index").value = data_index;
+                document.querySelector(".record_items_area").value = data_area;
+                document.querySelector(".record_gil3").value = data_gil;
+                document.querySelector(".record_gic3").value = data_gic;
+                document.querySelector(".record_bil3").value = data_bil;
+                document.querySelector(".record_bic3").value = data_bic;
+            });
+
+
+            document.querySelector(".record_commit").addEventListener("click", function (event) {
+                let modal_overlay = document.querySelector(".modal-overlay");
+                modal_overlay.style.display = "none";
+                document.querySelector(".record_items_infor_a").style.display = "none";
+
+                let record_items_name = document.querySelector(".record_items_name").value;
+                let record_items_index = document.querySelector(".record_items_index").value;
+                let record_items_area = document.querySelector(".record_items_area").value;
+                let record_gil3 = document.querySelector(".record_gil3").value;
+                let record_gic3 = document.querySelector(".record_gic3").value;
+                let record_bil3 = document.querySelector(".record_bil3").value;
+                let record_bic3 = document.querySelector(".record_bic3").value;
+                // console.log(record_items_name);
+
+                lastbtn.closest('.row').querySelector('td').setAttribute('data-name', record_items_name);
+                lastbtn.closest('.row').querySelector('td').setAttribute('data-index', record_items_index);
+                lastbtn.closest('.row').querySelector('td').setAttribute('data-area', record_items_area);
+                lastbtn.closest('.row').querySelector('td').setAttribute('data-gil', record_gil3);
+                lastbtn.closest('.row').querySelector('td').setAttribute('data-gic', record_gic3);
+                lastbtn.closest('.row').querySelector('td').setAttribute('data-bil', record_bil3);
+                lastbtn.closest('.row').querySelector('td').setAttribute('data-bic', record_bic3);
+
+                let data_name = lastbtn.closest('.row').querySelector('td').getAttribute('data-name');
+                let data_gic = lastbtn.closest('.row').querySelector('td').getAttribute('data-gic');
+                let data_gil = lastbtn.closest('.row').querySelector('td').getAttribute('data-gil');
+                let data_bic = lastbtn.closest('.row').querySelector('td').getAttribute('data-bic');
+                let data_bil = lastbtn.closest('.row').querySelector('td').getAttribute('data-bil');
+                // lastbtn.('.row').querySelector('td').getAttribute('data-name')
+                console.log(data_name);
+                newRow.querySelector(".add_item_c").value = data_name;
+                newRow.querySelector(".gic3_c").value = data_gic;
+                newRow.querySelector(".gil3_l").value = data_gil;
+                newRow.querySelector(".bic3_c").value = data_bic;
+                newRow.querySelector(".bil3_l").value = data_bil;
+
+            });
+
+
+
+
+            // 단순히 팝업을 보이지 않게 하는 코드, 여기 적지 않아도 됨
+            document.querySelector(".infor_com").addEventListener("click", function () {
+                document.querySelector(".infor_item_box").style.display = "none";
+                let modal_overlay = document.querySelector(".modal-overlay");
+                modal_overlay.style.display = "none";
+            });
+
+            // 수정 팝업을 보이지 않게 하는 코드, 여기 적지 않아도 됨
+
+            document.querySelector(".record_cancel").addEventListener("click", function () {
+                let modal_overlay = document.querySelector(".modal-overlay");
+                modal_overlay.style.display = "none";
+                document.querySelector(".record_items_infor_a").style.display = "none";
+                document.querySelector(".record_items_name").value = "";
+                document.querySelector(".record_items_index").value = "";
+                document.querySelector(".record_items_area").value = "";
+                document.querySelector(".record_gil3").value = "";
+                document.querySelector(".record_gic3").value = "";
+                document.querySelector(".record_bil3").value = "";
+                document.querySelector(".record_bic3").value = "";
+            })
+
+            // 만들어진 테이블 delete 클릭시 삭제
+            newRow.querySelector('.delete').addEventListener("click", function () {
+                newRow.remove();
+            });
+        });
+
+
+
+        // 데이터 베이스 부분 여기서 시작
 
         // 품목 클릭시 이미지 팝업
 
-        /* infor : 디스플레이 none
-        infor_box : 디스플레이 flex
-        item_infor : "품목설명"
-        item_img : 이미지가 들어갈 박스
-        item_name : 재고 이름
-        item_indx : 3가지 등급
-        item_textarea : 재고 설명문
-        commit > com : 확인 버튼 */
 
-        //cpu1
-        document.querySelector(".cpu1").addEventListener('click', function () {
-            let modal_overlay = document.querySelector(".modal-overlay");
-            modal_overlay.style.display = "flex";
-            let infor = document.querySelector(".infor_cpu1");
-            infor.style.display = "block";
-        });
 
-        document.querySelector(".com_cpu1").addEventListener('click', function () {
-            let modal_overlay = document.querySelector(".modal-overlay");
-            modal_overlay.style.display = "none";
-            let infor = document.querySelector(".infor_cpu1");
-            infor.style.display = "none";
-        });
+        // //cpu1
+        // document.querySelector(".cpu1").addEventListener('click', function () {
+        //     let modal_overlay = document.querySelector(".modal-overlay");
+        //     modal_overlay.style.display = "flex";
+        //     let infor = document.querySelector(".infor_cpu1");
+        //     infor.style.display = "block";
+        // });
 
-        //cpu2
-        document.querySelector(".cpu2").addEventListener('click', function () {
-            let modal_overlay = document.querySelector(".modal-overlay");
-            modal_overlay.style.display = "flex";
-            let infor = document.querySelector(".infor_cpu2");
-            infor.style.display = "block";
-        });
+        // document.querySelector(".com_cpu1").addEventListener('click', function () {
+        //     let modal_overlay = document.querySelector(".modal-overlay");
+        //     modal_overlay.style.display = "none";
+        //     let infor = document.querySelector(".infor_cpu1");
+        //     infor.style.display = "none";
+        // });
 
-        document.querySelector(".com_cpu2").addEventListener('click', function () {
-            let modal_overlay = document.querySelector(".modal-overlay");
-            modal_overlay.style.display = "none";
-            let infor = document.querySelector(".infor_cpu2");
-            infor.style.display = "none";
-        });
+        // //cpu2
+        // document.querySelector(".cpu2").addEventListener('click', function () {
+        //     let modal_overlay = document.querySelector(".modal-overlay");
+        //     modal_overlay.style.display = "flex";
+        //     let infor = document.querySelector(".infor_cpu2");
+        //     infor.style.display = "block";
+        // });
 
-        //cpu3
-        document.querySelector(".cpu3").addEventListener('click', function () {
-            let modal_overlay = document.querySelector(".modal-overlay");
-            modal_overlay.style.display = "flex";
-            let infor = document.querySelector(".infor_cpu3");
-            infor.style.display = "block";
-        });
+        // document.querySelector(".com_cpu2").addEventListener('click', function () {
+        //     let modal_overlay = document.querySelector(".modal-overlay");
+        //     modal_overlay.style.display = "none";
+        //     let infor = document.querySelector(".infor_cpu2");
+        //     infor.style.display = "none";
+        // });
 
-        document.querySelector(".com_cpu3").addEventListener('click', function () {
-            let modal_overlay = document.querySelector(".modal-overlay");
-            modal_overlay.style.display = "none";
-            let infor = document.querySelector(".infor_cpu3");
-            infor.style.display = "none";
-        });
+        // //cpu3
+        // document.querySelector(".cpu3").addEventListener('click', function () {
+        //     let modal_overlay = document.querySelector(".modal-overlay");
+        //     modal_overlay.style.display = "flex";
+        //     let infor = document.querySelector(".infor_cpu3");
+        //     infor.style.display = "block";
+        // });
 
-        // 메인보드
+        // document.querySelector(".com_cpu3").addEventListener('click', function () {
+        //     let modal_overlay = document.querySelector(".modal-overlay");
+        //     modal_overlay.style.display = "none";
+        //     let infor = document.querySelector(".infor_cpu3");
+        //     infor.style.display = "none";
+        // });
 
-        //main1
-        document.querySelector(".main1").addEventListener('click', function () {
-            let modal_overlay = document.querySelector(".modal-overlay");
-            modal_overlay.style.display = "flex";
-            let infor = document.querySelector(".infor_main1");
-            infor.style.display = "block";
-        });
+        // // 메인보드
 
-        document.querySelector(".com_main1").addEventListener('click', function () {
-            let modal_overlay = document.querySelector(".modal-overlay");
-            modal_overlay.style.display = "none";
-            let infor = document.querySelector(".infor_main1");
-            infor.style.display = "none";
-        });
+        // //main1
+        // document.querySelector(".main1").addEventListener('click', function () {
+        //     let modal_overlay = document.querySelector(".modal-overlay");
+        //     modal_overlay.style.display = "flex";
+        //     let infor = document.querySelector(".infor_main1");
+        //     infor.style.display = "block";
+        // });
 
-        //main2
-        document.querySelector(".main2").addEventListener('click', function () {
-            let modal_overlay = document.querySelector(".modal-overlay");
-            modal_overlay.style.display = "flex";
-            let infor = document.querySelector(".infor_main2");
-            infor.style.display = "block";
-        });
+        // document.querySelector(".com_main1").addEventListener('click', function () {
+        //     let modal_overlay = document.querySelector(".modal-overlay");
+        //     modal_overlay.style.display = "none";
+        //     let infor = document.querySelector(".infor_main1");
+        //     infor.style.display = "none";
+        // });
 
-        document.querySelector(".com_main2").addEventListener('click', function () {
-            let modal_overlay = document.querySelector(".modal-overlay");
-            modal_overlay.style.display = "none";
-            let infor = document.querySelector(".infor_main2");
-            infor.style.display = "none";
-        });
+        // //main2
+        // document.querySelector(".main2").addEventListener('click', function () {
+        //     let modal_overlay = document.querySelector(".modal-overlay");
+        //     modal_overlay.style.display = "flex";
+        //     let infor = document.querySelector(".infor_main2");
+        //     infor.style.display = "block";
+        // });
 
-        //main3
-        document.querySelector(".main3").addEventListener('click', function () {
-            let modal_overlay = document.querySelector(".modal-overlay");
-            modal_overlay.style.display = "flex";
-            let infor = document.querySelector(".infor_main3");
-            infor.style.display = "block";
-        });
+        // document.querySelector(".com_main2").addEventListener('click', function () {
+        //     let modal_overlay = document.querySelector(".modal-overlay");
+        //     modal_overlay.style.display = "none";
+        //     let infor = document.querySelector(".infor_main2");
+        //     infor.style.display = "none";
+        // });
 
-        document.querySelector(".com_main3").addEventListener('click', function () {
-            let modal_overlay = document.querySelector(".modal-overlay");
-            modal_overlay.style.display = "none";
-            let infor = document.querySelector(".infor_main3");
-            infor.style.display = "none";
-        });
+        // //main3
+        // document.querySelector(".main3").addEventListener('click', function () {
+        //     let modal_overlay = document.querySelector(".modal-overlay");
+        //     modal_overlay.style.display = "flex";
+        //     let infor = document.querySelector(".infor_main3");
+        //     infor.style.display = "block";
+        // });
 
-        // 그래픽카드
+        // document.querySelector(".com_main3").addEventListener('click', function () {
+        //     let modal_overlay = document.querySelector(".modal-overlay");
+        //     modal_overlay.style.display = "none";
+        //     let infor = document.querySelector(".infor_main3");
+        //     infor.style.display = "none";
+        // });
 
-        //gpu1
-        document.querySelector(".gpu1").addEventListener('click', function () {
-            let modal_overlay = document.querySelector(".modal-overlay");
-            modal_overlay.style.display = "flex";
-            let infor = document.querySelector(".infor_gpu1");
-            infor.style.display = "block";
-        });
+        // // 그래픽카드
 
-        document.querySelector(".com_gpu1").addEventListener('click', function () {
-            let modal_overlay = document.querySelector(".modal-overlay");
-            modal_overlay.style.display = "none";
-            let infor = document.querySelector(".infor_gpu1");
-            infor.style.display = "none";
-        });
+        // //gpu1
+        // document.querySelector(".gpu1").addEventListener('click', function () {
+        //     let modal_overlay = document.querySelector(".modal-overlay");
+        //     modal_overlay.style.display = "flex";
+        //     let infor = document.querySelector(".infor_gpu1");
+        //     infor.style.display = "block";
+        // });
 
-        //gpu2
-        document.querySelector(".gpu2").addEventListener('click', function () {
-            let modal_overlay = document.querySelector(".modal-overlay");
-            modal_overlay.style.display = "flex";
-            let infor = document.querySelector(".infor_gpu2");
-            infor.style.display = "block";
-        });
+        // document.querySelector(".com_gpu1").addEventListener('click', function () {
+        //     let modal_overlay = document.querySelector(".modal-overlay");
+        //     modal_overlay.style.display = "none";
+        //     let infor = document.querySelector(".infor_gpu1");
+        //     infor.style.display = "none";
+        // });
 
-        document.querySelector(".com_gpu2").addEventListener('click', function () {
-            let modal_overlay = document.querySelector(".modal-overlay");
-            modal_overlay.style.display = "none";
-            let infor = document.querySelector(".infor_gpu2");
-            infor.style.display = "none";
-        });
+        // //gpu2
+        // document.querySelector(".gpu2").addEventListener('click', function () {
+        //     let modal_overlay = document.querySelector(".modal-overlay");
+        //     modal_overlay.style.display = "flex";
+        //     let infor = document.querySelector(".infor_gpu2");
+        //     infor.style.display = "block";
+        // });
 
-        //gpu3
-        document.querySelector(".gpu3").addEventListener('click', function () {
-            let modal_overlay = document.querySelector(".modal-overlay");
-            modal_overlay.style.display = "flex";
-            let infor = document.querySelector(".infor_gpu3");
-            infor.style.display = "block";
-        });
+        // document.querySelector(".com_gpu2").addEventListener('click', function () {
+        //     let modal_overlay = document.querySelector(".modal-overlay");
+        //     modal_overlay.style.display = "none";
+        //     let infor = document.querySelector(".infor_gpu2");
+        //     infor.style.display = "none";
+        // });
 
-        document.querySelector(".com_gpu3").addEventListener('click', function () {
-            let modal_overlay = document.querySelector(".modal-overlay");
-            modal_overlay.style.display = "none";
-            let infor = document.querySelector(".infor_gpu3");
-            infor.style.display = "none";
-        });
+        // //gpu3
+        // document.querySelector(".gpu3").addEventListener('click', function () {
+        //     let modal_overlay = document.querySelector(".modal-overlay");
+        //     modal_overlay.style.display = "flex";
+        //     let infor = document.querySelector(".infor_gpu3");
+        //     infor.style.display = "block";
+        // });
 
-        // SSD
+        // document.querySelector(".com_gpu3").addEventListener('click', function () {
+        //     let modal_overlay = document.querySelector(".modal-overlay");
+        //     modal_overlay.style.display = "none";
+        //     let infor = document.querySelector(".infor_gpu3");
+        //     infor.style.display = "none";
+        // });
 
-        //ssd1
-        document.querySelector(".ssd1").addEventListener('click', function () {
-            let modal_overlay = document.querySelector(".modal-overlay");
-            modal_overlay.style.display = "flex";
-            let infor = document.querySelector(".infor_ssd1");
-            infor.style.display = "block";
-        });
+        // // SSD
 
-        document.querySelector(".com_ssd1").addEventListener('click', function () {
-            let modal_overlay = document.querySelector(".modal-overlay");
-            modal_overlay.style.display = "none";
-            let infor = document.querySelector(".infor_ssd1");
-            infor.style.display = "none";
-        });
+        // //ssd1
+        // document.querySelector(".ssd1").addEventListener('click', function () {
+        //     let modal_overlay = document.querySelector(".modal-overlay");
+        //     modal_overlay.style.display = "flex";
+        //     let infor = document.querySelector(".infor_ssd1");
+        //     infor.style.display = "block";
+        // });
 
-        //ssd2
-        document.querySelector(".ssd2").addEventListener('click', function () {
-            let modal_overlay = document.querySelector(".modal-overlay");
-            modal_overlay.style.display = "flex";
-            let infor = document.querySelector(".infor_ssd2");
-            infor.style.display = "block";
-        });
+        // document.querySelector(".com_ssd1").addEventListener('click', function () {
+        //     let modal_overlay = document.querySelector(".modal-overlay");
+        //     modal_overlay.style.display = "none";
+        //     let infor = document.querySelector(".infor_ssd1");
+        //     infor.style.display = "none";
+        // });
 
-        document.querySelector(".com_ssd2").addEventListener('click', function () {
-            let modal_overlay = document.querySelector(".modal-overlay");
-            modal_overlay.style.display = "none";
-            let infor = document.querySelector(".infor_ssd2");
-            infor.style.display = "none";
-        });
+        // //ssd2
+        // document.querySelector(".ssd2").addEventListener('click', function () {
+        //     let modal_overlay = document.querySelector(".modal-overlay");
+        //     modal_overlay.style.display = "flex";
+        //     let infor = document.querySelector(".infor_ssd2");
+        //     infor.style.display = "block";
+        // });
 
-        //ssd3
-        document.querySelector(".ssd3").addEventListener('click', function () {
-            let modal_overlay = document.querySelector(".modal-overlay");
-            modal_overlay.style.display = "flex";
-            let infor = document.querySelector(".infor_ssd3");
-            infor.style.display = "block";
-        });
+        // document.querySelector(".com_ssd2").addEventListener('click', function () {
+        //     let modal_overlay = document.querySelector(".modal-overlay");
+        //     modal_overlay.style.display = "none";
+        //     let infor = document.querySelector(".infor_ssd2");
+        //     infor.style.display = "none";
+        // });
 
-        document.querySelector(".com_ssd3").addEventListener('click', function () {
-            let modal_overlay = document.querySelector(".modal-overlay");
-            modal_overlay.style.display = "none";
-            let infor = document.querySelector(".infor_ssd3");
-            infor.style.display = "none";
-        });
+        // //ssd3
+        // document.querySelector(".ssd3").addEventListener('click', function () {
+        //     let modal_overlay = document.querySelector(".modal-overlay");
+        //     modal_overlay.style.display = "flex";
+        //     let infor = document.querySelector(".infor_ssd3");
+        //     infor.style.display = "block";
+        // });
 
+        // document.querySelector(".com_ssd3").addEventListener('click', function () {
+        //     let modal_overlay = document.querySelector(".modal-overlay");
+        //     modal_overlay.style.display = "none";
+        //     let infor = document.querySelector(".infor_ssd3");
+        //     infor.style.display = "none";
+        // });
+
+
+        // 데이터 베이스부분 여기가 끝
 
 
 
@@ -1736,19 +2809,43 @@
 
         // 검색
 
-        // 페이징
+
+
+        // 새 페이징 2
         document.addEventListener("DOMContentLoaded", function () {
-            var items = document.querySelectorAll(".row"); // 페이지네이션할 요소 선택
-            var itemsPerPage = 10; // 페이지당 보여줄 항목 수
-            var totalPages = Math.ceil(items.length / itemsPerPage); // 전체 페이지 수
+            var itemsPerPage = 3; // 페이지당 보여줄 항목 수
             var currentPage = 1;
 
-            var prevPageBtn = document.getElementById("prevPage");
-            var nextPageBtn = document.getElementById("nextPage");
-            var currentPageNumber = document.getElementById("currentPageNumber");
+            // 페이지를 보여주는 함수
+            function showPage(pageNumber) {
+                var startIndex = (pageNumber - 1) * itemsPerPage;
+                var endIndex = startIndex + itemsPerPage;
+                var items = document.querySelectorAll(".row");
+
+                // 모든 항목을 숨김
+                items.forEach(function (item) {
+                    item.style.display = "none";
+                });
+
+                // 현재 페이지의 항목을 보여줌
+                for (var i = startIndex; i < endIndex && i < items.length; i++) {
+                    items[i].style.display = "table-row";
+                }
+            }
+
+            // 페이지를 생성하고 페이지 번호를 갱신하는 함수
+            function updatePagination() {
+                var items = document.querySelectorAll(".row");
+                var totalPages = Math.ceil(items.length / itemsPerPage);
+                currentPage = Math.min(currentPage, totalPages);
+                showPage(currentPage);
+                displayPageNumbers();
+            }
 
             // 페이지 번호를 생성하고 추가하는 함수
             function displayPageNumbers() {
+                var items = document.querySelectorAll(".row");
+                var totalPages = Math.ceil(items.length / itemsPerPage);
                 var pageNumbers = document.getElementById("page-numbers");
                 pageNumbers.innerHTML = '';
 
@@ -1762,28 +2859,8 @@
                 }
             }
 
-            // 페이지를 보여주는 함수
-            function showPage(pageNumber) {
-                var startIndex = (pageNumber - 1) * itemsPerPage;
-                var endIndex = startIndex + itemsPerPage;
-
-                // 모든 항목을 숨김
-                items.forEach(function (item) {
-                    item.style.display = "none";
-                });
-
-                // 현재 페이지의 항목을 보여줌
-                for (var i = startIndex; i < endIndex; i++) {
-                    if (items[i]) {
-                        items[i].style.display = "table-row";
-                    }
-                }
-
-                // 현재 페이지 정보 업데이트
-                currentPageNumber.textContent = "현재는 " + pageNumber + "페이지 입니다.";
-            }
-
             // 이전 페이지 버튼 이벤트 처리
+            var prevPageBtn = document.getElementById("prevPage");
             prevPageBtn.addEventListener("click", function () {
                 if (currentPage > 1) {
                     currentPage--;
@@ -1792,7 +2869,10 @@
             });
 
             // 다음 페이지 버튼 이벤트 처리
+            var nextPageBtn = document.getElementById("nextPage");
             nextPageBtn.addEventListener("click", function () {
+                var items = document.querySelectorAll(".row");
+                var totalPages = Math.ceil(items.length / itemsPerPage);
                 if (currentPage < totalPages) {
                     currentPage++;
                     showPage(currentPage);
@@ -1809,9 +2889,206 @@
             });
 
             // 초기 페이지 번호 표시
-            displayPageNumbers();
-            showPage(currentPage); // 페이지 로드 시 첫 페이지 보여주기
+            updatePagination();
+
+            // 새로운 행이 추가될 때마다 페이징 업데이트
+            var addCommitBtn = document.querySelector(".add_commit");
+            addCommitBtn.addEventListener("click", function () {
+                updatePagination();
+            });
+
+            // 행 삭제 시 페이징 업데이트
+            var deleteBtns = document.querySelectorAll('.delete');
+            deleteBtns.forEach(function (btn) {
+                btn.addEventListener('click', function (event) {
+                    event.preventDefault(); // 기본 동작 막기
+                    var row = this.closest('.row');
+                    var table = row.parentNode;
+                    var index = Array.from(table.children).indexOf(row);
+                    table.removeChild(row); // 행 삭제
+                    updatePagination(); // 페이징 업데이트
+
+                    // 삭제된 행 이후에 아직 페이지에 행이 남아 있는 경우, 첫 번째 페이지의 첫 번째 행을 보여줌
+                    if (index < currentPage * itemsPerPage && index >= (currentPage - 1) * itemsPerPage) {
+                        showPage(currentPage);
+                    }
+                });
+            });
         });
+
+
+
+
+
+
+
+
+
+
+
+        // 새 페이징 1 뒷 페이지로 tr이 넘어감
+        // document.addEventListener("DOMContentLoaded", function () {
+        //     var items = document.querySelectorAll(".row"); // 페이지네이션할 요소 선택
+        //     var itemsPerPage = 3; // 페이지당 보여줄 항목 수
+        //     var totalPages = Math.ceil(items.length / itemsPerPage); // 전체 페이지 수
+        //     var currentPage = 1;
+
+        //     // 페이지를 보여주는 함수
+        //     function showPage(pageNumber) {
+        //         var startIndex = (pageNumber - 1) * itemsPerPage;
+        //         var endIndex = startIndex + itemsPerPage;
+
+        //         // 모든 항목을 숨김
+        //         items.forEach(function (item) {
+        //             item.style.display = "none";
+        //         });
+
+        //         // 현재 페이지의 항목을 보여줌
+        //         for (var i = startIndex; i < endIndex && i < items.length; i++) {
+        //             items[i].style.display = "table-row";
+        //         }
+        //     }
+
+        //     // 페이지를 생성하고 페이지 번호를 갱신하는 함수
+        //     function updatePagination() {
+        //         totalPages = Math.ceil(items.length / itemsPerPage);
+        //         currentPage = Math.min(currentPage, totalPages);
+        //         showPage(currentPage);
+        //         displayPageNumbers();
+        //     }
+
+        //     // 페이지 번호를 생성하고 추가하는 함수
+        //     function displayPageNumbers() {
+        //         var pageNumbers = document.getElementById("page-numbers");
+        //         pageNumbers.innerHTML = '';
+
+        //         for (var i = 1; i <= totalPages; i++) {
+        //             var li = document.createElement("li");
+        //             var a = document.createElement("a");
+        //             a.href = "#";
+        //             a.textContent = i;
+        //             li.appendChild(a);
+        //             pageNumbers.appendChild(li);
+        //         }
+        //     }
+
+        //     // 이전 페이지 버튼 이벤트 처리
+        //     var prevPageBtn = document.getElementById("prevPage");
+        //     prevPageBtn.addEventListener("click", function () {
+        //         if (currentPage > 1) {
+        //             currentPage--;
+        //             showPage(currentPage);
+        //         }
+        //     });
+
+        //     // 다음 페이지 버튼 이벤트 처리
+        //     var nextPageBtn = document.getElementById("nextPage");
+        //     nextPageBtn.addEventListener("click", function () {
+        //         if (currentPage < totalPages) {
+        //             currentPage++;
+        //             showPage(currentPage);
+        //         }
+        //     });
+
+        //     // 페이지 번호를 클릭했을 때의 이벤트 처리
+        //     document.getElementById("page-numbers").addEventListener("click", function (event) {
+        //         if (event.target.tagName === "A") {
+        //             var pageNumber = parseInt(event.target.textContent);
+        //             currentPage = pageNumber;
+        //             showPage(pageNumber);
+        //         }
+        //     });
+
+        //     // 초기 페이지 번호 표시
+        //     updatePagination();
+
+        //     // 새로운 행이 추가될 때마다 페이징 업데이트
+        //     var addCommitBtn = document.querySelector(".add_commit");
+        //     addCommitBtn.addEventListener("click", function () {
+        //         items = document.querySelectorAll(".row"); // 행이 추가될 때 items 다시 설정
+        //         updatePagination();
+        //     });
+        // });
+
+
+
+
+        // 기존 페이징
+        // document.addEventListener("DOMContentLoaded", function () {
+        //     var items = document.querySelectorAll(".row"); // 페이지네이션할 요소 선택
+        //     var itemsPerPage = 10; // 페이지당 보여줄 항목 수
+        //     var totalPages = Math.ceil(items.length / itemsPerPage); // 전체 페이지 수
+        //     var currentPage = 1;
+
+        //     var prevPageBtn = document.getElementById("prevPage");
+        //     var nextPageBtn = document.getElementById("nextPage");
+        //     var currentPageNumber = document.querySelector("#currentPageNumber");
+
+        //     // 페이지 번호를 생성하고 추가하는 함수
+        //     function displayPageNumbers() {
+        //         var pageNumbers = document.getElementById("page-numbers");
+        //         pageNumbers.innerHTML = '';
+
+        //         for (var i = 1; i <= totalPages; i++) {
+        //             var li = document.createElement("li");
+        //             var a = document.createElement("a");
+        //             a.href = "#";
+        //             a.textContent = i;
+        //             li.appendChild(a);
+        //             pageNumbers.appendChild(li);
+        //         }
+        //     }
+
+        //     // 페이지를 보여주는 함수
+        //     function showPage(pageNumber) {
+        //         var startIndex = (pageNumber - 1) * itemsPerPage;
+        //         var endIndex = startIndex + itemsPerPage;
+
+        //         // 모든 항목을 숨김
+        //         items.forEach(function (item) {
+        //             item.style.display = "none";
+        //         });
+
+        //         // 현재 페이지의 항목을 보여줌
+        //         for (var i = startIndex; i < endIndex; i++) {
+        //             if (items[i]) {
+        //                 items[i].style.display = "table-row";
+        //             }
+        //         }
+
+        //         // 현재 페이지 정보 업데이트
+        //         currentPageNumber.textContent = "현재는 " + pageNumber + "페이지 입니다.";
+        //     }
+
+        //     // 이전 페이지 버튼 이벤트 처리
+        //     prevPageBtn.addEventListener("click", function () {
+        //         if (currentPage > 1) {
+        //             currentPage--;
+        //             showPage(currentPage);
+        //         }
+        //     });
+
+        //     // 다음 페이지 버튼 이벤트 처리
+        //     nextPageBtn.addEventListener("click", function () {
+        //         if (currentPage < totalPages) {
+        //             currentPage++;
+        //             showPage(currentPage);
+        //         }
+        //     });
+
+        //     // 페이지 번호를 클릭했을 때의 이벤트 처리
+        //     document.getElementById("page-numbers").addEventListener("click", function (event) {
+        //         if (event.target.tagName === "A") {
+        //             var pageNumber = parseInt(event.target.textContent);
+        //             currentPage = pageNumber;
+        //             showPage(pageNumber);
+        //         }
+        //     });
+
+        //     // 초기 페이지 번호 표시
+        //     displayPageNumbers();
+        //     showPage(currentPage); // 페이지 로드 시 첫 페이지 보여주기
+        // });
 
 
         // 페이징 끝

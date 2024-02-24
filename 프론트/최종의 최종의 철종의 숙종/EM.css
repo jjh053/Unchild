@@ -552,9 +552,10 @@ article {
     /* line-height: -35px; */
     width: 10%;
     text-align: center;
-    height: 20px;
+    height: 30px;
     background-color: red;
-    line-height: 25px;
+    line-height: 30px;
+    margin-bottom: 10px;
     font-size: 12px;
     border-radius: 5px;
     cursor: pointer;
@@ -1327,6 +1328,15 @@ article {
 
     /* 위는 미디어 공통 */
     /* 아래는 내꺼 */
+    /* .Employee_atomic_information{
+        width : 100px;
+        
+    } */
+    
+    .Employee_atomic_information2,
+    .Employee_atomic_information3 {
+        width: 90%;
+    }
 
     .Employee_atomic_information,
     .Employee_atomic_information2 {
@@ -1336,17 +1346,21 @@ article {
     .popup,
     .popup2,
     .popup3 {
-        width: 90%;
+        width: 100%;
         left: 5%;
         top: 10%;
     }
 
-    .eai,
+    .eai {
+        width : 390px;
+    }
+
     .eai2,
     .eai3 {
         width: 100%;
         height: 550px;
     }
+
 
     .Employee_atomic_infor_select div,
     .Employee_atomic_infor_title div,
@@ -1364,9 +1378,15 @@ article {
     }
 
     .delete_button {
-        width: 70px;
+        width: 60px;
+        height: 20px;
         line-height: 1.7;
         font-size: 12px;
+    }
+
+    .record,
+    .cancel {
+        line-height: 25px;
     }
 
     .Employee_atomic_infor_select input,
