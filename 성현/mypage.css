@@ -1,0 +1,692 @@
+
+    @font-face {
+        font-family: "SOYOMapleBoldTTF";
+        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/SOYOMapleBoldTTF.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    div {
+        box-sizing: border-box;
+    }
+
+    .calendar {
+        position: absolute;
+        left: 207px;
+        width: 400px;
+        height: 400px;
+        padding: 5px 20px 20px 20px;
+        box-sizing: border-box;
+        border: 1px solid;
+    }
+
+    .calendar>.header {
+        text-align: center;
+    }
+
+    .calendar>.header>.title {
+        width: 50%;
+        display: inline-block;
+    }
+
+    .calendar>.header>.calendar_btn {
+        width: 30px;
+        height: 30px;
+        border: none;
+        padding: 0;
+        background-color: #fff;
+        vertical-align: middle;
+        color: black;
+    }
+
+    .calendar>.day {
+        width: 100%;
+        display: table;
+        table-layout: fixed;
+    }
+
+    .calendar>.day>div {
+        display: table-cell;
+        text-align: center;
+        height: 50px;
+        vertical-align: middle;
+    }
+
+    .calendar>.day>div:first-child {
+        color: red;
+    }
+
+    .calendar>.day>div:last-of-type {
+        color: blue;
+    }
+
+    .calendar>.dates {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        width: 100%;
+        height: 50px;
+    }
+
+    .calendar>.dates>.date {
+        text-align: center;
+        width: calc(100%/7);
+        height: 40px;
+        line-height: 40px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    .calendar>.dates>.date:hover {
+        background-color: lightblue;
+    }
+
+    .calendar>.dates>.date:nth-child(7n) {
+        color: blue;
+    }
+
+    .calendar>.dates>.date:nth-child(7n+1) {
+        color: red;
+    }
+
+    .calendar>.dates>.last {
+        color: #c8c8c8 !important;
+    }
+
+    .calendar>.dates>.next {
+        color: #c8c8c8 !important;
+    }
+
+    .calendar>.dates>.current-day {
+        background-color: lightblue;
+        color: white;
+    }
+
+    .calendar>.dates>.next-month {
+        color: #c8c8c8;
+    }
+
+    .calendar>.dates>.date.gray {
+        color: #c8c8c8;
+    }
+
+    body {
+        font-family: "SOYOMapleBoldTTF";
+    }
+
+    #myprofile {
+        width: 200px;
+        height: 400px;
+        border: 1px solid #555;
+        position: absolute;
+        font-size: 12px;
+    }
+
+    .mypic {
+        width: 100%;
+        height: 100%;
+    }
+
+    #myprofliePic {
+        width: 100%;
+        height: 120px;
+        border-bottom: 1px solid #555;
+    }
+
+    #myprofilecard {
+        border-bottom: 1px solid #555;
+    }
+
+    #myprofilecontent #my-mail-page {
+        position: relative;
+        border-bottom: 1px solid #555;
+        height: 70px;
+    }
+
+    #todayWork {
+        border-bottom: 1px solid #555;
+        height: 70px;
+    }
+
+    #myprofilecontent #my-mail-page img {
+        width: 69px;
+        height: 69px;
+        display: inline-block;
+        /* border: 1px solid red; */
+        box-sizing: border-box;
+        cursor: pointer;
+    }
+
+    #myprofilecontent #my-mail-page div {
+        box-sizing: border-box;
+        margin: auto;
+        /* border: 1px solid red; */
+        display: inline-block;
+        position: absolute;
+        top: 15px;
+        left: 80px;
+        line-height: 20px;
+    }
+
+    #myprofilecontent #my-mail-page div span {
+        color: #000;
+        cursor: pointer;
+    }
+
+    #myprofilecontent #my-mail-page div span:hover {
+        color: blue;
+        transition: 0.3s;
+    }
+
+    #vacation-btn {
+        position: absolute;
+        top: 410px;
+        left: 527px;
+        background-color: #3498DB;
+        margin-top: 10px;
+        width: 80px;
+        height: 40px;
+        border-radius: 5px;
+        cursor: pointer;
+        color: #fff;
+        border: 0;
+    }
+
+    #vacation-btn:hover {
+        background-color: rgb(0, 47, 255);
+        transition: 0.2s;
+    }
+
+    #close-btn {
+        position: absolute;
+        top: 410px;
+        left: 0;
+        margin: 0 10px;
+        background-color: red;
+        margin-top: 10px;
+        width: 80px;
+        height: 40px;
+        border-radius: 5px;
+        cursor: pointer;
+        color: #fff;
+        border: 0;
+    }
+
+    #close-btn:hover {
+        background-color: rgb(163, 6, 6);
+        transition: 0.2s;
+    }
+
+    #modify-profile {
+        margin-left: 130px;
+        cursor: pointer;
+    }
+
+    #modify-profile:hover {
+        color: blue;
+        transition: 0.3s;
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .modal2,
+    .modal3,
+    .modal4,
+    .modal5,
+    .modal6 {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .modal-content {
+        background-color: white;
+        margin-top: 50px;
+        margin-left: 50px;
+        padding: 20px;
+        width: 80%;
+        border-radius: 5px;
+        position: relative;
+    }
+
+    .modal-content input {
+        margin: 3px;
+        font-family: "SOYOMapleBoldTTF";
+        width: 150px;
+        font-size: 14px;
+    }
+
+    .modal-content h2 {
+        /* border: 1px solid red; */
+        text-align: center;
+    }
+
+    .close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    .close img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .btn-zip,
+    .vacation-btn-zip {
+        text-align: center;
+    }
+
+    #apply-btn,
+    #applyVacationBtn {
+        background-color: #3498DB;
+        margin-top: 10px;
+        width: 80px;
+        height: 40px;
+        border-radius: 5px;
+        cursor: pointer;
+        color: #fff;
+        border: 0;
+    }
+
+    #apply-btn:hover,
+    #applyVacationBtn:hover {
+        background-color: rgb(0, 47, 255);
+        transition: 0.2s;
+    }
+
+    #delete-btn,
+    #deleteVacationBtn {
+        margin: 0 10px;
+        background-color: red;
+        margin-top: 10px;
+        width: 80px;
+        height: 40px;
+        border-radius: 5px;
+        cursor: pointer;
+        color: #fff;
+        border: 0;
+    }
+
+    #delete-btn:hover,
+    #deleteVacationBtn:hover {
+        background-color: rgb(163, 6, 6);
+        transition: 0.2s;
+    }
+
+    #mycard {
+        margin-bottom: 30px;
+    }
+
+    .vacation-word {
+        position: absolute;
+        top: 433px;
+        left: 300px;
+        display: inline-block;
+    }
+
+    #reasonZip {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        margin-left: 40px;
+    }
+
+
+    .vacationReason {
+        width: 80px;
+        height: 40px;
+        background: #ccc;
+        border-radius: 10px;
+        text-align: center;
+        line-height: 40px;
+        margin-right: 40px;
+        margin-bottom: 20px;
+        cursor: pointer;
+    }
+
+    .vacationReason:hover {
+        background-color: #999;
+        transition: 0.3s;
+    }
+
+    #instructions {
+        height: 70px;
+        position: relative;
+    }
+
+    #vacationSchedule {
+        display: none;
+        width: 198px;
+        height: 46px;
+        border-top: 1px solid #555;
+        box-sizing: border-box;
+    }
+
+    .today-work-zip {
+        cursor: pointer;
+    }
+
+    .today-work-zip ul li:hover {
+        transition: 0.3s;
+        color: blue;
+    }
+
+    .work-btn-zip {
+        text-align: center;
+    }
+
+    #closeWorkBox {
+        margin: 0 10px;
+        background-color: red;
+        margin-top: 10px;
+        width: 60px;
+        height: 30px;
+        border-radius: 5px;
+        cursor: pointer;
+        color: #fff;
+        border: 0;
+    }
+
+    #closeWorkBox:hover {
+        background-color: rgb(163, 6, 6);
+        transition: 0.2s;
+    }
+
+    #workTable {
+        border-collapse: collapse;
+        border: 1px solid #555;
+        margin: 0 auto;
+    }
+
+    #workTable th,
+    td {
+        border: 1px solid #555;
+        padding: 10px;
+    }
+
+    #workTable td {
+        font-size: 12px !important;
+    }
+
+    #workTable input {
+        width: 10px;
+        height: 10px;
+    }
+
+    #workCheckBox {
+        background-color: #3498DB;
+        margin-top: 10px;
+        width: 60px;
+        height: 30px;
+        border-radius: 5px;
+        cursor: pointer;
+        color: #fff;
+        border: 0;
+    }
+
+    #workCheckBox:hover {
+        background-color: rgb(0, 47, 255);
+        transition: 0.2s;
+    }
+
+    .today-work-zip ul {
+        margin: 0;
+        margin-left: -30px;
+    }
+
+    .today-work-zip ul li {
+        list-style: none;
+        font-size: 8px;
+    }
+
+    #mailCloseBtn {
+        margin: 0 10px;
+        background-color: red;
+        margin-top: 10px;
+        width: 60px;
+        height: 30px;
+        border-radius: 5px;
+        cursor: pointer;
+        color: #fff;
+        border: 0;
+        font-size: 11px;
+        margin-left: 100px;
+    }
+
+    #mailCloseBtn:hover {
+        background-color: rgb(163, 6, 6);
+        transition: 0.2s;
+    }
+
+    #mailTable table {
+        border: 1px solid #555;
+        border-collapse: collapse;
+        padding: 5px;
+        font-size: 12px;
+        text-align: center;
+    }
+
+    #mailTable table input {
+        width: 16px;
+        margin: 0;
+        margin-top: 3px;
+    }
+
+    #mailTable th,
+    td {
+        border: 1px solid #555;
+        /* width: 100px; */
+        padding: 0;
+    }
+
+    #mailTable td {
+        font-size: 10px;
+    }
+
+    #mailTable .isCheckedBox, #allCheckBox {
+        cursor: pointer;
+    }
+
+    #mailTable td:hover {
+        text-decoration: underline;
+    }
+
+    #mailDeleteBtn {
+        background-color: #3498DB;
+        width: 60px;
+        height: 30px;
+        border-radius: 3px;
+        cursor: pointer;
+        color: #fff;
+        border: 0;
+        margin-right: 100px;
+        font-size: 11px;
+    }
+
+    #mailDeleteBtn:hover {
+        background-color: rgb(0, 47, 255);
+        transition: 0.2s;
+    }
+
+    #mailTable img {
+        margin-bottom: -10px;
+    }
+
+    #mailTable div {
+        display: inline-block;
+        margin-bottom: 16px;
+    }
+
+    #pagingBtn {
+        display: inline-block;
+        margin-top: 10px;
+    }
+
+    #pagingBtn div {
+        display: inline-block;
+        cursor: pointer;
+        border: 1px solid #555;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+    }
+
+    #pagingBtn div:hover {
+        background-color: #ccc;
+        /* color: #fff; */
+    }
+
+    #instructions img {
+        margin-top: 4px;
+        margin-left: 4px;
+        width: 59px;
+        height: 59px;
+    }
+
+    #instructions div {
+        position: absolute;
+        top: 20px;
+        left: 79px;
+        display: inline-block;
+    }
+
+    .workChkBox {
+        width: 10px;
+        text-align: center;
+    }
+
+    #workTable tbody tr td {
+        /* text-align: center; */
+        height: 30px;
+    }
+
+    #mailWritePage input {
+        font-family: SOYOMapleBoldTTF;
+    }
+
+    #mailWritePage textarea {
+        font-family: SOYOMapleBoldTTF;
+        resize: none;
+        margin-top: 5px;
+    }
+
+    #apply-write-btn {
+        background-color: #3498DB;
+        width: 60px;
+        height: 30px;
+        border-radius: 3px;
+        cursor: pointer;
+        color: #fff;
+        border: 0;
+        margin-right: 300px;
+        font-size: 11px;
+    }
+
+    #apply-write-btn:hover {
+        background-color: rgb(0, 47, 255);
+        transition: 0.2s;
+    }
+
+    #delete-write-btn {
+        margin: 0 10px;
+        background-color: red;
+        margin-top: 10px;
+        width: 60px;
+        height: 30px;
+        border-radius: 5px;
+        cursor: pointer;
+        color: #fff;
+        border: 0;
+        font-size: 11px;
+    }
+
+    #delete-write-btn:hover {
+        background-color: rgb(163, 6, 6);
+        transition: 0.2s;
+    }
+
+    .order-detail {
+        cursor: pointer;
+    }
+
+    .order-detail:hover {
+        color: blue;
+        transition: 0.3s;
+    }
+
+    #orderTable {
+        border-collapse: collapse;
+        border: 1px solid #555;
+    }
+
+    #orderTable th,
+    td {
+        padding: 5px;
+        border: 1px solid #555;
+    }
+
+    #orderCloseBtn {
+        background-color: red;
+        margin-top: 10px;
+        width: 60px;
+        height: 30px;
+        border-radius: 5px;
+        cursor: pointer;
+        color: #fff;
+        border: 0;
+        font-size: 11px;
+    }
+
+    #orderCloseBtn:hover {
+        background-color: rgb(163, 6, 6);
+        transition: 0.2s;
+    }
+
+    .order-btn-zip {
+        text-align: right;
+        width: 430px;
+    }
+
+    #orderWriteBtn {
+        background-color: #3498DB;
+        width: 60px;
+        height: 30px;
+        border-radius: 5px;
+        cursor: pointer;
+        color: #fff;
+        border: 0;
+        font-size: 11px;
+    }
+
+    #orderWriteBtn:hover {
+        background-color: rgb(0, 47, 255);
+        transition: 0.2s;
+    }
+
+    #orderTableBody a {
+        text-decoration: none;
+        color: #000;
+    }
+
+    #orderTableBody a:hover {
+        transition: 0.2s;
+        color: #666;
+    }

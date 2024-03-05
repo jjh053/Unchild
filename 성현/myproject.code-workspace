@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "../../../../Users/admin/eclipse-workspace/myproject"
+		},
+		{
+			"path": "../../../../Users/admin/Desktop/class_vote"
+		},
+		{
+			"path": "../../.."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "workspace"
+	}
+}

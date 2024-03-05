@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoring Page</title>
+
+<link rel="stylesheet" href="monitoring.css">
+</head>
+
+<body>
+    <div id="workerTitle">
+        <div id="workerLogo">
+            <a href="#">
+                <image
+                    src="https://cdn.discordapp.com/attachments/1185161279804026893/1200675420325036082/Jlogo.png?ex=65c70b1f&is=65b4961f&hm=ae28f53e9280fe71cffc1fc2ca74aec892875f13143ef4e109da28023c5b414b&"
+                    class="logo"></image>
+            </a>
+        </div>
+        <h1 id="mainTitle1"><a href="main.html">작업자 페이지</a></h1>
+        <h1 id="mainTitle2"><a href="main.html">관리자 페이지</a></h1>
+        <div id="myPage">
+            <div id="myPageLogo">
+                <image
+                    src="https://cdn.discordapp.com/attachments/1185161279804026893/1200675420551520370/workerP.jpg?ex=65c70b1f&is=65b4961f&hm=c49f91b245305c4bb33c58e626bc4960b4f601257e433425a8d7cc0da454126e&"
+                    class="workerPic">
+            </div>
+            <span id="workerName"><span class="workerGrade">관리자<br></span>이도연 대리님</span>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <div class="header-nav-container">
+            <header>
+                <!-- 모바일 헤더 코드 -->
+                <div class="header-content">
+                    <div class="hamburger-menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <h1 id="headerTitle" style="display: none;"><a href="main.html">J.company</a></h1>
+                </div>
+                <ul>
+                    <li><a href="work-order.html" class="hover" title="작업지시서">작업</a></li>
+                    <li><a href="facilityMonitoring.html" class="hover" title="품질검사">설비</a></li>
+                    <li><a href="stock_status.html" class="hover" title="건의사항">재고관리</a></li>
+                    <li id="adminTitle"><a href="Employee_managemen.html" class="hover" title="직원관리">직원관리</a></li>
+                    <li><a href="boardTable.html" class="hover" title="직원 게시판">게시판</a></li>
+                </ul>
+            </header>
+            <nav>
+                <div class="menu-bar">
+                    <div class="menu-bar-content">
+                        <ul>
+                            <li><a href="work-order.html">작업 지침서</a></li>
+                            <li><a href="work-safety.html">안전 지침서</a></li>
+                            <li><a href="work-quality.html">품질검사</a></li>
+                            <li><a href="work-report.html">작업보고</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-bar-content">
+                        <ul>
+                            <li><a href="facilityMonitoring.html">설비 모니터링</a></li>
+
+                            <li><a href="process.html">공정도</a></li>
+
+                            <li><a href="facilitiespage.html">설비 설정</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-bar-content">
+                        <ul>
+                            <li><a href="stock_status.html">재고 현황</a></li>
+                            <li><a href="Stock_Request.html">재고 신청</a></li>
+                            <li><a href="Finished_product_management.html">완제품 관리</a></li>
+                            <li><a href="Report_of_defective_inventory.html">재고 불량 신고</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-bar-content" id="adminNav">
+                        <ul>
+                            <li><a href="Employee_managemen.html">직원목록</a></li>
+                            <li><a href="work-record.html">근무기록</a></li>
+                            <li><a href="vacation.html">휴가신청</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-bar-content">
+                        <ul>
+                            <li><a href="boardTable.html">자유게시판</a></li>
+                            <li><a href="suggestTable.html">건의사항</a></li>
+                            <li><a href="QA.html">Q&A</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="aside-section-container">
+            <aside>
+                <!-- aside 영역내에 메뉴 추가 가능함 -->
+                <ul>
+                    <li>
+                        <a href="FacilityMonitoring.html">설비 모니터링</a>
+                    </li>
+                    <li>
+                        <a href="process.html">공정도</a>
+
+                    </li>
+                    <li>
+                        <a href="facilitiespage.html">설비설정</a>
+                    </li>
+                </ul>
+            </aside>
+            <section>
+                <div class="monitor">
+                    <h1>설비 모니터링</h1>
+                </div>
+                <div id="total-defect-rate-section">
+                    <div id="total-defect-rate" class="total-defect-rate-display">총 불량률: 0%</div>
+                </div>
+                <div id="monitoring">
+                    <div class="process">
+                        <h4>1번 라인</h4>
+                        <div id="cpu-status" class="status">Pending</div>
+                        <div id="cpu-defect-rate" class="operations">불량률: 0%</div>
+                        <div id="cpu-defect-count" class="operations">불량: 0</div>
+                        <div id="cpu-good-count" class="operations">통과: 0</div>
+                        <div id="cpu-operations" class="operations">사이클 횟수: 0</div>
+                    </div>
+                    <div class="process">
+                        <h4>2번 라인</h4>
+                        <div id="gpu-status" class="status">Pending</div>
+                        <div id="gpu-defect-rate" class="operations">불량률: 0%</div>
+                        <div id="gpu-defect-count" class="operations">불량: 0</div>
+                        <div id="gpu-good-count" class="operations">통과: 0</div>
+                        <div id="gpu-operations" class="operations">사이클 횟수: 0</div>
+                    </div>
+                    <div class="process">
+                        <h4>3번 라인</h4>
+                        <div id="case-status" class="status">Pending</div>
+                        <div id="case-defect-rate" class="operations">불량률: 0%</div>
+                        <div id="case-defect-count" class="operations">불량: 0</div>
+                        <div id="case-good-count" class="operations">통과: 0</div>
+                        <div id="case-operations" class="operations">사이클 횟수: 0</div>
+                    </div>
+                    <div class="process">
+                        <h4>4번 라인</h4>
+                        <div class="status">Standby</div>
+                        <div class="operations">불량률: 0%</div>
+                        <div class="operations">불량: 0</div>
+                        <div class="operations">통과: 0</div>
+                        <div class="operations">사이클 횟수: 0</div>
+                    </div>
+                </div>
+                <h3 id="graph-title">불량률 그래프</h3>
+                <div id="defect-rate-graph" class="graph-container">
+                    <div id="cpu-bar" class="bar">1번 라인 : 0.00%</div>
+                    <div id="gpu-bar" class="bar">2번 라인 : 0.00%</div>
+                    <div id="case-bar" class="bar">3번 라인 : 0.00%</div>
+                    <div class="bar">4번 라인 : 0.00%</div>
+                </div>
+                <div id="toggleDiv">
+                    <button type="button" id="toggle">토글</button>
+                </div>
+            </section>
+        </div>
+        <footer>ⓒ2024 J.company System</footer>
+    </div>
+<script src="monitoring.js"></script>
+
+</body>
+
+</html>
