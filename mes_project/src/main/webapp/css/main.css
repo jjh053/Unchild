@@ -1,0 +1,922 @@
+@charset "UTF-8";
+
+body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-family: "SOYOMapleBoldTTF";
+	margin: 0 auto;
+	background: #fff;
+	color: #333;
+	background-color: #ccc;
+}
+
+#AI_chatApp {
+	display: none;
+}
+
+#AI_AppOpen {
+	position: fixed;
+	width: 70px;
+	height: 70px;
+	border-radius: 25px;
+	border: 1px solid #fff;
+	background-color: #333;
+	font-family: "SOYOMapleBoldTTF";
+	color: #ccc;
+	font-weight: 700;
+	top: 89%;
+	right: 12%;
+}
+
+.titleAndToggle {
+	box-sizing: border-box;
+	align-items: center;
+	width: 26%;
+	justify-content: space-between;
+}
+
+#toggle {
+	background-color: #3498DB;
+	width: 80px;
+	height: 40px;
+	border-radius: 5px;
+	font-size: 20px;
+	font-family: "SOYOMapleBoldTTF";
+	cursor: pointer;
+	color: #fff;
+	border: 0;
+}
+
+#toggle:hover {
+	background-color: rgb(0, 47, 255);
+	transition: 0.2s;
+}
+
+/* title */
+#workerTitle {
+	display: flex;
+	width: 1000px;
+	justify-content: space-between;
+	padding: 5px;
+}
+
+#workerTitle h1 {
+	width: 200px;
+	color: #000;
+}
+
+#workerLogo {
+	width: 240px;
+	height: 80px;
+	display: flex;
+	align-items: center;
+}
+
+#workerLogo img {
+	width: 100%;
+	height: 100%;
+}
+
+#mainTitle1 {
+	text-align: center;
+	display: block;
+}
+
+#mainTitle1 a {
+	text-decoration: none;
+	color: #333;
+}
+
+.userBox {
+	width: 63%;
+	height: 95%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+.accountBox {
+	height: 40%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.mybutton {
+	box-sizing: border-box;
+	text-decoration: none;
+	color: #fff;
+	width: 47%;
+	background-color: #555;
+	font-size: 12px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 0;
+	border-radius: 5px;
+	height: 100%;;
+}
+
+.mybutton:hover {
+	background-color: #000;
+}
+
+#myPage {
+	border: #ddd;
+	border-radius: 8px;
+	background-color: #fff;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+	width: 240px;
+	height: 80px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.logout {
+	box-sizing: border-box;
+	text-decoration: none;
+	color: #fff;
+	width: 43%;
+	background-color: #0F52BA;
+	font-size: 12px;
+	display: flex;
+	margin-left: 5px;
+	justify-content: center;
+	align-items: center;
+	border: 0;
+	border-radius: 5px;
+	height: 100%;;
+}
+
+.logout:hover {
+	background-color: #00008B;
+}
+
+.workerGrade {
+	margin-right: 3px;
+}
+
+#workerName {
+	background: #fff;
+	color: #333;
+	border-radius: 5px;
+	display: flex;
+	justify-content: end;
+	align-items: center;
+	width: 93%;
+	height: 40%;
+}
+
+#myPageLogo {
+	border: 0;
+	border-radius: 50%;
+	width: 30%;
+	height: 90%;
+	margin-right: 3%;
+}
+
+#myPageLogo img {
+	width: 100%;
+	height: 100%;
+}
+
+#workerName a {
+	text-decoration: none;
+	color: #333;
+}
+
+#workerName a:hover {
+	text-decoration: none;
+	color: #888;
+	transition: color 0.2s ease;
+}
+
+/* title end */
+.wrap {
+	width: 1000px;
+	display: flex;
+	flex-direction: column;
+	margin: auto;
+}
+
+/* header와 nav의 집합 */
+.header-nav-container {
+	position: relative;
+	width: 100%;
+}
+
+/* header 코드 */
+header {
+	width: 100%;
+	background: #000;
+	color: #fff;
+	text-align: center;
+	padding: 20px;
+	box-sizing: border-box;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+/* 햄버거 메뉴 아이콘 */
+.hamburger-menu {
+	display: none;
+	cursor: pointer;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 25px;
+	height: 20px;
+}
+
+.hamburger-menu span {
+	display: block;
+	height: 3px;
+	width: 100%;
+	background-color: #fff;
+	transition: all 0.2s ease;
+}
+
+header h1 {
+	font-size: 30px;
+	margin: 0;
+}
+
+header ul {
+	padding: 0;
+	display: flex;
+	justify-content: space-around;
+	list-style: none;
+	align-items: center;
+}
+
+header ul li {
+	display: inline-block;
+	margin: 0 15px;
+}
+
+header ul li a {
+	font-size: 18px;
+	text-decoration: none;
+	color: #fff;
+	transition: color 0.3s ease;
+}
+
+header ul li a:hover {
+	color: #aaa;
+}
+
+/* header 코드 끝 */
+nav {
+	width: 100%;
+	position: absolute;
+	top: 100%;
+	/* header 높이에 맞게 조정 */
+	left: 0;
+	right: 0;
+	background: #eee;
+	max-height: 0;
+	overflow: hidden;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+	transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s
+		linear;
+	visibility: hidden;
+	z-index: 100;
+	/* opacity: 0; */
+}
+
+/* nav 숨김요소 */
+nav.active {
+	max-height: 500px;
+	/* 활성화될 때 최대 높이 설정 */
+	visibility: visible;
+	opacity: 1;
+	transition: max-height 0.5s ease, visibility 0s, opacity 0.5s linear;
+}
+
+/* nav 안의 menu-bar요소 */
+.menu-bar {
+	width: 100%;
+	height: 220px;
+	border-top: 0px;
+	border-right: 1px solid #ccc;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.menu-bar-content {
+	/* margin-left: 40px; */
+	width: 20%;
+	display: inline-block;
+	box-sizing: border-box;
+}
+
+.menu-bar-content ul li {
+	padding: 10px;
+}
+
+.menu-bar-content ul li a {
+	text-decoration: none;
+	color: #444;
+}
+
+.menu-bar-content ul li a:hover {
+	color: #aaa;
+	transition: color 0.2s ease;
+}
+
+#menu-bar-content-sub {
+	list-style: circle;
+	font-size: 14px;
+	padding-left: 20px;
+}
+
+#menu-bar-content-sub li {
+	padding: 5px;
+}
+
+/* menu-bar요소 끝 */
+
+/* aside, section */
+.aside-section-container {
+	width: 100%;
+	display: flex;
+	/* height: 100%; */
+}
+
+/* 좌측 메뉴바 */
+aside {
+	display: none;
+	min-height: 800px;
+	width: 20%;
+	background: #5f5f5f;
+}
+
+/* 섹션 창을 조작하기바람 */
+section {
+	min-height: 800px;
+	justify-content: center;
+	width: 100%;
+	background: #eee;
+	z-index: 50;
+	align-items: center;
+}
+
+.container {
+	width: 100%;
+	max-width: 1200px;
+	margin: auto;
+	padding: 20px;
+}
+
+.dashboard-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background: #eee;
+	color: #333;
+	font-size: 30px;
+	padding: 20px 20px 0px 20px;
+}
+
+.clock {
+	width: 28%;
+	padding: 10px;
+	border-radius: 8px;
+	text-align: center;
+	background: #fff;
+	border: 1px solid #ddd;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+	display: inline-block;
+	font-size: 20px;
+}
+
+/* 대쉬보드 영역 스타일 */
+.dashboard-main {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	padding: 20px;
+	box-sizing: border-box;
+	justify-content: center;
+}
+
+/* 전역 카드 설정 */
+.card {
+	background: #fff;
+	border-radius: 8px;
+	border: 1px solid #ddd;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+	margin-bottom: 20px;
+	padding: 20px;
+	transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-header {
+	font-size: 20px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+.card-content {
+	font-size: 16px;
+	text-align: center;
+}
+
+/* 생산 라인 카드 설정 */
+.line-cards {
+	width: 100%;
+	height: 220px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.line-card {
+	width: 26%;
+	background: #fff;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+}
+
+.line-card:nth-child(2) {
+	width: 71.5%;
+}
+
+.card-header2 {
+	margin-bottom: 20px;
+	padding-left: 20px;
+	font-size: 18px;
+}
+
+.card-content2 {
+	border: 1px solid #eee;
+	border-radius: 8px;
+	background: #eee;
+	width: 90%;
+	height: 60%;
+	font-size: 16px;
+	padding-bottom: 2%;
+	text-align: center;
+	margin: 0 auto;
+	line-height: 1.7;
+}
+
+.card-content3 {
+	width: 91%;
+	margin: 0 auto;
+	height: 63%;
+	border-radius: 8px;
+}
+
+/* 제작 현황 그래프 스타일 */
+.card:nth-child(1) {
+	width: 63%;
+	margin-right: 20px;
+}
+
+.card:nth-child(2) {
+	width: 26%;
+}
+
+.card:nth-child(3) {
+	width: 44.5%;
+	margin-right: 20px;
+}
+
+.card:nth-child(4) {
+	width: 44.5%;
+}
+
+#vacationTable {
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	margin-top: 40px;
+	width: 100%;
+	border-collapse: collapse;
+}
+
+#vacationTable th, #vacationTable td {
+	text-align: center;
+	height: 36px;
+	border: 1px solid #ccc;
+}
+
+#vacationTable th {
+	background-color: #f2f2f2;
+}
+
+.table {
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	margin-top: 40px;
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.table th, .table td {
+	text-align: center;
+	height: 36px;
+	border-bottom: 1px solid #ddd;
+}
+
+.table th {
+	background-color: #f2f2f2;
+}
+
+.table tr:nth-child(even) {
+	background-color: #f9f9f9;
+}
+
+.table2 {
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.table2 th, .table2 td {
+	padding: 5px 0;
+	text-align: center;
+	border-bottom: 1px solid #ddd;
+}
+
+.table2 th {
+	background-color: #f2f2f2;
+}
+
+.table2 tr:nth-child(even) {
+	background-color: #f9f9f9;
+}
+
+/* 건의사항 */
+.list {
+	display: flex;
+	flex-direction: column;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.row {
+	display: flex;
+	border-bottom: 2px solid #ddd;
+}
+
+.row:first-child {
+	border-top: 2px solid #ddd;
+	background-color: #eee;
+}
+
+.cell {
+	padding: 5px 0;
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	border-right: 1px solid #ddd;
+}
+
+.cell:first-child {
+	border-left: 1px solid #ddd;
+	flex: 0.5;
+}
+
+.cell:nth-child(2) {
+	flex: 2.0;
+}
+
+.cell:last-child {
+	flex: 0.6;
+}
+
+.more {
+	width: 100%;
+	text-align: right;
+	margin-top: 10px;
+}
+
+.more a {
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	text-decoration: none;
+	color: #333;
+	padding: 5px;
+}
+
+.more a:hover {
+	background-color: #ddd;
+	transition: color 0.5s ease;
+}
+
+#justGage {
+	width: 200px;
+	height: 160px;
+	display: inline-block;
+}
+
+.status {
+	color: #e74c3c;
+	font-weight: bold;
+}
+
+.defect-rate, .defect-count, .good-count, .cycle-count {
+	color: #333;
+}
+
+.line-card {
+	transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.line-card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+/* 게이지 크기 */
+#entryGage, #mainStreamGage, #performanceGage {
+	width: 250px;
+	height: 160px;
+	display: inline-block;
+}
+
+/* 휴가 랜다 */
+.vacation-dashboard {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 7px;
+}
+
+.vacation-card {
+	width: 32%;
+	background-color: #ffffff;
+	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.vacation-card-header {
+	border-radius: 8px 8px 0 0;
+	background-color: #333;
+	color: #ffffff;
+	padding: 10px 15px;
+}
+
+.vacation-card-header h2 {
+	margin: 0;
+	font-size: 20px;
+}
+
+.vacation-card-content {
+	font-size: 15px;
+	padding: 0;
+}
+
+/* aside, section 끝*/
+footer {
+	width: 100%;
+	background: #000;
+	color: #fff;
+	text-align: center;
+	height: 7%;
+	line-height: 70px;
+}
+
+@media screen and (max-width: 430px) {
+	form {
+		width: 100%;
+		min-height: 800px;
+	}
+	.wrap {
+		width: 100%;
+	}
+	#toggle {
+		width: 50px;
+		height: 30px;
+		font-size: 16px;
+	}
+	#workerTitle {
+		display: none;
+	}
+	header {
+		width: 100%;
+		background: #000;
+		color: #fff;
+		text-align: center;
+		padding: 5px;
+		box-sizing: border-box;
+		border-radius: 0px;
+	}
+
+	/* 미디어 쿼리 헤더 영역 수정 코드 */
+	header ul {
+		display: none;
+	}
+	.header-content {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		position: relative;
+	}
+	#headerTitle {
+		display: block !important;
+		text-align: center;
+		color: #fff;
+		width: 100%;
+		font-size: 20px;
+	}
+	#headerTitle a {
+		text-decoration: none;
+		color: #fff;
+	}
+	.titleAndToggle {
+		box-sizing: border-box;
+		align-items: center;
+		width: 40%;
+		font-size: 19px;
+		justify-content: space-between;
+	}
+	.hamburger-menu {
+		position: absolute;
+		left: 0;
+		top: 0;
+		display: flex;
+	}
+	nav {
+		width: 100%;
+		position: absolute;
+		top: 100%;
+		/* header 높이에 맞게 조정 */
+		left: 0;
+		right: 0;
+		background: #dde;
+		overflow: hidden;
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+		transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s
+			linear;
+		transform: translateX(0%);
+		visibility: hidden;
+		z-index: 100;
+		/* opacity: 0; */
+	}
+	nav.active {
+		min-height: 815px;
+		max-height: none;
+		width: 200px;
+		visibility: visible;
+		opacity: 1;
+		transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s
+			linear;
+		transform: translateX(0%);
+	}
+
+	/* 왼쪽에서 오른쪽으로 나오는 애니메이션을 추가합니다. */
+	nav {
+		transform: translateX(-100%);
+		transition: transform 0.5s ease;
+	}
+	nav.active {
+		transform: translateX(0%);
+		transition: transform 0.5s ease;
+	}
+	nav.closing {
+		transform: translateX(-100%);
+		transition: transform 0.5s ease;
+	}
+	nav .menu-bar {
+		width: 100%;
+		height: 100%;
+		border-top: 0px;
+		border-right: 1px solid #ccc;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+	}
+	.menu-bar-content {
+		width: 100%;
+		margin-left: 0px;
+	}
+	.menu-bar-content ul li {
+		padding: 10px;
+	}
+	aside {
+		display: none;
+	}
+	section {
+		width: 100%;
+	}
+	.dashboard-main {
+		width: 100%;
+		display: flex;
+		flex-wrap: wrap;
+		padding-top: 20px;
+		box-sizing: border-box;
+		justify-content: center;
+	}
+	.clock {
+		font-size: 13px;
+		width: 35%;
+	}
+	.card {
+		border: 1px solid #ddd;
+		box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+		margin-bottom: 20px;
+		padding: 20px;
+		transition: transform 0.3s, box-shadow 0.3s;
+	}
+	.card-header {
+		font-size: 15px;
+	}
+	.card-content {
+		font-size: 12px;
+	}
+	.card:nth-child(1) {
+		width: 100%;
+		margin-right: 0;
+		font-size: 10px;
+	}
+	.card:nth-child(2) {
+		width: 100%;
+	}
+	#entryGage, #mainStreamGage, #performanceGage {
+		width: 30%;
+		height: 55px;
+		display: inline-block;
+	}
+	.card:nth-child(2) .card-content:nth-child(2) {
+		font-size: 10px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 80px;
+	}
+	.list {
+		display: flex;
+		flex-direction: column;
+		border-collapse: collapse;
+		font-size: 12px;
+	}
+	.more a {
+		border: 1px solid #ddd;
+		border-radius: 5px;
+		text-decoration: none;
+		color: #333;
+		padding: 5px;
+		font-size: 12px;
+	}
+	.card:nth-child(3) {
+		width: 100%;
+		margin-right: 0;
+	}
+	.card:nth-child(4) {
+		width: 100%;
+	}
+	.line-cards {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+	.line-card {
+		padding-bottom: 10px;
+		width: 100%;
+	}
+	.line-card:nth-child(2) {
+		margin-top: 5%;
+		width: 100%;
+	}
+	.table {
+		margin-top: 10px;
+	}
+	h3 {
+		font-size: 15px;
+	}
+	.card-content2 {
+		font-size: 12px;
+	}
+	.table th, .table td {
+		height: 20px;
+	}
+	.table2 {
+		font-size: 12px;
+	}
+	.vacation-card-header h2 {
+		font-size: 15px;
+	}
+	.vacation-card {
+		width: 31%;
+	}
+	.vacation-card-content {
+		font-size: 12px;
+	}
+}

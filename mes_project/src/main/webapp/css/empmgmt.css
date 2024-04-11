@@ -1,0 +1,1404 @@
+@charset "UTF-8";
+
+body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-family: "SOYOMapleBoldTTF";
+	margin: 0 auto;
+	background: #fff;
+	color: #333;
+	background-color: #ccc;
+
+
+input:focus {
+	outline-color: #3498DB;
+}
+
+/* title */
+#workerTitle {
+	display: flex;
+	width: 1000px;
+	justify-content: space-between;
+	padding: 5px;
+}
+
+.empno:hover {
+    color: #3498DB; 
+}
+
+#workerLogo {
+	width: 240px;
+	height: 80px;
+	display: flex;
+	align-items: center;
+}
+
+#workerLogo img {
+	width: 100%;
+	height: 100%;
+}
+
+#workerTitle h1 {
+	text-align: center;
+	width: 200px;
+	color: #000;
+}
+
+#mainTitle {
+	text-align: center;
+	display: block;
+}
+
+#mainTitle a {
+	text-decoration: none;
+	color: #333;
+}
+
+.userBox {
+	width: 63%;
+	height: 95%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+.accountBox {
+	height: 40%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;	
+}
+
+.mybutton {
+	box-sizing: border-box;
+	text-decoration: none;
+	color: #fff;
+	width: 47%;
+	background-color: #555;
+	font-size: 12px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 0;
+	border-radius: 5px;
+	height: 100%;;
+}
+
+.mybutton:hover {
+	background-color: #000;
+}
+
+#myPage {
+	border: #ddd;
+	border-radius: 8px;
+	background-color: #fff;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+	width: 240px;
+	height: 80px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.logout {
+	box-sizing: border-box;
+	text-decoration: none;
+	color: #fff;
+	width: 43%;
+	background-color: #0F52BA;
+	font-size: 12px;
+	display: flex;	
+	margin-left: 5px;
+	justify-content: center;
+	align-items: center;
+	border: 0;
+	border-radius: 5px;
+	height: 100%;;
+}
+
+.logout:hover {
+	background-color: #00008B;
+}
+
+.workerGrade{
+	margin-right: 3px;
+}
+
+#workerName {
+	background: #fff;
+	color: #333;
+	border-radius: 5px;
+	display: flex;
+	justify-content: end;
+	align-items: center;
+	width: 93%;
+	height: 40%;
+}
+
+#myPageLogo {
+	border: 0;
+	border-radius: 50%;
+	width: 30%;
+	height: 90%;
+	margin-right: 3%;
+}
+
+#myPageLogo img {
+	width: 100%;
+	height: 100%;
+}
+
+#workerName a {
+	text-decoration: none;
+	color: #333;
+}
+
+#workerName a:hover {
+	text-decoration: none;
+	color: #888;
+	transition: color 0.2s ease;
+}
+
+
+
+/* title end */
+.wrap {
+	width: 1000px;
+	border-radius: 8px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+	/* height: 100vh; */
+	display: flex;
+	flex-direction: column;
+	margin: auto;
+}
+
+/* header와 nav의 집합 */
+.header-nav-container {
+	position: relative;
+	width: 100%;
+	/* wrap과 동일한 너비 */
+}
+
+/* header 코드 */
+header {
+	width: 100%;
+	background: #000;
+	color: #fff;
+	text-align: center;
+	padding: 20px;
+	box-sizing: border-box;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+/* 햄버거 메뉴 아이콘 */
+.hamburger-menu {
+	display: none;
+	cursor: pointer;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 25px;
+	height: 20px;
+}
+
+.hamburger-menu span {
+	display: block;
+	height: 3px;
+	width: 100%;
+	background-color: #fff;
+	transition: all 0.2s ease;
+}
+
+header h1 {
+	font-size: 30px;
+	margin: 0;
+}
+
+header ul {
+	padding: 0;
+	display: flex;
+	justify-content: space-around;
+	list-style: none;
+	align-items: center;
+}
+
+header ul li {
+	display: inline-block;
+	margin: 0 15px;
+}
+
+header ul li a {
+	font-size: 18px;
+	text-decoration: none;
+	color: #fff;
+	transition: color 0.3s ease;
+}
+
+header ul li a:hover {
+	color: #aaa;
+}
+
+/* header 코드 끝 */
+nav {
+	width: 100%;
+	position: absolute;
+	top: 100%;
+	/* header 높이에 맞게 조정 */
+	left: 0;
+	right: 0;
+	background: #eee;
+	max-height: 0;
+	overflow: hidden;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+	transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s
+		linear;
+	visibility: hidden;
+	z-index: 100;
+	/* opacity: 0; */
+}
+
+/* nav 숨김요소 */
+nav.active {
+	max-height: 500px;
+	/* 활성화될 때 최대 높이 설정 */
+	visibility: visible;
+	opacity: 1;
+	transition: max-height 0.5s ease, visibility 0s, opacity 0.5s linear;
+}
+
+/* nav 안의 menu-bar요소 */
+.menu-bar {
+	width: 100%;
+	height: 220px;
+	border-top: 0px;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.menu-bar-content {
+	width: 20%;
+	display: inline-block;
+	box-sizing: border-box;
+}
+
+.menu-bar-content ul li {
+	padding: 10px;
+}
+
+.menu-bar-content ul li a {
+	text-decoration: none;
+	color: #444;
+}
+
+.menu-bar-content ul li a:hover {
+	color: #aaa;
+	transition: color 0.2s ease;
+}
+
+#menu-bar-content-sub {
+	list-style: circle;
+	font-size: 14px;
+	padding-left: 20px;
+}
+
+#menu-bar-content-sub li {
+	padding: 5px;
+}
+
+/* menu-bar요소 끝 */
+
+/* aside, section */
+.aside-section-container {
+	width: 100%;
+	display: flex;
+	/* height: 100%; */
+}
+
+/* 좌측 메뉴바 */
+aside {
+	width: 20%;
+	background: #5f5f5f;
+	min-height: 800px;
+}
+
+#left-nav {
+	height: 100%;
+	background: #666;
+	color: #fff;
+	box-sizing: border-box;
+	padding-top: 20px;
+}
+
+#left-nav ul li {
+	padding-bottom: 60px;
+	cursor: pointer;
+	list-style: none;
+}
+
+#left-nav ul li:hover {
+	color: #888;
+	transition: color 0.2s ease;
+}
+
+#left-nav a {
+	height: 100%;
+	background: #666;
+	color: #fff;
+	box-sizing: border-box;
+	padding-top: 20px;
+}
+
+#left-nav ul li a {
+	text-decoration: none;
+	padding-bottom: 60px;
+	cursor: pointer;
+	list-style: none;
+}
+
+#left-nav ul li a:hover {
+	color: #888;
+	transition: color 0.2s ease;
+}
+
+/* 섹션 창을 조작하기바람 */
+section {
+	/* border: 1px solid blue; */
+	display: flex;
+	/* justify-content: center; */
+	/* width: 80%; */
+	/* overflow: auto; */
+	/* background: #eee; */
+	/* z-index: 50; */
+	/* align-items: center; */
+	/* min-height: 800px; */
+	justify-content: center;
+	width: 80%;
+	background: #eee;
+	z-index: 50;
+	align-items: center;
+	min-height: 800px;
+	position: relative;
+}
+
+.searchEmpBox{
+	width: 250px;
+	height: 30px;
+	display:flex;
+	align-items: center;
+	position: relative;
+}
+
+.searchEmpBox input {
+	box-sizing: border-box;
+	width: 249px;
+	height: 29px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-family: "SOYOMapleBoldTTF";
+}
+
+.searchEmpBox input:focus {
+	outline-color: #3498DB;
+}
+
+.searchEmpBox button {
+	border-radius: 5px;
+	border: 0;
+	padding: 3px;
+	background: #0F52BA;
+	color: #fff;
+	width: 45px;
+	position: absolute;
+	left: 80%;
+	font-size: 12px;
+	font-family: "SOYOMapleBoldTTF";
+}
+
+.searchEmpBox button:hover {
+	background: #00008B;
+}
+
+/* aside, section 끝*/
+footer {
+	width: 100%;
+	background: #000;
+	color: #fff;
+	text-align: center;
+	height: 7%;
+	line-height: 70px;
+}
+
+/* 직원관리 CSS */
+article {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+}
+
+/* 팝업 */
+.popup {
+	display: none;
+	align-items: center;
+	position: fixed;
+	width: 515px;
+	z-index: 1001;
+}
+
+.Employee {
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.Employee_atomic_information {
+	width: 100%;
+	/* border: 1px solid red; */
+	/* background: #eee; */
+}
+
+.eai {
+	width: 100%;
+	height: 400px;
+	display: flex;
+	border-radius: 8px;
+	background-color: #eee;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.searchBox {
+	width: 70%;
+	display: flex;
+	flex-wrap: wrap;
+	height: 15%;
+}
+
+.searchBox label {
+	width: 100px;
+	line-height: 1.5;
+}
+
+#SearchEmpNo {
+	border: 1px solid #666;
+	border-right: none;
+	border-radius: 5px 0 0 5px;
+	height: 45%;
+}
+
+.searchBox input:focus {
+	outline: none;
+}
+
+.search {
+	font-family: "SOYOMapleBoldTTF";
+	font-size: 15px;
+	border: 2px solid #666;
+	border-radius: 0 5px 5px 0;
+	background: #666;
+	height: 52.6%;
+	color: #fff;
+}
+
+.search:hover {
+	background: #000;
+	border: 2px solid #000;
+	border-radius: 0 5px 5px 0;
+}
+
+/* 상단 : 정보 */
+/* 상단 메인 */
+.Employee_atomic_infor {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	height: 40%;
+	width: 85%;
+	/* border: 1px solid green; */
+}
+
+/* 상단 좌 */
+.Employee_atomic_infor_img {
+	display: flex;
+	align-items: center;
+	/* border: 1px solid red; */
+	text-align: center;
+	height: 80%;
+	width: 30%;
+}
+
+.Employee_atomic_infor_img img {
+	/* border: 1px solid red; */
+	/* height: 100%; */
+	width: 100%
+}
+
+/* 상단 중 */
+.Employee_atomic_infor_title {
+	display: flex;
+	flex-direction: column;
+	/* border: 1px solid red; */
+	height: 80%;
+	width: 25%;
+}
+
+.Employee_atomic_infor_title div {
+	/* margin-right: 20px; */
+	/* display: flex; */
+	/* border: 1px solid blue; */
+	height: 20%;
+	width: 90%;
+	text-align: right;
+	/* line-height: 50px; */
+}
+
+/* 상단 우 */
+.Employee_atomic_infor_select {
+	display: flex;
+	flex-direction: column;
+	/* border: 1px solid red; */
+	height: 80%;
+	width: 40%
+}
+
+.Employee_atomic_infor_select div {
+	/* border: 1px solid red; */
+	/* text-align: center; */
+	/* line-height: 50px; */
+	height: 20%;
+	width: 100%
+}
+
+/* 중단 : 이력 */
+.Employee_atomic_infor_history {
+	/* border: 1px solid red; */
+	height: 40%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.eaih_area {
+	border: 1px solid #ddd;
+	display: flex;
+	border-radius: 8px;
+	justify-content: center;
+	align-items: center;
+	width: 85%;
+	height: 80%;
+	background-color: #fff;
+	/* border: 1px solid red; */
+}
+
+.Employee_atomic_infor_history textarea {
+	font-family: "SOYOMapleBoldTTF";
+	line-height: 30px;
+	width: 90%;
+	height: 90%;
+	resize: none;
+	border: none;
+	/* border: 1px solid red; */
+}
+
+/* 하단 : 버튼 */
+.eaib {
+	/* border: 1px solid blue; */
+	width: 100%;
+	height: 15%;
+	display: flex;
+	justify-content: end;
+}
+
+.editInput input {
+	margin-bottom: 5px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	padding: 3px;
+}
+
+.addStaff input {
+	margin-bottom: 5px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	padding: 3px;
+}
+
+#hireDate {
+	width: 169px;
+}
+
+.Employee_atomic_infor_button {
+	/* border: 1px solid red; */
+	background-color: #eee;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+.edit {
+	width: 70px;
+	text-align: center;
+	height: 35px;
+	font-size: 15px;
+	line-height: 35px;
+	font-family: "SOYOMapleBoldTTF";
+	background-color: #3498DB;
+	border-radius: 5px;
+	cursor: pointer;
+	color: #fff;
+	border: 0;
+}
+
+.edit:hover {
+	background-color: rgb(0, 47, 255);
+	transition: 0.2s;
+}
+
+.cancel {
+	width: 70px;
+	text-align: center;
+	height: 35px;
+	font-size: 15px;
+	background-color: red;
+	line-height: 35px;
+	border-radius: 5px;
+	cursor: pointer;
+	color: #fff;
+	border: 0;
+}
+
+.cancel:hover {
+	background-color: rgb(163, 6, 6);
+	transition: 0.2s;
+}
+
+.delete {
+	width: 70px;
+	text-align: center;
+	height: 35px;
+	font-family: "SOYOMapleBoldTTF";
+	background-color: red;
+	font-size: 15px;
+	line-height: 35px;
+	border-radius: 5px;
+	cursor: pointer;
+	color: #fff;
+	border: 0;
+}
+
+.delete:hover {
+	background-color: rgb(163, 6, 6);
+	transition: 0.2s;
+}
+
+.editInput {
+	width: 90%;
+	height: 80%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+.editInput input {
+	margin-bottom: 5px;
+}
+
+.edit_button {
+	/* line-height: -35px; */
+	width: 90px;
+	text-align: center;
+	height: 100%;
+	background-color: red;
+	line-height: 2.5;
+	font-size: 16px;
+	margin-right: 20px;
+	border-radius: 5px;
+	cursor: pointer;
+	color: #fff;
+	border: 0;
+}
+
+.edit_button:hover {
+	background-color: rgb(163, 6, 6);
+	transition: 0.2s;
+}
+
+label {
+	width: 100px;
+	display: inline-block;
+}
+
+/* 팝업 2 */
+.popup2 {
+	display: none;
+	align-items: center;
+	position: fixed;
+	width: 500px;
+	z-index: 1001;
+}
+
+.Employee_atomic_information2 {
+	width: 100%;
+}
+
+.eai2 {
+	width: 100%;
+	height: 400px;
+	display: flex;
+	border-radius: 8px;
+	background-color: #eee;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+/* 상단 : 정보 */
+/* 상단 메인 */
+.Employee_atomic_infor2 {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	margin-top: 3%;
+	height: 40%;
+	width: 85%;
+}
+
+/* 상단 좌 */
+.Employee_atomic_infor_img2 {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: space-evenly;
+	text-align: center;
+	height: 90%;
+	width: 30%;
+}
+
+.Employee_atomic_infor_img2 img {
+	/* border: 1px solid blue; */
+	height: 100%;
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+.img_choice {
+	/* border: 1px solid green; */
+	font-size: 15px;
+	background-color: #3498DB;
+	/* margin-top: 10px; */
+	line-height: 25px;
+	width: 65px;
+	height: 25px;
+	border-radius: 5px;
+	cursor: pointer;
+	color: #fff;
+	border: 0;
+}
+
+.img_choice:hover {
+	background-color: rgb(0, 47, 255);
+	transition: 0.2s;
+}
+
+.max-w-95 {
+	max-width: 95%;
+}
+
+/* 상단 중 */
+.Employee_atomic_infor_title2 {
+	display: flex;
+	flex-direction: column;
+	/* border: 1px solid red; */
+	height: 90%;
+	width: 25%;
+}
+
+.Employee_atomic_infor_title2 div {
+	height: 20%;
+	width: 90%;
+	text-align: right;
+}
+
+/* 상단 우 */
+.Employee_atomic_infor_select2 {
+	display: flex;
+	flex-direction: column;
+	/* border: 1px solid red; */
+	height: 90%;
+	width: 40%
+}
+
+.Employee_atomic_infor_select2 div {
+	height: 20%;
+	width: 100%
+}
+
+/* 중단 : 이력 */
+.Employee_atomic_infor_history2 {
+	/* border: 1px solid red; */
+	height: 40%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.eaih_area2 {
+	border: 1px solid #ddd;
+	display: flex;
+	border-radius: 8px;
+	justify-content: center;
+	align-items: center;
+	width: 85%;
+	height: 80%;
+	background-color: #fff;
+	/* border: 1px solid red; */
+}
+
+.Employee_atomic_infor_history2 textarea {
+	font-family: "SOYOMapleBoldTTF";
+	line-height: 30px;
+	width: 90%;
+	height: 90%;
+	resize: none;
+	border: none;
+	/* border: 1px solid red; */
+}
+
+/* 하단 : 버튼 */
+.eaib2 {
+	/* border: 1px solid blue; */
+	width: 100%;
+	height: 45px;
+	display: flex;
+	justify-content: end;
+}
+
+.Employee_atomic_infor_button2 {
+	/* border: 1px solid red; */
+	background-color: #eee;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+.add_eaib {
+	width: 15%;
+	text-align: center;
+	height: 45px;
+	font-family: "SOYOMapleBoldTTF";
+	background-color: #3498DB;
+	border-radius: 5px;
+	box-sizing: border-box;
+	font-size: 16px;
+	margin-right: 20px;
+	cursor: pointer;
+	color: #fff;
+	border: 0;
+	cursor: pointer;
+}
+
+.add_eaib:hover {
+	background-color: rgb(0, 47, 255);
+	transition: 0.2s;
+}
+
+.cancel2 {
+	width: 15%;
+	text-align: center;
+	height: 100%;
+	background-color: red;
+	line-height: 45px;
+	border-radius: 5px;
+	cursor: pointer;
+	color: #fff;
+	border: 0;
+}
+
+.cancel2:hover {
+	background-color: rgb(163, 6, 6);
+	transition: 0.2s;
+}
+
+/* 팝업 3 시작 */
+
+/* 팝업  */
+.popup3 {
+	display: none;
+	align-items: center;
+	position: fixed;
+	top: 10%;
+	left: 36%;
+	width: 50%;
+	height: 100%;
+	z-index: 1001;
+}
+
+.Employee_atomic_information3 {
+	width: 80%;
+	height: 600px;
+	/* border: 1px solid red; */
+}
+
+.eai3 {
+	/* border: 1px solid red; */
+	width: 640px;
+	height: 710px;
+	display: flex;
+	background-color: #eee;
+	flex-direction: column;
+	align-items: center;
+}
+
+/* 상단 : 정보 */
+/* 상단 메인 */
+.Employee_atomic_infor3 {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	height: 40%;
+	width: 100%;
+	/* border: 1px solid green; */
+}
+
+/* 상단 좌 */
+.Employee_atomic_infor_img3 {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: space-evenly;
+	/* border: 1px solid red; */
+	text-align: center;
+	height: 90%;
+	width: 30%;
+}
+
+.Employee_atomic_infor_img3 img {
+	/* border: 1px solid blue; */
+	height: 100%;
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+.img_choice3 {
+	/* border: 1px solid green; */
+	font-size: 15px;
+	background-color: #3498DB;
+	/* margin-top: 10px; */
+	line-height: 25px;
+	width: 65px;
+	height: 25px;
+	border-radius: 5px;
+	cursor: pointer;
+	color: #fff;
+	border: 0;
+}
+
+.img_choice3:hover {
+	background-color: rgb(0, 47, 255);
+	transition: 0.2s;
+}
+
+/* 상단 중 */
+.Employee_atomic_infor_title3 {
+	display: flex;
+	flex-direction: column;
+	/* border: 1px solid red; */
+	height: 90%;
+	width: 25%;
+}
+
+.Employee_atomic_infor_title3 div {
+	/* margin-right: 20px; */
+	/* display: flex; */
+	/* border: 1px solid blue; */
+	height: 20%;
+	width: 90%;
+	text-align: right;
+	/* line-height: 50px; */
+}
+
+/* 상단 우 */
+.Employee_atomic_infor_select3 {
+	display: flex;
+	flex-direction: column;
+	/* border: 1px solid red; */
+	height: 90%;
+	width: 40%
+}
+
+.Employee_atomic_infor_select3 div {
+	height: 20%;
+	width: 100%
+}
+
+/* 중단 : 이력 */
+.Employee_atomic_infor_history3 {
+	/* border: 1px solid red; */
+	height: 40%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.eaih_area3 {
+	/* border: 1px solid green; */
+	display: flex;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	justify-content: center;
+	align-items: center;
+	width: 85%;
+	height: 80%;
+	background-color: #fff;
+	/* border: 1px solid red; */
+}
+
+.Employee_atomic_infor_history3 textarea {
+	font-family: "SOYOMapleBoldTTF";
+	line-height: 30px;
+	width: 90%;
+	height: 90%;
+	resize: none;
+	border: none;
+	/* border: 1px solid red; */
+}
+
+/* 하단 : 버튼 */
+.eaib3 {
+	/* border: 1px solid blue; */
+	width: 100%;
+	height: 15%;
+	display: flex;
+	flex-direction: column
+}
+
+.Employee_atomic_infor_button3 {
+	/* border: 1px solid red; */
+	background-color: #eee;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+.add_eaib3 {
+	width: 15%;
+	text-align: center;
+	height: 35%;
+	line-height: 35px;
+	background-color: #3498DB;
+	border-radius: 5px;
+	cursor: pointer;
+	color: #fff;
+	border: 0;
+}
+
+.add_eaib3:hover {
+	background-color: rgb(0, 47, 255);
+	transition: 0.2s;
+}
+
+.cancel3 {
+	width: 15%;
+	text-align: center;
+	height: 35%;
+	background-color: red;
+	line-height: 35px;
+	border-radius: 5px;
+	cursor: pointer;
+	color: #fff;
+	border: 0;
+}
+
+.cancel3:hover {
+	background-color: rgb(163, 6, 6);
+	transition: 0.2s;
+}
+
+.management {
+	font-size: 24px;
+	width: 100%;
+	text-align: center;
+}
+
+.Staff_list {
+	margin: 0 auto 30px;
+	width: 90%;
+	border-collapse: collapse;
+}
+
+.Staff_list th, .Staff_list td {
+	border: 1px solid #ddd;
+	padding: 5px;
+	text-align: center;
+}
+
+.Staff_list th {
+	background-color: #666;
+	color: #fff;
+}
+.Staff_list td {
+	background-color: #fff;
+}
+
+h3 {
+	margin: 0 0 20px 0;
+}
+
+#addEmpForm {
+	display: flex;
+	flex-direction: column;
+	height: 80%;
+	justify-content: space-between;
+}
+
+.addStaff {
+	margin: 0;
+	width: 90%;
+	height: 90%;
+	border-collapse: collapse;
+}
+
+.error1, .error2, .error3, .error4, .error5 {
+	display: inline-block;
+	font-size: 13px;
+	margin-left: 10px;
+	margin-bottom: 5px;
+}
+
+.Employee_atomic {
+	display: flex;
+	flex-direction: row-reverse;
+	width: 100%;
+}
+
+.add_Employee {
+	display: flex;
+	flex-direction: row-reverse;
+	width: 85%;
+	padding: 20px;
+}
+
+.buttonBox {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 90%;
+	margin: 10px auto;
+}
+
+.buttons {
+	display: flex;
+}
+
+.add_button {
+	background-color: #3498DB;
+	line-height: 40px;
+	text-align: center;
+	width: 90px;
+	height: 40px;
+	border-radius: 5px;
+	cursor: pointer;
+	color: #fff;
+	border: 0;
+}
+
+.add_button:hover {
+	background-color: rgb(0, 47, 255);
+	transition: 0.2s;
+}
+
+.atomic_button {
+	background-color: #3498DB;
+	/* position:relative; */
+	line-height: 35px;
+	text-align: center;
+	width: 75px;
+	height: 35px;
+	border-radius: 5px;
+	cursor: pointer;
+	color: #fff;
+	border: 0;
+}
+
+.atomic_button:hover {
+	background-color: rgb(0, 47, 255);
+	transition: 0.2s;
+}
+
+/* 모달 */
+.modal-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 1000;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* 미디어테그 */
+@media screen and (max-width: 430px) {
+	.wrap {
+		width: 100%;
+	}
+	#workerTitle {
+		display: none;
+	}
+	header {
+		width: 100%;
+		background: #000;
+		color: #fff;
+		text-align: center;
+		padding: 5px;
+		box-sizing: border-box;
+		border-radius: 0px;
+	}
+
+	/* 미디어 쿼리 헤더 영역 수정 코드 */
+	header ul {
+		display: none;
+	}
+	.header-content {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		position: relative;
+	}
+	#headerTitle {
+		display: block !important;
+		text-align: center;
+		color: #fff;
+		width: 100%;
+		font-size: 20px;
+	}
+	#headerTitle a {
+		text-decoration: none;
+		color: #fff;
+	}
+	.hamburger-menu {
+		position: absolute;
+		left: 0;
+		top: 0;
+		display: flex;
+	}
+	nav {
+		width: 100%;
+		position: absolute;
+		top: 100%;
+		/* header 높이에 맞게 조정 */
+		left: 0;
+		right: 0;
+		background: #dde;
+		overflow: hidden;
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+		transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s
+			linear;
+		transform: translateX(0%);
+		visibility: hidden;
+		z-index: 100;
+		/* opacity: 0; */
+	}
+	nav.active {
+		min-height: 800px;
+		max-height: none;
+		width: 200px;
+		visibility: visible;
+		opacity: 1;
+		transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s
+			linear;
+		transform: translateX(0%);
+	}
+
+	/* 왼쪽에서 오른쪽으로 나오는 애니메이션을 추가합니다. */
+	nav {
+		transform: translateX(-100%);
+		transition: transform 0.5s ease;
+	}
+	nav.active {
+		transform: translateX(0%);
+		transition: transform 0.5s ease;
+	}
+	nav.closing {
+		transform: translateX(-100%);
+		transition: transform 0.5s ease;
+	}
+	nav .menu-bar {
+		width: 100%;
+		height: 100%;
+		border-top: 0px;
+		border-right: 1px solid #ccc;
+		display: flex;
+		flex-direction: column;
+		justify-content: start;
+	}
+	.menu-bar-content {
+		width: 100%;
+		margin-left: 0px;
+	}
+	.menu-bar-content ul li {
+		padding: 10px;
+	}
+	aside {
+		display: none;
+	}
+	section {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	/* 위는 미디어 공통 */
+	/* 아래는 내꺼 */
+	.Employee_atomic_information, .Employee_atomic_information2 {
+		width: 100%;
+	}
+	.popup, .popup2, .popup3 {
+		width: 90%;
+		left: 5%;
+		top: 10%;
+	}
+	.eai, .eai2, .eai3 {
+		width: 100%;
+	}
+	.Employee_atomic_infor_select div, .Employee_atomic_infor_title div,
+		.Employee_atomic_infor_select2 div, .Employee_atomic_infor_title2 div,
+		.Employee_atomic_infor_select3 div, .Employee_atomic_infor_title3 div
+		{
+		font-size: 12px;
+	}
+	.Employee_atomic_infor_button, .Employee_atomic_infor_button2,
+		.Employee_atomic_infor_button3 {
+		font-size: 12px;
+	}
+	.Employee_atomic_infor_select input, .Employee_atomic_infor_select2 input,
+		.Employee_atomic_infor_select3 input {
+		width: 90%;
+	}
+	.workerPic {
+		width: 80px;
+		height: 80px;
+		border-radius: 50%;
+	}
+}
+}
