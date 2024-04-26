@@ -1,0 +1,169 @@
+@font-face {
+    font-family: "SOYOMapleBoldTTF";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/SOYOMapleBoldTTF.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+}
+
+#AI_chatBody {
+    font-family: "SOYOMapleBoldTTF";
+	border: 4px solid #555;
+	border-radius: 10px;
+	width: 350px;
+	height: 500px;
+	position: fixed;
+	right: 10px;
+	top: 46%;
+	z-index: 9999;
+}
+
+input, textarea, button {
+    font-family: "SOYOMapleBoldTTF";
+}
+/* 팝업 공통영역 끝 */
+
+/* 팝업 헤더 */
+#AI_chatBody #AI_header {
+	height: 10%;
+	text-align: center;
+	position: relative;
+	background-color: #fff;
+	border-radius: 6px 6px 0 0;
+}
+
+#AI_chatBody #AI_header strong {
+	font-size: 20px;
+	line-height: 48px;
+}
+
+#AI_closeButton {
+	width: 30px;
+	height: 30px;
+	right: 7px;
+	top: 10px;
+	background-color: transparent;
+	border-radius: 10px;
+	position: absolute;
+	cursor: pointer;
+}
+
+#AI_closeButton::before, #AI_closeButton::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 2px;
+	height: 24px;
+	background-color: black;
+}
+
+#AI_closeButton::before {
+	transform: translate(-50%, -50%) rotate(45deg);
+}
+
+#AI_closeButton::after {
+	transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+#AI_closeButton:hover {
+	background-color: red;
+	transition: 0.3s;
+}
+
+#AI_closeButton:hover::before, #AI_closeButton:hover::after {
+	background-color: white;
+	transition: 0.3s;
+}
+/* 팝업 헤더 끝 */
+
+/* 팝업 메시지영역 */
+#AI_chatBody #AI_talkArea {
+	height: 70%;
+	overflow-y: auto;
+	border-top: 2px solid #555;
+	border-bottom: 2px solid #555;
+	background-color: #888;
+}
+
+
+/* 유저 질문한 메시지 박스 */
+#AI_chatBody #AI_talkArea .AI_queryArea {
+    background-color: #e4f3f7;
+    color: #000;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 15px;
+    max-width: 70%;
+    word-wrap: break-word;
+    position: relative;
+    margin-left: 20%;
+}
+
+#AI_chatBody #AI_talkArea .AI_queryArea::after {
+    content: '';
+    position: absolute;
+    bottom: 19px;
+    right: -11px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 15px 15px;
+    border-color: transparent transparent transparent #e4f3f7;
+}
+
+/* ai 대답한 메시지 박스 */
+#AI_chatBody #AI_talkArea .AI_aiResultArea {
+    background-color: #e4f3f7;
+    color: #000;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 15px;
+    max-width: 70%;
+    word-wrap: break-word;
+    position: relative;
+    margin-left: 4%;
+    margin-bottom: 15px;
+}
+
+#AI_chatBody #AI_talkArea .AI_aiResultArea::after {
+    content: '';
+    position: absolute;
+    bottom: 19px;
+    left: -11px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 15px 15px 0;
+    border-color: transparent #e4f3f7 transparent transparent;
+    
+}
+/* 팝업 메시지영역 끝 */
+
+/* 팝업 유저영역 */
+#AI_chatBody #AI_userArea {
+	height: 97px;
+	position: relative;
+	background-color: #fff;
+	border-radius: 0 0 8px 8px;
+}
+
+#AI_chatBody #AI_userArea #AI_userQuery {
+	width: 290px;
+	outline: none;
+	resize: none;
+	height: 75px;
+	border: 0;
+	padding: 10px;
+	border-radius: 10px;
+}
+
+#AI_chatBody #AI_userArea #AI_sendButton {
+	border: 1px solid #333;
+	border-radius: 50%;
+	width: 30px;
+	height: 30px;
+	background-color: #fff;
+	cursor: pointer;
+	position: absolute;
+	top: 33%;
+}

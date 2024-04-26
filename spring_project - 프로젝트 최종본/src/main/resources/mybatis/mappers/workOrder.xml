@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.workOrder">
+	<select id="selectWorkOrder" resultType="WorkOrderDTO">
+		SELECT 
+			w_bord_seq, w_title, w_detail, w_imgUrl
+		FROM 
+			workBord
+		WHERE 
+			w_type = 1
+	</select>
+	
+	<insert id="insertWorkOrder" parameterType="WorkOrderDTO">
+		INSERT INTO workbord
+			(w_bord_seq, w_title, w_detail, w_imgurl, w_type)
+		VALUES 
+			(w_bord_seq.NEXTVAL, '${ w_title }', '${ w_detail }', '${ w_imgUrl }', 1)
+	</insert>
+	
+	<update id="updateWorkOrder" parameterType="WorkOrderDTO">
+		UPDATE 
+			workbord
+		SET 
+			w_title = '${ w_title }', w_detail = '${ w_detail }', w_imgurl = '${ w_imgUrl }'
+		WHERE 
+			w_bord_seq = ${w_bord_seq}
+	</update>
+	
+	<delete id="deleteWorkOrder" parameterType="WorkOrderDTO">
+		DELETE FROM 
+			workbord
+		WHERE 
+			w_bord_seq = '${ w_bord_seq }'
+	</delete>
+</mapper>

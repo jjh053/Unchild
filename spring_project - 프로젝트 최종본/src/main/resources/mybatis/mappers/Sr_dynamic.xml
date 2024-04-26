@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace는 패키지 명 -->
+<mapper namespace="mapper.sr">
+
+	<!-- - 관리자, 작업자 - 재고관리 페이지 리스트 -->
+	<select id="selectSr1" resultType="srDTO" parameterType="srDTO">
+		select * from mes
+		<where>
+			<if test="mesGradeSerch != null">
+				AND lower(mesGrade) LIKE '%' || lower(#{mesGradeSerch})
+				|| '%'
+			</if>
+		</where>
+	</select>
+
+	<!-- -관리자- 작업자가 보내온 업체 주문요청 리스트 -->
+	<select id="selectSr2" resultType="srDTO" parameterType="srDTO">
+		select *
+		from order_SS
+	</select>
+
+	<!-- -관리자- 업체주문내역 리스트 -->
+	<select id="selectSr3" resultType="srDTO" parameterType="srDTO">
+		select * from ordering
+		<where>
+			<if test="orderingName != null">
+				AND lower(mesGrade) LIKE '%' || lower(#{orderingName}) ||
+				'%'
+			</if>
+		</where>
+	</select>
+
+	<!-- -작업자- 관리자에게 부족한 품목 요청 insert -->
+	<insert id="insertSr1" parameterType="srDTO">
+		insert into order_SS
+		(mesid, mesGrade, orderQuantity, userInfo, orderData)
+		values (s_seq.nextval,
+		'${mesGrade}', ${orderQuantity}, '${userInfo}', SYSDATE)
+	</insert>
+
+	<!-- -관리자- 반려버튼 delete -->
+	<delete id="deleteSr1" parameterType="srDTO">
+		delete from order_SS
+		where
+		mesId = ${mesId}
+
+	</delete>
+
+	<!-- -관리자 - 업체주문내역 delete -->
+	<delete id="orderingDelete" parameterType="srDTO">
+		delete from order_SS
+		where mesId = ${mesId}
+	</delete>
+
+
+	<!-- -관리자 - 업체주문내역 insert -->
+	<insert id="orderingInsert" parameterType="srDTO">
+
+		insert into ordering(
+				orderNumber,
+				mesGrade,
+				co_Number,
+				orderQuantity,
+				adminOrderData,
+				orderStatus,
+				userRole
+				)
+			values(
+				orderNumber.nextval,
+				'${mesGrade}',
+				${co_Number},
+				${orderQuantity},
+				SYSDATE,
+				'주문신청중',
+				'관리자'
+				)
+
+
+	</insert>
+
+
+
+</mapper>

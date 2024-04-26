@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.board">
+
+	<select id="selectOne" resultType="boardDTO" parameterType="int">
+		select * from board where b_sequence = ${_parameter}
+	</select>
+	
+	<select id="selectSname" resultType="String" parameterType="int">
+		SELECT
+			sname 
+		FROM 
+			staff
+		WHERE
+			staffno = #{_parameter}
+	</select>
+	
+	
+	
+	<select id="selectReply" resultType="boardDTO" parameterType="int">
+		SELECT 
+			LEVEL,
+		    b_sequence,
+		    replyId,
+		    b_content,
+		    staffno,
+		    b_date
+		FROM 
+			board
+		START WITH 
+			replyId = #{_parameter}
+		CONNECT BY NOCYCLE PRIOR 
+			b_sequence = replyId
+		ORDER siblings BY b_sequence
+	</select>
+	
+	<select id="requestBoard" resultType="boardDTO">
+		select * from board where boardtype = '건의게시판'
+	</select>
+	
+
+
+	<select id="selectBoard" resultType="boardDTO" parameterType="boardDTO">
+	    SELECT
+	        *
+	    FROM (
+	    	SELECT
+	    		b.*, 
+	    		s.sname,
+		        ROW_NUMBER() OVER (ORDER BY b_sequence DESC) AS row_num
+		    FROM
+		        staff s, 
+		        board b
+	        <where>
+	        	<if test="boardType != null">
+			    	s.staffno = b.staffno and boardType = #{boardType}
+	        	</if>
+	        	<if test="boardType == null">
+			    	s.staffno = b.staffno and boardType = '자유게시판'
+	        	</if>
+	        </where>
+		    )
+		    <where>
+	        	<if test="startColumn != null and endColumn != null">
+			   		row_num BETWEEN #{startColumn} AND #{endColumn}
+	        	</if>
+		    </where>
+	</select>
+	
+	
+	<select id="selectCount" resultType="int"
+		parameterType="Integer">
+		SELECT
+			count(*)
+		FROM
+			board b
+		WHERE
+			 boardType = '${_parameter}'
+	</select>
+
+	<delete id="deleteBoard" parameterType="int">
+		DELETE FROM
+			board
+		WHERE 
+			b_sequence = ${_parameter}
+	</delete>
+
+	<update id="updateBoard" parameterType="boardDTO">
+		UPDATE
+			board
+		SET
+			b_title = '${b_title}',
+			b_content = '${b_content}'
+		WHERE
+			b_sequence = ${b_sequence} and boardtype = '${boardType}'
+	</update>
+
+	<insert id="insertBoard" parameterType="boardDTO">
+	    INSERT INTO
+	   		board
+	    VALUES (
+		    b_id.NEXTVAL,
+		    #{b_title},
+		    #{b_content},
+		    (
+		    	SELECT 
+		    		staffno 
+		    	FROM 
+		    		staff 
+		    	WHERE staffno = #{staffno}
+		    ),
+		    #{b_date},
+		    #{b_view},
+		    #{boardType},
+		    <if test="fileName == null">
+			    null,
+		    </if>
+		    <if test="fileName != null">
+			    #{fileName},
+		    </if>
+		   	#{replyId}
+	    )
+	</insert>
+
+</mapper>

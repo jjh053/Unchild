@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace는 패키지 명 -->
+<mapper namespace="mapper.rodi">
+
+	<!-- - 관리자, 작업자 - 재고관리 페이지 리스트 -->
+	<select id="selectrodi1" resultType="RodiDTO"
+		parameterType="RodiDTO">
+
+		select * from mes
+		<where>
+			<if test="mesGradeSerch != null">
+				AND lower(mesGrade) LIKE '%' || lower(#{mesGradeSerch})
+				|| '%'
+			</if>
+			and bCount > 0
+		</where>
+
+	</select>
+
+	<!-- - 관리자 - 반품신청확인 리스트 -->
+	<select id="selectrodi2" resultType="RodiDTO"
+		parameterType="RodiDTO">
+		select * from declaration
+	</select>
+
+
+	<!-- -작업자- 관리자에게 불량품목 반품 요청 insert -->
+	<insert id="insertrodi1" parameterType="rodiDTO">
+		insert into declaration (
+		de_number,
+		s_number,
+		co_number,
+		de_date,
+		de_content,
+		de_result,
+		de_etc,
+		itemName,
+		itemCount,
+		userInfo,
+		itemImg
+		)
+		values (
+		de_number.nextval,
+		'${s_number}',
+		${co_number},
+		SYSDATE ,
+		'${de_content}',
+		'요청완료',
+		'${de_etc}',
+		'${itemName}',
+		'${itemCount}',
+		'${userInfo}',
+		'${itemImg}'
+		)
+	</insert>
+
+	<!-- - 관리자 - 반품신청확인 딜리트 -->
+	<delete id="deleterodi1" parameterType="rodiDTO">
+		delete from declaration
+		where de_number = '${de_number}'
+	</delete>
+
+
+
+</mapper>

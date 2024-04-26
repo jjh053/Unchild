@@ -1,0 +1,643 @@
+
+@font-face {
+    font-family: "SOYOMapleBoldTTF";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/SOYOMapleBoldTTF.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "SOYOMapleBoldTTF";
+    margin: 0 auto;
+    /* font-family: Arial, sans-serif; */
+    background: #fff;
+    color: #333;
+    background-color: #ccc;
+}
+
+/* title */
+#workerTitle {
+    display: flex;
+    width: 1000px;
+    justify-content: space-between;
+    padding: 5px;
+
+}
+
+#workerLogo {
+    width: 200px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+}
+
+#workerTitle h1 {
+    width: 200px;
+    color: #000;
+}
+
+#mainTitle1 {
+    display: none;
+}
+
+#mainTitle2 {
+    display: none;
+}
+
+#myPage {
+    width: 200px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+}
+
+#myPageLogo {
+    width: 80px;
+    height: 80px;
+    margin-right: 3%;
+}
+
+#workerName a {
+    text-decoration: none;
+    color: #333;
+
+}
+
+#workerName a:hover {
+    text-decoration: none;
+    color: #888;
+    transition: color 0.2s ease;
+}
+
+#workerTitle .workerPic {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+#workerTitle .logo {
+    width: 200px;
+    height: 70px;
+}
+
+/* title end */
+
+.wrap {
+    width: 1000px;
+    /* height: 100vh; */
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+/* header와 nav의 집합 */
+.header-nav-container {
+    position: relative;
+    width: 100%;
+    /* wrap과 동일한 너비 */
+}
+
+/* header 코드 */
+header {
+    width: 100%;
+    background: #000;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+/* 햄버거 메뉴 아이콘 */
+.hamburger-menu {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25px;
+    height: 20px;
+}
+
+.hamburger-menu span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: #fff;
+    transition: all 0.2s ease;
+}
+
+header h1 {
+    font-size: 30px;
+    margin: 0;
+}
+
+header ul {
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    align-items: center;
+}
+
+header ul li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+header ul li a {
+    font-size: 18px;
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+header ul li a:hover {
+    color: #aaa;
+}
+
+/* header 코드 끝 */
+
+nav {
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    /* header 높이에 맞게 조정 */
+    left: 0;
+    right: 0;
+    background: #eee;
+    max-height: 0;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    /* transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear; */
+    visibility: hidden;
+    z-index: 100;
+    /* opacity: 0; */
+}
+
+/* nav 숨김요소 */
+nav.active {
+    max-height: 500px;
+    /* 활성화될 때 최대 높이 설정 */
+    visibility: visible;
+    opacity: 1;
+    transition: max-height 0.5s ease, visibility 0s, opacity 0.5s linear;
+}
+
+/* nav 안의 menu-bar요소 */
+.menu-bar {
+    width: 100%;
+    height: 220px;
+    border-top: 0px;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    display: flex;
+}
+
+.menu-bar-content {
+    /* margin-left: 40px; */
+    width: 20%;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.menu-bar-content ul li {
+    padding: 10px;
+}
+
+.menu-bar-content ul li a {
+    text-decoration: none;
+    color: #444;
+}
+
+.menu-bar-content ul li a:hover {
+    color: #aaa;
+    transition: color 0.2s ease;
+}
+
+#menu-bar-content-sub {
+    list-style: circle;
+    font-size: 14px;
+    padding-left: 20px;
+}
+
+#menu-bar-content-sub li {
+    padding: 5px;
+}
+
+/* menu-bar요소 끝 */
+
+/* aside, section */
+.aside-section-container {
+    width: 100%;
+    display: flex;
+}
+
+/* 좌측 메뉴바 */
+aside {
+    width: 20%;
+    background: #5f5f5f;
+    min-height: 800px;
+}
+
+aside ul li {
+    list-style: none;
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
+aside ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+aside ul li ul li {
+    padding-top: 20px;
+    padding-bottom: 0px;
+
+}
+
+aside ul li a:hover {
+    color: #888;
+    transition: color 0.2s ease;
+}
+
+/* 섹션 창을 조작하기바람 */
+section {
+    width: 80%;
+    background: #eee;
+    z-index: 50;
+    text-align: center;
+    min-height: 800px;
+}
+
+.monitor {
+    background-color: #eee;
+    color: #000;
+    padding: 10px;
+    text-align: center;
+}
+
+#total-defect-rate-section {
+    display: inline-block;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 92%;
+    background-color: #fff;
+    color: #000;
+    padding: 10px 0;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.total-defect-rate-display {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 auto;
+    padding: 5px;
+    width: calc(100% - 40px);
+}
+
+#monitoring {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.process {
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    width: 127px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.operations {
+    font-family: 맑은 고딕;
+    font-weight: bold;
+    margin-top: 10px;
+    background-color: #eef;
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.process h4 {
+    margin-top: 0;
+}
+
+.status {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.status::before {
+    content: '🔴';
+    margin-right: 5px;
+}
+
+#cpu-status::before,
+#gpu-status::before,
+#case-status::before {
+    content: '🟢';
+}
+
+#graph-title {
+    text-align: center;
+    margin: 20px 0;
+}
+
+
+.graph-container {
+    padding-top: 30px;
+    position: relative;
+    margin: 20px auto;
+    width: 80%;
+    height: 300px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.graph-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    background-image: repeating-linear-gradient(to bottom,
+            transparent,
+            transparent 98%,
+            #ddd 98%,
+            #ddd 100%);
+    background-size: 100% 20%;
+}
+
+.bar {
+    width: 20%;
+    height: 0%;
+    background-color: #3498DB;
+    color: 555;
+    text-align: center;
+    /* border-top-right-radius: 5px;
+    border-top-left-radius: 5px; */
+    transition: height 0.3s ease-in-out;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 5px;
+    z-index: 2;
+}
+
+
+
+/* aside, section 끝*/
+
+footer {
+    width: 100%;
+    background: #000;
+    color: #fff;
+    text-align: center;
+    height: 7%;
+    line-height: 70px;
+}
+
+.workerGrade {
+    display: none;
+}
+
+#mainTitle1 {
+    display: none;
+}
+
+#mainTitle1 a {
+    text-decoration: none;
+    color: #333;
+}
+
+#mainTitle2 {
+    display: none;
+}
+
+#mainTitle2 a {
+    text-decoration: none;
+    color: #333;
+}
+
+#toggle {
+    background-color: #3498DB;
+    width: 80px;
+    height: 40px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    border: 0;
+}
+
+#toggle:hover {
+    background-color: rgb(0, 47, 255);
+    transition: 0.2s;
+}
+
+#toggleDiv {
+    margin-left: 700px;
+}
+
+/* 모바일 페이지 대응 테스트 */
+@media screen and (max-width: 430px) {
+    #toggleDiv {
+        margin-left: 330px;
+    }
+
+    /* 전체 페이지 */
+    .wrap {
+        width: 100%;
+    }
+
+    /* 헤더 */
+    header {
+        width: 100%;
+        background: #000;
+        color: #fff;
+        text-align: center;
+        padding: 5px;
+        box-sizing: border-box;
+        border-radius: 0px;
+    }
+
+    /* 미디어 쿼리 헤더 영역 수정 코드 */
+    header ul {
+        display: none;
+    }
+
+    .header-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        position: relative;
+    }
+
+    #headerTitle {
+        display: block !important;
+        text-align: center;
+        color: #fff;
+        width: 100%;
+        font-size: 20px;
+    }
+
+    #headerTitle a {
+        text-decoration: none;
+        color: #fff;
+    }
+
+    .hamburger-menu {
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: flex;
+    }
+
+    #workerTitle {
+        display: none;
+    }
+
+    nav {
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        /* header 높이에 맞게 조정 */
+        left: 0;
+        right: 0;
+        background: #eee;
+        max-height: 881px;
+        overflow: hidden;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear;
+        transform: translateX(0%);
+        visibility: hidden;
+        z-index: 100;
+        /* opacity: 0; */
+    }
+
+    nav.active {
+        /* height: 881px; */
+        max-height: none;
+        width: 200px;
+        visibility: visible;
+        opacity: 1;
+        transition: max-height 0.5s ease, visibility 0s 0.5s, opacity 0.5s linear;
+        transform: translateX(0%);
+    }
+
+    /* 왼쪽에서 오른쪽으로 나오는 애니메이션을 추가합니다. */
+    nav {
+        transform: translateX(-100%);
+        transition: transform 0.5s ease;
+    }
+
+    nav.active {
+        transform: translateX(0%);
+        transition: transform 0.5s ease;
+    }
+
+    nav.closing {
+        transform: translateX(-100%);
+        transition: transform 0.5s ease;
+    }
+
+    nav .menu-bar {
+        width: 100%;
+        height: 100%;
+        border-top: 0px;
+        border-right: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        display: flex;
+        flex-direction: column;
+        background-color: #dde;
+    }
+
+    .menu-bar-content {
+        width: 100%;
+        margin-left: 0px;
+    }
+
+    .menu-bar-content ul li {
+        padding: 10px;
+    }
+
+    aside {
+        display: none;
+    }
+
+    /* 섹션 목록 */
+    section {
+        width: 100%;
+    }
+
+    #monitoring {
+        gap: 5px;
+        padding: 5px;
+    }
+
+    #total-defect-rate-section {
+        width: 406px;
+    }
+
+    .total-defect-rate-display {
+        font-size: 18px;
+        padding: 2.5px;
+    }
+
+    .process {
+        width: 160px;
+        height: 190px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .status {
+        font-size: 12px;
+    }
+
+    .operations {
+        font-size: 12px;
+        width: 160px;
+    }
+
+    .graph-container {
+        height: 150px;
+    }
+
+    .bar {
+        width: 18%;
+        font-size: 11px;
+    }
+
+    .workerGrade {
+        display: inline;
+    }
+
+    .workerPic {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+    }

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.workSafety">
+	<select id="selectWorkSafety" resultType="WorkSafetyDTO">
+		SELECT 
+			w_bord_seq, w_title, w_detail, w_imgUrl
+		FROM 
+			workBord
+		WHERE 
+			w_type = 2
+	</select>
+	
+	<insert id="insertWorkSafety" parameterType="WorkSafetyDTO">
+		INSERT INTO workbord
+			(w_bord_seq, w_title, w_detail, w_imgurl, w_type)
+		VALUES 
+			(w_bord_seq.NEXTVAL, '${ w_title }', '${ w_detail }', '${ w_imgUrl }', 2)
+	</insert>
+	
+	<update id="updateWorkSafety" parameterType="WorkSafetyDTO">
+		UPDATE 
+			workbord
+		SET 
+			w_title = '${ w_title }', w_detail = '${ w_detail }', w_imgurl = '${ w_imgUrl }'
+		WHERE 
+			w_bord_seq = ${w_bord_seq}
+	</update>
+	
+	<delete id="deleteWorkSafety" parameterType="WorkSafetyDTO">
+		DELETE FROM 
+			workbord
+		WHERE 
+			w_bord_seq = '${ w_bord_seq }'
+	</delete>
+</mapper>

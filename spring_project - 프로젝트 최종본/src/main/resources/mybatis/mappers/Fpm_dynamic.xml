@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace는 패키지 명 -->
+<mapper namespace="mapper.fpm">
+
+	<!-- - 관리자, 작업자 - 재고관리 페이지 리스트 -->
+	<select id="selectfpm1" resultType="FpmDTO"
+		parameterType="FpmDTO">
+		select * from oneLine order by dayNum asc
+	</select>
+	<select id="selectfpm2" resultType="FpmDTO"
+		parameterType="FpmDTO">
+		select * from twoLine order by dayNum asc
+	</select>
+	<select id="selectfpm3" resultType="FpmDTO"
+		parameterType="FpmDTO">
+		select * from threeLine order by dayNum asc
+	</select>
+	<select id="selectfpm4" resultType="FpmDTO"
+		parameterType="FpmDTO">
+		select * from fourLine order by dayNum asc
+	</select>
+
+	<select id="monthSelect1" resultType="FpmDTO"
+		parameterType="FpmDTO">
+		select * from oneLineMonth order by monthNum asc
+	</select>
+	<select id="monthSelect2" resultType="FpmDTO"
+		parameterType="FpmDTO">
+		select * from twoLineMonth order by monthNum asc
+	</select>
+	<select id="monthSelect3" resultType="FpmDTO"
+		parameterType="FpmDTO">
+		select * from threeLineMonth order by monthNum asc
+	</select>
+	<select id="monthSelect4" resultType="FpmDTO"
+		parameterType="FpmDTO">
+		select * from fourLineMonth order by monthNum asc
+	</select>
+
+	<select id="monthSalsList1" resultType="FpmDTO"
+		parameterType="FpmDTO">
+		select * from oneLineSalsMonth order by monthNum asc
+	</select>
+	<select id="monthSalsList2" resultType="FpmDTO"
+		parameterType="FpmDTO">
+		select * from twoLineSalsMonth order by monthNum asc
+	</select>
+	<select id="monthSalsList3" resultType="FpmDTO"
+		parameterType="FpmDTO">
+		select * from threeLineSalsMonth order by monthNum asc
+	</select>
+	<select id="monthSalsList4" resultType="FpmDTO"
+		parameterType="FpmDTO">
+		select * from fourLineSalsMonth order by monthNum asc
+	</select>
+
+	<!-- 등급별 이번달 판매량 총 합 -->
+	<select id="totalEntryMonthSals" resultType="int">
+		SELECT
+		SUM(entryMonthSals) AS totalEntryMonthSals
+		FROM (
+		SELECT entryMonthSals
+		FROM oneLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH FROM SYSDATE)
+		UNION ALL
+		SELECT entryMonthSals
+		FROM twoLineSalsMonth
+		WHERE monthNum =
+		EXTRACT(MONTH FROM SYSDATE)
+		UNION ALL
+		SELECT entryMonthSals
+		FROM
+		threeLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH FROM SYSDATE)
+		UNION
+		ALL
+		SELECT entryMonthSals
+		FROM fourLineSalsMonth
+		WHERE monthNum =
+		EXTRACT(MONTH FROM SYSDATE)
+		)
+	</select>
+
+	<select id="totalMainMonthSals" resultType="int">
+		SELECT
+		SUM(mainMonthSals) AS totalMainMonthSals
+		FROM (
+		SELECT mainMonthSals
+		FROM oneLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH FROM SYSDATE)
+		UNION ALL
+		SELECT mainMonthSals
+		FROM twoLineSalsMonth
+		WHERE monthNum =
+		EXTRACT(MONTH FROM SYSDATE)
+		UNION ALL
+		SELECT mainMonthSals
+		FROM
+		threeLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH FROM SYSDATE)
+		UNION
+		ALL
+		SELECT mainMonthSals
+		FROM fourLineSalsMonth
+		WHERE monthNum =
+		EXTRACT(MONTH FROM SYSDATE)
+		)
+	</select>
+
+	<select id="totalPerforMonthSals" resultType="int">
+		SELECT
+		SUM(perforMonthSals) AS totalPerforMonthSals
+		FROM (
+		SELECT
+		perforMonthSals
+		FROM oneLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH
+		FROM SYSDATE)
+		UNION ALL
+		SELECT perforMonthSals
+		FROM twoLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH FROM SYSDATE)
+		UNION ALL
+		SELECT
+		perforMonthSals
+		FROM threeLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH
+		FROM SYSDATE)
+		UNION ALL
+		SELECT perforMonthSals
+		FROM fourLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH FROM SYSDATE)
+		)
+	</select>
+	<!-- 등급별 이번달 판매량 총 합 끝 -->
+
+	<!-- 등급별 지난달 판매량 총 합 -->
+	<select id="totalEntryLastMonthSals" resultType="int">
+		SELECT
+		SUM(entryMonthSals) AS totalEntryMonthSals
+		FROM (
+		SELECT entryMonthSals
+		FROM oneLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH FROM SYSDATE) -1
+		UNION ALL
+		SELECT entryMonthSals
+		FROM twoLineSalsMonth
+		WHERE monthNum =
+		EXTRACT(MONTH FROM SYSDATE) -1
+		UNION ALL
+		SELECT entryMonthSals
+		FROM
+		threeLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH FROM SYSDATE) -1
+		UNION
+		ALL
+		SELECT entryMonthSals
+		FROM fourLineSalsMonth
+		WHERE monthNum =
+		EXTRACT(MONTH FROM SYSDATE) -1
+		)
+	</select>
+
+	<select id="totalMainLastMonthSals" resultType="int">
+		SELECT
+		SUM(mainMonthSals) AS totalMainMonthSals
+		FROM (
+		SELECT mainMonthSals
+		FROM oneLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH FROM SYSDATE) -1
+		UNION ALL
+		SELECT mainMonthSals
+		FROM twoLineSalsMonth
+		WHERE monthNum =
+		EXTRACT(MONTH FROM SYSDATE) -1
+		UNION ALL
+		SELECT mainMonthSals
+		FROM
+		threeLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH FROM SYSDATE) -1
+		UNION
+		ALL
+		SELECT mainMonthSals
+		FROM fourLineSalsMonth
+		WHERE monthNum =
+		EXTRACT(MONTH FROM SYSDATE) -1
+		)
+	</select>
+
+	<select id="totalPerforLastMonthSals" resultType="int">
+		SELECT
+		SUM(perforMonthSals) AS totalPerforMonthSals
+		FROM (
+		SELECT
+		perforMonthSals
+		FROM oneLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH
+		FROM SYSDATE) -1
+		UNION ALL
+		SELECT
+		perforMonthSals
+		FROM twoLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH
+		FROM SYSDATE) -1
+		UNION ALL
+		SELECT
+		perforMonthSals
+		FROM threeLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH
+		FROM SYSDATE) -1
+		UNION ALL
+		SELECT
+		perforMonthSals
+		FROM fourLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH
+		FROM SYSDATE) -1
+		)
+	</select>
+	<!-- 등급별 지난달 판매량 총 합 끝 -->
+
+	<!-- 등급별 지난달 목표판매량을 구하기 위한 두달 전 총 판매량 -->
+	<select id="totalEntryLastSalestarget" resultType="int">
+		SELECT
+		SUM(entryMonthSals) AS totalEntryMonthSals
+		FROM (
+		SELECT entryMonthSals
+		FROM oneLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH FROM SYSDATE) -2
+		UNION ALL
+		SELECT entryMonthSals
+		FROM twoLineSalsMonth
+		WHERE monthNum =
+		EXTRACT(MONTH FROM SYSDATE) -2
+		UNION ALL
+		SELECT entryMonthSals
+		FROM
+		threeLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH FROM SYSDATE) -2
+		UNION
+		ALL
+		SELECT entryMonthSals
+		FROM fourLineSalsMonth
+		WHERE monthNum =
+		EXTRACT(MONTH FROM SYSDATE) -2
+		)
+	</select>
+
+	<select id="totalMainLastSalestarget" resultType="int">
+		SELECT
+		SUM(mainMonthSals) AS totalMainMonthSals
+		FROM (
+		SELECT mainMonthSals
+		FROM oneLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH FROM SYSDATE) -2
+		UNION ALL
+		SELECT mainMonthSals
+		FROM twoLineSalsMonth
+		WHERE monthNum =
+		EXTRACT(MONTH FROM SYSDATE) -2
+		UNION ALL
+		SELECT mainMonthSals
+		FROM
+		threeLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH FROM SYSDATE) -2
+		UNION
+		ALL
+		SELECT mainMonthSals
+		FROM fourLineSalsMonth
+		WHERE monthNum =
+		EXTRACT(MONTH FROM SYSDATE) -2
+		)
+	</select>
+
+	<select id="totalPerforLastSalestarget" resultType="int">
+		SELECT
+		SUM(perforMonthSals) AS totalPerforMonthSals
+		FROM (
+		SELECT
+		perforMonthSals
+		FROM oneLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH
+		FROM SYSDATE) -2
+		UNION ALL
+		SELECT
+		perforMonthSals
+		FROM twoLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH
+		FROM SYSDATE) -2
+		UNION ALL
+		SELECT
+		perforMonthSals
+		FROM threeLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH
+		FROM SYSDATE) -2
+		UNION ALL
+		SELECT
+		perforMonthSals
+		FROM fourLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH
+		FROM SYSDATE) -2
+		)
+	</select>
+	<!-- 등급별 지난달 목표판매량을 구하기 위한 두달 전 총 판매량 끝 -->
+
+	<!-- 다음달 목표판매량을 구하기 위한 이번달 제외한 3달간의 총 판매량 -->
+
+	<!-- 엔트리 -->
+	<select id="entryPastThreeMonths" resultType="int">
+		SELECT
+		SUM(entryMonthSals) AS totalEntryMonthSals
+		FROM (
+		SELECT entryMonthSals
+		FROM oneLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH FROM SYSDATE) -1
+		UNION ALL
+		SELECT entryMonthSals
+		FROM twoLineSalsMonth
+		WHERE monthNum =
+		EXTRACT(MONTH FROM SYSDATE) -1
+		UNION ALL
+		SELECT entryMonthSals
+		FROM
+		threeLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH FROM SYSDATE) -1
+		UNION ALL
+		SELECT entryMonthSals
+		FROM fourLineSalsMonth
+		WHERE monthNum =
+		EXTRACT(MONTH FROM SYSDATE) -1
+		UNION ALL
+		SELECT entryMonthSals
+		FROM
+		oneLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH FROM SYSDATE) -2
+		UNION
+		ALL
+		SELECT entryMonthSals
+		FROM twoLineSalsMonth
+		WHERE monthNum =
+		EXTRACT(MONTH FROM SYSDATE) -2
+		UNION ALL
+		SELECT entryMonthSals
+		FROM
+		threeLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH FROM SYSDATE) -2
+		UNION ALL
+		SELECT entryMonthSals
+		FROM fourLineSalsMonth
+		WHERE monthNum =
+		EXTRACT(MONTH FROM SYSDATE) -2
+		UNION ALL
+		SELECT entryMonthSals
+		FROM
+		oneLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH FROM SYSDATE) -3
+		UNION
+		ALL
+		SELECT entryMonthSals
+		FROM twoLineSalsMonth
+		WHERE monthNum =
+		EXTRACT(MONTH FROM SYSDATE) -3
+		UNION ALL
+		SELECT entryMonthSals
+		FROM
+		threeLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH FROM SYSDATE) -3
+		UNION ALL
+		SELECT entryMonthSals
+		FROM fourLineSalsMonth
+		WHERE monthNum =
+		EXTRACT(MONTH FROM SYSDATE) -3
+		)
+	</select>
+
+	<!-- 메인 -->
+	<select id="mainPastThreeMonths" resultType="int">
+		SELECT
+		SUM(mainMonthSals) AS totalMainMonthSals
+		FROM (
+		SELECT mainMonthSals
+		FROM oneLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH FROM SYSDATE) -1
+		UNION ALL
+		SELECT mainMonthSals
+		FROM twoLineSalsMonth
+		WHERE monthNum =
+		EXTRACT(MONTH FROM SYSDATE) -1
+		UNION ALL
+		SELECT mainMonthSals
+		FROM
+		threeLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH FROM SYSDATE) -1
+		UNION ALL
+		SELECT mainMonthSals
+		FROM fourLineSalsMonth
+		WHERE monthNum =
+		EXTRACT(MONTH FROM SYSDATE) -1
+		UNION ALL
+		SELECT mainMonthSals
+		FROM
+		oneLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH FROM SYSDATE) -2
+		UNION
+		ALL
+		SELECT mainMonthSals
+		FROM twoLineSalsMonth
+		WHERE monthNum =
+		EXTRACT(MONTH FROM SYSDATE) -2
+		UNION ALL
+		SELECT mainMonthSals
+		FROM
+		threeLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH FROM SYSDATE) -2
+		UNION ALL
+		SELECT mainMonthSals
+		FROM fourLineSalsMonth
+		WHERE monthNum =
+		EXTRACT(MONTH FROM SYSDATE) -2
+		UNION ALL
+		SELECT mainMonthSals
+		FROM
+		oneLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH FROM SYSDATE) -3
+		UNION
+		ALL
+		SELECT mainMonthSals
+		FROM twoLineSalsMonth
+		WHERE monthNum =
+		EXTRACT(MONTH FROM SYSDATE) -3
+		UNION ALL
+		SELECT mainMonthSals
+		FROM
+		threeLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH FROM SYSDATE) -3
+		UNION ALL
+		SELECT mainMonthSals
+		FROM fourLineSalsMonth
+		WHERE monthNum =
+		EXTRACT(MONTH FROM SYSDATE) -3
+		)
+	</select>
+
+	<!-- 퍼포먼스 -->
+	<select id="perforPastThreeMonths" resultType="int">
+		SELECT
+		SUM(perforMonthSals) AS totalPerforMonthSals
+		FROM (
+		SELECT perforMonthSals
+		FROM oneLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH FROM SYSDATE) -1
+		UNION ALL
+		SELECT perforMonthSals
+		FROM twoLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH FROM SYSDATE) -1
+		UNION ALL
+		SELECT perforMonthSals
+		FROM threeLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH FROM SYSDATE) -1
+		UNION ALL
+		SELECT perforMonthSals
+		FROM fourLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH FROM SYSDATE) -2
+		UNION ALL
+		SELECT perforMonthSals
+		FROM oneLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH FROM SYSDATE) -2
+		UNION ALL
+		SELECT perforMonthSals
+		FROM twoLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH FROM SYSDATE) -2
+		UNION ALL
+		SELECT perforMonthSals
+		FROM threeLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH FROM SYSDATE) -2
+		UNION ALL
+		SELECT perforMonthSals
+		FROM fourLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH FROM SYSDATE) -3
+		UNION ALL
+		SELECT perforMonthSals
+		FROM oneLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH FROM SYSDATE) -3
+		UNION ALL
+		SELECT perforMonthSals
+		FROM twoLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH FROM SYSDATE) -3
+		UNION ALL
+		SELECT perforMonthSals
+		FROM threeLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH FROM SYSDATE) -3
+		UNION ALL
+		SELECT perforMonthSals
+		FROM fourLineSalsMonth
+		WHERE monthNum = EXTRACT(MONTH FROM SYSDATE) -1
+		)
+	</select>
+
+
+
+	<!-- 다음달 목표판매량을 구하기 위한 이번달 제외한 3달간의 총 판매량 끝 -->
+
+
+
+</mapper>

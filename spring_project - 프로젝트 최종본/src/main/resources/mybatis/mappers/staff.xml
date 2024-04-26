@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.staff">
+	<!-- 아이디 조회 -->
+	<select id="findByUserId" resultType="staffDTO">
+		SELECT * FROM staff WHERE
+		userId = #{userId}
+	</select>
+
+	<!-- 직원 조회 -->
+	<select id="selectStaff" resultType="staffDTO">
+		SELECT * FROM staff WHERE
+		staffno = #{staffno}
+	</select>
+
+	<select id="checkUserIdStatus" resultType="string">
+		SELECT CASE
+		WHEN userId
+		IS NULL THEN 'NULL'
+		ELSE 'NOT NULL'
+		END AS userIdStatus
+		FROM staff
+		WHERE
+		staffno = #{staffno}
+	</select>
+
+	<select id="selectStaffList" parameterType="map"
+		resultType="staffDTO">
+		SELECT * FROM (
+		SELECT a.*, ROWNUM rnum FROM (
+		SELECT * FROM staff
+		<where>
+			<if test="staffno != null">
+				staffno = #{staffno}
+			</if>
+			<if test="sname != null">
+				AND sname LIKE '%' || #{sname} || '%'
+			</if>
+		</where>
+		<choose>
+			<when test="sortField != null and sortOrder != null">
+				ORDER BY ${sortField} ${sortOrder}
+			</when>
+			<otherwise>
+				ORDER BY staffno ASC
+			</otherwise>
+		</choose>
+		) a
+		WHERE ROWNUM &lt;= #{end}
+		) WHERE rnum &gt; #{start}
+	</select>
+
+	<select id="countStaff" parameterType="map" resultType="int">
+        SELECT COUNT(*) FROM staff
+        <where>
+            <if test="staffno != null">
+                staffno = #{staffno}
+            </if>
+            <if test="sname != null">
+                sname LIKE '%' || #{sname} || '%'
+            </if>
+        </where>
+    </select>
+
+	<select id="selectRoleList" parameterType="map" resultType="staffDTO">
+    SELECT * FROM (
+        SELECT a.*, ROWNUM rnum FROM (
+            SELECT * FROM staff
+            <where>
+                userid IS NOT NULL
+                <if test="staffno != null">
+                    AND staffno = #{staffno}
+                </if>
+                <if test="sname != null">
+                    AND sname LIKE '%' || #{sname} || '%'
+                </if>
+            </where>
+            <choose>
+                <when test="sortField != null and sortOrder != null">
+                    ORDER BY ${sortField} ${sortOrder}
+                </when>
+                <otherwise>
+                    ORDER BY staffno ASC
+                </otherwise>
+            </choose>
+        ) a
+        WHERE ROWNUM &lt;= #{end}
+    ) WHERE rnum &gt; #{start}
+</select>
+
+	<select id="countRole" resultType="int">
+		SELECT COUNT(*) FROM staff
+		WHERE userid IS NOT NULL
+	</select>
+	
+	<!-- 휴가 목록 요청 -->
+	<select id="getAbsentList" parameterType="absentDTO"
+		resultType="absentDTO">
+		<if test="typeNumber >= 3000">
+			SELECT id, staffno, start_date, end_date, reason, status
+			FROM absent
+			WHERE staffno = #{typeNumber}
+		</if>
+		<if test="typeNumber == 1">
+			SELECT id, staffno, start_date, end_date, reason, status
+			FROM absent
+			ORDER BY id DESC
+		</if>
+	</select>
+
+	<!-- 직원 정보 수정 -->
+	<update id="updateStaff" parameterType="staffDTO">
+		UPDATE staff
+		SET sname =
+		#{sname},
+		sduty = #{sduty},
+		sal = #{sal},
+		offino = #{offino}
+		WHERE staffno
+		= #{staffno}
+	</update>
+	<!-- <update id="staffAccount" parameterType="staffDTO"> UPDATE staff SET 
+		userid = #{userid}, password = #{password}, smail = #{smail}, sphone = #{sphone} 
+		WHERE staffno = #{staffno} </update> -->
+	<update id="staffAccount" parameterType="staffDTO">
+		UPDATE staff
+		<set>
+			<if test="userid != null and !userid.isEmpty()">
+				userId = #{userid},
+			</if>
+			<if test="password != null and !password.isEmpty()">
+				password = #{password},
+			</if>
+			<if test="sphone != null and !sphone.isEmpty()">
+				sphone = #{sphone},
+			</if>
+			<if test="smail != null and !smail.isEmpty()">
+				smail = #{smail},
+			</if>
+		</set>
+		WHERE staffno = #{staffno}
+	</update>
+
+	<!-- 직원 정보 삭제 -->
+	<delete id="deleteStaff" parameterType="staffDTO">
+		DELETE FROM staff WHERE
+		staffno = #{staffno}
+	</delete>
+
+	<!-- 직원 정보 추가 -->
+	<insert id="addStaff" parameterType="staffDTO">
+		INSERT INTO staff (sname,
+		hiredate, sduty, sal, offino) VALUES (#{sname},
+		#{hiredate}, #{sduty},
+		#{sal}, #{offino})
+	</insert>
+
+	<insert id="insertAbsent" parameterType="AbsentDTO">
+		INSERT INTO absent
+		(start_date, end_date, reason, staffno)
+		VALUES (#{start_date},
+		#{end_date}, #{reason}, #{staffno})
+	</insert>
+
+	<!-- 권한 정보 수정 -->
+	<update id="updateRole" parameterType="staffDTO">
+		UPDATE staff SET role =
+		#{role} WHERE staffno = #{staffno}
+	</update>
+
+	<update id="updateAbsentStatus"
+		parameterType="absentDTO">
+		UPDATE absent SET status = #{status} WHERE id = #{id}
+	</update>
+
+</mapper>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace는 패키지 명 -->
+<mapper namespace="mapper.ss">
+	<select id="selectLDY" resultType="ssDTO">
+		SELECT 
+			mesName, mesGrade, gCount
+		FROM 
+			mes
+	</select>
+	<select id="select_MES" resultType="ssDTO">
+		SELECT 
+			mesName, mesGrade,gCount
+		FROM 
+			mes
+	</select>
+
+
+	<select id="selectSs" resultType="ssDTO" parameterType="ssDTO">
+		SELECT *
+		FROM (
+		SELECT mesId, mesName, mesGrade, mesContent, mesPrice,
+		gCount, gLoc, bCount, bLoc, itemImg,
+		ROW_NUMBER() OVER (ORDER BY mesId
+		DESC) AS
+		row_num
+		FROM mes
+		<where>
+			<if test="mesGrade != null">
+				AND lower(mesGrade) LIKE '%' || lower(#{mesGrade}) || '%'
+			</if>
+		</where>
+		)
+		WHERE row_num BETWEEN ${start} AND ${end}
+	</select>
+
+	<select id="selectCountSs" resultType="int" parameterType="ssDTO">
+		select count(*) as cnt from mes
+		<where>
+			<if test="mesGrade != null">
+				AND lower(mesGrade) LIKE '%' || lower(#{mesGrade}) || '%'
+			</if>
+		</where>
+	</select>
+
+	<insert id="insertSs" parameterType="ssDTO">
+		insert into mes(mesId,
+		mesName, mesGrade, mesContent, mesPrice, gCount, gLoc, bCount, bLoc,
+		itemImg)
+		values (
+		mesId.nextval, '${mesName}', '${mesGrade}',
+		'${mesContent}',
+		${mesPrice}, ${gCount},
+		'${gLoc}', ${bCount},
+		'${bLoc}', '${itemImg}'
+		)
+	</insert>
+
+
+	<delete id="deleteSs" parameterType="ssDTO">
+		delete from mes WHERE mesid
+		= ${mesId}
+	</delete>
+
+	<update id="updateSs" parameterType="ssDTO">
+		update mes set
+		mesName =
+		'${mesName}',
+		mesGrade = '${mesGrade}',
+		mesContent = '${mesContent}',
+		mesPrice = ${mesPrice},
+		gCount = ${gCount},
+		gLoc = '${gLoc}',
+		bCount =
+		${bCount},
+		bLoc = '${bLoc}',
+		itemImg = '${itemImg}'
+		WHERE mesid =
+		${mesId}
+
+	</update>
+
+
+
+</mapper>

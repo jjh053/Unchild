@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.factory">
+
+	<select id="selectITV" resultType="stockDTO" parameterType="int">
+	    SELECT
+	        product, pass, fail, g_sequence
+	    FROM
+	        equipment
+	    WHERE 
+	     	EXTRACT(DAY FROM starttime) = #{_parameter}
+	    	and
+	    	endTime is null
+	</select>
+
+	<select id="selectOne" resultType="stockDTO">
+		SELECT * FROM equipment
+	</select>
+
+	
+	<select id="selectGrade" resultType="stockDTO">
+		SELECT * FROM grade
+	</select>
+	
+	<select id="selectEndTimeNull" resultType="stockDTO">
+		SELECT 
+			*
+		FROM 
+			equipment 
+		WHERE 
+			endtime IS null
+	</select>
+	
+	<select id="selectProcess" resultType="sdDTO" parameterType="int">
+		SELECT 
+			* 
+		FROM 
+			process
+		WHERE
+			lineNum = #{_parameter}
+	</select>
+	
+	<select id="select_MES" resultType="ssDTO">
+		SELECT 
+			mesname, gcount 
+		FROM 
+			mes
+	</select>
+	
+	
+	
+	<!-- 공정도 페이지 SQL -->
+	<update id="update_eqi_pass" parameterType="stockDTO">
+		UPDATE
+			equipment
+		SET
+			pass = #{pass}
+		WHERE
+			lineNum = #{lineNum}
+	</update>
+	
+	<update id="update_eqi_fail" parameterType="stockDTO">
+		UPDATE
+			equipment
+		SET
+			fail = #{fail}
+		WHERE
+			lineNum = #{lineNum}
+	</update>
+	
+	<update id="update_eqi_end" parameterType="stockDTO">
+		UPDATE
+			equipment
+		SET
+			pass = #{pass},
+			fail = #{fail},
+			endtime = #{endTime}
+		WHERE
+			lineNum = #{lineNum}
+	</update>
+	
+	<update id="truncate_process">
+		TRUNCATE TABLE process
+	</update>
+	<!-- 공정도 페이지 SQL -->
+	
+	
+	
+	
+	<insert id="insert_process" parameterType="sdDTO">
+		INSERT INTO
+			process
+		VALUES (
+			#{lineNum},	
+			#{stockType},	
+			#{stockName},
+			#{stockCount}
+		)
+	</insert>
+	
+	<update id="update_mes" parameterType="sdDTO">
+		UPDATE 
+			mes
+		SET
+			gcount = gcount - #{stockCount}
+		WHERE
+			mesname = #{stockName}
+	</update>
+	
+	
+	<insert id="insert_eqi" parameterType="stockDTO">
+		INSERT INTO 
+			equipment
+		VALUES (
+			PROCID.NEXTVAL,
+			#{lineNum},
+			#{startTime},
+			NULL,
+			#{product},
+			NULL,
+			NULL,
+			#{g_sequence},
+			0
+		)
+	</insert>
+	
+	
+</mapper>

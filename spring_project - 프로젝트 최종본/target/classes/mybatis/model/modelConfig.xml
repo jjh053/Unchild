@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+<!-- 	<settings> -->
+<!--         <setting name="jdbcTypeForNull" value="NULL" /> -->
+<!--     </settings> -->
+
+<!-- 태그 순서 바뀌면 에러 -> typeAliases > environments > mappers -->
+	<typeAliases>
+		<typeAlias type="com.mes.project.ldy.dto.BoardDTO" alias="boardDTO"/>
+		<typeAlias type="com.mes.project.ldy.dto.StockDTO" alias="stockDTO"/>
+		<typeAlias type="com.mes.project.ldy.dto.SD_DTO" alias="sdDTO"/>
+		
+		<typeAlias type="com.mes.project.jjh.dto.Ss_DTO" alias="ssDTO" />
+		<typeAlias type="com.mes.project.jjh.dto.Sr_DTO" alias="srDTO" />
+		<typeAlias type="com.mes.project.jjh.dto.Rodi_DTO" alias="RodiDTO" />
+		<typeAlias type="com.mes.project.jjh.dto.Fpm_DTO" alias="FpmDTO" />
+		
+		<typeAlias type="com.mes.project.ktw.staff.dto.StaffDTO" alias="staffDTO"/>
+		<typeAlias type="com.mes.project.ktw.staff.dto.AbsentDTO" alias="absentDTO"/>
+		<typeAlias type="com.mes.project.lsh.workOrder.WorkOrderDTO" alias="WorkOrderDTO"/>
+		<typeAlias type="com.mes.project.lsh.workSafety.WorkSafetyDTO" alias="WorkSafetyDTO"/>
+		<typeAlias type="com.mes.project.lsh.workQuality.WorkQualityDTO" alias="WorkQualityDTO"/>
+		<typeAlias type="com.mes.project.lsh.workQuality.WorkQualityInfoDTO" alias="WorkQualityInfoDTO"/>
+		<typeAlias type="com.mes.project.lsh.workReport.WorkReportDTO" alias="WorkReportDTO"/>
+		<typeAlias type="com.mes.project.lsh.workReport.PagingDTO" alias="PagingDTO"/>
+	</typeAliases>
+</configuration>

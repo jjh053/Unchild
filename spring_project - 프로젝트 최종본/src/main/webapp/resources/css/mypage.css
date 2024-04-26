@@ -1,0 +1,879 @@
+@charset "UTF-8";
+
+div {
+	box-sizing: border-box;
+}
+
+button {
+	font-family: "SOYOMapleBoldTTF";
+}
+
+.modal-background2 {
+	position: fixed;
+	z-index: 51;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content2 {
+	border-radius: 8px;
+	background-color: #fefefe;
+	margin: 15% auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 500px;
+	min-width: 300px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	text-align: center;
+}
+
+#modal-text2 {
+	width: 90%;
+}
+
+.close-button2 {
+	color: #aaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.close-button2:hover,
+.close-button2:focus {
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.calendar {
+	position: absolute;
+	background: #fff;
+	left: 207px;
+	width: 400px;
+	height: 400px;
+	padding: 5px 20px 20px 20px;
+	margin-left: 10px;
+	box-sizing: border-box;
+	border: 2px solid #ddd;
+	border-radius: 8px;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.x-button {
+	width: 30px;
+	height: 30px;
+	right: 7px;
+	top: 5px;
+	background-color: transparent;
+	border-radius: 10px;
+	position: absolute;
+	cursor: pointer;
+}
+
+.x-button::before,
+.x-button::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 2px;
+	height: 24px;
+	background-color: black;
+}
+
+.x-button::before {
+	transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.x-button::after {
+	transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.x-button:hover {
+	background-color: red;
+}
+
+.x-button:hover::before,
+.x-button:hover::after {
+	background-color: white;
+}
+
+.calendar>.header {
+	text-align: center;
+}
+
+.calendar>.header>.title {
+	width: 50%;
+	display: inline-block;
+}
+
+.calendar>.header>.calendar_btn {
+	width: 30px;
+	height: 30px;
+	border: none;
+	padding: 0;
+	background-color: #fff;
+	vertical-align: middle;
+	color: black;
+}
+
+.calendar>.day {
+	width: 100%;
+	display: table;
+	table-layout: fixed;
+}
+
+.calendar>.day>div {
+	display: table-cell;
+	text-align: center;
+	height: 50px;
+	vertical-align: middle;
+}
+
+.calendar>.day>div:first-child {
+	color: red;
+}
+
+.calendar>.day>div:last-of-type {
+	color: blue;
+}
+
+.calendar>.dates {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	width: 100%;
+	height: 50px;
+}
+
+.calendar>.dates>.date {
+	text-align: center;
+	width: calc(100%/ 7);
+	height: 40px;
+	line-height: 40px;
+	margin-bottom: 10px;
+	box-sizing: border-box;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+.calendar>.dates>.date:hover {
+	background-color: lightblue;
+}
+
+.calendar>.dates>.date:nth-child(7n) {
+	color: blue;
+}
+
+.calendar>.dates>.date:nth-child(7n+1) {
+	color: red;
+}
+
+.calendar>.dates>.last {
+	color: #c8c8c8 !important;
+}
+
+.calendar>.dates>.next {
+	color: #c8c8c8 !important;
+}
+
+.calendar>.dates>.current-day {
+	background-color: lightblue;
+	color: white;
+}
+
+.calendar>.dates>.next-month {
+	color: #c8c8c8;
+}
+
+.calendar>.dates>.date.gray {
+	color: #c8c8c8;
+}
+
+body {
+	font-family: "SOYOMapleBoldTTF";
+	background: #eee;
+	height: 400px;
+}
+
+#myprofile {
+	background: #fff;
+	width: 200px;
+	height: 400px;
+	margin-right: 20px;
+	border: 2px solid #ddd;
+	border-radius: 8px;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+	position: absolute;
+	font-size: 12px;
+}
+
+.mypic {
+	width: 80px;
+	height: 100%;
+}
+
+#myprofliePic {
+	width: 100%;
+	height: 80px;
+	display: flex;
+	border-bottom: 2px solid #ddd;
+	align-items: center;
+}
+
+#myprofilecard {
+	padding: 5px;
+	border-bottom: 2px solid #ddd;
+}
+
+#myprofilecontent #my-mail-page {
+	position: relative;
+	border-bottom: 2px solid #ddd;
+	height: 70px;
+}
+
+#todayWork {
+	border-bottom: 2px solid #ddd;
+	padding: 5px;
+}
+
+.absentTitle {
+	font-size: 14px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.absentInfo {
+	font-size: 13px;
+	background: #eee;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+.suggestBox {
+	padding: 5px;
+}
+
+.suggestTitle {
+	font-size: 14px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.suggestInfo {
+	font-size: 13px;
+	background: #eee;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+.suggestInfo:hover {
+	background: rgb(192, 192, 192);
+}
+
+
+.absentInfo:hover {
+	background-color: rgb(192, 192, 192);
+}
+
+/* 건의사항 */
+.list {
+	font-size: 11px;
+	display: flex;
+	flex-direction: column;
+	border-collapse: collapse;
+	width: 100%;
+	margin-top: 5px;
+}
+
+.row {
+	display: flex;
+	border-bottom: 2px solid #ddd;
+}
+
+.row:first-child {
+	border-top: 2px solid #ddd;
+	background-color: #eee;
+}
+
+.cell {
+	padding: 3px;
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	border-right: 1px solid #ddd;
+}
+
+.cell:first-child {
+	border-left: 1px solid #ddd;
+	flex: 1.2;
+}
+
+.cell:nth-child(2) {
+	flex: 0.8;
+}
+
+.cell:last-child {
+	flex: 0.4;
+}
+
+.empno {
+	display: none;
+}
+
+#vacationTable {
+	font-size: 11px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	padding: 0;
+	margin-top: 5px;
+	width: 100%;
+	border-collapse: collapse;
+}
+
+#vacationTable th,
+#vacationTable td {
+	text-align: center;
+	padding: 3px;
+	border: 1px solid #ccc;
+}
+
+#vacationTable th {
+	background-color: #f2f2f2;
+}
+
+.todayWorkTable {
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+#vacationTable2 {
+	font-size: 15px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	padding: 0;
+	width: 80%;
+	margin: 0 atuo;
+	border-collapse: collapse;
+}
+
+#vacationTable2 th,
+#vacationTable2 td {
+	text-align: center;
+	padding: 3px;
+	border: 1px solid #ccc;
+}
+
+#vacationTable2 th {
+	background-color: #f2f2f2;
+}
+
+#myprofilecontent #my-mail-page img {
+	width: 69px;
+	height: 69px;
+	display: inline-block;
+	box-sizing: border-box;
+	cursor: pointer;
+}
+
+#myprofilecontent #my-mail-page div {
+	box-sizing: border-box;
+	margin: auto;
+	display: inline-block;
+	position: absolute;
+	top: 15px;
+	left: 80px;
+	line-height: 20px;
+}
+
+#myprofilecontent #my-mail-page div span {
+	color: #000;
+	cursor: pointer;
+}
+
+#myprofilecontent #my-mail-page div span:hover {
+	color: blue;
+	transition: 0.3s;
+}
+
+#vacation-btn {
+	position: absolute;
+	top: 410px;
+	left: 527px;
+	background-color: #3498DB;
+	margin-top: 10px;
+	width: 80px;
+	height: 40px;
+	font-size: 15px;
+	border-radius: 5px;
+	cursor: pointer;
+	color: #fff;
+	border: 0;
+}
+
+#vacation-btn:hover {
+	background-color: rgb(0, 47, 255);
+	transition: 0.2s;
+}
+
+#close-btn {
+	position: absolute;
+	top: 410px;
+	left: 0;
+	margin: 0 10px;
+	background-color: red;
+	margin-top: 10px;
+	font-size: 15px;
+	width: 80px;
+	height: 40px;
+	border-radius: 5px;
+	cursor: pointer;
+	color: #fff;
+	border: 0;
+}
+
+#close-btn:hover {
+	background-color: rgb(163, 6, 6);
+	transition: 0.2s;
+}
+
+#modify-profile {
+	display: inline-block;
+	width: 95%;
+	height: 20px;
+	font-size: 13px;
+	cursor: pointer;
+}
+
+#modify-profile:hover {
+	color: blue;
+	transition: 0.3s;
+}
+
+.modal {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.7);
+}
+
+.errorMessage {
+	width: 79%;
+	margin: 0 auto;
+	height: 30px;
+	color: red;
+	font-size: 13px;
+}
+
+.modal2,
+.modal3,
+.modal4,
+.modal5,
+.modal6 {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.7);
+}
+
+.editList {
+	width: 400px;
+	margin: 0 auto;
+}
+
+.editList input {
+	width: 95%;
+	height: 25px;
+	margin: 0 auto;
+}
+
+.modal-content {
+	background-color: white;
+	margin-top: 50px;
+	margin-left: 50px;
+	padding: 10px;
+	width: 80%;
+	border-radius: 5px;
+	position: relative;
+}
+
+.modal-content input {
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	margin: 3px;
+	font-family: "SOYOMapleBoldTTF";
+	font-size: 14px;
+}
+
+.modal-content input:focus {
+	outline-color: #3498DB;
+}
+
+.modal-content h2 {
+	/* border: 1px solid red; */
+	text-align: center;
+}
+
+.close {
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 10px;
+	cursor: pointer;
+}
+
+.close img {
+	width: 20px;
+	height: 20px;
+}
+
+.btn-zip,
+.vacation-btn-zip {
+	text-align: center;
+}
+
+#apply-btn,
+#applyVacationBtn {
+	background-color: #3498DB;
+	margin-top: 10px;
+	width: 80px;
+	height: 40px;
+	font-size: 17px;
+	border-radius: 5px;
+	cursor: pointer;
+	color: #fff;
+	border: 0;
+}
+
+#apply-btn:hover,
+#applyVacationBtn:hover {
+	background-color: rgb(0, 47, 255);
+	transition: 0.2s;
+}
+
+#delete-btn,
+#deleteVacationBtn {
+	margin: 0 10px;
+	background-color: red;
+	margin-top: 10px;
+	width: 80px;
+	height: 40px;
+	font-size: 17px;
+	border-radius: 5px;
+	cursor: pointer;
+	color: #fff;
+	border: 0;
+}
+
+#delete-btn:hover,
+#deleteVacationBtn:hover {
+	background-color: rgb(163, 6, 6);
+	transition: 0.2s;
+}
+
+#mycard {
+	margin-bottom: 10px;
+}
+
+.vacation-word {
+	position: absolute;
+	top: 433px;
+	left: 300px;
+	display: inline-block;
+}
+
+#reasonZip {
+	margin: 0 auto;
+	width: 90%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	align-content: space-evenly;
+}
+
+.vacationReason {
+	width: 100px;
+	height: 40px;
+	background: #ccc;
+	border-radius: 10px;
+	text-align: center;
+	line-height: 40px;
+	cursor: pointer;
+	margin: 20px 10px;
+}
+
+.vacationReason:hover {
+	background-color: #999;
+	transition: 0.3s;
+}
+
+#instructions {
+	height: 70px;
+	position: relative;
+}
+
+#vacationSchedule {
+	display: none;
+	width: 196px;
+	margin-top: 5px;
+	height: 46px;
+	border-top: 2px solid #ddd;
+	box-sizing: border-box;
+}
+
+.today-work-zip {
+	cursor: pointer;
+}
+
+.today-work-zip ul li:hover {
+	transition: 0.3s;
+	color: blue;
+}
+
+.work-btn-zip {
+	text-align: center;
+}
+
+#closeWorkBox {
+	margin: 0 10px;
+	background-color: red;
+	margin-top: 10px;
+	width: 60px;
+	height: 30px;
+	border-radius: 5px;
+	cursor: pointer;
+	color: #fff;
+	border: 0;
+}
+
+#closeWorkBox:hover {
+	background-color: rgb(163, 6, 6);
+	transition: 0.2s;
+}
+
+#workTable {
+	border-collapse: collapse;
+	border: 2px solid #ddd;
+	margin: 0 auto;
+}
+
+#workTable th,
+td {
+	border: 2px solid #ddd;
+	padding: 10px;
+}
+
+#workTable td {
+	font-size: 12px !important;
+}
+
+#workTable input {
+	width: 10px;
+	height: 10px;
+}
+
+#workCheckBox {
+	background-color: #3498DB;
+	margin-top: 10px;
+	width: 60px;
+	height: 30px;
+	border-radius: 5px;
+	cursor: pointer;
+	color: #fff;
+	border: 0;
+}
+
+#workCheckBox:hover {
+	background-color: rgb(0, 47, 255);
+	transition: 0.2s;
+}
+
+.today-work-zip ul {
+	margin: 0;
+	margin-left: -30px;
+}
+
+.today-work-zip ul li {
+	list-style: none;
+	font-size: 8px;
+}
+
+#mailTable table {
+	width: 85%;
+	margin: 0 auto 20px;
+	border: 1px solid #ddd;
+	border-collapse: collapse;
+	padding: 5px;
+	font-size: 15px;
+	text-align: center;
+}
+
+#mailTable th,
+#mailTable td {
+	border: 1px solid #ddd;
+	padding: 5px;
+	/* width: 100px; */
+}
+
+#mailTable th {
+	background-color: #f2f2f2;
+}
+
+#mailTable div {
+	display: inline-block;
+	margin-bottom: 16px;
+}
+
+#instructions img {
+	margin-top: 4px;
+	margin-left: 4px;
+	width: 59px;
+	height: 59px;
+}
+
+#instructions div {
+	position: absolute;
+	top: 20px;
+	left: 79px;
+	display: inline-block;
+}
+
+.workChkBox {
+	width: 10px;
+	text-align: center;
+}
+
+#workTable tbody tr td {
+	/* text-align: center; */
+	height: 30px;
+}
+
+#mailWritePage input {
+	font-family: SOYOMapleBoldTTF;
+}
+
+#mailWritePage textarea {
+	font-family: SOYOMapleBoldTTF;
+	resize: none;
+	margin-top: 5px;
+}
+
+#apply-write-btn {
+	background-color: #3498DB;
+	width: 60px;
+	height: 30px;
+	border-radius: 3px;
+	cursor: pointer;
+	color: #fff;
+	border: 0;
+	margin-right: 300px;
+	font-size: 11px;
+}
+
+#apply-write-btn:hover {
+	background-color: rgb(0, 47, 255);
+	transition: 0.2s;
+}
+
+#delete-write-btn {
+	margin: 0 10px;
+	background-color: red;
+	margin-top: 10px;
+	width: 60px;
+	height: 30px;
+	border-radius: 5px;
+	cursor: pointer;
+	color: #fff;
+	border: 0;
+	font-size: 11px;
+}
+
+#delete-write-btn:hover {
+	background-color: rgb(163, 6, 6);
+	transition: 0.2s;
+}
+
+.order-detail {
+	cursor: pointer;
+}
+
+.order-detail:hover {
+	color: blue;
+	transition: 0.3s;
+}
+
+#orderTable {
+	border-collapse: collapse;
+	border: 2px solid #ddd;
+}
+
+#orderTable th,
+td {
+	border: 2px solid #ddd;
+}
+
+#orderCloseBtn {
+	background-color: red;
+	margin-top: 10px;
+	width: 60px;
+	height: 30px;
+	border-radius: 5px;
+	cursor: pointer;
+	color: #fff;
+	border: 0;
+	font-size: 11px;
+}
+
+#orderCloseBtn:hover {
+	background-color: rgb(163, 6, 6);
+	transition: 0.2s;
+}
+
+.order-btn-zip {
+	text-align: right;
+	width: 430px;
+}
+
+#orderWriteBtn {
+	background-color: #3498DB;
+	width: 60px;
+	height: 30px;
+	border-radius: 5px;
+	cursor: pointer;
+	color: #fff;
+	border: 0;
+	font-size: 11px;
+}
+
+#orderWriteBtn:hover {
+	background-color: rgb(0, 47, 255);
+	transition: 0.2s;
+}
+
+#orderTableBody a {
+	text-decoration: none;
+	color: #000;
+}
+
+#orderTableBody a:hover {
+	transition: 0.2s;
+	color: #666;
+}

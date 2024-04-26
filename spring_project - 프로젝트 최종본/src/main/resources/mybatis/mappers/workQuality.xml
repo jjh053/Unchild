@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.workQuality">
+	<select id="selectWorkQualityDetail" resultType="WorkQualityDTO">
+		SELECT 
+			w_bord_seq, w_title, w_detail
+		FROM 
+			workBord
+		WHERE 
+			w_type = 3
+	</select>
+	
+	<select id="selectWorkQualityGuide" resultType="WorkQualityDTO">
+		SELECT 
+			w_bord_seq, w_detail
+		FROM 
+			workBord
+		WHERE 
+			w_type = 4
+	</select>
+	
+	<select id="selectWorkQualityFacility" resultType="WorkQualityDTO">
+		SELECT 
+			e.procid, e.linenum, e.endtime, e.pass, g.g_grade
+		FROM 
+			equipment e, grade g
+		WHERE 
+			qualitychk = 0 AND e.g_sequence = g.g_sequence
+	</select>	
+	
+	<select id="selectWorkQualityStaff" resultType="WorkQualityDTO" parameterType="int">
+		SELECT 
+			staffno, sname, sphone, smail
+		FROM 
+			staff
+		WHERE 
+			staffno = #{ staffno }
+	</select>	
+	
+	<insert id="insertWorkQuality" parameterType="WorkQualityDTO">
+		INSERT INTO workbord
+			(w_bord_seq, w_title, w_detail, w_type)
+		VALUES 
+			(w_bord_seq.NEXTVAL, '${ w_title }', '${ w_detail }', 3)
+	</insert>
+	
+	<update id="updateWorkQuality" parameterType="WorkQualityDTO">
+		UPDATE 
+			workbord
+		SET 
+			w_title = '${ w_title }', w_detail = '${ w_detail }'
+		WHERE 
+			w_bord_seq = ${w_bord_seq}
+	</update>
+	
+	<delete id="deleteWorkQuality" parameterType="WorkQualityDTO">
+		DELETE FROM 
+			workbord
+		WHERE 
+			w_bord_seq = '${ w_bord_seq }'
+	</delete>
+	
+	<!-- 품질검사 결과 -->
+	<insert id="sendWorkQuality" parameterType="WorkQualityInfoDTO">
+		INSERT INTO 
+			work(w_seq, quality_detail, clear_num, unclear_num, status, staffno, end_time, procid)
+		VALUES 
+			(w_seq.NEXTVAL, '${ quality_detail }', ${ clear_num }, ${ unclear_num }, ${ status }, ${ staffno }, #{ end_time }, ${ procid })
+	</insert>
+	
+	<update id="updateSendWorkQuality" parameterType="WorkQualityInfoDTO">
+		UPDATE 
+			equipment
+		SET 
+			qualitychk = 1
+		WHERE 
+			procid = ${ procid }
+	</update>
+</mapper>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.workReport">
+	<select id="selectWorkReport" parameterType="PagingDTO" resultType="WorkReportDTO">
+	    SELECT 
+			*
+		FROM
+			(
+			SELECT 
+				rownum rnum, t1.*
+			FROM
+				(
+				SELECT 
+					*
+				FROM
+					(
+					SELECT
+						d.w_seq, d.quality_detail, d.clear_num, d.unclear_num, d.status, d.end_time, e.linenum, g.g_grade, s.sname, s.sphone, s.smail
+					FROM
+						WORK d
+						JOIN EQUIPMENT e ON d.procid = e.procid
+						JOIN GRADE g ON e.g_sequence = g.g_sequence
+						JOIN STAFF s ON d.staffno = s.staffno
+					WHERE 
+						to_char(d.end_time, 'yyyy-MM') LIKE '%' || '${ select_date }' || '%'
+					) w
+				ORDER BY
+					w_seq
+				) t1
+			)
+		WHERE rnum <![CDATA[ >= ]]> ( (5 * ${ now_page }) - (5 - 1) ) AND rnum <![CDATA[ <= ]]> (5 * ${ now_page })
+	</select>
+	
+	<select id="selectPageNum" parameterType="PagingDTO" resultType="PagingDTO">
+		SELECT
+			COUNT(*) AS page_num
+		FROM
+			WORK
+		WHERE 
+			to_char(end_time, 'yyyy-MM-DD') LIKE '%' || '${ select_date }' || '%'
+	</select>
+</mapper>
